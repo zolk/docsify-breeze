@@ -1,12 +1,11 @@
 function docsifyComponentHeader(hook, vm) {
   hook.beforeEach(async function (content, next) {
-    const componentPath = location.href.match(
-      /.*\/components\/([a-z-]+)(?:\/([a-z-]+))?/
-    );
+    const pathSegments = document.body.dataset.page.split('/');
+    const isComponentPage = pathSegments[0] === 'components';
 
-    if (componentPath) {
-      const component = componentPath[1];
-      const subPage = componentPath[2];
+    if (isComponentPage) {
+      const component = pathSegments[1];
+      const subPage = pathSegments[2];
 
       const usageDocs = await fetch(`/components/${component}/usage.md`, {
         method: 'HEAD',
@@ -17,7 +16,7 @@ function docsifyComponentHeader(hook, vm) {
 
         if (usageDocs.ok) {
           usageLink = `
-            <li ${subPage === 'usage' ? 'class="active"' : ''}>
+            <li ${subPage === 'usage.md' ? 'class="active"' : ''}>
               <a href="/#/components/${component}/usage">Usage</a>
             </li>
           `;
@@ -26,7 +25,7 @@ function docsifyComponentHeader(hook, vm) {
         const replacement = `
           <nav>
             <ul>
-              <li ${!subPage ? 'class="active"' : ''}>
+              <li ${subPage === 'code.md' ? 'class="active"' : ''}>
                 <a href="/#/components/${component}">Code</a>
               </li>
               ${usageLink}
