@@ -11,7 +11,11 @@ Buttons perform a single, clearly communicated action.
 Use the `size` prop to change a button's size.
 
 ```html preview expanded
-<button class="btn">My Button Size</button>
+<div style="display: flex; gap: 1rem;">
+  <button class="btn">My Small Button Size</button>
+  <button class="btn">My Medium Button Size</button>
+  <button class="btn">My Large Button Size</button>
+</div>
 ```
 
 ### Variant

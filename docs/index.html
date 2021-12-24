@@ -13,6 +13,66 @@
       rel="stylesheet"
       href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css"
     />
+    <style type="text/css">
+      .code-block {
+        background-color: rgb(230, 230, 230);
+      }
+
+      .code-block__preview {
+        position: relative;
+        background-color: white;
+        border: 1px solid gray;
+        display: flex;
+        padding: 2rem calc(2rem + 20px) 2rem 2rem;
+        max-width: 100%;
+        min-width: 20rem;
+      }
+
+      .code-block__resizer {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: grab;
+        width: 20px;
+        background-color: gray;
+        color: white;
+        user-select: none;
+      }
+
+      .code-block__resizer--resizing {
+        cursor: grabbing;
+      }
+
+      .code-block__source {
+        display: none;
+      }
+
+      .code-block--expanded .code-block__source {
+        display: block;
+      }
+
+      .code-block__source pre {
+        margin: 0;
+        background-color: #f2f6f8;
+      }
+
+      .code-block__source pre code {
+        background-color: transparent;
+      }
+
+      .code-block__source pre::after {
+        display: none;
+      }
+
+      .code-block__actions {
+        padding: 0.5rem;
+        background-color: #fff;
+      }
+    </style>
   </head>
   <body>
     <div id="app"></div>

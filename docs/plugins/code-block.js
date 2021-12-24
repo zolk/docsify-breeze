@@ -1,25 +1,42 @@
 function docsifyCodeBlock(hook, vm) {
   let id = 0;
+  const keyCode = Object.freeze({
+    left: 37,
+    up: 38,
+    right: 39,
+    down: 40,
+    pageUp: 33,
+    pageDown: 34,
+    end: 35,
+    home: 36,
+  });
 
   hook.afterEach(function (html, next) {
     const parser = new DOMParser();
     const doc = parser.parseFromString(html, 'text/html');
 
-    [...doc.querySelectorAll('code.preview')].map((code) => {
-      const pre = code.closest('pre');
+    [...doc.querySelectorAll('code.preview')].map((block) => {
+      const pre = block.closest('pre');
 
-      const isExpanded = code.classList.contains('expanded');
+      const isExpanded = block.classList.contains('expanded');
       const sourceId = 'code-source-' + id;
+      const previewId = 'code-preview-' + id;
 
       const codeBlock = `
         <div class="code-block ${isExpanded ? 'code-block--expanded' : ''}">
-          <div class="code-block__preview">
-            ${code.textContent}
+          <div class="code-block__preview" id=${previewId}>
+            ${block.textContent}
+            <div
+              class="code-block__resizer"
+              aria-controls="${previewId}"
+              role="slider"
+              tabindex="0"
+            >
+              ...
+            </div>
           </div>
 
-          <div class="code-block__source" id=${sourceId}>
-            ${pre.outerHTML}
-          </div>
+          <div class="code-block__source" id=${sourceId}>${pre.outerHTML}</div>
 
           <div class="code-block__actions">
             <button
@@ -31,7 +48,7 @@ function docsifyCodeBlock(hook, vm) {
             </button>
           </div>
         </div>
-        `;
+      `;
 
       pre.replaceWith(parser.parseFromString(codeBlock, 'text/html').body);
 
@@ -41,15 +58,99 @@ function docsifyCodeBlock(hook, vm) {
     next(doc.body.innerHTML);
   });
 
-  document.addEventListener('click', (e) => {
-    const button = e.target.closest('.code-block__toggle');
+  // Allow for resizing of preview box
+  hook.doneEach(() => {
+    [...document.querySelectorAll('.code-block__preview')].map((preview) => {
+      const resizer = preview.querySelector('.code-block__resizer');
+
+      let startX;
+      let startWidth;
+
+      const getStart = (event) => {
+        startX = event.changedTouches
+          ? event.changedTouches[0].pageX
+          : event.clientX;
+        startWidth = parseInt(
+          document.defaultView.getComputedStyle(preview).width,
+          10
+        );
+      };
+
+      const setWidth = (newWidth) => {
+        preview.style.width = `${startWidth + newWidth}px`;
+      };
+
+      const mouseDownHandler = (event) => {
+        resizer.classList.add('code-block__resizer--resizing');
+        event.preventDefault();
+        getStart(event);
+
+        document.addEventListener('mousemove', startDrag);
+        document.addEventListener('touchmove', startDrag);
+        document.addEventListener('mouseup', stopDrag);
+        document.addEventListener('touchend', stopDrag);
+      };
+
+      const keyDownHandler = (event) => {
+        event.preventDefault();
+        getStart(event);
+
+        switch (event.keyCode) {
+          case keyCode.left:
+          case keyCode.down:
+            setWidth(-10);
+            break;
+          case keyCode.right:
+          case keyCode.up:
+            setWidth(10);
+            break;
+          case keyCode.pageUp:
+            setWidth(100);
+            flag = true;
+            break;
+          case keyCode.pageDown:
+            setWidth(-100);
+            break;
+          case keyCode.home:
+            setWidth(-startWidth);
+            break;
+          case keyCode.end:
+            setWidth(10000);
+            break;
+          default:
+            break;
+        }
+      };
+
+      const startDrag = (event) => {
+        const newX = event.clientX - startX;
+        setWidth(newX);
+      };
+
+      const stopDrag = () => {
+        resizer.classList.remove('code-block__resizer--resizing');
+        document.removeEventListener('mousemove', startDrag);
+        document.removeEventListener('touchmove', startDrag);
+        document.removeEventListener('mouseup', stopDrag);
+        document.removeEventListener('touchend', stopDrag);
+      };
+
+      resizer.addEventListener('mousedown', mouseDownHandler);
+      resizer.addEventListener('touchstart', mouseDownHandler);
+      resizer.addEventListener('keydown', keyDownHandler);
+    });
+  });
+
+  // Toggle display of source code
+  document.addEventListener('click', (event) => {
+    const button = event.target.closest('.code-block__toggle');
 
     if (button) {
-      const codeBlock = e.target.closest('.code-block');
+      const codeBlock = event.target.closest('.code-block');
       codeBlock.classList.toggle('code-block--expanded');
 
       const isExpanded = codeBlock.classList.contains('code-block--expanded');
-      e.target.setAttribute('aria-expanded', isExpanded);
+      event.target.setAttribute('aria-expanded', isExpanded);
       button.innerText = `${isExpanded ? 'Hide ' : 'Show'} Code`;
     }
   });
