@@ -1,5 +1,3 @@
 [component-header]
 
-# Card
-
 Code

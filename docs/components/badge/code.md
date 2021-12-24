@@ -1,11 +1,9 @@
 [component-header]
 
-# Badge
+## Examples
 
-### Examples
+### Sizes
 
-#### Sizes
+### Variant
 
-#### Variant
-
-### Properties
+## Properties

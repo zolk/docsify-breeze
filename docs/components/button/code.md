@@ -1,14 +1,12 @@
 [component-header]
 
-# Button
-
 Buttons perform a single, clearly communicated action.
 
-### Examples
+## Examples
 
 !> This is an alert.
 
-#### Sizes
+### Sizes
 
 Use the `size` prop to change a button's size.
 
@@ -16,7 +14,7 @@ Use the `size` prop to change a button's size.
 <button class="btn">My Button Size</button>
 ```
 
-#### Variant
+### Variant
 
 Use the `variant` prop to change the visual style of the button.
 
@@ -24,4 +22,4 @@ Use the `variant` prop to change the visual style of the button.
 <button class="btn">My Button Variant</button>
 ```
 
-### Properties
+## Properties
