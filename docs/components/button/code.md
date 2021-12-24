@@ -1,4 +1,4 @@
-[component-header]
+# Button
 
 Buttons perform a single, clearly communicated action.
 

@@ -1,4 +1,4 @@
-[component-header]
+# Badge
 
 ## Examples
 

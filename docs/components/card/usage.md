@@ -1,4 +1,4 @@
-[component-header]
+# Card
 
 Usage guidelines for card.
 

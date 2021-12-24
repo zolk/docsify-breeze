@@ -1,4 +1,4 @@
-[component-header]
+# Button
 
 Usage guidelines for button.
 

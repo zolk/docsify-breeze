@@ -11,14 +11,7 @@ function docsifyComponentHeader(hook, vm) {
         method: 'HEAD',
       }).then((res) => res);
 
-      const componentTitle = component
-        .split('-')
-        .map((segment) => {
-          return segment.slice(0, 1).toUpperCase() + segment.slice(1);
-        })
-        .join(' ');
-
-      content = content.replace(/\[component-header]/g, () => {
+      content = content.replace(/^#{1} ([a-zA-Z]+)/, (_, title) => {
         let usageLink = '';
 
         if (usageDocs.ok) {
@@ -30,7 +23,7 @@ function docsifyComponentHeader(hook, vm) {
         }
 
         const replacement = `
-          <h1>${componentTitle}</h1>
+          <h1>${title}</h1>
           <nav>
             <ul>
               <li ${subPage === 'code.md' ? 'class="active"' : ''}>
