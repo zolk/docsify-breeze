@@ -23,6 +23,11 @@
         loadSidebar: true,
         subMaxLevel: 3,
         auto2top: true,
+        copyCode: {
+          buttonText: 'Copy',
+          errorText: 'Failed to copy',
+          successText: 'Copied',
+        },
         alias: {
           '/components/([a-z]+)': '/components/$1/code',
         },
@@ -30,6 +35,8 @@
     </script>
     <!-- Docsify v4 -->
     <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+    <script src="//cdn.jsdelivr.net/npm/docsify-copy-code"></script>
     <script src="/plugins/component-header.js"></script>
+    <script src="/plugins/code-block.js"></script>
   </body>
 </html>
