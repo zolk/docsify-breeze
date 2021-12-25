@@ -92,17 +92,20 @@ function docsifyCodeBlock(hook, vm) {
       };
 
       const keyDownHandler = (event) => {
-        event.preventDefault();
         getStart(event);
+
+        let flag = false;
 
         switch (event.keyCode) {
           case keyCode.left:
           case keyCode.down:
             setWidth(-10);
+            flag = true;
             break;
           case keyCode.right:
           case keyCode.up:
             setWidth(10);
+            flag = true;
             break;
           case keyCode.pageUp:
             setWidth(100);
@@ -110,15 +113,22 @@ function docsifyCodeBlock(hook, vm) {
             break;
           case keyCode.pageDown:
             setWidth(-100);
+            flag = true;
             break;
           case keyCode.home:
             setWidth(-startWidth);
+            flag = true;
             break;
           case keyCode.end:
             setWidth(10000);
+            flag = true;
             break;
           default:
             break;
+        }
+
+        if (flag) {
+          event.preventDefault();
         }
       };
 
