@@ -12,6 +12,7 @@
     "dist"
   ],
   "scripts": {
+    "prepare": "husky install",
     "build": "node scripts/build.js",
     "watch": "node scripts/build.js --watch",
     "lint": "eslint . --ext ts --ext js",
@@ -46,5 +47,8 @@
     "postcss-nested": "^5.0.6",
     "prettier": "^2.5.1",
     "typescript": "^4.5.4"
+  },
+  "lint-staged": {
+    "*.{ts,js}": "eslint --cache --fix"
   }
 }
