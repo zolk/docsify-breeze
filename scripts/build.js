@@ -18,10 +18,10 @@ const options = commandLineArgs(
   { camelCase: true }
 );
 
-const outDir = './dist';
+const outdir = './dist';
 
-del.sync(outDir);
-mkdirp.sync(outDir);
+del.sync(outdir);
+mkdirp.sync(outdir);
 
 (async () => {
   try {
