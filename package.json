@@ -12,6 +12,8 @@
     "dist"
   ],
   "scripts": {
+    "build": "node scripts/build.js",
+    "watch": "node scripts/build.js --watch",
     "lint": "eslint . --ext ts --ext js",
     "lint:fix": "npm run lint -- --fix",
     "test": "web-test-runner \"src/**/*.test.ts\" --node-resolve --puppeteer",
@@ -22,16 +24,26 @@
   },
   "devDependencies": {
     "@open-wc/testing": "^3.0.3",
+    "@stylelint/postcss-css-in-js": "^0.37.2",
     "@web/dev-server-esbuild": "^0.2.16",
     "@web/test-runner": "^0.13.23",
     "@web/test-runner-puppeteer": "^0.10.4",
+    "autoprefixer": "^10.4.0",
+    "command-line-args": "^5.2.0",
+    "csswring": "^7.0.0",
+    "del": "^6.0.0",
+    "esbuild": "^0.14.8",
     "eslint": "^8.5.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-lit-a11y": "^1.1.0-next.1",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-security": "^1.4.0",
+    "fast-glob": "^3.2.7",
     "husky": "^7.0.4",
     "lint-staged": "^12.1.4",
+    "mkdirp": "^1.0.4",
+    "postcss": "^8.4.5",
+    "postcss-nested": "^5.0.6",
     "prettier": "^2.5.1",
     "typescript": "^4.5.4"
   }
