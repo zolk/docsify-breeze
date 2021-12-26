@@ -1,15 +1,5 @@
 function docsifyCodeBlock(hook, vm) {
   let id = 0;
-  const keyCode = Object.freeze({
-    left: 37,
-    up: 38,
-    right: 39,
-    down: 40,
-    pageUp: 33,
-    pageDown: 34,
-    end: 35,
-    home: 36,
-  });
 
   hook.afterEach(function (html, next) {
     const parser = new DOMParser();
@@ -94,41 +84,43 @@ function docsifyCodeBlock(hook, vm) {
       const keyDownHandler = (event) => {
         getStart(event);
 
-        let flag = false;
-
-        switch (event.keyCode) {
-          case keyCode.left:
-          case keyCode.down:
-            setWidth(-10);
-            flag = true;
-            break;
-          case keyCode.right:
-          case keyCode.up:
-            setWidth(10);
-            flag = true;
-            break;
-          case keyCode.pageUp:
-            setWidth(100);
-            flag = true;
-            break;
-          case keyCode.pageDown:
-            setWidth(-100);
-            flag = true;
-            break;
-          case keyCode.home:
-            setWidth(-startWidth);
-            flag = true;
-            break;
-          case keyCode.end:
-            setWidth(10000);
-            flag = true;
-            break;
-          default:
-            break;
-        }
-
-        if (flag) {
+        if (
+          [
+            'ArrowDown',
+            'ArrowLeft',
+            'ArrowUp',
+            'ArrowRight',
+            'Home',
+            'End',
+            'PageUp',
+            'PageDown',
+          ].includes(event.key)
+        ) {
           event.preventDefault();
+
+          switch (event.key) {
+            case 'ArrowLeft':
+            case 'ArrowDown':
+              setWidth(-10);
+              flag = true;
+              break;
+            case 'ArrowRight':
+            case 'ArrowUp':
+              setWidth(10);
+              break;
+            case 'PageUp':
+              setWidth(100);
+              break;
+            case 'PageDown':
+              setWidth(-100);
+              break;
+            case 'Home':
+              setWidth(-startWidth);
+              break;
+            case 'End':
+              setWidth(10000);
+              break;
+          }
         }
       };
 
