@@ -91,9 +91,14 @@
         alias: {
           '/components/([a-z-]+)': '/components/$1/code',
         },
+        search: {
+          placeholder: 'Search',
+          hideOtherSidebarContent: true,
+        },
       };
     </script>
     <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+    <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/docsify-copy-code"></script>
     <script src="//cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js"></script>
     <script src="/plugins/component-header.js"></script>
