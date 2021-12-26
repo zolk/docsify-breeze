@@ -1,0 +1,33 @@
+{
+  "name": "@zolk/dss",
+  "version": "1.0.0",
+  "description": "Starter kit for a Lit-based design system",
+  "author": "Kevin Zolkiewicz",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "customElements": "dist/custom-elements.json",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "lint": "eslint . --ext ts --ext js",
+    "lint:fix": "npm run lint -- --fix",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "lit": "^2.0.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.5.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-lit-a11y": "^1.1.0-next.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-security": "^1.4.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.1.4",
+    "prettier": "^2.5.1",
+    "typescript": "^4.5.4"
+  }
+}
