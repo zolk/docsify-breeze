@@ -1,4 +1,4 @@
-function docsifyComponentHeader(hook) {
+function docsifyComponentWrapper(hook) {
   const TAG_PREFIX = 'ds-';
 
   const customElements = fetch('./custom-elements.json')
@@ -39,7 +39,9 @@ function docsifyComponentHeader(hook) {
         method: 'HEAD',
       }).then((res) => res);
 
+      //
       // Insert component header
+      //
       content = content.replace(/^#{1} ([a-zA-Z]+)/, (_, title) => {
         let usageLink = '';
 
@@ -66,6 +68,17 @@ function docsifyComponentHeader(hook) {
 
         return replacement.replace(/^ +| +$/gm, '');
       });
+
+      //
+      // Append component metadata
+      //
+      let result = '';
+
+      result += `
+        <h1>hello world!</h1>
+      `;
+
+      content = content + result.replace(/^ +| +$/gm, '');
     }
 
     next(content);
@@ -73,6 +86,6 @@ function docsifyComponentHeader(hook) {
 }
 
 window.$docsify = window.$docsify || {};
-window.$docsify.plugins = [docsifyComponentHeader].concat(
+window.$docsify.plugins = [docsifyComponentWrapper].concat(
   window.$docsify.plugins || []
 );
