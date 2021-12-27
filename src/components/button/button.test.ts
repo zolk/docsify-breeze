@@ -1,6 +1,6 @@
 import { fixture, html, expect } from '@open-wc/testing';
 import DsButton from './button';
-import './ds-button';
+import './button';
 
 describe('ds-button', () => {
   it('renders', async () => {
