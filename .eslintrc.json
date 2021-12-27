@@ -8,13 +8,15 @@
     "eslint:recommended",
     "plugin:lit-a11y/recommended",
     "plugin:prettier/recommended",
-    "plugin:security/recommended",
     "prettier"
   ],
-  "plugins": ["lit-a11y", "prettier", "security"],
+  "plugins": ["lit-a11y", "prettier"],
   "parserOptions": {
     "sourceType": "module",
-    "ecmaVersion": 2017
+    "ecmaVersion": "latest"
+  },
+  "rules": {
+    "no-case-declarations": "off"
   },
   "overrides": [
     {
@@ -24,15 +26,14 @@
         "plugin:@typescript-eslint/recommended",
         "plugin:lit-a11y/recommended",
         "plugin:prettier/recommended",
-        "plugin:security/recommended",
         "prettier"
       ],
-      "plugins": ["@typescript-eslint", "lit-a11y", "prettier", "security"],
+      "plugins": ["@typescript-eslint", "lit-a11y", "prettier"],
       "parser": "@typescript-eslint/parser",
       "parserOptions": {
         "project": "./tsconfig.json",
         "sourceType": "module",
-        "ecmaVersion": 2017
+        "ecmaVersion": "latest"
       },
       "rules": {
         "@typescript-eslint/explicit-function-return-type": "off",

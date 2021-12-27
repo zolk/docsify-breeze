@@ -18,12 +18,14 @@
     "lint": "eslint . --ext ts --ext js",
     "lint:fix": "npm run lint -- --fix",
     "test": "web-test-runner \"src/**/*.test.ts\" --node-resolve --puppeteer",
-    "test:watch": "web-test-runner \"src/**/*.test.ts\" --node-resolve --puppeteer --watch"
+    "test:watch": "web-test-runner \"src/**/*.test.ts\" --node-resolve --puppeteer --watch",
+    "cem": "cem analyze"
   },
   "dependencies": {
     "lit": "^2.0.2"
   },
   "devDependencies": {
+    "@custom-elements-manifest/analyzer": "^0.5.7",
     "@open-wc/testing": "^3.0.3",
     "@stylelint/postcss-css-in-js": "^0.37.2",
     "@typescript-eslint/eslint-plugin": "^5.8.0",
@@ -40,7 +42,6 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-lit-a11y": "^1.1.0-next.1",
     "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-security": "^1.4.0",
     "fast-glob": "^3.2.7",
     "husky": "^7.0.4",
     "lint-staged": "^12.1.4",
