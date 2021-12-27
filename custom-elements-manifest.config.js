@@ -1,6 +1,5 @@
 export default {
   litelement: true,
-  outdir: './dist',
   globs: ['src/components/**/*.ts'],
   exclude: ['**/*.test.ts'],
   plugins: [

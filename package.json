@@ -18,8 +18,7 @@
     "lint": "eslint . --ext ts --ext js",
     "lint:fix": "npm run lint -- --fix",
     "test": "web-test-runner \"src/**/*.test.ts\" --node-resolve --puppeteer",
-    "test:watch": "web-test-runner \"src/**/*.test.ts\" --node-resolve --puppeteer --watch",
-    "cem": "cem analyze"
+    "test:watch": "web-test-runner \"src/**/*.test.ts\" --node-resolve --puppeteer --watch"
   },
   "dependencies": {
     "lit": "^2.0.2"

@@ -28,6 +28,8 @@ mkdirp.sync(outdir);
     if (!options.watch) {
       console.log('Generating type definitions...');
       execSync('tsc --emitDeclarationOnly', { stdio: 'inherit' });
+      console.log('Generating component metadata manifest...');
+      execSync(`cem analyze --outdir "${outdir}"`, { stdio: 'inherit' });
     }
   } catch (err) {
     console.error(err);
@@ -76,7 +78,7 @@ mkdirp.sync(outdir);
       process.exit(1);
     })
     .then((result) => {
-      console.log('🎉 Design system has been successfully built!\n');
+      console.log('🎉 Project has been successfully built!\n');
       if (!options.watch) result.stop();
     });
 
