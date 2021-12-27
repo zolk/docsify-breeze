@@ -6,7 +6,7 @@
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "customElements": "dist/custom-elements.json",
+  "customElements": "docs/custom-elements.json",
   "type": "module",
   "files": [
     "dist"

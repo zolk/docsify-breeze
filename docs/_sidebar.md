@@ -1,4 +1,6 @@
 - [Home](/)
+- [Getting Started](/getting-started)
+- [Design Tokens](/design-tokens)
 - [Components](/components)
   - [Badge](/components/badge)
   - [Button](/components/button)

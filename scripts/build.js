@@ -29,7 +29,7 @@ mkdirp.sync(outdir);
       console.log('Generating type definitions...');
       execSync('tsc --emitDeclarationOnly', { stdio: 'inherit' });
       console.log('Generating component metadata manifest...');
-      execSync(`cem analyze --outdir "${outdir}"`, { stdio: 'inherit' });
+      execSync(`cem analyze --outdir "docs"`, { stdio: 'inherit' });
     }
   } catch (err) {
     console.error(err);
