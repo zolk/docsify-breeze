@@ -49,6 +49,13 @@
           "members": [
             {
               "kind": "field",
+              "name": "button",
+              "type": {
+                "text": "HTMLButtonElement | HTMLLinkElement"
+              }
+            },
+            {
+              "kind": "field",
               "name": "variant",
               "type": {
                 "text": "| 'default'\n    | 'primary'\n    | 'success'\n    | 'info'\n    | 'warning'\n    | 'danger'\n    | 'text'"
@@ -123,6 +130,41 @@
               },
               "description": "Specifies where a link should open. Only used when `href` is set.",
               "attribute": "target"
+            },
+            {
+              "kind": "method",
+              "name": "click",
+              "description": "Programmatically simulates a click on the button."
+            },
+            {
+              "kind": "method",
+              "name": "focus",
+              "parameters": [
+                {
+                  "name": "options",
+                  "optional": true,
+                  "type": {
+                    "text": "FocusOptions"
+                  },
+                  "description": "An objet which controls aspects of the focusing process."
+                }
+              ],
+              "description": "Programmatically move focus to the button."
+            },
+            {
+              "kind": "method",
+              "name": "blur",
+              "description": "Programmatically remove focus from the button."
+            }
+          ],
+          "events": [
+            {
+              "description": "Emitted when the button loses focus.",
+              "name": "ds-blur"
+            },
+            {
+              "description": "Emitted when the button gains focus.",
+              "name": "ds-focus"
             }
           ],
           "attributes": [

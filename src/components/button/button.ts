@@ -1,12 +1,15 @@
 import { LitElement, html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
-import { customElement, property } from 'lit/decorators.js';
+import { customElement, property, query } from 'lit/decorators.js';
 import styles from './button.styles';
 
 /**
  * @status draft
  *
  * @slot - Text of the button.
+ *
+ * @event ds-blur - Emitted when the button loses focus.
+ * @event ds-focus - Emitted when the button gains focus.
  *
  * @csspart base - The component's base wrapper.
  * @csspart label - The button's label.
@@ -16,6 +19,8 @@ import styles from './button.styles';
 @customElement('ds-button')
 export default class DsButton extends LitElement {
   static styles = styles;
+
+  @query('.button') button: HTMLButtonElement | HTMLLinkElement;
 
   /** The button's visual style. */
   @property({ reflect: true })
@@ -55,6 +60,24 @@ export default class DsButton extends LitElement {
   /** Specifies where a link should open. Only used when `href` is set. */
   @property()
   target?: '_blank' | '_parent' | '_self' | '_top';
+
+  /** Programmatically simulates a click on the button. */
+  click() {
+    this.button.click();
+  }
+
+  /** Programmatically move focus to the button.
+   *
+   * @param options - An objet which controls aspects of the focusing process.
+   */
+  focus(options?: FocusOptions) {
+    this.button.focus(options);
+  }
+
+  /** Programmatically remove focus from the button. */
+  blur() {
+    this.button.blur();
+  }
 
   render() {
     const isLink = this.href ? true : false;

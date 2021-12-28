@@ -39,6 +39,146 @@ function docsifyComponentWrapper(hook) {
     `;
   }
 
+  function generateMethodsList(methods) {
+    let result = '';
+
+    methods.map((method) => {
+      const hasParams = method.parameters?.length;
+
+      result += `
+        <h3><code>${method.name}(${
+        hasParams
+          ? method.parameters
+              .map(
+                (param) =>
+                  `${param.name}${param.optional ? '?' : ''}: ${
+                    param.type.text
+                  }`
+              )
+              .join(', ')
+          : ''
+      }) => ${method.return ? method.return.type.text : 'void'}</code></h3>
+        <p>${method.description}</p>
+
+        ${
+          hasParams
+            ? `
+          <dl>
+          ${method.parameters.map((param) =>
+            param.description
+              ? `<dt><code>${param.name}</code></dt><dd>${param.description}</dd>`
+              : ``
+          )}
+          </dl>
+              `
+            : ``
+        }
+      `;
+    });
+
+    return result;
+  }
+
+  function generateEventsTable(events) {
+    return `
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${events
+            .map((event) => {
+              return `<tr>
+                <th scope="row">
+                  <code>${event.name}</code>
+                </th>
+                <td>${event.description}</td>
+              </tr>`;
+            })
+            .join('')}
+        </tbody>
+      </table>
+    `;
+  }
+
+  function generateSlotsTable(slots) {
+    return `
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${slots
+            .map((slot) => {
+              return `<tr>
+                <th scope="row">
+                  ${
+                    slot.name === ''
+                      ? 'Default slot'
+                      : `<code>${slot.name}</code>`
+                  }
+                </th>
+                <td>${slot.description}</td>
+              </tr>`;
+            })
+            .join('')}
+        </tbody>
+      </table>
+    `;
+  }
+
+  function generateCssPartsTable(parts) {
+    return `
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${parts
+            .map((part) => {
+              return `<tr>
+                <th scope="row">${part.name}</th>
+                <td>${part.description}</td>
+              </tr>`;
+            })
+            .join('')}
+        </tbody>
+      </table>
+    `;
+  }
+
+  function generateCssPropertiesTable(properties) {
+    return `
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${properties
+            .map((property) => {
+              return `<tr>
+                <th scope="row"><code>${property.name}</code></th>
+                <td>${property.description}</td>
+              </tr>`;
+            })
+            .join('')}
+        </tbody>
+      </table>
+    `;
+  }
+
   function getAllComponents(metadata) {
     const components = [];
 
@@ -103,28 +243,65 @@ function docsifyComponentWrapper(hook) {
       });
 
       //
-      // Append component metadata
+      // Handle component metadata tag
       //
-      let result = '';
+      content = content.replace(/\[component-metadata\]/, () => {
+        let result = '';
 
-      const members = componentMeta.members?.filter(
-        (member) => member.description && member.privacy !== 'private'
-      );
-      const props = members?.filter((prop) => {
-        return prop.kind === 'field';
-      });
-      // const methods = members?.filter(
-      //   (prop) => prop.kind === 'method' && prop.privacy !== 'private'
-      // );
+        const members = componentMeta.members?.filter(
+          (member) => member.description && member.privacy !== 'private'
+        );
+        const props = members?.filter((prop) => {
+          return prop.kind === 'field';
+        });
+        const methods = members?.filter(
+          (member) => member.kind === 'method' && member.privacy !== 'private'
+        );
 
-      if (props?.length) {
-        result += `
+        if (props?.length) {
+          result += `
           ## Properties
           ${generatePropertiesTable(props)}
         `;
-      }
+        }
 
-      content = content + result.replace(/^ +| +$/gm, '');
+        if (methods?.length) {
+          result += `
+          ## Methods
+          ${generateMethodsList(methods)}
+        `;
+        }
+
+        if (componentMeta.events?.length) {
+          result += `
+          ## Events
+          ${generateEventsTable(componentMeta.events)}
+        `;
+        }
+
+        if (componentMeta.slots?.length) {
+          result += `
+          ## Slots
+          ${generateSlotsTable(componentMeta.slots)}
+        `;
+        }
+
+        if (componentMeta.cssParts?.length) {
+          result += `
+          ## CSS Parts
+          ${generateCssPartsTable(componentMeta.cssParts)}
+        `;
+        }
+
+        if (componentMeta.cssProperties?.length) {
+          result += `
+          ## CSS Custom Properties
+          ${generateCssPropertiesTable(componentMeta.cssProperties)}
+        `;
+        }
+
+        return result.replace(/^ +| +$/gm, '');
+      });
     }
 
     next(content);
