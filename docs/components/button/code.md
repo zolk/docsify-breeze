@@ -25,5 +25,3 @@ Use the `variant` prop to change the visual style of the button.
 ```html preview
 <button class="btn">My Button Variant</button>
 ```
-
-## Properties

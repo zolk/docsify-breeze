@@ -5,6 +5,40 @@ function docsifyComponentWrapper(hook) {
     .then((res) => res.json())
     .catch((err) => console.error(err));
 
+  function generatePropertiesTable(props) {
+    return `
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Property</th>
+            <th scope="col">Attribute</th>
+            <th scope="col">Description</th>
+            <th scope="col">Type</th>
+            <th scope="col">Default</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${props
+            .map((prop) => {
+              return `<tr>
+                <th scope="row"><code>${prop.name}</code></th>
+                <td><code>${prop.attribute}</code></td>
+                <td>${prop.description.replace(
+                  /`(.*?)`/g,
+                  '<code>$1</code>'
+                )}</td>
+                <td><code>${prop.type.text.replace(/^\| /m, '')}</code></td>
+                <td>${
+                  prop.default ? `<code>${prop.default}</code>` : '&ndash;'
+                }</td>
+              </tr>`;
+            })
+            .join('')}
+        </tbody>
+      </table>
+    `;
+  }
+
   function getAllComponents(metadata) {
     const components = [];
 
@@ -33,9 +67,8 @@ function docsifyComponentWrapper(hook) {
     if (isComponentPage) {
       const baseTagName = pathSegments[1];
       const subPage = pathSegments[2];
-      const componentDoc = getComponent(metadata, TAG_PREFIX + baseTagName);
-
-      const usageDocs = await fetch(`/components/${baseTagName}/usage.md`, {
+      const componentMeta = getComponent(metadata, TAG_PREFIX + baseTagName);
+      const usageDoc = await fetch(`/components/${baseTagName}/usage.md`, {
         method: 'HEAD',
       }).then((res) => res);
 
@@ -45,7 +78,7 @@ function docsifyComponentWrapper(hook) {
       content = content.replace(/^#{1} ([a-zA-Z]+)/, (_, title) => {
         let usageLink = '';
 
-        if (usageDocs.ok) {
+        if (usageDoc.ok) {
           usageLink = `
             <li ${subPage === 'usage.md' ? 'class="active"' : ''}>
               <a href="/#/components/${baseTagName}/usage">Usage</a>
@@ -55,7 +88,7 @@ function docsifyComponentWrapper(hook) {
 
         const replacement = `
           <h1>${title}</h1>
-          <div>Status: ${componentDoc?.status}</div>
+          <div>Status: ${componentMeta?.status}</div>
           <nav>
             <ul>
               <li ${subPage === 'code.md' ? 'class="active"' : ''}>
@@ -74,9 +107,22 @@ function docsifyComponentWrapper(hook) {
       //
       let result = '';
 
-      result += `
-        <h1>hello world!</h1>
-      `;
+      const members = componentMeta.members?.filter(
+        (member) => member.description && member.privacy !== 'private'
+      );
+      const props = members?.filter((prop) => {
+        return prop.kind === 'field';
+      });
+      // const methods = members?.filter(
+      //   (prop) => prop.kind === 'method' && prop.privacy !== 'private'
+      // );
+
+      if (props?.length) {
+        result += `
+          ## Properties
+          ${generatePropertiesTable(props)}
+        `;
+      }
 
       content = content + result.replace(/^ +| +$/gm, '');
     }
