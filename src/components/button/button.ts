@@ -38,7 +38,7 @@ export default class DsButton extends LitElement {
   size: 'small' | 'medium' | 'large' = 'medium';
 
   /** Set to true to render the button in a disabled state. */
-  @property({ type: Boolean })
+  @property({ type: Boolean, reflect: true })
   disabled = false;
 
   /** When set, the underlying element will render as an `a` rather than a `button`. */
@@ -79,6 +79,19 @@ export default class DsButton extends LitElement {
     this.button.blur();
   }
 
+  private _handleBlur() {
+    const event = new CustomEvent('ds-blur', { bubbles: true, composed: true });
+    this.dispatchEvent(event);
+  }
+
+  private _handleFocus() {
+    const event = new CustomEvent('ds-focus', {
+      bubbles: true,
+      composed: true,
+    });
+    this.dispatchEvent(event);
+  }
+
   render() {
     const isLink = this.href ? true : false;
 
@@ -98,6 +111,8 @@ export default class DsButton extends LitElement {
           role="button"
           aria-disabled=${this.disabled ? 'true' : 'false'}
           tabindex=${this.disabled ? '-1' : '0'}
+          @focus=${this._handleFocus}
+          @blur=${this._handleBlur}
         >
           ${innerContent}
         </a>
@@ -111,6 +126,8 @@ export default class DsButton extends LitElement {
           type=${this.submit ? 'submit' : 'button'}
           name=${ifDefined(this.name)}
           value=${ifDefined(this.value)}
+          @focus=${this._handleFocus}
+          @blur=${this._handleBlur}
         >
           ${innerContent}
         </button>
