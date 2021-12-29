@@ -1,4 +1,4 @@
-function docsifyCodeBlock(hook, vm) {
+function docsifyCodeBlock(hook) {
   let id = 0;
 
   hook.afterEach(function (html, next) {
@@ -57,13 +57,8 @@ function docsifyCodeBlock(hook, vm) {
       let startWidth;
 
       const getStart = (event) => {
-        startX = event.changedTouches
-          ? event.changedTouches[0].pageX
-          : event.clientX;
-        startWidth = parseInt(
-          document.defaultView.getComputedStyle(preview).width,
-          10
-        );
+        startX = event.changedTouches ? event.changedTouches[0].pageX : event.clientX;
+        startWidth = parseInt(document.defaultView.getComputedStyle(preview).width, 10);
       };
 
       const setWidth = (newWidth) => {
@@ -102,7 +97,6 @@ function docsifyCodeBlock(hook, vm) {
             case 'ArrowLeft':
             case 'ArrowDown':
               setWidth(-10);
-              flag = true;
               break;
             case 'ArrowRight':
             case 'ArrowUp':
@@ -159,6 +153,4 @@ function docsifyCodeBlock(hook, vm) {
 }
 
 window.$docsify = window.$docsify || {};
-window.$docsify.plugins = [docsifyCodeBlock].concat(
-  window.$docsify.plugins || []
-);
+window.$docsify.plugins = [docsifyCodeBlock].concat(window.$docsify.plugins || []);

@@ -1,4 +1,5 @@
 import { LitElement, html } from 'lit';
+import { literal } from 'lit/static-html.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { customElement, property, query } from 'lit/decorators.js';
 import styles from './button.styles';
@@ -24,14 +25,7 @@ export default class DsButton extends LitElement {
 
   /** The button's visual style. */
   @property({ reflect: true })
-  variant:
-    | 'default'
-    | 'primary'
-    | 'success'
-    | 'info'
-    | 'warning'
-    | 'danger'
-    | 'text' = 'default';
+  variant: 'default' | 'primary' | 'success' | 'info' | 'warning' | 'danger' | 'text' = 'default';
 
   /** The button's size. */
   @property({ reflect: true })
@@ -68,7 +62,7 @@ export default class DsButton extends LitElement {
 
   /** Programmatically move focus to the button.
    *
-   * @param options - An objet which controls aspects of the focusing process.
+   * @param options - An object which controls aspects of the focusing process.
    */
   focus(options?: FocusOptions) {
     this.button.focus(options);
@@ -94,18 +88,16 @@ export default class DsButton extends LitElement {
 
   render() {
     const isLink = this.href ? true : false;
+    const tag = isLink ? literal`a` : literal`button`;
 
-    const innerContent = html`
-      <span part="label" class="button__label">
-        <slot></slot>
-      </span>
-    `;
-
-    if (isLink) {
-      return html`
-        <a
+    return html`
+        <${tag}
           part="base"
           class="button"
+          ?disabled=${ifDefined(isLink ? undefined : this.disabled)}
+          type=${ifDefined(isLink ? undefined : this.submit ? 'submit' : 'button')}
+          name=${ifDefined(isLink ? undefined : this.name)}
+          value=${ifDefined(isLink ? undefined : this.value)}
           href=${ifDefined(this.href)}
           target=${ifDefined(this.target)}
           role="button"
@@ -114,25 +106,11 @@ export default class DsButton extends LitElement {
           @focus=${this._handleFocus}
           @blur=${this._handleBlur}
         >
-          ${innerContent}
-        </a>
+          <span part="label" class="button__label">
+            <slot></slot>
+          </span>
+        </$tag>
       `;
-    } else {
-      return html`
-        <button
-          part="base"
-          class="button"
-          ?disabled=${this.disabled}
-          type=${this.submit ? 'submit' : 'button'}
-          name=${ifDefined(this.name)}
-          value=${ifDefined(this.value)}
-          @focus=${this._handleFocus}
-          @blur=${this._handleBlur}
-        >
-          ${innerContent}
-        </button>
-      `;
-    }
   }
 }
 

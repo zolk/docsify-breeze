@@ -58,7 +58,7 @@
               "kind": "field",
               "name": "variant",
               "type": {
-                "text": "| 'default'\n    | 'primary'\n    | 'success'\n    | 'info'\n    | 'warning'\n    | 'danger'\n    | 'text'"
+                "text": "'default' | 'primary' | 'success' | 'info' | 'warning' | 'danger' | 'text'"
               },
               "default": "'default'",
               "description": "The button's visual style.",
@@ -84,7 +84,8 @@
               },
               "default": "false",
               "description": "Set to true to render the button in a disabled state.",
-              "attribute": "disabled"
+              "attribute": "disabled",
+              "reflects": true
             },
             {
               "kind": "field",
@@ -146,7 +147,7 @@
                   "type": {
                     "text": "FocusOptions"
                   },
-                  "description": "An objet which controls aspects of the focusing process."
+                  "description": "An object which controls aspects of the focusing process."
                 }
               ],
               "description": "Programmatically move focus to the button."
@@ -155,6 +156,16 @@
               "kind": "method",
               "name": "blur",
               "description": "Programmatically remove focus from the button."
+            },
+            {
+              "kind": "method",
+              "name": "_handleBlur",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "_handleFocus",
+              "privacy": "private"
             }
           ],
           "events": [
@@ -171,7 +182,7 @@
             {
               "name": "variant",
               "type": {
-                "text": "| 'default'\n    | 'primary'\n    | 'success'\n    | 'info'\n    | 'warning'\n    | 'danger'\n    | 'text'"
+                "text": "'default' | 'primary' | 'success' | 'info' | 'warning' | 'danger' | 'text'"
               },
               "default": "'default'",
               "description": "The button's visual style.",

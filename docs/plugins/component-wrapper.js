@@ -23,14 +23,9 @@ function docsifyComponentWrapper(hook) {
               return `<tr>
                 <th scope="row"><code>${prop.name}</code></th>
                 <td><code>${prop.attribute}</code></td>
-                <td>${prop.description.replace(
-                  /`(.*?)`/g,
-                  '<code>$1</code>'
-                )}</td>
+                <td>${prop.description.replace(/`(.*?)`/g, '<code>$1</code>')}</td>
                 <td><code>${prop.type.text.replace(/^\| /m, '')}</code></td>
-                <td>${
-                  prop.default ? `<code>${prop.default}</code>` : '&ndash;'
-                }</td>
+                <td>${prop.default ? `<code>${prop.default}</code>` : '&ndash;'}</td>
               </tr>`;
             })
             .join('')}
@@ -49,12 +44,7 @@ function docsifyComponentWrapper(hook) {
         <h3><code>${method.name}(${
         hasParams
           ? method.parameters
-              .map(
-                (param) =>
-                  `${param.name}${param.optional ? '?' : ''}: ${
-                    param.type.text
-                  }`
-              )
+              .map((param) => `${param.name}${param.optional ? '?' : ''}: ${param.type.text}`)
               .join(', ')
           : ''
       }) => ${method.return ? method.return.type.text : 'void'}</code></h3>
@@ -118,11 +108,7 @@ function docsifyComponentWrapper(hook) {
             .map((slot) => {
               return `<tr>
                 <th scope="row">
-                  ${
-                    slot.name === ''
-                      ? 'Default slot'
-                      : `<code>${slot.name}</code>`
-                  }
+                  ${slot.name === '' ? 'Default slot' : `<code>${slot.name}</code>`}
                 </th>
                 <td>${slot.description}</td>
               </tr>`;
@@ -194,9 +180,7 @@ function docsifyComponentWrapper(hook) {
   }
 
   function getComponent(metadata, tagName) {
-    return getAllComponents(metadata).find(
-      (component) => component.tagName === tagName
-    );
+    return getAllComponents(metadata).find((component) => component.tagName === tagName);
   }
 
   hook.beforeEach(async function (content, next) {
@@ -309,6 +293,4 @@ function docsifyComponentWrapper(hook) {
 }
 
 window.$docsify = window.$docsify || {};
-window.$docsify.plugins = [docsifyComponentWrapper].concat(
-  window.$docsify.plugins || []
-);
+window.$docsify.plugins = [docsifyComponentWrapper].concat(window.$docsify.plugins || []);
