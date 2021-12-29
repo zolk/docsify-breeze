@@ -1,4 +1,4 @@
-function docsifyComponentWrapper(hook) {
+window.$docsify.plugins.push((hook) => {
   const TAG_PREFIX = 'ds-';
 
   const customElements = fetch('./custom-elements.json')
@@ -290,7 +290,4 @@ function docsifyComponentWrapper(hook) {
 
     next(content);
   });
-}
-
-window.$docsify = window.$docsify || {};
-window.$docsify.plugins = [docsifyComponentWrapper].concat(window.$docsify.plugins || []);
+});

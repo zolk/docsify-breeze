@@ -1,4 +1,4 @@
-function docsifyCodeBlock(hook) {
+window.$docsify.plugins.push((hook) => {
   let id = 0;
 
   hook.afterEach(function (html, next) {
@@ -150,7 +150,4 @@ function docsifyCodeBlock(hook) {
       button.innerText = `${isExpanded ? 'Hide ' : 'Show'} Code`;
     }
   });
-}
-
-window.$docsify = window.$docsify || {};
-window.$docsify.plugins = [docsifyCodeBlock].concat(window.$docsify.plugins || []);
+});

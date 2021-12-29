@@ -1,4 +1,4 @@
-function docsifyNavbarCollapse(hook) {
+window.$docsify.plugins.push((hook) => {
   hook.doneEach(() => {
     const navbarItems = Array.from(
       document.querySelectorAll('main > .sidebar > .sidebar-nav > ul > li')
@@ -25,7 +25,4 @@ function docsifyNavbarCollapse(hook) {
       }
     });
   });
-}
-
-window.$docsify = window.$docsify || {};
-window.$docsify.plugins = [docsifyNavbarCollapse].concat(window.$docsify.plugins || []);
+});

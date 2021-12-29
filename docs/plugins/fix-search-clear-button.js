@@ -29,7 +29,7 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
-function fixSearchClearButton(hook) {
+window.$docsify.plugins.push((hook) => {
   hook.ready(function () {
     const oldButton = document.querySelector('.sidebar .search .clear-button');
 
@@ -49,7 +49,4 @@ function fixSearchClearButton(hook) {
       oldButton.parentNode.replaceChild(newButton, oldButton);
     }
   });
-}
-
-window.$docsify = window.$docsify || {};
-window.$docsify.plugins = [fixSearchClearButton].concat(window.$docsify.plugins || []);
+});
