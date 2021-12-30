@@ -2,6 +2,10 @@
 
 Buttons perform a single, clearly communicated action.
 
+```html preview expanded
+<ds-button>Button</ds-button>
+```
+
 ## Examples
 
 !> This is an alert.
@@ -10,7 +14,7 @@ Buttons perform a single, clearly communicated action.
 
 Use the `size` prop to change a button's size.
 
-```html preview expanded
+```html preview
 <div style="display: flex; gap: 1rem;">
   <ds-button size="small">Small</ds-button>
   <ds-button size="medium">Medium</ds-button>

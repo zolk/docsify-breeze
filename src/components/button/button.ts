@@ -1,5 +1,5 @@
-import { LitElement, html } from 'lit';
-import { literal } from 'lit/static-html.js';
+import { LitElement } from 'lit';
+import { html, literal } from 'lit/static-html.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { customElement, property, query } from 'lit/decorators.js';
 import styles from './button.styles';
@@ -91,26 +91,25 @@ export default class DsButton extends LitElement {
     const tag = isLink ? literal`a` : literal`button`;
 
     return html`
-        <${tag}
-          part="base"
-          class="button"
-          ?disabled=${ifDefined(isLink ? undefined : this.disabled)}
-          type=${ifDefined(isLink ? undefined : this.submit ? 'submit' : 'button')}
-          name=${ifDefined(isLink ? undefined : this.name)}
-          value=${ifDefined(isLink ? undefined : this.value)}
-          href=${ifDefined(this.href)}
-          target=${ifDefined(this.target)}
-          role="button"
-          aria-disabled=${this.disabled ? 'true' : 'false'}
-          tabindex=${this.disabled ? '-1' : '0'}
-          @focus=${this._handleFocus}
-          @blur=${this._handleBlur}
-        >
-          <span part="label" class="button__label">
-            <slot></slot>
-          </span>
-        </$tag>
-      `;
+      <${tag}
+        part="base"
+        class="button"
+        ?disabled=${isLink ? undefined : this.disabled}
+        type=${ifDefined(isLink ? undefined : this.submit ? 'submit' : 'button')}
+        name=${ifDefined(isLink ? undefined : this.name)}
+        value=${ifDefined(isLink ? undefined : this.value)}
+        href=${ifDefined(this.href)}
+        target=${ifDefined(this.target)}
+        aria-disabled=${this.disabled ? 'true' : 'false'}
+        tabindex=${this.disabled ? '-1' : '0'}
+        @focus=${this._handleFocus}
+        @blur=${this._handleBlur}
+      >
+        <span part="label" class="button__label">
+          <slot></slot>
+        </span>
+      </${tag}>
+    `;
   }
 }
 
