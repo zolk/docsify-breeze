@@ -1,7 +1,7 @@
 window.$docsify.plugins.push((hook) => {
   const TAG_PREFIX = 'ds-';
 
-  const customElements = fetch('./custom-elements.json')
+  const customElements = fetch('./dist/custom-elements.json')
     .then((res) => res.json())
     .catch((err) => console.error(err));
 

@@ -6,7 +6,7 @@
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "customElements": "docs/custom-elements.json",
+  "customElements": "dist/custom-elements.json",
   "type": "module",
   "files": [
     "dist"
@@ -14,7 +14,7 @@
   "scripts": {
     "prepare": "husky install",
     "build": "node scripts/build.js",
-    "watch": "node scripts/build.js --watch",
+    "start": "node scripts/build.js --serve",
     "lint": "eslint . --ext ts --ext js",
     "lint:fix": "npm run lint -- --fix",
     "test": "web-test-runner \"src/**/*.test.ts\" --node-resolve --puppeteer",
@@ -33,6 +33,7 @@
     "@web/test-runner": "^0.13.23",
     "@web/test-runner-puppeteer": "^0.10.4",
     "autoprefixer": "^10.4.0",
+    "browser-sync": "^2.27.7",
     "command-line-args": "^5.2.0",
     "csswring": "^7.0.0",
     "del": "^6.0.0",

@@ -1,4 +1,5 @@
 import autoprefixer from 'autoprefixer';
+import browserSync from 'browser-sync';
 import commandLineArgs from 'command-line-args';
 import csswring from 'csswring';
 import del from 'del';
@@ -10,27 +11,27 @@ import mkdirp from 'mkdirp';
 import postCssSyntax from '@stylelint/postcss-css-in-js';
 import { execSync } from 'child_process';
 
-const options = commandLineArgs(
-  [
-    { name: 'watch', type: Boolean },
-    { name: 'no-splitting', type: Boolean },
-  ],
-  { camelCase: true }
-);
+const bs = browserSync.create();
+
+const { serve } = commandLineArgs([{ name: 'serve', type: Boolean }]);
 
 const outdir = './dist';
+
+const generateCem = () => {
+  console.log('Generating component metadata manifest...');
+  execSync(`cem analyze --outdir "${outdir}"`, { stdio: 'inherit' });
+};
 
 del.sync(outdir);
 mkdirp.sync(outdir);
 
 (async () => {
   try {
-    if (!options.watch) {
+    if (!serve) {
       console.log('Generating type definitions...');
       execSync('tsc --emitDeclarationOnly', { stdio: 'inherit' });
-      console.log('Generating component metadata manifest...');
-      execSync(`cem analyze --outdir "docs"`, { stdio: 'inherit' });
     }
+    generateCem();
   } catch (err) {
     console.error(err);
     process.exit(1);
@@ -52,11 +53,11 @@ mkdirp.sync(outdir);
       ],
       outdir,
       chunkNames: 'chunks/[name].[hash]',
-      incremental: options.watch,
+      incremental: serve,
       bundle: true,
-      splitting: !options.noSplitting,
-      minify: !options.watch,
-      external: ['lit'],
+      splitting: true,
+      minify: serve,
+      external: serve ? [] : ['lit'],
       plugins: [
         postCss({
           filter: /\.ts/,
@@ -69,7 +70,8 @@ mkdirp.sync(outdir);
       watch: {
         onRebuild(err) {
           if (err) console.error('🚨 Build failure:', err);
-          else console.log('✅ Rebuild complete.\n');
+          else generateCem();
+          console.log('✅ Rebuild complete.');
         },
       },
     })
@@ -78,9 +80,24 @@ mkdirp.sync(outdir);
       process.exit(1);
     })
     .then((result) => {
-      console.log('🎉 Project has been successfully built!\n');
-      if (!options.watch) result.stop();
+      console.log('🎉 Project has been successfully built!');
+      if (!serve) result.stop();
     });
 
-  if (options.watch) console.log('🔍 Watching for changes...\n');
+  if (serve) {
+    bs.init({
+      notify: false,
+      logPrefix: 'Dev Server',
+      server: {
+        baseDir: 'docs',
+        routes: {
+          '/dist': outdir,
+        },
+      },
+    });
+
+    bs.watch(['docs/**/*.md', 'dist/**/*.js']).on('change', () => {
+      bs.reload();
+    });
+  }
 })();
