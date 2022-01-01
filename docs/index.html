@@ -7,87 +7,8 @@
     <meta name="description" content="Description" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
     <script type="module" src="/dist/index.js"></script>
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css" />
-    <style type="text/css">
-      li.has-submenu.active-child > a::before,
-      li.has-submenu.active > a::before {
-        content: '↓ ';
-      }
-
-      li.has-submenu > a::before,
-      li.has-submenu.active.collapse > a::before {
-        content: '→ ';
-      }
-
-      li.active-child > a {
-        color: #42b983 !important;
-        font-weight: bold !important;
-      }
-
-      .sidebar ul li:not(.active-child):not(.active) ul,
-      .sidebar ul li.collapse ul {
-        display: none;
-      }
-
-      .code-block {
-        background-color: rgb(230, 230, 230);
-      }
-
-      .code-block__preview {
-        position: relative;
-        background-color: white;
-        border: 1px solid rgb(175, 153, 153);
-        display: flex;
-        padding: 2rem calc(2rem + 20px) 2rem 2rem;
-        max-width: 100%;
-        min-width: 20rem;
-      }
-
-      .code-block__resizer {
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: grab;
-        width: 20px;
-        background-color: gray;
-        color: white;
-        user-select: none;
-      }
-
-      .code-block__resizer--resizing {
-        cursor: grabbing;
-      }
-
-      .code-block__source {
-        display: none;
-      }
-
-      .code-block--expanded .code-block__source {
-        display: block;
-      }
-
-      .code-block__source pre {
-        margin: 0;
-        background-color: #f2f6f8;
-      }
-
-      .code-block__source pre code {
-        background-color: transparent;
-      }
-
-      .code-block__source pre::after {
-        display: none;
-      }
-
-      .code-block__actions {
-        padding: 0.5rem;
-        background-color: #fff;
-      }
-    </style>
+    <link rel="stylesheet" href="/assets/theme/styles.css" />
+    <style type="text/css"></style>
   </head>
   <body>
     <div id="app"></div>
@@ -96,13 +17,13 @@
         name: 'Design System Starter',
         repo: '',
         loadSidebar: true,
-        subMaxLevel: 3,
+        subMaxLevel: 2,
         auto2top: true,
         homepage: 'home.md',
         copyCode: {
-          buttonText: 'Copy',
+          buttonText: 'Copy Code',
           errorText: 'Failed to copy',
-          successText: 'Copied',
+          successText: 'Copied!',
         },
         alias: {
           '/components/([a-z-]+)': '/components/$1/code',
@@ -115,11 +36,12 @@
     </script>
     <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
     <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/docsify-copy-code"></script>
     <script src="//cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js"></script>
-    <script src="/plugins/component-wrapper.js"></script>
-    <script src="/plugins/code-block.js"></script>
-    <script src="/plugins/navbar-collapse.js"></script>
-    <script src="/plugins/fix-search-clear-button.js"></script>
+    <script src="/assets/plugins/component-wrapper.js"></script>
+    <script src="/assets/plugins/docsify-copy-code.js"></script>
+    <script src="/assets/plugins/code-block.js"></script>
+    <script src="/assets/plugins/navbar-collapse.js"></script>
+    <script src="/assets/plugins/fix-search-clear-button.js"></script>
+    <script src="/assets/plugins/fix-pagination.js"></script>
   </body>
 </html>

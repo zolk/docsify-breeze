@@ -53,7 +53,7 @@ window.$docsify.plugins.push((hook) => {
         ${
           hasParams
             ? `
-          <dl>
+          <dl class="method-list">
           ${method.parameters.map((param) =>
             param.description
               ? `<dt><code>${param.name}</code></dt><dd>${param.description}</dd>`
@@ -187,6 +187,11 @@ window.$docsify.plugins.push((hook) => {
     const metadata = await customElements;
     const pathSegments = document.body.dataset.page.split('/');
     const isComponentPage = pathSegments[0] === 'components';
+    const existingHeader = document.querySelector('.content > .markdown-header');
+
+    if (existingHeader) {
+      existingHeader.remove();
+    }
 
     if (isComponentPage) {
       const baseTagName = pathSegments[1];
@@ -210,11 +215,16 @@ window.$docsify.plugins.push((hook) => {
           `;
         }
 
-        const replacement = `
-          <h1>${title}</h1>
-          <div>Status: ${componentMeta?.status}</div>
+        const header = document.createElement('header');
+        header.classList.add('markdown-header');
+        header.innerHTML = `
+          <div class="section">Components</div>
+          <div class="header-status">
+            <h1>${title}</h1>
+            <div class="status status--${componentMeta?.status}">${componentMeta?.status}</div>
+          </div>
           <nav>
-            <ul>
+            <ul class="header-nav">
               <li ${subPage === 'code.md' ? 'class="active"' : ''}>
                 <a href="/#/components/${baseTagName}">Code</a>
               </li>
@@ -223,7 +233,20 @@ window.$docsify.plugins.push((hook) => {
           </nav>
         `;
 
-        return replacement.replace(/^ +| +$/gm, '');
+        const content = document.querySelector('.content');
+        content.prepend(header);
+
+        const dummyHeader = `## Overview`;
+        return dummyHeader.replace(/^ +| +$/gm, '');
+      });
+
+      //
+      // Handle headline
+      //
+      content = content.replace(/^#> (.+)/gm, (_, headline) => {
+        const result = `<p class="headline">${headline}</p>`;
+
+        return result.replace(/^ +| +$/gm, '');
       });
 
       //

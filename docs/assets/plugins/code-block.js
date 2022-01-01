@@ -22,7 +22,7 @@ window.$docsify.plugins.push((hook) => {
               role="slider"
               tabindex="0"
             >
-              ...
+              <svg width="11" height="16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M.586 3.414A2 2 0 1 0 3.414.586 2 2 0 0 0 .586 3.414ZM.586 9.414a2 2 0 1 0 2.828-2.828A2 2 0 0 0 .586 9.414ZM.586 15.414a2 2 0 1 0 2.828-2.828 2 2 0 0 0-2.828 2.828ZM7.586 3.414A2 2 0 1 0 10.414.586a2 2 0 0 0-2.828 2.828ZM7.586 9.414a2 2 0 1 0 2.828-2.828 2 2 0 0 0-2.828 2.828ZM7.586 15.414a2 2 0 1 0 2.828-2.828 2 2 0 0 0-2.828 2.828Z" fill="currentColor"/></svg>
             </div>
           </div>
 
@@ -30,12 +30,18 @@ window.$docsify.plugins.push((hook) => {
 
           <div class="code-block__actions">
             <button
-              class="code-block__toggle"
+              class="code-block__toggle
               aria-expanded="${isExpanded ? 'true' : 'false'}"
               aria-controls="${sourceId}"
             >
-              ${isExpanded ? 'Hide ' : 'Show'} Code
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+              </svg>
+              <span>
+                ${isExpanded ? 'Hide ' : 'Show'} Code
+              </span>
             </button>
+            <div class="code-block__actions-spacer"></div>
           </div>
         </div>
       `;
@@ -49,9 +55,12 @@ window.$docsify.plugins.push((hook) => {
   });
 
   // Allow for resizing of preview box
+  // Move the copy plugin button to the actions row
   hook.doneEach(() => {
-    [...document.querySelectorAll('.code-block__preview')].map((preview) => {
-      const resizer = preview.querySelector('.code-block__resizer');
+    [...document.querySelectorAll('.code-block')].map((block) => {
+      const resizer = block.querySelector('.code-block__resizer');
+      const preview = block.querySelector('.code-block__preview');
+      // const actions = block.querySelector('.code-block__actions');
 
       let startX;
       let startWidth;
@@ -134,6 +143,9 @@ window.$docsify.plugins.push((hook) => {
       resizer.addEventListener('mousedown', mouseDownHandler);
       resizer.addEventListener('touchstart', mouseDownHandler);
       resizer.addEventListener('keydown', keyDownHandler);
+
+      // const copyButton = block.querySelector('.docsify-copy-code-button');
+      // actions.appendChild(copyButton);
     });
   });
 
@@ -147,7 +159,7 @@ window.$docsify.plugins.push((hook) => {
 
       const isExpanded = codeBlock.classList.contains('code-block--expanded');
       event.target.setAttribute('aria-expanded', isExpanded);
-      button.innerText = `${isExpanded ? 'Hide ' : 'Show'} Code`;
+      button.querySelector('span').innerText = `${isExpanded ? 'Hide ' : 'Show'} Code`;
     }
   });
 });
