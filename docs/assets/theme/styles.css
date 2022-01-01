@@ -841,6 +841,16 @@ body.close .content {
   display: none;
 }
 
+/* Pagination */
+
+.pagination-item--previous {
+  margin-left: 1rem;
+}
+
+.pagination-item--next {
+  margin-right: 1rem;
+}
+
 /* Code Highlighting */
 
 .markdown-section pre code {
