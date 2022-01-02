@@ -332,9 +332,8 @@ li.has-submenu.active.collapse > a {
   outline: none;
   padding: 9px;
   position: absolute;
-  top: 15px;
-  bottom: auto;
-  left: 317px;
+  top: 10px;
+  left: calc(300px - 45px);
   text-align: center;
   transition: opacity 0.3s;
   width: 36px;
@@ -349,12 +348,21 @@ li.has-submenu.active.collapse > a {
   transition: left 0.25s ease;
 }
 
-.sidebar-toggle:hover .sidebar-toggle-button {
-  opacity: 0.4;
+body:not(.close) .sidebar-toggle {
+  background: transparent;
+  border: none;
+}
+
+body:not(.close) .sidebar-toggle span {
+  background-color: var(--color-background-text);
+}
+
+.sidebar-toggle:hover span {
+  background-color: var(--color-active) !important;
 }
 
 .sidebar-toggle span {
-  background-color: var(--color-medium);
+  background-color: var(--color-background);
   display: block;
   margin-bottom: 0.25rem;
   width: 16px;
@@ -397,8 +405,9 @@ body.close .sidebar {
 }
 
 body.close .sidebar-toggle {
-  width: auto;
-  left: 17px;
+  left: 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }
 
 body.close .content {
@@ -442,7 +451,17 @@ body.close .content {
   }
 
   .sidebar-toggle {
-    left: 17px;
+    left: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  body:not(.close) .sidebar-toggle {
+    border: 1px solid #e9ebec;
+  }
+
+  body:not(.close) .sidebar-toggle span {
+    background-color: var(--color-background);
   }
 
   body.close .sidebar {
@@ -450,7 +469,9 @@ body.close .content {
   }
 
   body.close .sidebar-toggle {
-    left: 317px;
+    left: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
   }
 
   body.close .content {
@@ -630,6 +651,14 @@ body.close .content {
   color: var(--color-background);
 }
 
+.markdown-section a {
+  color: var(--color-background);
+}
+
+.markdown-section a:hover {
+  color: var(--color-active);
+}
+
 .markdown-section code {
   display: inline-block;
   margin: 0 0.1rem;
@@ -637,6 +666,11 @@ body.close .content {
   font-family: var(--font-code);
   background-color: var(--color-lightest);
   border: 1px solid var(--color-light);
+  border-radius: 2px;
+}
+
+.markdown-section pre {
+  background-color: #f2f6f8;
   border-radius: 2px;
 }
 
@@ -772,9 +806,8 @@ body.close .content {
 .code-block__source pre {
   position: relative;
   margin: 0;
-  background-color: #f2f6f8;
-  border-bottom-left-radius: 2px;
-  border-bottom-right-radius: 2px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }
 
 .code-block__source pre code {

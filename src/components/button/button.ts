@@ -5,7 +5,7 @@ import { customElement, property, query } from 'lit/decorators.js';
 import styles from './button.styles';
 
 /**
- * @status draft
+ * @status ready
  *
  * @slot - Text of the button.
  *

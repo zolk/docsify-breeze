@@ -6,17 +6,7 @@
 <ds-button>Button</ds-button>
 ```
 
-- A bulleted list
-- With some items
-- Listed in it
-
-1. An ordered list
-2. With some orderly items
-3. Ordered in it
-
 ## Examples
-
-!> This is an alert.
 
 ### Sizes
 
