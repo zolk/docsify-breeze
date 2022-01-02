@@ -18,6 +18,7 @@ body {
   --icon-chevron-right-active: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="%2357caee"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg>');
   --icon-search: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="white"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" /></svg>');
   --icon-hashtag: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="%23d4dee7"><path fill-rule="evenodd" d="M9.243 3.03a1 1 0 01.727 1.213L9.53 6h2.94l.56-2.243a1 1 0 111.94.486L14.53 6H17a1 1 0 110 2h-2.97l-1 4H15a1 1 0 110 2h-2.47l-.56 2.242a1 1 0 11-1.94-.485L10.47 14H7.53l-.56 2.242a1 1 0 11-1.94-.485L5.47 14H3a1 1 0 110-2h2.97l1-4H5a1 1 0 110-2h2.47l.56-2.243a1 1 0 011.213-.727zM9.03 8l-1 4h2.938l1-4H9.031z" clip-rule="evenodd" /></svg>');
+  --icon-hashtag-hover: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="%2357caee"><path fill-rule="evenodd" d="M9.243 3.03a1 1 0 01.727 1.213L9.53 6h2.94l.56-2.243a1 1 0 111.94.486L14.53 6H17a1 1 0 110 2h-2.97l-1 4H15a1 1 0 110 2h-2.47l-.56 2.242a1 1 0 11-1.94-.485L10.47 14H7.53l-.56 2.242a1 1 0 11-1.94-.485L5.47 14H3a1 1 0 110-2h2.97l1-4H5a1 1 0 110-2h2.47l.56-2.243a1 1 0 011.213-.727zM9.03 8l-1 4h2.938l1-4H9.031z" clip-rule="evenodd" /></svg>');
 }
 
 /* Important Note...
@@ -600,12 +601,13 @@ body.close .content {
   line-height: 1.4;
 }
 
-.markdown-section h2#overview {
+.component-header + .markdown-section h2#overview {
   visibility: hidden;
   margin: 0;
   height: 0;
 }
 
+.markdown-section h1 a,
 .markdown-section h2 a,
 .markdown-section h3 a,
 .markdown-section h4 a,
@@ -614,6 +616,21 @@ body.close .content {
   color: var(--color-text);
   font-weight: 600;
   letter-spacing: -0.02em;
+}
+
+.markdown-section h1 a:hover,
+.markdown-section h2 a:hover,
+.markdown-section h3 a:hover,
+.markdown-section h4 a:hover,
+.markdown-section h5 a:hover {
+  color: var(--color-text);
+}
+
+.markdown-section h1,
+.markdown-section h1 a {
+  margin: 1.5rem 0 0.5rem;
+  font-size: 2.25rem;
+  font-weight: 700;
 }
 
 .markdown-section h2 {
@@ -631,6 +648,10 @@ body.close .content {
   background-size: 20px;
 }
 
+.markdown-section h2 a:hover {
+  background-image: var(--icon-hashtag-hover);
+}
+
 .markdown-section h3 {
   margin-top: 1.5rem;
   margin-bottom: 0;
@@ -643,8 +664,14 @@ body.close .content {
 
 .markdown-section ul,
 .markdown-section ol {
+  font-size: 0.9375rem;
   padding-left: 1rem;
   line-height: 1.9;
+}
+
+.markdown-section p {
+  font-size: 0.9375rem;
+  line-height: 1.5;
 }
 
 .markdown-section ul li::marker {
@@ -653,6 +680,7 @@ body.close .content {
 
 .markdown-section a {
   color: var(--color-background);
+  transition: all 0.15s ease-in-out;
 }
 
 .markdown-section a:hover {
@@ -877,11 +905,11 @@ body.close .content {
 /* Pagination */
 
 .pagination-item--previous {
-  margin-left: 1rem;
+  margin-left: 4.25rem;
 }
 
 .pagination-item--next {
-  margin-right: 1rem;
+  margin-right: 4.25rem;
 }
 
 /* Code Highlighting */
