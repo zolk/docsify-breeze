@@ -116,6 +116,39 @@ li input[type='checkbox'] {
   vertical-align: middle;
 }
 
+/* Site Title */
+
+.site-title {
+  margin-top: 1.625rem;
+  color: var(--color-background-text);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  letter-spacing: -0.025em;
+  font-size: 0.9375rem;
+}
+
+.site-title__logo {
+  width: 37px;
+  height: 37px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+}
+
+.site-title__logo svg {
+  width: 29px;
+  height: 29px;
+}
+
+.site-title__primary {
+  font-weight: 700;
+}
+
 /* Sidebar */
 
 .sidebar {
