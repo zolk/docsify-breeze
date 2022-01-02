@@ -221,7 +221,11 @@ window.$docsify.plugins.push((hook) => {
           <div class="section">Components</div>
           <div class="header-status">
             <h1>${title}</h1>
-            <div class="status status--${componentMeta?.status}">${componentMeta?.status}</div>
+            ${
+              componentMeta?.status
+                ? `<div class="status status--${componentMeta?.status}">${componentMeta?.status}</div>`
+                : ''
+            }
           </div>
           <nav>
             <ul class="header-nav">

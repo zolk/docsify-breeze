@@ -567,8 +567,8 @@ body.close .content {
 }
 
 .status--draft {
-  background-color: #d7f4d8;
-  color: #155117;
+  background-color: #faefd1;
+  color: #683603;
 }
 
 .status--ready {
@@ -577,8 +577,8 @@ body.close .content {
 }
 
 .status--deprecated {
-  background-color: #d7f4d8;
-  color: #155117;
+  background-color: #f4e1d7;
+  color: #5a2d16;
 }
 
 /* Markdown Section */
