@@ -702,8 +702,14 @@ body.close .content {
   border-radius: 2px;
 }
 
+.markdown-section .table-wrap {
+  overflow-x: auto;
+}
+
 .markdown-section table {
   width: 100%;
+  min-width: 700px;
+  overflow: auto;
   border-collapse: collapse;
 }
 

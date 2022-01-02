@@ -317,4 +317,18 @@ window.$docsify.plugins.push((hook) => {
 
     next(content);
   });
+
+  // Wrap tables for responsive horizontal scrolling
+  hook.doneEach(function () {
+    const content = document.querySelector('.content');
+    const tables = [...content.querySelectorAll('table')];
+
+    tables.map((table) => {
+      table.outerHTML = `
+        <div class="table-wrap">
+          ${table.outerHTML}
+        </div>
+      `;
+    });
+  });
 });
