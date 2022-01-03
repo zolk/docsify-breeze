@@ -6,3 +6,4 @@
 - [Components](/components)
   - [Button](/components/button)
   - [Card](/components/card)
+  <!--plop:component-->

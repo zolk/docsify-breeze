@@ -1,0 +1,11 @@
+import { fixture, html, expect } from '@open-wc/testing';
+import Ds{{ properCase name }} from './{{ name }}';
+import './{{ name }}';
+
+describe('ds-{{ name }}', () => {
+  it('renders', async () => {
+    const el = await fixture<Ds{{ properCase name }}>(html`<ds-{{ name }}></ds-{{ name }}>`);
+
+    expect(el).to.exist;
+  });
+});
