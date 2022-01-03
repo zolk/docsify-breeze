@@ -623,7 +623,7 @@ body.close .content {
 }
 
 .markdown-section > * {
-  max-width: 50rem;
+  max-width: 53rem;
 }
 
 .markdown-section .headline {
@@ -815,7 +815,6 @@ body.close .content {
   position: relative;
   background-color: white;
   border: 1px solid var(--color-light);
-  display: flex;
   padding: 2rem calc(2rem + 20px) 2rem 2rem;
   max-width: 100%;
   min-width: 20rem;

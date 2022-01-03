@@ -1,0 +1,226 @@
+html {
+  --ds-color-white: #ffffff;
+  --ds-color-black: #070707;
+
+  --ds-color-cool-gray-50: hsl(210, 20%, 98%);
+  --ds-color-cool-gray-100: hsl(220, 14%, 96%);
+  --ds-color-cool-gray-200: hsl(220, 13%, 91%);
+  --ds-color-cool-gray-300: hsl(206, 12%, 84%);
+  --ds-color-cool-gray-400: hsl(217, 10%, 65%);
+  --ds-color-cool-gray-500: hsl(223, 9%, 46%);
+  --ds-color-cool-gray-600: hsl(214, 14%, 34%);
+  --ds-color-cool-gray-700: hsl(217, 19%, 27%);
+  --ds-color-cool-gray-800: hsl(215, 28%, 17%);
+  --ds-color-cool-gray-900: hsl(220, 43%, 11%);
+
+  --ds-color-blue-50: hsl(214, 100%, 97%);
+  --ds-color-blue-100: hsl(214, 95%, 93%);
+  --ds-color-blue-200: hsl(213, 97%, 87%);
+  --ds-color-blue-300: hsl(212, 96%, 78%);
+  --ds-color-blue-400: hsl(214, 96%, 68%);
+  --ds-color-blue-500: hsl(218, 91%, 60%);
+  --ds-color-blue-600: hsl(221, 83%, 53%);
+  --ds-color-blue-700: hsl(224, 76%, 48%);
+  --ds-color-blue-800: hsl(227, 69%, 41%);
+  --ds-color-blue-900: hsl(224, 64%, 33%);
+
+  --ds-color-yellow-50: hsl(48, 100%, 96%);
+  --ds-color-yellow-100: hsl(48, 96%, 89%);
+  --ds-color-yellow-200: hsl(48, 98%, 77%);
+  --ds-color-yellow-300: hsl(46, 96%, 64%);
+  --ds-color-yellow-400: hsl(43, 96%, 56%);
+  --ds-color-yellow-500: hsl(38, 92%, 50%);
+  --ds-color-yellow-600: hsl(32, 93%, 44%);
+  --ds-color-yellow-700: hsl(25, 87%, 38%);
+  --ds-color-yellow-800: hsl(23, 81%, 31%);
+  --ds-color-yellow-900: hsl(21, 75%, 27%);
+
+  --ds-color-red-50: hsl(360, 86%, 97%);
+  --ds-color-red-100: hsl(2, 94%, 94%);
+  --ds-color-red-200: hsl(358, 96%, 89%);
+  --ds-color-red-300: hsl(360, 91%, 82%);
+  --ds-color-red-400: hsl(360, 91%, 71%);
+  --ds-color-red-500: hsl(360, 84%, 60%);
+  --ds-color-red-600: hsl(0, 72%, 50%);
+  --ds-color-red-700: hsl(1, 74%, 41%);
+  --ds-color-red-800: hsl(360, 70%, 35%);
+  --ds-color-red-900: hsl(358, 65%, 30%);
+
+  --ds-color-green-50: hsl(153, 82%, 96%);
+  --ds-color-green-100: hsl(149, 80%, 90%);
+  --ds-color-green-200: hsl(151, 76%, 81%);
+  --ds-color-green-300: hsl(156, 72%, 67%);
+  --ds-color-green-400: hsl(158, 64%, 52%);
+  --ds-color-green-500: hsl(159, 80%, 41%);
+  --ds-color-green-600: hsl(161, 90%, 31%);
+  --ds-color-green-700: hsl(163, 92%, 25%);
+  --ds-color-green-800: hsl(162, 86%, 20%);
+  --ds-color-green-900: hsl(164, 86%, 16%);
+
+  --ds-font-family-open-sans: "'Inter'; 'Helvetica Neue'; Arial, sans-serif";
+
+  /* color */
+  --ds-color-background: var(--ds-color-white);
+  --ds-color-primary: var(--ds-color-blue-600);
+  --ds-color-primary-hover: var(--ds-color-blue-500);
+  --ds-color-primary-text: var(--ds-color-white);
+  --ds-color-primary-focus: var(--ds-color-blue-200);
+  --ds-color-secondary: var(--ds-color-cool-gray-600);
+  --ds-color-secondary-hover: var(--ds-color-cool-gray-500);
+  --ds-color-secondary-text: var(--ds-color-cool-gray-600);
+  --ds-color-secondary-focus: var(--ds-color-cool-gray-200);
+  --ds-color-success: var(--ds-color-green-600);
+  --ds-color-success-hover: var(--ds-color-green-500);
+  --ds-color-success-text: var(--ds-color-green-700);
+  --ds-color-success-focus: var(--ds-color-green-200);
+  --ds-color-warning: var(--ds-color-yellow-600);
+  --ds-color-warning-hover: var(--ds-color-yellow-500);
+  --ds-color-warning-text: var(--ds-color-yellow-600);
+  --ds-color-warning-focus: var(--ds-color-yellow-200);
+  --ds-color-danger: var(--ds-color-red-600);
+  --ds-color-danger-hover: var(--ds-color-red-500);
+  --ds-color-danger-text: var(--ds-color-red-700);
+  --ds-color-danger-focus: var(--ds-color-red-200);
+
+  /* font-family */
+  --ds-font-family-body: var(--ds-fonts-family-open-sans);
+  --ds-font-family-monospace: monospace;
+
+  /* font-weight */
+  --ds-font-weight-light: 300;
+  --ds-font-weight-regular: 400;
+  --ds-font-weight-medium: 500;
+  --ds-font-weight-semibold: 600;
+  --ds-font-weight-bold: 700;
+
+  /* font-size */
+  --ds-font-size-8: 8px;
+  --ds-font-size-9: 9px;
+  --ds-font-size-10: 10px;
+  --ds-font-size-11: 11px;
+  --ds-font-size-12: 12px;
+  --ds-font-size-13: 13px;
+  --ds-font-size-14: 14px;
+  --ds-font-size-16: 16px;
+  --ds-font-size-18: 18px;
+  --ds-font-size-20: 20px;
+  --ds-font-size-24: 24px;
+  --ds-font-size-28: 28px;
+  --ds-font-size-32: 32px;
+  --ds-font-size-36: 36px;
+  --ds-font-size-48: 48px;
+  --ds-font-size-60: 60px;
+  --ds-font-size-72: 72px;
+
+  /* line-height */
+  --ds-line-height-dense: 1.25;
+  --ds-line-height-normal: 1.5;
+  --ds-line-height-loose: 2.2;
+
+  /* letter-spacing */
+  --ds-letter-spacing-dense: -0.015rem;
+  --ds-letter-spacing-normal: normal;
+  --ds-letter-spacing-loose: 0.075rem;
+
+  /* spacing */
+  --ds-spacing-xxxx-small: 2px;
+  --ds-spacing-xxx-small: 4px;
+  --ds-spacing-xx-small: 8px;
+  --ds-spacing-x-small: 10px;
+  --ds-spacing-small: 12px;
+  --ds-spacing-medium: 16px;
+  --ds-spacing-large: 24px;
+  --ds-spacing-x-large: 32px;
+  --ds-spacing-xx-large: 48px;
+  --ds-spacing-xxx-large: 60px;
+  --ds-spacing-xxxx-large: 72px;
+
+  /* border-width */
+  --ds-border-width-thin: 1px;
+  --ds-border-width-thick: 2px;
+
+  /* border-radius */
+  --ds-border-radius-small: 2px;
+  --ds-border-radius-medium: 4px;
+  --ds-border-radius-large: 6px;
+  --ds-border-radius-x-large: 8px;
+  --ds-border-radius-circle: 50%;
+  --ds-border-radius-pill: 240px;
+
+  /* shadow */
+  --ds-shadow-x-small: 0 1px 0 rgba(0, 0, 0, 0.05);
+  --ds-shadow-small: 0 1px 2px rgba(0, 0, 0, 0.1);
+  --ds-shadow-medium: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --ds-shadow-large: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --ds-shadow-x-large: 0 4px 16px rgba(0, 0, 0, 0.1);
+
+  /* transition */
+  --ds-transition-x-slow: 1000ms;
+  --ds-transition-slow: 500ms;
+  --ds-transition-medium: 250ms;
+  --ds-transition-fast: 150ms;
+  --ds-transition-x-fast: 50ms;
+
+  /* z-index */
+  --ds-z-index-drawer: 700;
+  --ds-z-index-dialog: 800;
+  --ds-z-index-dropdown: 900;
+  --ds-z-index-toast: 950;
+  --ds-z-index-tooltip: 1000;
+
+  --ds-focus-shadow: 0 0 0 3px var(--ds-color-blue-200);
+  --ds-focus-border-color: var(--ds-color-blue-300);
+  --ds-focus-border: var(--ds-border-width-thin) solid var(--ds-colors-blue-300);
+
+  --ds-label-color: var(--ds-color-cool-gray-900);
+  --ds-label-font-size-small: var(--ds-font-size-14);
+  --ds-label-font-size-medium: var(--ds-font-size-16);
+  --ds-label-font-size-large: var(--ds-font-size-18);
+  --ds-label-font-weight: var(--ds-font-weight-medium);
+  --ds-label-spacing: var(--ds-spacing-xx-small);
+
+  --ds-panel-background-color: var(--ds-color-white);
+  --ds-panel-color: var(--ds-color-black);
+  --ds-panel-border-color: var(--ds-color-cool-gray-200);
+  --ds-panel-border: none;
+  --ds-panel-border-radius: var(--ds-border-radius-large);
+  --ds-panel-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 1px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+  --ds-modal-overlay-background-color: hsla(210, 10%, 70%, 0.65);
+
+  --ds-input-active-color: var(--ds-color-blue-700);
+  --ds-input-active-hover-color: var(--ds-colors-blue-800);
+  --ds-input-background-color: var(--ds-color-white);
+  --ds-input-border: var(--ds-border-width-thin) solid var(--ds-color-cool-gray-300);
+  --ds-input-border-color: var(--ds-color-cool-gray-300);
+  --ds-input-border-hover-color: var(--ds-color-cool-gray-400);
+  --ds-input-border-radius: var(--ds-border-radius-large);
+  --ds-input-border-width: var(--ds-border-width-thin);
+  --ds-input-color: var(--ds-color-black);
+  --ds-input-disabled-background-color: var(--ds-color-cool-gray-100);
+  --ds-input-disabled-color: var(--ds-color-cool-gray-800);
+  --ds-input-font-family: var(--ds-font-family-body);
+  --ds-input-font-size-small: var(--ds-font-size-13);
+  --ds-input-font-size-medium: var(--ds-font-size-14);
+  --ds-input-font-size-large: var(--ds-font-size-20);
+  --ds-input-height-small: 30px;
+  --ds-input-height-medium: 40px;
+  --ds-input-height-large: 50px;
+  --ds-input-help-color: var(--ds-color-cool-gray-500);
+  --ds-input-help-font-size-small: var(--ds-font-size-12);
+  --ds-input-help-font-size-medium: var(--ds-font-size-14);
+  --ds-input-help-font-size-large: var(--ds-font-size-16);
+  --ds-input-icon-color: var(--ds-color-cool-gray-400);
+  --ds-input-line-height: var(--ds-line-height-dense);
+  --ds-input-placeholder-color: var(--ds-color-cool-gray-600);
+  --ds-input-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --ds-input-spacing-small: var(--ds-spacing-x-small);
+  --ds-input-spacing-medium: var(--ds-spacing-small);
+  --ds-input-spacing-large: var(--ds-spacing-medium);
+  --ds-input-transition: border-color var(--ds-transition-fast) ease-in-out;
+
+  --ds-button-font-size-small: var(--ds-font-size-13);
+  --ds-button-font-size-medium: var(--ds-font-size-14);
+  --ds-button-font-size-large: var(--ds-font-size-20);
+}

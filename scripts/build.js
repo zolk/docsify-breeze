@@ -48,8 +48,8 @@ mkdirp.sync(outdir);
         './src/index.ts',
         // Individual Components
         ...(await glob('./src/components/**/!(*.(styles|test)).ts')),
-        // Themes
-        ...(await glob('./src/themes/*.css')),
+        // Global Styles
+        ...(await glob('./src/styles/*.css')),
       ],
       outdir,
       chunkNames: 'chunks/[name].[hash]',

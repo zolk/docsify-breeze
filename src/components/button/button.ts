@@ -3,6 +3,7 @@ import { html, literal } from 'lit/static-html.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { customElement, property, query } from 'lit/decorators.js';
 import styles from './button.styles';
+import baseStyles from '../../lib/base-styles';
 
 /**
  * @status ready
@@ -19,7 +20,7 @@ import styles from './button.styles';
  */
 @customElement('ds-button')
 export default class DsButton extends LitElement {
-  static styles = styles;
+  static styles = [baseStyles, styles];
 
   @query('.button') button: HTMLButtonElement | HTMLLinkElement;
 
