@@ -2,7 +2,7 @@ import { fixture, html, expect } from '@open-wc/testing';
 import DsCard from './card';
 import './card';
 
-describe('ds-button', () => {
+describe('ds-card', () => {
   it('renders', async () => {
     const el = await fixture<DsCard>(html`<ds-card>My Card</ds-card>`);
 
