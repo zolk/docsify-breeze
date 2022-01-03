@@ -714,10 +714,14 @@ body.close .content {
 .markdown-section a {
   color: var(--color-background);
   transition: all 0.15s ease-in-out;
+  font-weight: 500;
+  text-decoration-color: var(--color-active);
+  text-decoration-thickness: 2px;
 }
 
 .markdown-section a:hover {
-  color: var(--color-active);
+  background-color: var(--color-lighter);
+  text-decoration-color: var(--color-background);
 }
 
 .markdown-section code {
