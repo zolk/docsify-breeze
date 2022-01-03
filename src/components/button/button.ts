@@ -94,7 +94,7 @@ export default class DsButton extends LitElement {
     return html`
       <${tag}
         part="base"
-        class="button"
+        class="button ${this.disabled ? 'button--disabled' : ''}"
         ?disabled=${isLink ? undefined : this.disabled}
         type=${ifDefined(isLink ? undefined : this.submit ? 'submit' : 'button')}
         name=${ifDefined(isLink ? undefined : this.name)}

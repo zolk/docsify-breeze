@@ -20,7 +20,7 @@ export default css`
       outline: none;
     }
 
-    &[disabled] {
+    &.button--disabled {
       opacity: 0.5;
       cursor: not-allowed;
 
@@ -221,7 +221,7 @@ export default css`
     font-size: var(--ds-button-font-size-small);
     height: var(--ds-inputs-height-small);
     line-height: calc(var(--ds-input-height-small) - var(--ds-input-border-width) * 2);
-    border-radius: var(--ds-border-radius-medium);
+    border-radius: var(--border-radius, var(--ds-border-radius-medium));
     padding: 0 var(--ds-spacing-medium);
   }
 
@@ -229,7 +229,7 @@ export default css`
     font-size: var(--ds-button-font-size-medium);
     height: var(--ds-input-height-medium);
     line-height: calc(var(--ds-input-height-medium) - var(--ds-input-border-width) * 2);
-    border-radius: var(--ds-border-radius-medium);
+    border-radius: var(--border-radius, var(--ds-border-radius-medium));
     padding: 0 var(--ds-spacing-large);
   }
 
@@ -237,7 +237,7 @@ export default css`
     font-size: var(--ds-button-font-size-large);
     height: var(--ds-input-height-large);
     line-height: calc(var(--ds-input-height-large) - var(--ds-input-border-width) * 2);
-    border-radius: var(--ds-border-radius-large);
+    border-radius: var(--border-radius, var(--ds-border-radius-large));
     padding: 0 var(--ds-spacing-x-large);
   }
 `;

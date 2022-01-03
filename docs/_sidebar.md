@@ -4,6 +4,5 @@
 - [Design Tokens](/design-tokens)
   - [404](/404)
 - [Components](/components)
-  - [Badge](/components/badge)
   - [Button](/components/button)
   - [Card](/components/card)

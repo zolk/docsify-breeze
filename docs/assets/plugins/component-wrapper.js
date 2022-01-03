@@ -132,7 +132,7 @@ window.$docsify.plugins.push((hook) => {
           ${parts
             .map((part) => {
               return `<tr>
-                <th scope="row">${part.name}</th>
+                <th scope="row"><code>${part.name}</code></th>
                 <td>${part.description}</td>
               </tr>`;
             })
