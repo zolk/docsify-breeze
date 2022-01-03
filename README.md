@@ -1,1 +1,1 @@
-# Design System Starter
+# DS Starter Kit
