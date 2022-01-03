@@ -13,22 +13,22 @@ module.exports = function (plop) {
       {
         type: 'add',
         path: 'src/components/{{name}}/{{name}}.ts',
-        templateFile: 'scripts/plop/component/component.hbs',
+        templateFile: 'scripts/plop/templates/component.hbs',
       },
       {
         type: 'add',
         path: 'src/components/{{name}}/{{name}}.styles.ts',
-        templateFile: 'scripts/plop/component/component.styles.hbs',
+        templateFile: 'scripts/plop/templates/component.styles.hbs',
       },
       {
         type: 'add',
         path: 'src/components/{{name}}/{{name}}.test.ts',
-        templateFile: 'scripts/plop/component/component.test.hbs',
+        templateFile: 'scripts/plop/templates/component.test.hbs',
       },
       {
         type: 'add',
         path: 'docs/components/{{name}}/{{name}}.md',
-        templateFile: 'scripts/plop/component/component.docs.hbs',
+        templateFile: 'scripts/plop/templates/component.docs.hbs',
       },
       {
         type: 'modify',
