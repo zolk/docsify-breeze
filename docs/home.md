@@ -13,6 +13,7 @@ design system or component library that's built upon Web Components:
 - [Docsify](https://docsify.js.org), plus some custom plugins, for lightweight static documentation generation.
 - [Custom Elements Manifest Analyzer](https://custom-elements-manifest.open-wc.org/analyzer/getting-started/) for automatic documentation of Web Components.
 - [Browsersync](https://browsersync.io/) for live reloads and synchronized browser testing.
+- [Plop](https://plopjs.com/) for quickly spinning up new components.
 
 ## Who is this for?
 
