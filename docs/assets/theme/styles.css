@@ -682,6 +682,7 @@ body.close .content {
 }
 
 .markdown-section h2 a:hover {
+  background-color: transparent;
   background-image: var(--icon-hashtag-hover);
 }
 

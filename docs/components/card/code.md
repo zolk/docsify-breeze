@@ -11,7 +11,7 @@
 
 ## Examples
 
-### No Header
+### Without Header
 
 The `header` slot can be omitted, if desired.
 
