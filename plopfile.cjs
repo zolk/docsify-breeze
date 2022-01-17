@@ -45,7 +45,8 @@ module.exports = function (plop) {
       {
         type: 'append',
         path: 'percy.yml',
-        template: `- name: {{ properCase name }}\n  url: http://localhost:3000/components/card`,
+        separator: '',
+        template: `- name: {{ properCase name }}\n  url: http://localhost:3000/components/{{ name }}\n`,
       },
     ],
   });
