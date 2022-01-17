@@ -86,12 +86,13 @@ mkdirp.sync(outdir);
 
   if (serve) {
     bs.init({
+      single: true,
       notify: false,
       logPrefix: 'Dev Server',
       server: {
         baseDir: 'docs',
         routes: {
-          '/dist': outdir,
+          '/dist': './dist',
         },
       },
     });

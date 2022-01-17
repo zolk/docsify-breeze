@@ -1047,3 +1047,33 @@ code .token {
   position: relative;
   left: auto;
 }
+
+@media only percy {
+  body,
+  .markdown-section {
+    background: transparent;
+  }
+
+  .markdown-section {
+    padding: 1rem;
+  }
+
+  .content {
+    left: 0;
+  }
+
+  .code-block {
+    margin-bottom: 1rem;
+    max-width: 100%;
+  }
+
+  .sidebar,
+  .sidebar-toggle,
+  .content > *:not(.markdown-section),
+  .markdown-section > *:not(.code-block):not(h3[id]),
+  .code-block .code-block__source,
+  .code-block .code-block__preview .code-block__resizer,
+  .code-block .code-block__actions {
+    display: none;
+  }
+}
