@@ -27,6 +27,7 @@ jobs:
 
   percy-snapshot:
     needs: build
+    runs-on: ubuntu-latest
 
     steps:
       - name: Run Percy Snapshot
