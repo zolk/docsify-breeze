@@ -44,7 +44,7 @@ module.exports = function (plop) {
       },
       {
         type: 'append',
-        path: 'percy.yml',
+        path: 'snapshots.yml',
         separator: '',
         template: `- name: {{ properCase name }}\n  url: http://localhost:3000/components/{{ name }}\n`,
       },
