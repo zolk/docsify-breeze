@@ -692,6 +692,12 @@ body.close .content {
   font-size: 1.25rem;
 }
 
+.markdown-section h3 a:hover,
+.markdown-section h4 a:hover,
+.markdown-section h5 a:hover {
+  background-color: transparent;
+}
+
 .markdown-section h3 + p {
   margin-top: 0.5rem;
 }
