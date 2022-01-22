@@ -1,7 +1,7 @@
 window.$docsify.plugins.push((hook) => {
   const TAG_PREFIX = 'ds-';
 
-  const customElements = fetch('./dist/custom-elements.json')
+  const customElements = fetch('/dist/custom-elements.json')
     .then((res) => res.json())
     .catch((err) => console.error(err));
 
@@ -186,7 +186,7 @@ window.$docsify.plugins.push((hook) => {
   hook.beforeEach(async function (content, next) {
     const metadata = await customElements;
     const pathSegments = document.body.dataset.page.split('/');
-    const isComponentPage = pathSegments[0] === 'components';
+    const isComponentPage = pathSegments[1] === 'components';
     const existingHeader = document.querySelector('.content > .markdown-header');
 
     if (existingHeader) {
@@ -194,8 +194,8 @@ window.$docsify.plugins.push((hook) => {
     }
 
     if (isComponentPage) {
-      const baseTagName = pathSegments[1];
-      const subPage = pathSegments[2];
+      const baseTagName = pathSegments[2];
+      const subPage = pathSegments[3];
       const componentMeta = getComponent(metadata, TAG_PREFIX + baseTagName);
       const usageDoc = await fetch(`/components/${baseTagName}/usage.md`, {
         method: 'HEAD',
@@ -210,7 +210,7 @@ window.$docsify.plugins.push((hook) => {
         if (usageDoc.ok) {
           usageLink = `
             <li ${subPage === 'usage.md' ? 'class="active"' : ''}>
-              <a href="/#/components/${baseTagName}/usage">Usage</a>
+              <a href="/components/${baseTagName}/usage">Usage</a>
             </li>
           `;
         }
@@ -230,7 +230,7 @@ window.$docsify.plugins.push((hook) => {
           <nav>
             <ul class="header-nav">
               <li ${subPage === 'code.md' ? 'class="active"' : ''}>
-                <a href="/#/components/${baseTagName}">Code</a>
+                <a href="/components/${baseTagName}">Code</a>
               </li>
               ${usageLink}
             </ul>

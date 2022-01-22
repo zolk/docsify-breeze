@@ -10,6 +10,7 @@ design system or component library that's built upon Web Components:
 - [TypeScript](https://www.typescriptlang.org/) for an improved developer experience.
 - [PostCSS](https://postcss.org/) for enhancing CSS with autoprefixer and nesting support.
 - [Web Test Runner](https://modern-web.dev/docs/test-runner/overview/) for unit testing.
+- [Percy](https://percy.io/) for visual regression testing.
 - [Docsify](https://docsify.js.org), plus some custom plugins, for lightweight static documentation generation.
 - [Custom Elements Manifest Analyzer](https://custom-elements-manifest.open-wc.org/analyzer/getting-started/) for automatic documentation of Web Components.
 - [Browsersync](https://browsersync.io/) for live reloads and synchronized browser testing.
