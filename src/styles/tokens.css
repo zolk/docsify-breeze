@@ -57,7 +57,7 @@ html {
   --ds-color-green-800: hsl(162, 86%, 20%);
   --ds-color-green-900: hsl(164, 86%, 16%);
 
-  --ds-font-family-open-sans: "'Inter'; 'Helvetica Neue'; Arial, sans-serif";
+  --ds-font-family-open-sans: "'Inter', 'Helvetica Neue', Arial, sans-serif";
 
   /* color */
   --ds-color-background: var(--ds-color-white);
@@ -189,8 +189,6 @@ html {
 
   --ds-modal-overlay-background-color: hsla(210, 10%, 70%, 0.65);
 
-  --ds-input-active-color: var(--ds-color-blue-700);
-  --ds-input-active-hover-color: var(--ds-colors-blue-800);
   --ds-input-background-color: var(--ds-color-white);
   --ds-input-border: var(--ds-border-width-thin) solid var(--ds-color-cool-gray-300);
   --ds-input-border-color: var(--ds-color-cool-gray-300);
