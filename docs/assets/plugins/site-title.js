@@ -1,7 +1,6 @@
 window.$docsify.plugins.push((hook, vm) => {
+  // Customize the site title with a logo and move it below the search box
   hook.ready(function () {
-    const oldSiteTitle = document.querySelector('.sidebar h1.app-name');
-
     const options = {
       primary: 'DS Starter',
       secondary: 'Design System Kit',
@@ -31,6 +30,9 @@ window.$docsify.plugins.push((hook, vm) => {
       </div>
     `;
 
-    oldSiteTitle.replaceWith(newSiteTitle);
+    const sidebar = document.querySelector('.sidebar');
+    const oldSiteTitle = document.querySelector('.sidebar h1.app-name');
+    sidebar.prepend(newSiteTitle);
+    oldSiteTitle.remove();
   });
 });

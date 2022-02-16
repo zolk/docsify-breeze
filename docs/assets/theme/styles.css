@@ -168,7 +168,6 @@ li input[type='checkbox'] {
 }
 
 .sidebar > .search {
-  order: 2;
   margin: 1.5rem 0;
   border-bottom: none;
 }
@@ -209,7 +208,6 @@ li input[type='checkbox'] {
 }
 
 .sidebar > h1 {
-  order: 1;
   margin-top: 2rem;
   font-size: 0.9375rem;
   font-weight: 400;
@@ -232,7 +230,6 @@ li input[type='checkbox'] {
 }
 
 .sidebar .sidebar-nav {
-  order: 3;
   line-height: 2.2;
   padding-bottom: 2.5rem;
 }

@@ -1,13 +1,13 @@
 window.$docsify.plugins.push((hook) => {
   let id = 0;
 
+  // Replace code preview blocks with rendered previews.
   hook.afterEach(function (html, next) {
     const parser = new DOMParser();
     const doc = parser.parseFromString(html, 'text/html');
 
     [...doc.querySelectorAll('code.preview')].map((block) => {
       const pre = block.closest('pre');
-
       const isExpanded = block.classList.contains('expanded');
       const sourceId = 'code-source-' + id;
       const previewId = 'code-preview-' + id;
@@ -25,9 +25,7 @@ window.$docsify.plugins.push((hook) => {
               <svg width="11" height="16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M.586 3.414A2 2 0 1 0 3.414.586 2 2 0 0 0 .586 3.414ZM.586 9.414a2 2 0 1 0 2.828-2.828A2 2 0 0 0 .586 9.414ZM.586 15.414a2 2 0 1 0 2.828-2.828 2 2 0 0 0-2.828 2.828ZM7.586 3.414A2 2 0 1 0 10.414.586a2 2 0 0 0-2.828 2.828ZM7.586 9.414a2 2 0 1 0 2.828-2.828 2 2 0 0 0-2.828 2.828ZM7.586 15.414a2 2 0 1 0 2.828-2.828 2 2 0 0 0-2.828 2.828Z" fill="currentColor"/></svg>
             </div>
           </div>
-
           <div class="code-block__source" id=${sourceId}>${pre.outerHTML}</div>
-
           <div class="code-block__actions">
             <button
               class="code-block__toggle
@@ -47,20 +45,18 @@ window.$docsify.plugins.push((hook) => {
       `;
 
       pre.replaceWith(parser.parseFromString(codeBlock, 'text/html').body);
-
       id++;
     });
 
     next(doc.body.innerHTML);
   });
 
-  // Allow for resizing of preview box
-  // Move the copy plugin button to the actions row
+  // Allow for resizing of preview box.
+  // Move the copy plugin button to the actions row.
   hook.doneEach(() => {
     [...document.querySelectorAll('.code-block')].map((block) => {
       const resizer = block.querySelector('.code-block__resizer');
       const preview = block.querySelector('.code-block__preview');
-      // const actions = block.querySelector('.code-block__actions');
 
       let startX;
       let startWidth;
@@ -143,9 +139,6 @@ window.$docsify.plugins.push((hook) => {
       resizer.addEventListener('mousedown', mouseDownHandler);
       resizer.addEventListener('touchstart', mouseDownHandler);
       resizer.addEventListener('keydown', keyDownHandler);
-
-      // const copyButton = block.querySelector('.docsify-copy-code-button');
-      // actions.appendChild(copyButton);
     });
   });
 

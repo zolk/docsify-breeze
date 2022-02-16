@@ -1,9 +1,6 @@
-// Plugin
-// =============================================================================
 // Replaces docsify's "clear search" button:
 // - Use a <button> element to allow focus
 // - Add aria-label for screen readers
-// - Improve icon by sizing properly and applying non-scaling-stroke effect
 //
 // Extracted from docsify-themeable
 // https://github.com/jhildenbiddle/docsify-themeable

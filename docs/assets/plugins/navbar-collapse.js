@@ -1,4 +1,5 @@
 window.$docsify.plugins.push((hook) => {
+  // Custom navigation collapsing support
   hook.doneEach(() => {
     const navbarItems = Array.from(
       document.querySelectorAll('main > .sidebar > .sidebar-nav > ul > li')

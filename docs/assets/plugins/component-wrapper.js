@@ -1,4 +1,6 @@
 window.$docsify.plugins.push((hook) => {
+  // Handles all enhancements using data from the Custom Elements Manifest,
+  // including the component headers and documentation tables.
   const TAG_PREFIX = 'ds-';
 
   const customElements = fetch('/dist/custom-elements.json')
@@ -53,13 +55,13 @@ window.$docsify.plugins.push((hook) => {
         ${
           hasParams
             ? `
-          <dl class="method-list">
-          ${method.parameters.map((param) =>
-            param.description
-              ? `<dt><code>${param.name}</code></dt><dd>${param.description}</dd>`
-              : ``
-          )}
-          </dl>
+              <dl class="method-list">
+              ${method.parameters.map((param) =>
+                param.description
+                  ? `<dt><code>${param.name}</code></dt><dd>${param.description}</dd>`
+                  : ``
+              )}
+              </dl>
               `
             : ``
         }
@@ -81,12 +83,14 @@ window.$docsify.plugins.push((hook) => {
         <tbody>
           ${events
             .map((event) => {
-              return `<tr>
-                <th scope="row">
-                  <code>${event.name}</code>
-                </th>
-                <td>${event.description}</td>
-              </tr>`;
+              return `
+                <tr>
+                  <th scope="row">
+                    <code>${event.name}</code>
+                  </th>
+                  <td>${event.description}</td>
+                </tr>
+              `;
             })
             .join('')}
         </tbody>
@@ -106,12 +110,14 @@ window.$docsify.plugins.push((hook) => {
         <tbody>
           ${slots
             .map((slot) => {
-              return `<tr>
-                <th scope="row">
-                  ${slot.name === '' ? 'Default slot' : `<code>${slot.name}</code>`}
-                </th>
-                <td>${slot.description}</td>
-              </tr>`;
+              return `
+                <tr>
+                  <th scope="row">
+                    ${slot.name === '' ? 'Default slot' : `<code>${slot.name}</code>`}
+                  </th>
+                  <td>${slot.description}</td>
+                </tr>
+              `;
             })
             .join('')}
         </tbody>
@@ -131,10 +137,12 @@ window.$docsify.plugins.push((hook) => {
         <tbody>
           ${parts
             .map((part) => {
-              return `<tr>
-                <th scope="row"><code>${part.name}</code></th>
-                <td>${part.description}</td>
-              </tr>`;
+              return `
+                <tr>
+                  <th scope="row"><code>${part.name}</code></th>
+                  <td>${part.description}</td>
+                </tr>
+              `;
             })
             .join('')}
         </tbody>
@@ -154,10 +162,12 @@ window.$docsify.plugins.push((hook) => {
         <tbody>
           ${properties
             .map((property) => {
-              return `<tr>
-                <th scope="row"><code>${property.name}</code></th>
-                <td>${property.description}</td>
-              </tr>`;
+              return `
+                <tr>
+                  <th scope="row"><code>${property.name}</code></th>
+                  <td>${property.description}</td>
+                </tr>
+              `;
             })
             .join('')}
         </tbody>
@@ -222,9 +232,8 @@ window.$docsify.plugins.push((hook) => {
           <div class="header-status">
             <h1>${title}</h1>
             ${
-              componentMeta?.status
-                ? `<div class="status status--${componentMeta?.status}">${componentMeta?.status}</div>`
-                : ''
+              componentMeta?.status &&
+              `<div class="status status--${componentMeta?.status}">${componentMeta?.status}</div>`
             }
           </div>
           <nav>
