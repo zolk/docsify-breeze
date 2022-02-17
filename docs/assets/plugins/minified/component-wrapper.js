@@ -34,25 +34,25 @@ window.$docsify.plugins.push((m) => {
   function S(e) {
     let t = '';
     return (
-      e.map((s) => {
+      e.map((o) => {
         var l;
-        const r = (l = s.parameters) == null ? void 0 : l.length;
+        const n = (l = o.parameters) == null ? void 0 : l.length;
         t += `
-        <h3><code>${s.name}(${
-          r
-            ? s.parameters
-                .map((n) => `${n.name}${n.optional ? '?' : ''}: ${n.type.text}`)
+        <h3><code>${o.name}(${
+          n
+            ? o.parameters
+                .map((c) => `${c.name}${c.optional ? '?' : ''}: ${c.type.text}`)
                 .join(', ')
             : ''
-        }) => ${s.return ? s.return.type.text : 'void'}</code></h3>
-        <p>${s.description}</p>
+        }) => ${o.return ? o.return.type.text : 'void'}</code></h3>
+        <p>${o.description}</p>
 
         ${
-          r
+          n
             ? `
               <dl class="method-list">
-              ${s.parameters.map((n) =>
-                n.description ? `<dt><code>${n.name}</code></dt><dd>${n.description}</dd>` : ''
+              ${o.parameters.map((c) =>
+                c.description ? `<dt><code>${c.name}</code></dt><dd>${c.description}</dd>` : ''
               )}
               </dl>
               `
@@ -70,20 +70,27 @@ window.$docsify.plugins.push((m) => {
           <tr>
             <th scope="col">Name</th>
             <th scope="col">Description</th>
+            <th scope="col">Event Detail</th>
           </tr>
         </thead>
         <tbody>
           ${e
-            .map(
-              (t) => `
+            .map((t) => {
+              var o, n;
+              return `
                 <tr>
                   <th scope="row">
                     <code>${t.name}</code>
                   </th>
                   <td>${t.description}</td>
+                  <td>${
+                    ((o = t.type) == null ? void 0 : o.text)
+                      ? `<code>${(n = t.type) == null ? void 0 : n.text}</code>`
+                      : '-'
+                  }</td>
                 </tr>
-              `
-            )
+              `;
+            })
             .join('')}
         </tbody>
       </table>
@@ -164,36 +171,36 @@ window.$docsify.plugins.push((m) => {
     `;
   }
   function j(e) {
-    var s;
+    var o;
     const t = [];
     return (
-      (s = e.modules) == null ||
-        s.map((r) => {
+      (o = e.modules) == null ||
+        o.map((n) => {
           var l;
-          (l = r.declarations) == null ||
-            l.map((n) => {
-              n.customElement && t.push(n);
+          (l = n.declarations) == null ||
+            l.map((c) => {
+              c.customElement && t.push(c);
             });
         }),
       t
     );
   }
   function H(e, t) {
-    return j(e).find((s) => s.tagName === t);
+    return j(e).find((o) => o.tagName === t);
   }
   m.beforeEach(async function (e, t) {
-    const s = await P,
-      r = document.body.dataset.page.split('/'),
-      l = r[1] === 'components',
-      n = document.querySelector('.content > .markdown-header');
-    if ((n && n.remove(), l)) {
-      const u = r[2],
-        f = r[3],
-        o = H(s, v + u),
-        A = await fetch(`/components/${u}/usage.md`, { method: 'HEAD' }).then((c) => c);
-      (e = e.replace(/^#{1} ([a-zA-Z]+)/, (c, a) => {
+    const o = await P,
+      n = document.body.dataset.page.split('/'),
+      l = n[1] === 'components',
+      c = document.querySelector('.content > .markdown-header');
+    if ((c && c.remove(), l)) {
+      const u = n[2],
+        f = n[3],
+        s = H(o, v + u),
+        x = await fetch(`/components/${u}/usage.md`, { method: 'HEAD' }).then((a) => a);
+      (e = e.replace(/^#{1} ([a-zA-Z]+)/, (a, r) => {
         let d = '';
-        A.ok &&
+        x.ok &&
           (d = `
             <li ${f === 'usage.md' ? 'class="active"' : ''}>
               <a href="/components/${u}/usage">Usage</a>
@@ -205,11 +212,11 @@ window.$docsify.plugins.push((m) => {
           (i.innerHTML = `
           <div class="section">Components</div>
           <div class="header-status">
-            <h1>${a}</h1>
+            <h1>${r}</h1>
             ${
-              (o == null ? void 0 : o.status) &&
-              `<div class="status status--${o == null ? void 0 : o.status}">${
-                o == null ? void 0 : o.status
+              (s == null ? void 0 : s.status) &&
+              `<div class="status status--${s == null ? void 0 : s.status}">${
+                s == null ? void 0 : s.status
               }</div>`
             }
           </div>
@@ -226,61 +233,61 @@ window.$docsify.plugins.push((m) => {
           '## Overview'.replace(/^ +| +$/gm, '')
         );
       })),
-        (e = e.replace(/^#> (.+)/gm, (c, a) =>
-          `<p class="headline">${a}</p>`.replace(/^ +| +$/gm, '')
+        (e = e.replace(/^#> (.+)/gm, (a, r) =>
+          `<p class="headline">${r}</p>`.replace(/^ +| +$/gm, '')
         )),
         (e = e.replace(/\[component-metadata\]/, () => {
           var p, $, g, b, y;
-          let c = '';
-          const a =
-              (p = o.members) == null
+          let a = '';
+          const r =
+              (p = s.members) == null
                 ? void 0
                 : p.filter((h) => h.description && h.privacy !== 'private'),
-            d = a == null ? void 0 : a.filter((h) => h.kind === 'field'),
+            d = r == null ? void 0 : r.filter((h) => h.kind === 'field'),
             i =
-              a == null ? void 0 : a.filter((h) => h.kind === 'method' && h.privacy !== 'private');
+              r == null ? void 0 : r.filter((h) => h.kind === 'method' && h.privacy !== 'private');
           return (
             (d == null ? void 0 : d.length) &&
-              (c += `
+              (a += `
           ## Properties
           ${w(d)}
         `),
             (i == null ? void 0 : i.length) &&
-              (c += `
+              (a += `
           ## Methods
           ${S(i)}
         `),
-            (($ = o.events) == null ? void 0 : $.length) &&
-              (c += `
+            (($ = s.events) == null ? void 0 : $.length) &&
+              (a += `
           ## Events
-          ${T(o.events)}
+          ${T(s.events)}
         `),
-            ((g = o.slots) == null ? void 0 : g.length) &&
-              (c += `
+            ((g = s.slots) == null ? void 0 : g.length) &&
+              (a += `
           ## Slots
-          ${C(o.slots)}
+          ${C(s.slots)}
         `),
-            ((b = o.cssParts) == null ? void 0 : b.length) &&
-              (c += `
+            ((b = s.cssParts) == null ? void 0 : b.length) &&
+              (a += `
           ## CSS Parts
-          ${D(o.cssParts)}
+          ${D(s.cssParts)}
         `),
-            ((y = o.cssProperties) == null ? void 0 : y.length) &&
-              (c += `
+            ((y = s.cssProperties) == null ? void 0 : y.length) &&
+              (a += `
           ## CSS Custom Properties
-          ${E(o.cssProperties)}
+          ${E(s.cssProperties)}
         `),
-            c.replace(/^ +| +$/gm, '')
+            a.replace(/^ +| +$/gm, '')
           );
         }));
     }
     t(e);
   }),
     m.doneEach(function () {
-      [...document.querySelector('.content').querySelectorAll('table')].map((s) => {
-        s.outerHTML = `
+      [...document.querySelector('.content').querySelectorAll('table')].map((o) => {
+        o.outerHTML = `
         <div class="table-wrap">
-          ${s.outerHTML}
+          ${o.outerHTML}
         </div>
       `;
       });
