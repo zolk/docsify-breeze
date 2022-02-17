@@ -25,5 +25,21 @@ window.$docsify.plugins.push((hook) => {
         activeChild.classList.add('active-child');
       }
     });
+
+    // Fix a bug where an anchor link would not properly expand the navbar
+    const activeAnchor = document.querySelector('.app-sub-sidebar .active-child');
+    activeAnchor?.classList.remove('active-child');
+    activeAnchor?.closest('li.has-submenu > ul > li')?.classList.add('active-child');
+
+    // Fix a bug where clicking a sidebar anchor link for a top-level item would collapse the menu.
+    const topLevelAnchors = document.querySelectorAll(
+      '.sidebar-nav > ul > li > .app-sub-sidebar a'
+    );
+
+    topLevelAnchors.forEach((link) => {
+      link.addEventListener('click', (e) => {
+        e.target?.closest('.has-submenu')?.classList.add('active-child');
+      });
+    });
   });
 });
