@@ -536,8 +536,14 @@ body.close .content {
 /* Markdown Header */
 
 .markdown-header {
-  padding: 3.125rem 4.0625rem 0 4.0625rem;
+  padding: 3.125rem 2.0625rem 0 2.0625rem;
   border-bottom: 1px solid var(--color-light);
+}
+
+@media screen and (min-width: 768px) {
+  .markdown-header {
+    padding: 3.125rem 4.0625rem 0 4.0625rem;
+  }
 }
 
 .markdown-header .section {
@@ -615,8 +621,14 @@ body.close .content {
 /* Markdown Section */
 
 .markdown-section {
-  padding: 3.125rem 4.0625rem;
+  padding: 3.125rem 2.0625rem;
   background: linear-gradient(180deg, var(--color-lightest) 0%, #ffffff 5%, #ffffff 100%);
+}
+
+@media screen and (min-width: 768px) {
+  .markdown-section {
+    padding: 3.125rem 4.0625rem;
+  }
 }
 
 .markdown-section > * {
