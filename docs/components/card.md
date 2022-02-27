@@ -30,6 +30,8 @@ Use the `--border-radius` CSS property to modify the card's border radius.
 </ds-card>
 ```
 
-## Options
+## API Documentation
 
 [component-metadata]
+
+## Usage Guidelines

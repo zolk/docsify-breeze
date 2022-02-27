@@ -444,17 +444,19 @@ body.close .content {
 
 .markdown-section h2 {
   margin-top: 3rem;
-  font-size: 1.5rem;
+  font-size: 1.9rem;
 }
 
 .markdown-section h2 a {
   position: relative;
   left: -1.5rem;
+  width: calc(100% + 1.5rem);
   padding-left: 1.5rem;
   background-image: var(--icon-hashtag);
   background-repeat: no-repeat;
   background-position: left center;
   background-size: 20px;
+  font-weight: 700;
 }
 
 .markdown-section h2 a:hover {
@@ -465,7 +467,7 @@ body.close .content {
 .markdown-section h3 {
   margin-top: 1.5rem;
   margin-bottom: 0.5rem;
-  font-size: 1.25rem;
+  font-size: 1.45rem;
 }
 
 .markdown-section h3 a:hover,
