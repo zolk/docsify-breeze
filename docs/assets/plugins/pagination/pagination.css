@@ -1,0 +1,27 @@
+@import url('../../theme/tokens.css');
+
+.docsify-pagination-container {
+  position: relative;
+  margin: 0 !important;
+  padding-bottom: 2rem;
+  background-color: var(--body-background-color);
+  border-top: 0 !important;
+  color: var(--body-color);
+}
+
+.docsify-pagination-container::before {
+  content: '';
+  width: 100%;
+  height: 0.625rem;
+  background-color: var(--content-background-color);
+  border-bottom-left-radius: 0.625rem;
+  box-shadow: 0 -1px 0 white;
+}
+
+.pagination-item--previous {
+  margin-left: 4.25rem;
+}
+
+.pagination-item--next {
+  margin-right: 4.25rem;
+}

@@ -1,0 +1,56 @@
+/* Core Styles */
+
+img {
+  max-width: 100%;
+}
+
+a[disabled] {
+  cursor: not-allowed;
+}
+
+li input[type='checkbox'] {
+  margin: 0 0.2em 0.25em 0;
+  vertical-align: middle;
+}
+
+/* Sidebar */
+
+.sidebar > h1 {
+  margin-top: 2rem;
+  font-size: 0.9375rem;
+  font-weight: 400;
+  text-align: center;
+  letter-spacing: -0.025em;
+}
+
+.sidebar > .app-name.hide {
+  display: block !important;
+}
+
+.sidebar > h1 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.sidebar > h1 .app-nav {
+  display: block;
+  position: static;
+}
+
+/* Main Content */
+
+/* Responsive Styles */
+
+/* Markdown Header */
+
+/* Status Pills */
+
+/* Markdown Section */
+
+/* Tip */
+
+/* Preview Block */
+
+/* Pagination */
+
+/* Code Highlighting */

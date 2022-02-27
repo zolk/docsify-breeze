@@ -1,0 +1,20 @@
+.copy-code-button .success,
+.copy-code-button .error {
+  display: none;
+}
+
+.copy-code-button.success .success {
+  display: block;
+}
+
+.copy-code-button.success > span:not(.success) {
+  display: none;
+}
+
+.copy-code-button.error .error {
+  display: block;
+}
+
+.copy-code-button.error > span:not(.error) {
+  display: none;
+}

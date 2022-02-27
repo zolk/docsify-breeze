@@ -51,7 +51,7 @@ window.$docsify.plugins.push((hook) => {
       const hasParams = method.parameters?.length;
 
       result += `
-        <h4><code>${method.name}(${
+        <h4 class="component-method-signature"><code>${method.name}(${
         hasParams
           ? method.parameters
               .map((param) => `${param.name}${param.optional ? '?' : ''}: ${param.type.text}`)
@@ -63,7 +63,7 @@ window.$docsify.plugins.push((hook) => {
         ${
           hasParams
             ? `
-              <dl class="method-list">
+              <dl class="component-method-options">
               ${method.parameters.map((param) =>
                 param.description
                   ? `<dt><code>${param.name}</code></dt><dd>${param.description}</dd>`
@@ -226,11 +226,11 @@ window.$docsify.plugins.push((hook) => {
         header.classList.add('markdown-header', 'component-header');
         header.innerHTML = `
           <div class="section">Components</div>
-          <div class="header-status">
+          <div class="component-title">
             <h1>${title}</h1>
             ${
               componentMeta?.status &&
-              `<div class="status status--${componentMeta?.status}">${componentMeta?.status}</div>`
+              `<div class="component-status component-status--${componentMeta?.status}">${componentMeta?.status}</div>`
             }
           </div>
         `;
@@ -246,7 +246,7 @@ window.$docsify.plugins.push((hook) => {
       // Handle headline
       //
       content = content.replace(/^#> (.+)/gm, (_, headline) => {
-        const result = `<p class="headline">${headline}</p>`;
+        const result = `<p class="component-headline">${headline}</p>`;
 
         return result.replace(/^ +| +$/gm, '');
       });
@@ -323,7 +323,7 @@ window.$docsify.plugins.push((hook) => {
 
     tables.map((table) => {
       table.outerHTML = `
-        <div class="table-wrap">
+        <div class="component-meta-table">
           ${table.outerHTML}
         </div>
       `;

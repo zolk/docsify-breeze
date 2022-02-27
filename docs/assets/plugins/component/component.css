@@ -1,0 +1,156 @@
+@import url('../../theme/tokens.css');
+
+/*
+  -------------
+  Component Header
+  -------------
+*/
+
+.component-header {
+  padding: 3.125rem 2.0625rem;
+  border-bottom: 1px solid var(--color-neutral-light);
+}
+
+@media screen and (min-width: 48rem) {
+  .component-header {
+    padding: 3.125rem 4.0625rem;
+  }
+}
+
+.component-header .section {
+  color: var(--color-text-light);
+  font-weight: 400px;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+}
+
+.component-header h1 {
+  margin: 0;
+  letter-spacing: -0.02rem;
+  font-size: 2.25rem;
+  font-weight: 700;
+}
+
+.component-header .component-title {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+/*
+  -------------
+  Headline
+  -------------
+*/
+
+p.component-headline {
+  margin-top: 0;
+  margin-bottom: 3rem;
+  font-size: 1.5rem;
+  color: var(--color-neutral-deep);
+  line-height: 1.4;
+}
+
+/*
+  -------------
+  Invisible Overview Section
+  -------------
+*/
+
+.component-header + .markdown-section h2#overview {
+  visibility: hidden;
+  margin: 0;
+  height: 0;
+}
+
+/*
+  -------------
+  Component Status
+  -------------
+*/
+
+.component-status {
+  display: inline-block;
+  border-radius: 100px;
+  padding: 0.25rem 0.8rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 0.75rem;
+}
+
+.component-status--draft {
+  background-color: #faefd1;
+  color: #683603;
+}
+
+.component-status--ready {
+  background-color: #d7f4d8;
+  color: #155117;
+}
+
+.component-status--deprecated {
+  background-color: #f4e1d7;
+  color: #5a2d16;
+}
+
+/*
+  -------------
+  Component Metadata
+  -------------
+*/
+
+.component-meta-table {
+  overflow-x: auto;
+}
+
+.component-meta-table table {
+  overflow: auto;
+  width: 100%;
+  margin-top: 0.5rem;
+  min-width: 700px;
+  border-collapse: collapse;
+}
+
+.component-meta-table table thead th {
+  padding: 0.7rem;
+  background-color: var(--color-neutral-lighter);
+  border-bottom: 1px solid var(--color-neutral-light);
+  color: var(--color-neutral-deep);
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-align: left;
+}
+
+.component-meta-table table thead th:first-of-type,
+.component-meta-table table tbody th {
+  width: 8rem;
+  white-space: nowrap;
+}
+
+.component-meta-table table tbody th,
+.component-meta-table table tbody td {
+  padding: 0.9rem 0.7rem;
+  border-bottom: 1px solid var(--color-neutral-light);
+  font-weight: 400;
+  text-align: left;
+}
+
+.component-method-signature {
+  margin-bottom: 0;
+  font-size: 0.9rem;
+}
+
+.component-method-signature + p {
+  margin-top: 0.2rem;
+  margin-left: 0.4rem;
+}
+
+.component-method-options {
+  margin-left: 1.5rem;
+}
+
+.component-method-options dd {
+  margin-top: 0.3rem;
+  margin-left: 0.4rem;
+}

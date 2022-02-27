@@ -10,7 +10,7 @@
  */
 window.$docsify.plugins.push((hook, vm) => {
   hook.doneEach(function () {
-    const targetElms = Array.from(document.querySelectorAll('.code-block__actions'));
+    const targetElms = Array.from(document.querySelectorAll('.code-preview__actions'));
     const i18n = {
       buttonText: 'Copy to clipboard',
       errorText: 'Error',
@@ -37,7 +37,7 @@ window.$docsify.plugins.push((hook, vm) => {
     }
 
     const template = [
-      '<button class="docsify-copy-code-button">',
+      '<button class="copy-code-button">',
       '<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>',
       `<span class="label">${i18n.buttonText}</span>`,
       `<span class="error">${i18n.errorText}</span>`,
@@ -54,7 +54,7 @@ window.$docsify.plugins.push((hook, vm) => {
     const listenerHost = document.querySelector('.content');
 
     listenerHost.addEventListener('click', function (evt) {
-      const isCopyCodeButton = evt.target.closest('.docsify-copy-code-button');
+      const isCopyCodeButton = evt.target.closest('.copy-code-button');
 
       if (isCopyCodeButton) {
         const buttonElm = evt.target.tagName === 'BUTTON' ? evt.target : evt.target.parentNode;
