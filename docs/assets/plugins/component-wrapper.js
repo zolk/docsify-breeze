@@ -51,13 +51,13 @@ window.$docsify.plugins.push((hook) => {
       const hasParams = method.parameters?.length;
 
       result += `
-        <h3><code>${method.name}(${
+        <h4><code>${method.name}(${
         hasParams
           ? method.parameters
               .map((param) => `${param.name}${param.optional ? '?' : ''}: ${param.type.text}`)
               .join(', ')
           : ''
-      }) => ${method.return ? method.return.type.text : 'void'}</code></h3>
+      }) => ${method.return ? method.return.type.text : 'void'}</code></h4>
         <p>${method.description}</p>
 
         ${
@@ -214,27 +214,14 @@ window.$docsify.plugins.push((hook) => {
     }
 
     if (isComponentPage) {
-      const baseTagName = pathSegments[2];
-      const subPage = pathSegments[3];
+      const file = pathSegments[2];
+      const baseTagName = file.split('.')[0];
       const componentMeta = getComponent(metadata, TAG_PREFIX + baseTagName);
-      const usageDoc = await fetch(`/components/${baseTagName}/usage.md`, {
-        method: 'HEAD',
-      }).then((res) => res);
 
       //
       // Insert component header
       //
       content = content.replace(/^#{1} ([a-zA-Z]+)/, (_, title) => {
-        let usageLink = '';
-
-        if (usageDoc.ok) {
-          usageLink = `
-            <li ${subPage === 'usage.md' ? 'class="active"' : ''}>
-              <a href="/components/${baseTagName}/usage">Usage</a>
-            </li>
-          `;
-        }
-
         const header = document.createElement('header');
         header.classList.add('markdown-header', 'component-header');
         header.innerHTML = `
@@ -246,14 +233,6 @@ window.$docsify.plugins.push((hook) => {
               `<div class="status status--${componentMeta?.status}">${componentMeta?.status}</div>`
             }
           </div>
-          <nav>
-            <ul class="header-nav">
-              <li ${subPage === 'code.md' ? 'class="active"' : ''}>
-                <a href="/components/${baseTagName}">Code</a>
-              </li>
-              ${usageLink}
-            </ul>
-          </nav>
         `;
 
         const content = document.querySelector('.content');
@@ -290,42 +269,42 @@ window.$docsify.plugins.push((hook) => {
 
         if (props?.length) {
           result += `
-          ## Properties
+          ### Properties
           ${generatePropertiesTable(props)}
         `;
         }
 
         if (methods?.length) {
           result += `
-          ## Methods
+          ### Methods
           ${generateMethodsList(methods)}
         `;
         }
 
         if (componentMeta.events?.length) {
           result += `
-          ## Events
+          ### Events
           ${generateEventsTable(componentMeta.events)}
         `;
         }
 
         if (componentMeta.slots?.length) {
           result += `
-          ## Slots
+          ### Slots
           ${generateSlotsTable(componentMeta.slots)}
         `;
         }
 
         if (componentMeta.cssParts?.length) {
           result += `
-          ## CSS Parts
+          ### CSS Parts
           ${generateCssPartsTable(componentMeta.cssParts)}
         `;
         }
 
         if (componentMeta.cssProperties?.length) {
           result += `
-          ## CSS Custom Properties
+          ### CSS Custom Properties
           ${generateCssPropertiesTable(componentMeta.cssProperties)}
         `;
         }
