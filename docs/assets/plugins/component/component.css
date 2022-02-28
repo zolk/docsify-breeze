@@ -36,32 +36,7 @@
   gap: 1rem;
   align-items: center;
   margin-top: 0.5rem;
-}
-
-/*
-  -------------
-  Headline
-  -------------
-*/
-
-p.component-headline {
-  margin-top: 0;
-  margin-bottom: 3rem;
-  font-size: 1.5rem;
-  color: var(--color-neutral-deep);
-  line-height: 1.4;
-}
-
-/*
-  -------------
-  Invisible Overview Section
-  -------------
-*/
-
-.component-header + .markdown-section h2#overview {
-  visibility: hidden;
-  margin: 0;
-  height: 0;
+  max-width: 50rem;
 }
 
 /*
@@ -92,6 +67,79 @@ p.component-headline {
 .component-status--deprecated {
   background-color: #f4e1d7;
   color: #5a2d16;
+}
+
+/*
+  -------------
+  Component Theme Selector
+  -------------
+*/
+
+.theme-switcher {
+  flex-grow: 1;
+  text-align: right;
+}
+
+.theme-switcher label {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  overflow: hidden;
+  height: 1px;
+  width: 1px;
+  white-space: nowrap;
+}
+
+.theme-switcher select {
+  padding: 0.5rem 1.7rem 0.5rem 0.5rem;
+  background-color: #fff;
+  border: 1px solid var(--color-neutral-light);
+  border-radius: 7px;
+  box-shadow: 0px 1px 0px var(--sidebar-toggle-button-box-shadow-color);
+  background-image: var(--icon-theme-select);
+  background-origin: content-box;
+  background-position: calc(100% + 1.3rem) center;
+  background-repeat: no-repeat;
+  color: var(--color-blue-medium);
+  font-family: var(--font-default);
+  font-size: 0.9rem;
+  -webkit-appearance: none;
+}
+
+.theme-switcher select:hover {
+  border-color: var(--color-neutral-medium);
+}
+
+.theme-switcher select:focus {
+  border: 1px solid var(--content-color-active);
+  box-shadow: 0 0 5px var(--content-color-active);
+  outline: none;
+}
+
+/*
+  -------------
+  Headline
+  -------------
+*/
+
+p.component-headline {
+  margin-top: 0;
+  margin-bottom: 3rem;
+  font-size: 1.5rem;
+  color: var(--color-neutral-deep);
+  line-height: 1.4;
+}
+
+/*
+  -------------
+  Invisible Overview Section
+  -------------
+*/
+
+.component-header + .markdown-section h2#overview {
+  visibility: hidden;
+  margin: 0;
+  height: 0;
 }
 
 /*

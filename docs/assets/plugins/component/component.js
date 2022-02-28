@@ -263,14 +263,14 @@ window.$docsify.plugins.push((hook, vm) => {
               componentMeta?.status &&
               `<div class="component-status component-status--${componentMeta?.status}">${componentMeta?.status}</div>`
             }
+            ${
+              vm.config.themes
+                ? `<div class="theme-switcher">
+                  <label for="theme-switcher__select">Select Theme</label>
+                </div>`
+                : ''
+            }
           </div>
-          ${
-            vm.config.themes
-              ? `<div class="theme-switcher">
-                <label for="theme-switcher__select">Select Theme</label>
-              </div>`
-              : ''
-          }
         `;
 
         if (vm.config.themes) {
