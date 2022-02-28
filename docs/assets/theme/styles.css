@@ -413,7 +413,7 @@ body.close .content {
 }
 
 .markdown-section > * {
-  max-width: 50rem;
+  max-width: var(--content-max-width);
 }
 
 .markdown-section h1 a,
