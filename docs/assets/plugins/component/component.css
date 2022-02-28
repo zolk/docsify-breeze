@@ -101,6 +101,7 @@
   background-position: calc(100% + 1.3rem) center;
   background-repeat: no-repeat;
   color: var(--color-blue-medium);
+  cursor: pointer;
   font-family: var(--font-default);
   font-size: 0.9rem;
   -webkit-appearance: none;
