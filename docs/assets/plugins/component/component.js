@@ -6,7 +6,7 @@
  * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-window.$docsify.plugins.push((hook) => {
+window.$docsify.plugins.push((hook, vm) => {
   // Handles all enhancements using data from the Custom Elements Manifest,
   // including the component headers and documentation tables.
   const TAG_PREFIX = 'ds-';
@@ -203,6 +203,23 @@ window.$docsify.plugins.push((hook) => {
     return getAllComponents(metadata).find((component) => component.tagName === tagName);
   }
 
+  function setTheme(newTheme) {
+    localStorage.setItem('theme', newTheme);
+    vm.config.themes.forEach((theme) =>
+      document.body.classList.toggle(theme.class, theme.class === newTheme)
+    );
+  }
+
+  function getTheme() {
+    return localStorage.getItem('theme') || (vm.config.themes && vm.config.themes[0].class);
+  }
+
+  hook.mounted(() => {
+    if (vm.config.themes) {
+      document.body.classList.add(getTheme());
+    }
+  });
+
   hook.beforeEach(async function (content, next) {
     const metadata = await customElements;
     const pathSegments = document.body.dataset.page.split('/');
@@ -219,6 +236,20 @@ window.$docsify.plugins.push((hook) => {
       const componentMeta = getComponent(metadata, TAG_PREFIX + baseTagName);
 
       //
+      // Create theme selector
+      //
+      const themeSelect = document.createElement('select');
+      themeSelect.classList.add('theme-switcher');
+      themeSelect.id = 'theme-switcher__select';
+      vm.config.themes?.forEach(
+        (theme) => (themeSelect.innerHTML += `<option value=${theme.class}>${theme.name}</option`)
+      );
+      themeSelect.value = getTheme();
+      themeSelect.onchange = () => {
+        setTheme(themeSelect.value);
+      };
+
+      //
       // Insert component header
       //
       content = content.replace(/^#{1} ([a-zA-Z]+)/, (_, title) => {
@@ -233,7 +264,18 @@ window.$docsify.plugins.push((hook) => {
               `<div class="component-status component-status--${componentMeta?.status}">${componentMeta?.status}</div>`
             }
           </div>
+          ${
+            vm.config.themes
+              ? `<div class="theme-switcher">
+                <label for="theme-switcher__select">Select Theme</label>
+              </div>`
+              : ''
+          }
         `;
+
+        if (vm.config.themes) {
+          header.querySelector('.theme-switcher').append(themeSelect);
+        }
 
         const content = document.querySelector('.content');
         content.prepend(header);
