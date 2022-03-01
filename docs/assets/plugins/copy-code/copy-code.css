@@ -8,14 +8,21 @@
   background-color: var(--color-neutral-lighter);
   border: 1px solid var(--color-neutral-light);
   border-radius: 4px;
+  color: var(--color-neutral-dark);
   cursor: pointer;
+  transition: all 0.3s;
 }
 
-.copy-code-button:hover {
+.markdown-section pre:hover .copy-code-button {
+  background-color: var(--color-neutral-lighter);
+  border-color: var(--color-blue-light);
+  color: var(--color-blue-light);
+}
+
+.markdown-section pre:hover .copy-code-button:hover {
   background-color: var(--color-white);
-  border-color: var(--color-neutral-medium);
+  border-color: var(--color-blue-light);
 }
-
 .copy-code-button .success,
 .copy-code-button .success-icon,
 .copy-code-button .error {
