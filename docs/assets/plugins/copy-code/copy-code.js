@@ -10,7 +10,7 @@
  */
 window.$docsify.plugins.push((hook, vm) => {
   hook.doneEach(function () {
-    const targetElms = Array.from(document.querySelectorAll('.code-preview__actions'));
+    const targetElms = Array.from(document.querySelectorAll('.markdown-section pre'));
     const i18n = {
       buttonText: 'Copy to clipboard',
       errorText: 'Error',
@@ -37,9 +37,9 @@ window.$docsify.plugins.push((hook, vm) => {
     }
 
     const template = [
-      '<button class="copy-code-button">',
-      '<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>',
-      `<span class="label">${i18n.buttonText}</span>`,
+      '<button class="copy-code-button" aria-label="Copy Code">',
+      '<svg xmlns="http://www.w3.org/2000/svg" class="copy-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>',
+      '<svg xmlns="http://www.w3.org/2000/svg" class="success-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>',
       `<span class="error">${i18n.errorText}</span>`,
       `<span class="success">${i18n.successText}</span>`,
       '</button>',
@@ -57,9 +57,10 @@ window.$docsify.plugins.push((hook, vm) => {
       const isCopyCodeButton = evt.target.closest('.copy-code-button');
 
       if (isCopyCodeButton) {
-        const buttonElm = evt.target.tagName === 'BUTTON' ? evt.target : evt.target.parentNode;
+        const buttonElm =
+          evt.target.tagName === 'BUTTON' ? evt.target : evt.target.closest('.copy-code-button');
         const range = document.createRange();
-        const preElm = buttonElm.parentNode.parentNode.querySelector('pre');
+        const preElm = buttonElm.closest('pre');
         const codeElm = preElm.querySelector('code');
 
         let selection = window.getSelection();

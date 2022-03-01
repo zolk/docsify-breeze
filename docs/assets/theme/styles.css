@@ -521,8 +521,15 @@ body.close .content {
 }
 
 .markdown-section pre {
+  position: relative;
   background-color: var(--color-neutral-lighter);
   border-radius: 2px;
+  padding: 1rem;
+}
+
+.markdown-section pre code {
+  background-color: transparent;
+  border: none;
 }
 
 .markdown-section kbd {
@@ -575,12 +582,6 @@ body.close .content {
   Code Syntax Highlighting
   -------------
 */
-
-pre code {
-  border: none;
-  background-color: transparent;
-  padding: 1rem;
-}
 
 .token.cdata,
 .token.comment,

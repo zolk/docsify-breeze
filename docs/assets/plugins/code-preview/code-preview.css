@@ -46,15 +46,11 @@
 }
 
 .code-preview__source {
-  /* This method of hiding the source is required in order for
-   * the "copy to clipboard" feature to work properly. */
-  position: absolute;
-  left: -9999px;
+  display: none;
 }
 
 .code-preview--expanded .code-preview__source {
-  position: static;
-  left: auto;
+  display: block;
 }
 
 .code-preview__source pre {
@@ -62,12 +58,6 @@
   margin: 0;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
-}
-
-.code-preview__source pre code {
-  padding: 1.5rem 2rem;
-  border: 0;
-  background-color: transparent;
 }
 
 .code-preview__source pre::after {
