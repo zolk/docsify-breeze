@@ -267,6 +267,7 @@ window.$docsify.plugins.push((hook, vm) => {
               vm.config.themes
                 ? `<div class="theme-switcher">
                   <label for="theme-switcher__select">Select Theme</label>
+                  <span class="theme-switcher__icon"></span>
                 </div>`
                 : ''
             }
