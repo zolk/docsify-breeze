@@ -205,6 +205,7 @@ window.$docsify.plugins.push((hook, vm) => {
 
   function setTheme(newTheme) {
     localStorage.setItem('theme', newTheme);
+    setPreviewTheme(newTheme);
     vm.config.themes.forEach((theme) =>
       document.body.classList.toggle(theme.class, theme.class === newTheme)
     );
@@ -212,6 +213,13 @@ window.$docsify.plugins.push((hook, vm) => {
 
   function getTheme() {
     return localStorage.getItem('theme') || (vm.config.themes && vm.config.themes[0].class);
+  }
+
+  function setPreviewTheme(theme) {
+    const bgColor = vm.config.themes.find((t) => t.class === theme).previewBg;
+
+    const codePreviews = document.querySelectorAll('.code-preview__preview');
+    codePreviews.forEach((preview) => (preview.style.backgroundColor = bgColor));
   }
 
   hook.mounted(() => {
@@ -359,8 +367,11 @@ window.$docsify.plugins.push((hook, vm) => {
     next(content);
   });
 
-  // Wrap tables for responsive horizontal scrolling
   hook.doneEach(function () {
+    // Set code previews to use the configured background color
+    setPreviewTheme(getTheme());
+
+    // Wrap tables for responsive horizontal scrolling
     const content = document.querySelector('.content');
     const tables = [...content.querySelectorAll('table')];
 
