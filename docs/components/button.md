@@ -19,7 +19,6 @@ Use the `variant` prop to change the visual style of the button.
 <ds-button variant="info">Info</ds-button>
 <ds-button variant="warning">Warning</ds-button>
 <ds-button variant="danger">Danger</ds-button>
-<ds-button variant="text">Text</ds-button>
 ```
 
 ### Sizes
