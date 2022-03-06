@@ -1,6 +1,7 @@
 - [Home](/)
 - [Getting Started](/getting-started)
-  - [404](/404)
+  - [Usage](/getting-started/usage)
+  - [Customization](/getting-started/customization)
 - [Design Tokens](/design-tokens)
   - [404](/404)
 - [Components](/components)

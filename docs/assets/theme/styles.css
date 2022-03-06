@@ -437,9 +437,13 @@ body.close .content {
 
 .markdown-section h1,
 .markdown-section h1 a {
-  margin: 1.5rem 0 0.5rem;
+  margin: 1.5rem 0 2.5rem;
   font-size: 2.5rem;
   font-weight: 700;
+}
+
+.markdown-section h1 a:hover {
+  background-color: transparent;
 }
 
 .markdown-section h2 {
