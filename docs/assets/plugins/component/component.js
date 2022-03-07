@@ -290,7 +290,6 @@ window.$docsify.plugins.push((hook, vm) => {
         const header = document.createElement('header');
         header.classList.add('markdown-header', 'component-header');
         header.innerHTML = `
-          <div class="section">Components</div>
           <div class="component-title">
             <h1>${title}</h1>
             ${
