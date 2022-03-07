@@ -7,11 +7,19 @@
   justify-content: center;
   flex-direction: column;
   height: 25rem;
-  margin: -3.125rem -2.0625rem;
-  margin: -3.125rem -4.0625rem 1rem;
-  padding: 3.125rem 4.0625rem;
+  margin: calc(var(--content-padding-vertical) * -1)
+    calc(var(--content-padding-horizontal-small) * -1) 1rem;
+  padding: var(--content-padding-vertical) var(--content-padding-horizontal-small);
   background-color: var(--color-neutral-light);
   color: var(--color-blue-light);
+}
+
+@media screen and (min-width: 48rem) {
+  .hero {
+    margin: calc(var(--content-padding-vertical) * -1)
+      calc(var(--content-padding-horizontal-large) * -1) 1rem;
+    padding: var(--content-padding-vertical) var(--content-padding-horizontal-large);
+  }
 }
 
 .hero h1 {

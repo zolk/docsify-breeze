@@ -349,7 +349,6 @@ body.close .content {
     position: static;
     left: 0;
     max-width: 100vw;
-    padding-top: 1.25rem;
     transition: transform 0.25s ease;
   }
 
@@ -364,6 +363,7 @@ body.close .content {
   }
 
   body:not(.close) .sidebar-toggle {
+    background-color: var(--color-white);
     border: 1px solid #e9ebec;
   }
 
@@ -397,7 +397,7 @@ body.close .content {
 */
 
 .markdown-section {
-  padding: 3.125rem 2.0625rem;
+  padding: var(--content-padding-vertical) var(--content-padding-horizontal-small);
   background: linear-gradient(
     180deg,
     var(--color-neutral-lightest) 0%,
@@ -408,7 +408,7 @@ body.close .content {
 
 @media screen and (min-width: 768px) {
   .markdown-section {
-    padding: 3.125rem 4.0625rem;
+    padding: var(--content-padding-vertical) var(--content-padding-horizontal-large);
   }
 }
 

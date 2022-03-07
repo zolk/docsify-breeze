@@ -39,3 +39,16 @@
   border: 1px solid var(--content-color-active);
   box-shadow: 0 0 5px var(--content-color-active);
 }
+
+.search .results-panel {
+  margin-top: 2rem;
+  color: var(--color-white);
+}
+
+.search .matching-post {
+  border-bottom: 1px solid var(--color-neutral-deep) !important;
+}
+
+.search .matching-post:last-child {
+  border-bottom: 0 !important;
+}
