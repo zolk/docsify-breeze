@@ -1,0 +1,28 @@
+.hero-wrap {
+  display: contents;
+}
+
+.hero {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 25rem;
+  margin: -3.125rem -2.0625rem;
+  margin: -3.125rem -4.0625rem 1rem;
+  padding: 3.125rem 4.0625rem;
+  background-color: var(--color-neutral-light);
+  color: var(--color-blue-light);
+}
+
+.hero h1 {
+  margin-bottom: 0;
+  font-size: 4rem;
+  letter-spacing: -3px;
+  font-weight: 700;
+}
+
+.hero p {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 400;
+}

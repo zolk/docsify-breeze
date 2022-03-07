@@ -231,11 +231,37 @@ window.$docsify.plugins.push((hook, vm) => {
   hook.beforeEach(async function (content, next) {
     const metadata = await customElements;
     const pathSegments = document.body.dataset.page.split('/');
+    const isComponentIndex = pathSegments[1] === 'components.md';
     const isComponentPage = pathSegments[1] === 'components';
     const existingHeader = document.querySelector('.content > .markdown-header');
 
     if (existingHeader) {
       existingHeader.remove();
+    }
+
+    if (isComponentIndex) {
+      content = content.replace(/\[component-card:(.+):([a-z-]+)\]/g, (_, name, tag) => {
+        const componentMeta = getComponent(metadata, TAG_PREFIX + tag);
+
+        const result = `
+          <li class="component-card">
+            <a href="/components/${tag}">
+              <div class="component-card__image">
+                <img src="/assets/images/component-cards/${tag}.svg">
+              </div>
+              <div class="component-card__header">
+                <h2>${name}</h2>
+                ${
+                  componentMeta?.status &&
+                  `<div class="component-status component-status--${componentMeta?.status}">${componentMeta?.status}</div>`
+                }
+              </div>
+              <p>${componentMeta.description}</p>
+            </a>
+          </li>`;
+
+        return result.replace(/^ +| +$/gm, '');
+      });
     }
 
     if (isComponentPage) {

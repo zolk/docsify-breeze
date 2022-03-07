@@ -2,8 +2,6 @@
 - [Getting Started](/getting-started)
   - [Usage](/getting-started/usage)
   - [Customization](/getting-started/customization)
-- [Design Tokens](/design-tokens)
-  - [404](/404)
 - [Components](/components)
   - [Button](/components/button)
   - [Card](/components/card)

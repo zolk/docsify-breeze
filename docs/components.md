@@ -1,3 +1,6 @@
 # Components
 
-This page will display a visual list of available components.
+<ul class="component-list">
+[component-card:Button:button]
+[component-card:Card:card]
+</ul>

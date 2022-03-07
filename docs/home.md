@@ -1,6 +1,11 @@
-# DS Starter Kit
+<div class="hero-wrap">
+  <div class="hero">
+    <h1>DS Starter Kit</h1>
+    <p>A toolkit for building and documenting web components.</p>
+  </div>
+</div>
 
-## What does is do?
+<h2>What does it do?</h2>
 
 DS Starter Kit combines the following toolchain to support the creation of a
 design system or component library that's built upon Web Components:
@@ -16,7 +21,7 @@ design system or component library that's built upon Web Components:
 - [Browsersync](https://browsersync.io/) for live reloads and synchronized browser testing.
 - [Plop](https://plopjs.com/) for quickly spinning up new components.
 
-## Who is this for?
+<h2>Who is this for?</h2>
 
 DS Starter Kit is designed for organizations that are looking to create their
 own bespoke component library or design system that uses Web Components. It includes everything you need to get hit the ground running including a complete toolchain
