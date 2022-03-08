@@ -1,0 +1,52 @@
+/*
+  -------------
+  Headline
+  -------------
+*/
+
+p.page-headline {
+  margin-top: 0;
+  margin-bottom: 3rem;
+  font-size: 1.5rem;
+  color: var(--color-neutral-deep);
+  line-height: 1.4;
+}
+
+/*
+  -------------
+  Page Card
+  -------------
+*/
+
+.page-card {
+  display: block;
+  margin-bottom: 1.5rem;
+  padding: 1.5rem;
+  padding-right: 3rem;
+  background-image: var(--icon-chevron-right-neutral);
+  background-position: center right 1rem;
+  background-repeat: no-repeat;
+  background-size: 1.5rem;
+  border: 1px solid var(--color-neutral-light);
+  border-radius: 4px;
+  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.05);
+  text-decoration: none;
+}
+
+.markdown-section a.page-card:hover {
+  background-color: transparent;
+  border-color: var(--color-blue-medium);
+}
+
+.page-card h2 {
+  margin: 0;
+  color: var(--color-blue-medium);
+  font-size: 1.25rem;
+}
+
+.page-card p {
+  margin: 0;
+  color: var(--color-neutral-deep);
+  font-size: 0.875rem;
+  font-weight: 400;
+}

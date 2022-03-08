@@ -319,15 +319,6 @@ window.$docsify.plugins.push((hook, vm) => {
       });
 
       //
-      // Handle headline
-      //
-      content = content.replace(/^#> (.+)/gm, (_, headline) => {
-        const result = `<p class="component-headline">${headline}</p>`;
-
-        return result.replace(/^ +| +$/gm, '');
-      });
-
-      //
       // Handle component metadata tag
       //
       content = content.replace(/\[component-metadata\]/, () => {

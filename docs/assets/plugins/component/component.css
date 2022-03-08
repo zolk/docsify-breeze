@@ -131,20 +131,6 @@
 
 /*
   -------------
-  Headline
-  -------------
-*/
-
-p.component-headline {
-  margin-top: 0;
-  margin-bottom: 3rem;
-  font-size: 1.5rem;
-  color: var(--color-neutral-deep);
-  line-height: 1.4;
-}
-
-/*
-  -------------
   Invisible Overview Section
   -------------
 */
@@ -241,6 +227,7 @@ p.component-headline {
   height: 100%;
   border: 1px solid var(--color-neutral-light);
   border-radius: 6px;
+  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.05);
   text-decoration: none;
 }
 
