@@ -23,16 +23,32 @@
 }
 
 .hero h1 {
-  margin-bottom: 0;
-  font-size: 4rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 0;
+  font-size: 3.5rem;
   letter-spacing: -3px;
+  line-height: 1;
   font-weight: 700;
   text-shadow: 1px 1px 1px var(--color-white);
 }
 
+.hero svg {
+  margin-bottom: 1rem;
+  filter: drop-shadow(1px 1px 1px var(--color-white));
+}
+
 .hero p {
   margin: 0;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: 400;
   letter-spacing: -1px;
+}
+
+.callout {
+  margin: 1rem 0 -1rem 0;
+  padding: 0.1rem 0 0.5rem 0;
+  background-color: var(--color-neutral-lighter);
+  box-shadow: calc(var(--content-padding-horizontal-large) * -1) 0 0 0 var(--color-neutral-lighter);
 }
