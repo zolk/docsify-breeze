@@ -1,0 +1,273 @@
+@import url('../../theme/tokens.css');
+
+/*
+  -------------
+  Component Header
+  -------------
+*/
+
+.component-header {
+  padding: var(--content-padding-vertical) var(--content-padding-horizontal-small);
+  border-bottom: 1px solid var(--color-neutral-light);
+}
+
+@media screen and (min-width: 48rem) {
+  .component-header {
+    padding: var(--content-padding-vertical) var(--content-padding-horizontal-large);
+  }
+}
+
+.component-header .section {
+  color: var(--color-text-light);
+  font-weight: 400px;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+}
+
+.component-header h1 {
+  margin: 0;
+  letter-spacing: -0.02rem;
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.component-header .component-title {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-top: 0.5rem;
+  max-width: var(--content-max-width);
+}
+
+/*
+  -------------
+  Component Status
+  -------------
+*/
+
+.component-status {
+  display: inline-block;
+  border-radius: 100px;
+  padding: 0.25rem 0.8rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 0.75rem;
+}
+
+.component-status--draft {
+  background-color: #faefd1;
+  color: #683603;
+}
+
+.component-status--ready {
+  background-color: #d7f4d8;
+  color: #155117;
+}
+
+.component-status--deprecated {
+  background-color: #f4e1d7;
+  color: #5a2d16;
+}
+
+/*
+  -------------
+  Component Theme Selector
+  -------------
+*/
+
+.theme-switcher {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.5rem;
+  flex-grow: 1;
+}
+
+.theme-switcher label {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  overflow: hidden;
+  height: 1px;
+  width: 1px;
+  white-space: nowrap;
+}
+
+.theme-switcher select {
+  flex-grow: 0;
+  padding: 0.5rem 1.7rem 0.5rem 0.7rem;
+  background-color: #fff;
+  border: 1px solid var(--color-neutral-light);
+  border-radius: 7px;
+  box-shadow: 0px 1px 0px var(--sidebar-toggle-button-box-shadow-color);
+  background-image: var(--icon-theme-select);
+  background-origin: content-box;
+  background-position: calc(100% + 1.3rem) center;
+  background-repeat: no-repeat;
+  color: var(--color-blue-medium);
+  cursor: pointer;
+  font-family: var(--font-default);
+  font-size: 0.9rem;
+  -webkit-appearance: none;
+}
+
+.theme-switcher__icon {
+  display: block;
+  width: 1.3rem;
+  height: 1.3rem;
+  background-image: var(--icon-color-swatch);
+  background-size: 1.3rem;
+}
+
+.theme-switcher select:hover {
+  border-color: var(--color-neutral-medium);
+}
+
+.theme-switcher select:focus {
+  border: 1px solid var(--content-color-active);
+  box-shadow: 0 0 5px var(--content-color-active);
+  outline: none;
+}
+
+/*
+  -------------
+  Invisible Overview Section
+  -------------
+*/
+
+.component-header + .markdown-section h2#overview {
+  visibility: hidden;
+  margin: 0;
+  height: 0;
+}
+
+/*
+  -------------
+  Component Metadata
+  -------------
+*/
+
+.component-meta-table {
+  overflow-x: auto;
+}
+
+.component-meta-table table {
+  overflow: auto;
+  width: 100%;
+  margin-top: 0.5rem;
+  min-width: 700px;
+  border-collapse: collapse;
+}
+
+.component-meta-table table thead th {
+  padding: 0.7rem;
+  background-color: var(--color-neutral-lighter);
+  border-bottom: 1px solid var(--color-neutral-light);
+  color: var(--color-neutral-deep);
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-align: left;
+}
+
+.component-meta-table table thead th:first-of-type,
+.component-meta-table table tbody th {
+  width: 8rem;
+  white-space: nowrap;
+}
+
+.component-meta-table table tbody th,
+.component-meta-table table tbody td {
+  padding: 0.9rem 0.7rem;
+  border-bottom: 1px solid var(--color-neutral-light);
+  font-weight: 400;
+  text-align: left;
+}
+
+.component-method-signature {
+  margin-bottom: 0;
+  font-size: 0.9rem;
+}
+
+.component-method-signature + p {
+  margin-top: 0.2rem;
+  margin-left: 0.4rem;
+}
+
+.component-method-options {
+  margin-left: 1.5rem;
+}
+
+.component-method-options dd {
+  margin-top: 0.3rem;
+  margin-left: 0.4rem;
+}
+
+/*
+  -------------
+  Component Card
+  -------------
+*/
+
+.markdown-section .component-list {
+  display: grid;
+  grid-template-columns: repeat(3, 252px);
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  line-height: 1.4;
+}
+
+.component-card {
+  padding: 0;
+  list-style-type: none;
+}
+
+.component-card a {
+  display: block;
+  height: 100%;
+  border: 1px solid var(--color-neutral-light);
+  border-radius: 6px;
+  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.05);
+  text-decoration: none;
+}
+
+.markdown-section .component-card a:hover {
+  background-color: white;
+  border: 1px solid var(--color-blue-medium);
+}
+
+.component-card__image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 140px;
+  background-color: var(--color-neutral-lighter);
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+.component-card__image,
+.component-card__image img {
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+.component-card__header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.component-card__header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.component-card p {
+  margin-top: 0;
+  padding: 0 1rem;
+  color: var(--color-neutral-deep);
+  font-weight: 400;
+}

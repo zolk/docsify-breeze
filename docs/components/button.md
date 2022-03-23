@@ -19,7 +19,6 @@ Use the `variant` prop to change the visual style of the button.
 <ds-button variant="info">Info</ds-button>
 <ds-button variant="warning">Warning</ds-button>
 <ds-button variant="danger">Danger</ds-button>
-<ds-button variant="text">Text</ds-button>
 ```
 
 ### Sizes
@@ -56,5 +55,7 @@ than a `button`. This will also enable use of the `download` and `target` proper
 ```html preview
 <ds-button href="http://8thlight.com" target="_blank">Link Button</ds-button>
 ```
+
+## API Documentation
 
 [component-metadata]

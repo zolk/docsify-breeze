@@ -34,11 +34,11 @@ window.$docsify.plugins.push((hook) => {
       const previewId = 'code-preview-' + id;
 
       const codeBlock = `
-        <div class="code-block ${isExpanded ? 'code-block--expanded' : ''}">
-          <div class="code-block__preview" id=${previewId}>
+        <div class="code-preview ${isExpanded ? 'code-preview--expanded' : ''}">
+          <div class="code-preview__preview" id=${previewId}>
             ${block.textContent}
             <div
-              class="code-block__resizer"
+              class="code-preview__resizer"
               aria-controls="${previewId}"
               role="slider"
               tabindex="0"
@@ -46,10 +46,10 @@ window.$docsify.plugins.push((hook) => {
               <svg width="11" height="16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M.586 3.414A2 2 0 1 0 3.414.586 2 2 0 0 0 .586 3.414ZM.586 9.414a2 2 0 1 0 2.828-2.828A2 2 0 0 0 .586 9.414ZM.586 15.414a2 2 0 1 0 2.828-2.828 2 2 0 0 0-2.828 2.828ZM7.586 3.414A2 2 0 1 0 10.414.586a2 2 0 0 0-2.828 2.828ZM7.586 9.414a2 2 0 1 0 2.828-2.828 2 2 0 0 0-2.828 2.828ZM7.586 15.414a2 2 0 1 0 2.828-2.828 2 2 0 0 0-2.828 2.828Z" fill="currentColor"/></svg>
             </div>
           </div>
-          <div class="code-block__source" id=${sourceId}>${pre.outerHTML}</div>
-          <div class="code-block__actions">
+          <div class="code-preview__source" id=${sourceId}>${pre.outerHTML}</div>
+          <div class="code-preview__actions">
             <button
-              class="code-block__toggle
+              class="code-preview__toggle
               aria-expanded="${isExpanded ? 'true' : 'false'}"
               aria-controls="${sourceId}"
             >
@@ -60,7 +60,7 @@ window.$docsify.plugins.push((hook) => {
                 ${isExpanded ? 'Hide ' : 'Show'} Code
               </span>
             </button>
-            <div class="code-block__actions-spacer"></div>
+            <div class="code-preview__actions-spacer"></div>
           </div>
         </div>
       `;
@@ -76,13 +76,13 @@ window.$docsify.plugins.push((hook) => {
   // Allow for resizing of preview box.
   // Move the copy plugin button to the actions row.
   hook.doneEach(() => {
-    [...document.querySelectorAll('.code-block__preview script')].map((script) =>
+    [...document.querySelectorAll('.code-preview__preview script')].map((script) =>
       runScript(script)
     );
 
-    [...document.querySelectorAll('.code-block')].map((block) => {
-      const resizer = block.querySelector('.code-block__resizer');
-      const preview = block.querySelector('.code-block__preview');
+    [...document.querySelectorAll('.code-preview')].map((block) => {
+      const resizer = block.querySelector('.code-preview__resizer');
+      const preview = block.querySelector('.code-preview__preview');
 
       let startX;
       let startWidth;
@@ -97,7 +97,7 @@ window.$docsify.plugins.push((hook) => {
       };
 
       const mouseDownHandler = (event) => {
-        resizer.classList.add('code-block__resizer--resizing');
+        resizer.classList.add('code-preview__resizer--resizing');
         event.preventDefault();
         getStart(event);
 
@@ -155,7 +155,7 @@ window.$docsify.plugins.push((hook) => {
       };
 
       const stopDrag = () => {
-        resizer.classList.remove('code-block__resizer--resizing');
+        resizer.classList.remove('code-preview__resizer--resizing');
         document.removeEventListener('mousemove', startDrag);
         document.removeEventListener('touchmove', startDrag);
         document.removeEventListener('mouseup', stopDrag);
@@ -170,13 +170,13 @@ window.$docsify.plugins.push((hook) => {
 
   // Toggle display of source code
   document.addEventListener('click', (event) => {
-    const button = event.target.closest('.code-block__toggle');
+    const button = event.target.closest('.code-preview__toggle');
 
     if (button) {
-      const codeBlock = event.target.closest('.code-block');
-      codeBlock.classList.toggle('code-block--expanded');
+      const codePreview = event.target.closest('.code-preview');
+      codePreview.classList.toggle('code-preview--expanded');
 
-      const isExpanded = codeBlock.classList.contains('code-block--expanded');
+      const isExpanded = codePreview.classList.contains('code-preview--expanded');
       event.target.setAttribute('aria-expanded', isExpanded);
       button.querySelector('span').innerText = `${isExpanded ? 'Hide ' : 'Show'} Code`;
     }

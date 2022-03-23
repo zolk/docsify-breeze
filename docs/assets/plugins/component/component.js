@@ -6,7 +6,7 @@
  * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-window.$docsify.plugins.push((hook) => {
+window.$docsify.plugins.push((hook, vm) => {
   // Handles all enhancements using data from the Custom Elements Manifest,
   // including the component headers and documentation tables.
   const TAG_PREFIX = 'ds-';
@@ -51,19 +51,19 @@ window.$docsify.plugins.push((hook) => {
       const hasParams = method.parameters?.length;
 
       result += `
-        <h3><code>${method.name}(${
+        <h4 class="component-method-signature"><code>${method.name}(${
         hasParams
           ? method.parameters
               .map((param) => `${param.name}${param.optional ? '?' : ''}: ${param.type.text}`)
               .join(', ')
           : ''
-      }) => ${method.return ? method.return.type.text : 'void'}</code></h3>
+      }) => ${method.return ? method.return.type.text : 'void'}</code></h4>
         <p>${method.description}</p>
 
         ${
           hasParams
             ? `
-              <dl class="method-list">
+              <dl class="component-method-options">
               ${method.parameters.map((param) =>
                 param.description
                   ? `<dt><code>${param.name}</code></dt><dd>${param.description}</dd>`
@@ -203,9 +203,35 @@ window.$docsify.plugins.push((hook) => {
     return getAllComponents(metadata).find((component) => component.tagName === tagName);
   }
 
+  function setTheme(newTheme) {
+    localStorage.setItem('theme', newTheme);
+    setPreviewTheme(newTheme);
+    vm.config.themes.forEach((theme) =>
+      document.body.classList.toggle(theme.class, theme.class === newTheme)
+    );
+  }
+
+  function getTheme() {
+    return localStorage.getItem('theme') || (vm.config.themes && vm.config.themes[0].class);
+  }
+
+  function setPreviewTheme(theme) {
+    const bgColor = vm.config.themes.find((t) => t.class === theme).previewBg;
+
+    const codePreviews = document.querySelectorAll('.code-preview__preview');
+    codePreviews.forEach((preview) => (preview.style.backgroundColor = bgColor));
+  }
+
+  hook.mounted(() => {
+    if (vm.config.themes) {
+      document.body.classList.add(getTheme());
+    }
+  });
+
   hook.beforeEach(async function (content, next) {
     const metadata = await customElements;
     const pathSegments = document.body.dataset.page.split('/');
+    const isComponentIndex = pathSegments[1] === 'components.md';
     const isComponentPage = pathSegments[1] === 'components';
     const existingHeader = document.querySelector('.content > .markdown-header');
 
@@ -213,63 +239,83 @@ window.$docsify.plugins.push((hook) => {
       existingHeader.remove();
     }
 
+    if (isComponentIndex) {
+      content = content.replace(/\[component-card:(.+):([a-z-]+)\]/g, (_, name, tag) => {
+        const componentMeta = getComponent(metadata, TAG_PREFIX + tag);
+
+        const result = `
+          <li class="component-card">
+            <a href="/components/${tag}">
+              <div class="component-card__image">
+                <img src="/assets/images/component-cards/${tag}.svg">
+              </div>
+              <div class="component-card__header">
+                <h2>${name}</h2>
+                ${
+                  componentMeta?.status &&
+                  `<div class="component-status component-status--${componentMeta?.status}">${componentMeta?.status}</div>`
+                }
+              </div>
+              <p>${componentMeta.description}</p>
+            </a>
+          </li>`;
+
+        return result.replace(/^ +| +$/gm, '');
+      });
+    }
+
     if (isComponentPage) {
-      const baseTagName = pathSegments[2];
-      const subPage = pathSegments[3];
+      const file = pathSegments[2];
+      const baseTagName = file.split('.')[0];
       const componentMeta = getComponent(metadata, TAG_PREFIX + baseTagName);
-      const usageDoc = await fetch(`/components/${baseTagName}/usage.md`, {
-        method: 'HEAD',
-      }).then((res) => res);
+
+      //
+      // Create theme selector
+      //
+      const themeSelect = document.createElement('select');
+      themeSelect.classList.add('theme-switcher');
+      themeSelect.id = 'theme-switcher__select';
+      vm.config.themes?.forEach(
+        (theme) => (themeSelect.innerHTML += `<option value=${theme.class}>${theme.name}</option`)
+      );
+      themeSelect.value = getTheme();
+      themeSelect.onchange = () => {
+        setTheme(themeSelect.value);
+      };
 
       //
       // Insert component header
       //
       content = content.replace(/^#{1} ([a-zA-Z]+)/, (_, title) => {
-        let usageLink = '';
-
-        if (usageDoc.ok) {
-          usageLink = `
-            <li ${subPage === 'usage.md' ? 'class="active"' : ''}>
-              <a href="/components/${baseTagName}/usage">Usage</a>
-            </li>
-          `;
-        }
-
         const header = document.createElement('header');
         header.classList.add('markdown-header', 'component-header');
         header.innerHTML = `
-          <div class="section">Components</div>
-          <div class="header-status">
+          <div class="component-title">
             <h1>${title}</h1>
             ${
               componentMeta?.status &&
-              `<div class="status status--${componentMeta?.status}">${componentMeta?.status}</div>`
+              `<div class="component-status component-status--${componentMeta?.status}">${componentMeta?.status}</div>`
+            }
+            ${
+              vm.config.themes
+                ? `<div class="theme-switcher">
+                  <label for="theme-switcher__select">Select Theme</label>
+                  <span class="theme-switcher__icon"></span>
+                </div>`
+                : ''
             }
           </div>
-          <nav>
-            <ul class="header-nav">
-              <li ${subPage === 'code.md' ? 'class="active"' : ''}>
-                <a href="/components/${baseTagName}">Code</a>
-              </li>
-              ${usageLink}
-            </ul>
-          </nav>
         `;
+
+        if (vm.config.themes) {
+          header.querySelector('.theme-switcher').append(themeSelect);
+        }
 
         const content = document.querySelector('.content');
         content.prepend(header);
 
         const dummyHeader = `## Overview`;
         return dummyHeader.replace(/^ +| +$/gm, '');
-      });
-
-      //
-      // Handle headline
-      //
-      content = content.replace(/^#> (.+)/gm, (_, headline) => {
-        const result = `<p class="headline">${headline}</p>`;
-
-        return result.replace(/^ +| +$/gm, '');
       });
 
       //
@@ -290,42 +336,42 @@ window.$docsify.plugins.push((hook) => {
 
         if (props?.length) {
           result += `
-          ## Properties
+          ### Properties
           ${generatePropertiesTable(props)}
         `;
         }
 
         if (methods?.length) {
           result += `
-          ## Methods
+          ### Methods
           ${generateMethodsList(methods)}
         `;
         }
 
         if (componentMeta.events?.length) {
           result += `
-          ## Events
+          ### Events
           ${generateEventsTable(componentMeta.events)}
         `;
         }
 
         if (componentMeta.slots?.length) {
           result += `
-          ## Slots
+          ### Slots
           ${generateSlotsTable(componentMeta.slots)}
         `;
         }
 
         if (componentMeta.cssParts?.length) {
           result += `
-          ## CSS Parts
+          ### CSS Parts
           ${generateCssPartsTable(componentMeta.cssParts)}
         `;
         }
 
         if (componentMeta.cssProperties?.length) {
           result += `
-          ## CSS Custom Properties
+          ### CSS Custom Properties
           ${generateCssPropertiesTable(componentMeta.cssProperties)}
         `;
         }
@@ -337,14 +383,17 @@ window.$docsify.plugins.push((hook) => {
     next(content);
   });
 
-  // Wrap tables for responsive horizontal scrolling
   hook.doneEach(function () {
+    // Set code previews to use the configured background color
+    setPreviewTheme(getTheme());
+
+    // Wrap tables for responsive horizontal scrolling
     const content = document.querySelector('.content');
     const tables = [...content.querySelectorAll('table')];
 
     tables.map((table) => {
       table.outerHTML = `
-        <div class="table-wrap">
+        <div class="component-meta-table">
           ${table.outerHTML}
         </div>
       `;

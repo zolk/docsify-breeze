@@ -4,6 +4,8 @@ import styles from './card.styles';
 import baseStyles from '../../lib/base-styles';
 
 /**
+ * Cards can be used to group related subjects in a container.
+ *
  * @status ready
  *
  * @slot - Body of the card.

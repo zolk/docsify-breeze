@@ -1,0 +1,100 @@
+@import url('../../theme/tokens.css');
+
+.code-preview__preview {
+  position: relative;
+  min-width: 20rem;
+  max-width: 100%;
+  border: 1px solid var(--color-neutral-light);
+  padding: 2rem calc(2rem + 20px) 2rem 2rem;
+  border-radius: 2px;
+}
+
+.code-preview__resizer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--color-neutral-lighter);
+}
+
+.code-preview__resizer {
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  bottom: -1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  background-color: var(--color-neutral-lightest);
+  border: 1px solid var(--color-neutral-light);
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+  color: var(--color-blue-light);
+  cursor: grab;
+  user-select: none;
+}
+
+.code-preview__resizer:hover {
+  background-color: var(--color-neutral-lighter);
+  border-color: var(--color-neutral-medium);
+}
+
+.code-preview__resizer--resizing {
+  cursor: grabbing;
+}
+
+.code-preview__source {
+  display: none;
+}
+
+.code-preview--expanded .code-preview__source {
+  display: block;
+}
+
+.code-preview__source pre {
+  position: relative;
+  margin: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.code-preview__source pre::after {
+  display: none;
+}
+
+.code-preview__actions {
+  display: flex;
+  padding: 0.3rem 0;
+  background-color: var(--content-background-color);
+}
+
+.code-preview__actions .code-preview__actions-spacer {
+  flex-grow: 1;
+}
+
+.code-preview__actions button {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  background: none;
+  border: none;
+  color: var(--color-blue-light);
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.75rem;
+  letter-spacing: -0.02em;
+}
+
+.code-preview--expanded .code-preview__toggle svg {
+  transform: rotate(180deg);
+}
+
+.code-preview__actions button svg {
+  width: 0.75rem;
+}
+
+.code-preview__actions button:hover {
+  color: var(--content-color);
+}

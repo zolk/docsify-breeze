@@ -6,6 +6,8 @@ import styles from './button.styles';
 import baseStyles from '../../lib/base-styles';
 
 /**
+ * Buttons perform a single, clearly communicated action.
+ *
  * @status ready
  *
  * @slot - Text of the button.

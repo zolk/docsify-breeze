@@ -88,6 +88,7 @@ mkdirp.sync(outdir);
     bs.init({
       single: true,
       notify: false,
+      ghostMode: false,
       logPrefix: 'Dev Server',
       server: {
         baseDir: 'docs',
