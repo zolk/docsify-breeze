@@ -98,3 +98,15 @@
 .code-preview__actions button:hover {
   color: var(--content-color);
 }
+
+.example {
+  color: var(--content-color);
+}
+
+.example .code-preview__preview {
+  height: 100vh;
+}
+
+.example .code-preview__resizer {
+  display: none;
+}

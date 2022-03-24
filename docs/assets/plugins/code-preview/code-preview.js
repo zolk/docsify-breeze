@@ -6,7 +6,7 @@
  * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-window.$docsify.plugins.push((hook) => {
+window.$docsify.plugins.push((hook, vm) => {
   let id = 0;
 
   function runScript(script) {
@@ -31,15 +31,25 @@ window.$docsify.plugins.push((hook) => {
       const pre = block.closest('pre');
       const isExpanded = block.classList.contains('expanded');
       const sourceId = 'code-source-' + id;
-      const previewId = 'code-preview-' + id;
+      const lastClass = [...block.classList].pop();
+
+      const slug = () => {
+        if (['preview', 'expanded'].includes(lastClass)) {
+          return id;
+        } else {
+          return lastClass;
+        }
+      };
+
+      const exampleId = 'example-' + slug();
 
       const codeBlock = `
         <div class="code-preview ${isExpanded ? 'code-preview--expanded' : ''}">
-          <div class="code-preview__preview" id=${previewId}>
+          <div class="code-preview__preview" id=${exampleId}>
             ${block.textContent}
             <div
               class="code-preview__resizer"
-              aria-controls="${previewId}"
+              aria-controls="${exampleId}"
               role="slider"
               tabindex="0"
             >
@@ -61,6 +71,9 @@ window.$docsify.plugins.push((hook) => {
               </span>
             </button>
             <div class="code-preview__actions-spacer"></div>
+            <span>
+              <a href="?example=${slug()}" target="_blank">Open in New Window</a>
+            </span>
           </div>
         </div>
       `;
@@ -166,6 +179,31 @@ window.$docsify.plugins.push((hook) => {
       resizer.addEventListener('touchstart', mouseDownHandler);
       resizer.addEventListener('keydown', keyDownHandler);
     });
+  });
+
+  hook.mounted(function () {
+    if (vm.route.query.example) {
+      const overlay = document.createElement('div');
+      overlay.style.position = 'absolute';
+      overlay.style.top = 0;
+      overlay.style.left = 0;
+      overlay.style.width = '100vw';
+      overlay.style.height = '100vh';
+      overlay.style.backgroundColor = 'white';
+
+      document.body.appendChild(overlay);
+    }
+  });
+
+  hook.ready(function () {
+    const exampleId = vm.route.query.example;
+
+    if (exampleId) {
+      const preview = document.querySelector(`#example-${exampleId}`);
+      document.body.classList.add('example');
+      document.body.innerHTML = '';
+      document.body.appendChild(preview);
+    }
   });
 
   // Toggle display of source code
