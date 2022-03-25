@@ -27,4 +27,4 @@ jobs:
       - name: Run Percy Snapshot
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
-        run: npm start & sleep 5 && npx percy snapshot snapshots.js
+        run: npm start & sleep 5 && npx percy snapshot scripts/percy/snapshots.js
