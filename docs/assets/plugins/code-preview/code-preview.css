@@ -74,7 +74,8 @@
   flex-grow: 1;
 }
 
-.code-preview__actions button {
+.code-preview__actions button,
+.code-preview__actions a {
   display: flex;
   align-items: center;
   gap: 0.2rem;
@@ -85,18 +86,23 @@
   font-weight: 500;
   font-size: 0.75rem;
   letter-spacing: -0.02em;
+  text-decoration: none;
 }
 
 .code-preview--expanded .code-preview__toggle svg {
   transform: rotate(180deg);
 }
 
-.code-preview__actions button svg {
+.code-preview__actions button svg,
+.code-preview__actions a svg {
   width: 0.75rem;
 }
 
-.code-preview__actions button:hover {
+.code-preview__actions button:hover,
+.code-preview__actions a:hover {
+  background-color: transparent;
   color: var(--content-color);
+  text-decoration: none;
 }
 
 .example {
