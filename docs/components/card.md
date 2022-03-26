@@ -2,7 +2,7 @@
 
 #> Cards can be used to group related subjects in a container.
 
-```html preview expanded
+```html preview expanded default
 <ds-card>
   <div slot="header">My Card</div>
   Card content goes here.
@@ -15,7 +15,7 @@
 
 The `header` slot can be omitted, if desired.
 
-```html preview
+```html preview without-header
 <ds-card> An even simpler card without a header. </ds-card>
 ```
 
@@ -23,7 +23,7 @@ The `header` slot can be omitted, if desired.
 
 Use the `--border-radius` CSS property to modify the card's border radius.
 
-```html preview
+```html preview border-radius
 <ds-card style="--border-radius: 20px;">
   <div slot="header">My Card</div>
   Card content goes here.

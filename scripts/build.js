@@ -6,7 +6,7 @@ import del from 'del';
 import esbuild from 'esbuild';
 import nested from 'postcss-nested';
 import postCss from './plugins/esbuild-plugin-postcss.js';
-import glob from 'fast-glob';
+import { globby } from 'globby';
 import mkdirp from 'mkdirp';
 import postCssSyntax from '@stylelint/postcss-css-in-js';
 import { execSync } from 'child_process';
@@ -47,9 +47,9 @@ mkdirp.sync(outdir);
         // Main Entry Point
         './src/index.ts',
         // Individual Components
-        ...(await glob('./src/components/**/!(*.(styles|test)).ts')),
+        ...(await globby('./src/components/**/!(*.(styles|test)).ts')),
         // Global Styles
-        ...(await glob('./src/styles/*.css')),
+        ...(await globby('./src/styles/*.css')),
       ],
       outdir,
       chunkNames: 'chunks/[name].[hash]',

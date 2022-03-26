@@ -6,7 +6,7 @@
  * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-window.$docsify.plugins.push((hook) => {
+window.$docsify.plugins.push((hook, vm) => {
   let id = 0;
 
   function runScript(script) {
@@ -31,15 +31,25 @@ window.$docsify.plugins.push((hook) => {
       const pre = block.closest('pre');
       const isExpanded = block.classList.contains('expanded');
       const sourceId = 'code-source-' + id;
-      const previewId = 'code-preview-' + id;
+      const lastClass = [...block.classList].pop();
+
+      const slug = () => {
+        if (['preview', 'expanded'].includes(lastClass)) {
+          return id;
+        } else {
+          return lastClass;
+        }
+      };
+
+      const exampleId = 'example-' + slug();
 
       const codeBlock = `
         <div class="code-preview ${isExpanded ? 'code-preview--expanded' : ''}">
-          <div class="code-preview__preview" id=${previewId}>
+          <div class="code-preview__preview" id=${exampleId}>
             ${block.textContent}
             <div
               class="code-preview__resizer"
-              aria-controls="${previewId}"
+              aria-controls="${exampleId}"
               role="slider"
               tabindex="0"
             >
@@ -53,7 +63,7 @@ window.$docsify.plugins.push((hook) => {
               aria-expanded="${isExpanded ? 'true' : 'false'}"
               aria-controls="${sourceId}"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
               </svg>
               <span>
@@ -61,6 +71,12 @@ window.$docsify.plugins.push((hook) => {
               </span>
             </button>
             <div class="code-preview__actions-spacer"></div>
+            <span>
+              <a href="?example=${slug()}" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 448 512"><path d="M256 64c0-17.67 14.3-32 32-32h127.1c5.2 0 9.4.86 13.1 2.43 2.9 1.55 7.3 3.84 10.4 6.87 0 .05 0 .1.1.14 6.2 6.22 8.4 14.34 9.3 22.46V192c0 17.7-14.3 32-32 32s-32-14.3-32-32v-50.7L214.6 310.6c-12.5 12.5-32.7 12.5-45.2 0s-12.5-32.7 0-45.2L338.7 96H288c-17.7 0-32-14.33-32-32zM0 128c0-35.35 28.65-64 64-64h96c17.7 0 32 14.33 32 32 0 17.7-14.3 32-32 32H64v288h288v-96c0-17.7 14.3-32 32-32s32 14.3 32 32v96c0 35.3-28.7 64-64 64H64c-35.35 0-64-28.7-64-64V128z" fill="currentColor"/></svg>
+                Open in New Window
+              </a>
+            </span>
           </div>
         </div>
       `;
@@ -166,6 +182,31 @@ window.$docsify.plugins.push((hook) => {
       resizer.addEventListener('touchstart', mouseDownHandler);
       resizer.addEventListener('keydown', keyDownHandler);
     });
+  });
+
+  hook.mounted(function () {
+    if (vm.route.query.example) {
+      const overlay = document.createElement('div');
+      overlay.style.position = 'absolute';
+      overlay.style.top = 0;
+      overlay.style.left = 0;
+      overlay.style.width = '100vw';
+      overlay.style.height = '100vh';
+      overlay.style.backgroundColor = 'white';
+
+      document.body.appendChild(overlay);
+    }
+  });
+
+  hook.ready(function () {
+    const exampleId = vm.route.query.example;
+
+    if (exampleId) {
+      const preview = document.querySelector(`#example-${exampleId}`);
+      document.body.classList.add('example');
+      document.body.innerHTML = '';
+      document.body.appendChild(preview);
+    }
   });
 
   // Toggle display of source code

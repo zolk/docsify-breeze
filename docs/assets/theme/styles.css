@@ -709,7 +709,7 @@ body.close .content {
     left: 0;
   }
 
-  .code-block {
+  .code-preview {
     margin-bottom: 1rem;
     max-width: 100%;
   }
@@ -717,10 +717,11 @@ body.close .content {
   .sidebar,
   .sidebar-toggle,
   .content > *:not(.markdown-section),
-  .markdown-section > *:not(.code-block):not(h3[id]),
-  .code-block .code-block__source,
-  .code-block .code-block__preview .code-block__resizer,
-  .code-block .code-block__actions {
-    display: none;
+  .markdown-section > *:not(.code-preview):not(h3[id]),
+  .code-preview .code-preview__source,
+  .code-preview--expanded .code-preview__source,
+  .code-preview .code-preview__preview .code-preview__resizer,
+  .code-preview .code-preview__actions {
+    display: none !important;
   }
 }
