@@ -1,7 +1,7 @@
 # Customization
 
-While components offer various styling customization options via
-properties, there may be times when you need more advanced styling control.
+While components offer various styling customization options via properties,
+there may be times when you need more advanced styling control.
 
 ## Shadow DOM Limitations
 
@@ -48,8 +48,7 @@ ds-button {
 ```
 
 ```html
-// Setting a property inline 
-<ds-button style="--border-radius: 240px;">Pill Button</ds-button>
+// Setting a property inline <ds-button style="--border-radius: 240px;">Pill Button</ds-button>
 ```
 
 Either of these methods will result in a pill-shaped button.

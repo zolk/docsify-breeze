@@ -18,10 +18,22 @@
   box-shadow: 0 -1px 0 white;
 }
 
-.pagination-item--previous {
-  margin-left: 4.25rem;
+.pagination-item--previous,
+.pagination-item--next {
+  padding: 0 var(--content-padding-horizontal-small);
 }
 
-.pagination-item--next {
-  margin-right: 4.25rem;
+@media screen and (min-width: 48rem) {
+  .pagination-item--previous,
+  .pagination-item--next {
+    padding: 0 var(--content-padding-horizontal-large);
+  }
+}
+
+.pagination-item-label {
+  margin-bottom: 0.3rem;
+}
+
+.pagination-item-title {
+  font-weight: 600;
 }
