@@ -13,7 +13,7 @@ module.exports = async () => {
 
     lines.map((line) => {
       if (line.startsWith('```html preview')) {
-        const slug = line.match(/\b(\w+)$/g);
+        const slug = line.match(/\b([a-z-]*)$/g);
         slugs.push(slug);
       }
     });

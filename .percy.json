@@ -1,8 +1,8 @@
 {
   "version": 2,
   "snapshot": {
-    "widths": [375, 960],
-    "min-height": 0,
+    "widths": [375, 1024],
+    "min-height": 500,
     "enable-javascript": true
   }
 }
