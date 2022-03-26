@@ -1,7 +1,7 @@
 import autoprefixer from 'autoprefixer';
 import browserSync from 'browser-sync';
 import commandLineArgs from 'command-line-args';
-import csswring from 'csswring';
+import cssnano from 'cssnano';
 import del from 'del';
 import esbuild from 'esbuild';
 import nested from 'postcss-nested';
@@ -63,7 +63,13 @@ mkdirp.sync(outdir);
           filter: /\.ts/,
           config: {
             syntax: postCssSyntax,
-            plugins: [autoprefixer, nested, csswring],
+            plugins: [
+              autoprefixer,
+              nested,
+              cssnano({
+                preset: 'cssnano-preset-lite',
+              }),
+            ],
           },
         }),
       ],
