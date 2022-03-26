@@ -528,12 +528,16 @@ body.close .content {
   position: relative;
   background-color: var(--color-neutral-lighter);
   border-radius: 2px;
-  padding: 1rem;
 }
 
 .markdown-section pre code {
+  display: block;
+  margin: 0;
+  padding: 1rem;
+  overflow: auto;
   background-color: transparent;
   border: none;
+  tab-size: 2;
 }
 
 .markdown-section kbd {
