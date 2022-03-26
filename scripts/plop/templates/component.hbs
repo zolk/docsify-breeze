@@ -1,6 +1,6 @@
 import { LitElement, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import styles from './{{ name }}.styles';
+import styles from './{{ tag }}.styles';
 import baseStyles from '../../lib/base-styles';
 
 /**
@@ -14,8 +14,8 @@ import baseStyles from '../../lib/base-styles';
  *
  * @cssproperty --example - An example CSS custom property.
  */
-@customElement('ds-{{ name }}')
-export default class Ds{{ properCase name }} extends LitElement {
+@customElement('{{ tag}}')
+export default class Ds{{ tagToDsTitle tag }} extends LitElement {
   static styles = [baseStyles, styles];
 
   /** An example property. */
@@ -23,7 +23,7 @@ export default class Ds{{ properCase name }} extends LitElement {
 
   render() {
     return html`
-      <div part="base" class="{{ name }}">
+      <div part="base" class="{{ noPrefix tag }}">
         <slot></slot>
       </div>
     `;
@@ -32,6 +32,6 @@ export default class Ds{{ properCase name }} extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'ds-{{ name }}': Ds{{ properCase name }};
+    '{{ tag }}': Ds{{ tagToDsTitle tag }};
   }
 }

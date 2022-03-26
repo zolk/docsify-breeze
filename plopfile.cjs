@@ -1,12 +1,32 @@
-/* eslint-disable sort-keys */
 module.exports = function (plop) {
+  plop.setHelper('noPrefix', (tag) => tag.replace(/^ds-/, ''));
+
+  plop.setHelper('tagToTitle', (tag) => {
+    const withoutPrefix = plop.getHelper('noPrefix');
+    const titleCase = plop.getHelper('titleCase');
+    return titleCase(withoutPrefix(tag));
+  });
+
+  plop.setHelper('tagToDsTitle', (tag) => {
+    const tagToTitle = plop.getHelper('tagToTitle');
+    return 'Ds' + tagToTitle(tag);
+  });
+
   plop.setGenerator('component', {
     description: 'create files for a new component',
     prompts: [
       {
         type: 'input',
-        name: 'name',
-        message: 'tag name (without ds-* prefix)',
+        name: 'tag',
+        message: 'tag name (e.g. ds-button)',
+        validate: (value) => {
+          // Starts with ds- and include only a-z + dashes
+          if (!/^ds-[a-z-+]+/.test(value)) {
+            return false;
+          }
+
+          return true;
+        },
       },
     ],
     actions: [

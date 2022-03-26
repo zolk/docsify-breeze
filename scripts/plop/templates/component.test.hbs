@@ -1,11 +1,17 @@
 import { fixture, html, expect } from '@open-wc/testing';
-import Ds{{ properCase name }} from './{{ name }}';
-import './{{ name }}';
+import {{ tagToDsTitle tag }} from "./{{ tag }}";
+import "./{{ tag }}";
 
-describe('ds-{{ name }}', () => {
+describe('{{ tag }}', () => {
   it('renders', async () => {
-    const el = await fixture<Ds{{ properCase name }}>(html`<ds-{{ name }}></ds-{{ name }}>`);
+    const el = await fixture<Ds{{ tagToEpTitle tag }}>(html`<{{ tag }}></{{ tag }}>`);
 
     expect(el).to.exist;
+  });
+
+  it("is accessible", async () => {
+    const el = await fixture<{{ tagToDsTitle tag }}>(html`<{{ tag }}></{{ tag }}>`);
+
+    await expect(el).shadowDom.to.be.accessible();
   });
 });
