@@ -500,6 +500,10 @@ body.close .content {
   color: var(--body-background-color);
 }
 
+.markdown-section button {
+  font-family: var(--font-default);
+}
+
 .markdown-section a {
   color: var(--body-background-color);
   font-weight: 500;

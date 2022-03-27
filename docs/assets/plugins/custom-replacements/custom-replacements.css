@@ -35,7 +35,8 @@ p.page-headline {
 
 .markdown-section a.page-card:hover {
   background-color: transparent;
-  border-color: var(--color-blue-medium);
+  border-color: var(--color-blue-lightest);
+  box-shadow: 0 0 0 1px var(--color-blue-lightest);
 }
 
 .page-card h2 {

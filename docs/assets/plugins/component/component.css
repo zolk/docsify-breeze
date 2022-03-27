@@ -233,7 +233,8 @@
 
 .markdown-section .component-card a:hover {
   background-color: white;
-  border: 1px solid var(--color-blue-medium);
+  border-color: var(--color-blue-lightest);
+  box-shadow: 0 0 0 1px var(--color-blue-lightest);
 }
 
 .component-card__image {

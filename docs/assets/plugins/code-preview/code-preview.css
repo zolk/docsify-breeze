@@ -66,7 +66,7 @@
 
 .code-preview__actions {
   display: flex;
-  padding: 0.3rem 0;
+  padding: 0.3rem 0.1rem;
   background-color: var(--content-background-color);
 }
 
@@ -79,6 +79,8 @@
   display: flex;
   align-items: center;
   gap: 0.2rem;
+  margin: 0;
+  padding: 0;
   background: none;
   border: none;
   color: var(--color-blue-light);
@@ -86,6 +88,7 @@
   font-weight: 500;
   font-size: 0.75rem;
   letter-spacing: -0.02em;
+  line-height: 1.4;
   text-decoration: none;
 }
 
