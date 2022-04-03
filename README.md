@@ -1,3 +1,5 @@
+[![This project is using Percy.io for visual regression testing.](https://percy.io/static/images/percy-badge.svg)](https://percy.io/9683090d/ds-starter) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 # DS Starter Kit
 
 A toolkit for building and documenting design systems built with Web Components.
