@@ -6,7 +6,7 @@ Web Components are a set of web platform APIs that allow for fully encapsulated
 reusable custom elements. Web Components consist of three separate APIs:
 
 - **Custom elements.** The ability to create custom HTML elements, such as
-  `ep-button`. All custom elements must include a dash in their name; thus,
+  `ds-button`. All custom elements must include a dash in their name; thus,
   it is common practice to include a prefix in the tag name.
 - **Shadow DOM.** Allows Web Components to live in an encapsulated “shadow” DOM
   rendered separately from the main DOM. Shadow DOM allows for complete

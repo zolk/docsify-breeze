@@ -63,7 +63,7 @@ Many components offer CSS shadow parts that work with the
 for more advanced customization. Shadow parts allow you to target the internals
 of a component and apply any arbitrary CSS properties.
 
-The following example uses shadow parts available as part of `ep-button` to
+The following example uses shadow parts available as part of `ds-button` to
 increase the icon size and modify the label to use lowercase text.
 
 ```html
