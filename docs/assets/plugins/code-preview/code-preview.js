@@ -1,5 +1,17 @@
 /* code-preview plugin for Docsify
  *
+ * Usage instructions:
+ *
+ * ```html preview expanded button
+ * <ds-button>Button</ds-button>
+ * ```
+ *
+ * List of tags:
+ * (1 - html) The language of the snippet.
+ * (2 - preview) Enables parsing by this plugin.
+ * (3 - expanded) Optional. Expands the code source by default.
+ * (4 - slug) Slug for loading the preview in an isolated window.
+ *
  * Copyright (c) 2021 Kevin Zolkiewicz.
  * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
  * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
@@ -95,7 +107,6 @@ window.$docsify.plugins.push((hook, vm) => {
 
   // Execute script tags.
   // Allow for resizing of preview box.
-  // Move the copy plugin button to the actions row.
   hook.doneEach(() => {
     [...document.querySelectorAll('.code-preview__preview script')].map((script) =>
       runScript(script)
@@ -189,6 +200,7 @@ window.$docsify.plugins.push((hook, vm) => {
     });
   });
 
+  // Prepare to load a preview in an isolated window.
   hook.mounted(function () {
     if (vm.route.query.example) {
       const overlay = document.createElement('div');
@@ -203,6 +215,7 @@ window.$docsify.plugins.push((hook, vm) => {
     }
   });
 
+  // Load the preview in an isolated window.
   hook.ready(function () {
     const exampleId = vm.route.query.example;
 
