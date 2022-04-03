@@ -36,7 +36,7 @@ documenting, and testing Web Components:
 - [Plop](https://plopjs.com/) for quickly spinning up new components.
 </div>
 
-### Who's it for?
+## Who's it for?
 
 DS Starter Kit is designed for organizations that are looking to create their
 own bespoke component library or design system that uses Web Components. It
