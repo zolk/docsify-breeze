@@ -1,6 +1,6 @@
 # DS Starter Kit
 
-A toolkit for building and documenting design systems.
+A toolkit for building and documenting design systems built with Web Components.
 
 ## What's it do?
 
