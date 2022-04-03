@@ -1,14 +1,9 @@
-import autoprefixer from 'autoprefixer';
 import browserSync from 'browser-sync';
 import commandLineArgs from 'command-line-args';
-import cssnano from 'cssnano';
 import del from 'del';
 import esbuild from 'esbuild';
-import nested from 'postcss-nested';
-import postCss from './plugins/esbuild-plugin-postcss.js';
 import { globby } from 'globby';
 import mkdirp from 'mkdirp';
-import postCssSyntax from '@stylelint/postcss-css-in-js';
 import { execSync } from 'child_process';
 
 const bs = browserSync.create();
@@ -58,21 +53,7 @@ mkdirp.sync(outdir);
       splitting: true,
       minify: serve,
       external: serve ? [] : ['lit'],
-      plugins: [
-        postCss({
-          filter: /\.ts/,
-          config: {
-            syntax: postCssSyntax,
-            plugins: [
-              autoprefixer,
-              nested,
-              cssnano({
-                preset: 'cssnano-preset-lite',
-              }),
-            ],
-          },
-        }),
-      ],
+      plugins: [],
       watch: {
         onRebuild(err) {
           if (err) console.error('🚨 Build failure:', err);

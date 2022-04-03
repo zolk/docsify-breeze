@@ -15,19 +15,19 @@ export default css`
     vertical-align: middle;
     transition: var(--ds-transition-fast) all;
     cursor: pointer;
+  }
 
-    &:focus {
-      outline: none;
-    }
+  .button:focus {
+    outline: none;
+  }
 
-    &.button--disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
+  .button--disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 
-      * {
-        pointer-events: none;
-      }
-    }
+  .button--disabled * {
+    pointer-events: none;
   }
 
   /*
