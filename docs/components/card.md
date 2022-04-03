@@ -1,7 +1,5 @@
 # Card
 
-#> Cards can be used to group related subjects in a container.
-
 ```html preview expanded default
 <ds-card>
   <div slot="header">My Card</div>

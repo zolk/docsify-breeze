@@ -319,8 +319,12 @@ window.$docsify.plugins.push((hook, vm) => {
         const content = document.querySelector('.content');
         content.prepend(header);
 
-        const dummyHeader = `## Overview`;
-        return dummyHeader.replace(/^ +| +$/gm, '');
+        const headline = `
+          ## Overview
+
+          #> ${componentMeta.description}
+        `;
+        return headline.replace(/^ +| +$/gm, '');
       });
 
       //

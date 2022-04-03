@@ -1,7 +1,5 @@
 # Button
 
-#> Buttons perform a single, clearly communicated action.
-
 ```html preview expanded default
 <ds-button>Button</ds-button>
 ```
