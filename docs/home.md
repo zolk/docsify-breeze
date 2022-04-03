@@ -38,7 +38,6 @@ documenting, and testing Web Components:
 - [Lit](https://lit.dev/) for simple and fast Web Components.
 - [esbuild](https://esbuild.github.io/) for blazing fast bundling.
 - [TypeScript](https://www.typescriptlang.org/) for an improved developer experience.
-- [PostCSS](https://postcss.org/) for enhancing CSS with autoprefixer and nesting support.
 - [Web Test Runner](https://modern-web.dev/docs/test-runner/overview/) for unit testing.
 - [Percy](https://percy.io/) for visual testing.
 - [Custom Elements Manifest Analyzer](https://custom-elements-manifest.open-wc.org/analyzer/getting-started/) for automatic documentation of class members.
