@@ -110,8 +110,8 @@
 }
 
 .example {
-  color: var(--content-color);
   background-color: var(--color-white);
+  color: var(--content-color);
 }
 
 .example:not(.controls) .code-preview__resizer {
@@ -123,16 +123,16 @@
 }
 
 .controls {
-  background-color: var(--color-neutral-lightest);
+  overflow: hidden;
   width: 100%;
   max-height: 100vh;
-  overflow: hidden;
   display: grid;
   grid-template-columns: 1fr 1.5fr;
   grid-template-rows: 1fr 1.2fr;
   grid-template-areas:
     'preview preview'
     'code controls';
+  background-color: var(--color-neutral-lightest);
 }
 
 .controls .code-preview__preview {
@@ -150,12 +150,12 @@
 }
 
 .controls__code {
+  overflow: scroll;
+  position: relative;
   grid-area: code;
   background-color: var(--color-neutral-lighter);
   border-top: 1px solid var(--color-neutral-light);
   font-size: 0.875rem;
-  position: relative;
-  overflow: scroll;
 }
 
 .controls__code pre {
@@ -163,7 +163,6 @@
   width: 100%;
   height: 100%;
   margin: 0;
-  padding: 3rem 1.5rem;
   padding: 3rem 1.5rem;
 }
 
@@ -231,14 +230,14 @@
 
 .controls__group input[type='text'],
 .controls__group select {
-  background-color: var(--color-white);
+  width: 100%;
+  min-width: 15rem;
   padding: 0.3rem 0.4rem;
+  background-color: var(--color-white);
   border: 1px solid var(--color-neutral-dark);
   border-radius: 3px;
   font-family: var(--font-default);
   font-size: 0.8rem;
-  width: 100%;
-  min-width: 15rem;
 }
 
 .controls__group select {
@@ -256,9 +255,9 @@
 
 .controls__group label span {
   position: absolute;
-  left: -10000px;
   top: auto;
+  left: -10000px;
+  overflow: hidden;
   width: 1px;
   height: 1px;
-  overflow: hidden;
 }
