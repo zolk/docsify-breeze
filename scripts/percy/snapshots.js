@@ -27,7 +27,7 @@ module.exports = async () => {
     const filename = path.basename(file, '.md');
 
     slugs.map((slug) => {
-      const url = `http://localhost:3000/components/${filename}?example=${slug}`;
+      const url = `http://localhost:3000/components/${filename}?preview=${slug}`;
       snapshots.push({ name: `${filename}/${slug}`, url: url });
     });
   });
