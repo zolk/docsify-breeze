@@ -1,6 +1,6 @@
 # Button
 
-```html preview expanded default
+```html preview expanded controls default
 <ds-button>Button</ds-button>
 ```
 
@@ -41,7 +41,7 @@ Use the `--border-radius` CSS property to modify the button's border radius.
 
 Use the `disabled` attribute to disable the button and suppress all click events.
 
-```html preview disabled
+```html preview controls disabled
 <ds-button disabled>Disabled Button</ds-button>
 ```
 

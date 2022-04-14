@@ -517,7 +517,8 @@ body.close .content {
   text-decoration-color: var(--body-background-color);
 }
 
-.markdown-section code {
+.markdown-section code,
+.controls__inputs code {
   display: inline-block;
   margin: 0.1rem;
   padding: 0.1rem 0.3rem;

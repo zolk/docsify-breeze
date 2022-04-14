@@ -21,7 +21,7 @@ export default css`
     cursor: pointer;
   }
 
-  .button:hover {
+  .button:hover:not(.button--disabled) {
     background-color: var(--background-color-hover);
     border-color: var(--border-color-hover);
   }

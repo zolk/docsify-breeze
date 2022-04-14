@@ -10,7 +10,8 @@
  * (1 - html) The language of the snippet.
  * (2 - preview) Enables parsing by this plugin.
  * (3 - expanded) Optional. Expands the code source by default.
- * (4 - slug) Slug for loading the preview in an isolated window.
+ * (4 - controls) Optional. Enable the controls feature for this snippet.
+ * (5 - slug) Slug for loading the preview in an isolated window.
  *
  * Copyright (c) 2021 Kevin Zolkiewicz.
  * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
@@ -23,8 +24,163 @@
  * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
+import { customElements, getComponent, TAG_PREFIX } from '../shared/cem.js';
+import { copyButtonTemplate, handleCopyClick } from '../shared/copy-code.js';
+import { kebabToTitleCase } from '../shared/utilities.js';
+
 window.$docsify.plugins.push((hook, vm) => {
   let id = 0;
+  let tagName;
+
+  function highlightCode(element) {
+    const snippet = element.outerHTML.replace(/(="")/g, '');
+    return window.Prism.highlight(snippet, window.Prism.languages.html, 'html');
+  }
+
+  function renderControl(prop, element) {
+    const defaultFromCodeSnippet = element.attributes[prop.attribute];
+
+    const getDefaultProp = () => {
+      if (defaultFromCodeSnippet) {
+        return defaultFromCodeSnippet.value === '' ? true : defaultFromCodeSnippet.value;
+      } else {
+        return prop.default?.replace(/(['])/g, '') || '';
+      }
+    };
+
+    const generateOptions = (options) => {
+      const optionsArray = options.split('|');
+
+      if (optionsArray.length > 5) {
+        return `<select name="${prop.attribute}">${optionsArray
+          .map((option) => {
+            const value = option.replace(/([' ])/g, '');
+            return `
+              <option
+                value="${value}"
+                ${getDefaultProp() === value ? 'selected' : ''}
+              >
+                ${value}
+              </option>`;
+          })
+          .join('')}</select>`;
+      } else {
+        return optionsArray
+          .map((option) => {
+            const value = option.replace(/([' ])/g, '');
+            return `
+              <label>
+                <input
+                  type="radio"
+                  name="${prop.attribute}"
+                  value="${value}"
+                  ${getDefaultProp() === value ? 'checked' : ''}
+                ></input>
+                ${value}
+              </label>`;
+          })
+          .join('');
+      }
+    };
+
+    switch (prop.type.text) {
+      case 'string':
+        return `
+          <label>
+            <span>${prop.attribute}</span>
+            <input
+              type="text"
+              name="${prop.attribute}"
+              value="${getDefaultProp()}"
+              placeholder="${prop.attribute}"
+            ></input>
+          </label>`;
+      case 'number':
+        return `
+          <label>
+            <span>${prop.attribute}</span>
+            <input
+              type="number"
+              name="${prop.attribute}"
+              value="${getDefaultProp()}"
+              placeholder="${prop.attribute}"
+            ></input>
+          </label>`;
+      case 'boolean':
+        return `
+          <label>
+            <input
+              type="checkbox"
+              name="${prop.attribute}"
+              ${getDefaultProp() === true ? `checked` : ''}
+            ></input>
+            ${prop.attribute}
+          </label>`;
+      default:
+        return generateOptions(prop.type.text);
+    }
+  }
+
+  function handleInputs(inputs, element, code) {
+    [...inputs].map((input) => {
+      input.addEventListener('input', (e) => {
+        if (e.target.type === 'checkbox') {
+          if (e.target.checked) {
+            element.setAttribute(e.target.name, '');
+          } else {
+            element.removeAttribute(e.target.name);
+          }
+        } else {
+          element.setAttribute(e.target.name, e.target.value);
+        }
+
+        code.firstChild.innerHTML = `<code>${highlightCode(element)}</code>`;
+        code.firstChild.insertAdjacentHTML('beforeend', copyButtonTemplate);
+      });
+    });
+  }
+
+  async function controlInterface() {
+    const metadata = await customElements;
+    const pathSegments = document.body.dataset.page.split('/');
+    tagName = TAG_PREFIX + pathSegments[2].split('.')[0];
+    const componentMeta = getComponent(metadata, tagName);
+
+    const element = document.querySelector(tagName);
+
+    const members = componentMeta.members?.filter(
+      (member) => member.description && member.privacy !== 'private'
+    );
+
+    const props = members?.filter((prop) => {
+      return prop.kind === 'field';
+    });
+
+    return `
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Attribute</th>
+            <th scope="col">Description</th>
+            <th scope="col">Default</th>
+            <th scope="col">Control</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${props
+            .map((prop) => {
+              return `<tr>
+                <th scope="row"><code>${prop.attribute}</code></th>
+                <td>${prop.description.replace(/`(.*?)`/g, '<code>$1</code>')}</td>
+                <td>${prop.default ? `<code>${prop.default}</code>` : '&ndash;'}</td>
+                <td><div class="controls__group">${renderControl(prop, element)}</div></td>
+              </tr>`;
+            })
+            .join('')}
+        </tbody>
+      </table>
+    `;
+  }
 
   function runScript(script) {
     const newScript = document.createElement('script');
@@ -40,13 +196,14 @@ window.$docsify.plugins.push((hook, vm) => {
   }
 
   // Replace code preview blocks with rendered previews.
-  hook.afterEach(function (html, next) {
+  hook.afterEach((html, next) => {
     const parser = new DOMParser();
     const doc = parser.parseFromString(html, 'text/html');
 
     [...doc.querySelectorAll('code.preview')].map((block) => {
       const pre = block.closest('pre');
       const isExpanded = block.classList.contains('expanded');
+      const showControls = block.classList.contains('controls');
       const sourceId = 'code-source-' + id;
       const lastClass = [...block.classList].pop();
 
@@ -88,8 +245,22 @@ window.$docsify.plugins.push((hook, vm) => {
               </span>
             </button>
             <div class="code-preview__actions-spacer"></div>
+            ${
+              showControls
+                ? `
+                  <span>
+                    <a href="?controls=${slug()}" target="_blank">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M5 4a1 1 0 00-2 0v7.268a2 2 0 000 3.464V16a1 1 0 102 0v-1.268a2 2 0 000-3.464V4zM11 4a1 1 0 10-2 0v1.268a2 2 0 000 3.464V16a1 1 0 102 0V8.732a2 2 0 000-3.464V4zM16 3a1 1 0 011 1v7.268a2 2 0 010 3.464V16a1 1 0 11-2 0v-1.268a2 2 0 010-3.464V4a1 1 0 011-1z" />
+                      </svg>
+                      Customize
+                    </a>
+                  </span>
+                  `
+                : ''
+            }
             <span>
-              <a href="?example=${slug()}" target="_blank">
+              <a href="?preview=${slug()}" target="_blank">
                 <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 448 512"><path d="M256 64c0-17.67 14.3-32 32-32h127.1c5.2 0 9.4.86 13.1 2.43 2.9 1.55 7.3 3.84 10.4 6.87 0 .05 0 .1.1.14 6.2 6.22 8.4 14.34 9.3 22.46V192c0 17.7-14.3 32-32 32s-32-14.3-32-32v-50.7L214.6 310.6c-12.5 12.5-32.7 12.5-45.2 0s-12.5-32.7 0-45.2L338.7 96H288c-17.7 0-32-14.33-32-32zM0 128c0-35.35 28.65-64 64-64h96c17.7 0 32 14.33 32 32 0 17.7-14.3 32-32 32H64v288h288v-96c0-17.7 14.3-32 32-32s32 14.3 32 32v96c0 35.3-28.7 64-64 64H64c-35.35 0-64-28.7-64-64V128z" fill="currentColor"/></svg>
                 Open in New Window
               </a>
@@ -201,8 +372,8 @@ window.$docsify.plugins.push((hook, vm) => {
   });
 
   // Prepare to load a preview in an isolated window.
-  hook.mounted(function () {
-    if (vm.route.query.example) {
+  hook.mounted(() => {
+    if (vm.route.query.preview || vm.route.query.controls) {
       const overlay = document.createElement('div');
       overlay.style.position = 'absolute';
       overlay.style.top = 0;
@@ -215,15 +386,48 @@ window.$docsify.plugins.push((hook, vm) => {
     }
   });
 
-  // Load the preview in an isolated window.
-  hook.ready(function () {
-    const exampleId = vm.route.query.example;
+  // Load the preview or controls in an isolated window.
+  hook.ready(async () => {
+    const exampleId = vm.route.query.preview || vm.route.query.controls;
 
+    // Load the preview
     if (exampleId) {
       const preview = document.querySelector(`#example-${exampleId}`);
+      preview.classList.add('controls__preview');
       document.body.classList.add('example');
       document.body.innerHTML = '';
       document.body.appendChild(preview);
+    }
+
+    if (vm.route.query.preview) {
+      document.title = `${document.title} - ${kebabToTitleCase(exampleId)} - Preview`;
+    }
+
+    // Load the controls interface
+    if (vm.route.query.controls) {
+      document.title = `${document.title} - ${kebabToTitleCase(exampleId)} - Customize`;
+      document.body.classList.add('controls');
+
+      const controlsInterface = document.createElement('div');
+      controlsInterface.classList.add('controls__inputs');
+      controlsInterface.innerHTML = await controlInterface();
+      document.body.appendChild(controlsInterface);
+
+      const element = document.querySelector(tagName);
+
+      const codeContainer = document.createElement('div');
+      codeContainer.classList.add('controls__code');
+      codeContainer.innerHTML = `<pre><code></code></pre>`;
+      codeContainer.addEventListener('click', handleCopyClick);
+
+      const code = codeContainer.firstChild.firstChild;
+      code.innerHTML = highlightCode(element);
+      code.insertAdjacentHTML('beforeend', copyButtonTemplate);
+
+      document.body.appendChild(codeContainer);
+
+      const inputs = document.querySelectorAll('input, select');
+      handleInputs(inputs, element, codeContainer);
     }
   });
 
