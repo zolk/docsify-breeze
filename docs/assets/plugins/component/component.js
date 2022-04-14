@@ -11,14 +11,11 @@
  * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
+import { customElements, getComponent, TAG_PREFIX } from '../shared/cem.js';
+
 window.$docsify.plugins.push((hook, vm) => {
   // Handles all enhancements using data from the Custom Elements Manifest,
   // including the component headers and documentation tables.
-  const TAG_PREFIX = 'ds-';
-
-  const customElements = fetch('/dist/custom-elements.json')
-    .then((res) => res.json())
-    .catch((err) => console.error(err));
 
   function generatePropertiesTable(props) {
     return `
@@ -188,24 +185,6 @@ window.$docsify.plugins.push((hook, vm) => {
         </tbody>
       </table>
     `;
-  }
-
-  function getAllComponents(metadata) {
-    const components = [];
-
-    metadata.modules?.map((module) => {
-      module.declarations?.map((declaration) => {
-        if (declaration.customElement) {
-          components.push(declaration);
-        }
-      });
-    });
-
-    return components;
-  }
-
-  function getComponent(metadata, tagName) {
-    return getAllComponents(metadata).find((component) => component.tagName === tagName);
   }
 
   function setTheme(newTheme) {

@@ -66,6 +66,7 @@
 
 .code-preview__actions {
   display: flex;
+  gap: 1rem;
   padding: 0.3rem 0.1rem;
   background-color: var(--content-background-color);
 }
@@ -98,7 +99,7 @@
 
 .code-preview__actions button svg,
 .code-preview__actions a svg {
-  width: 0.75rem;
+  width: 0.9rem;
 }
 
 .code-preview__actions button:hover,
@@ -110,12 +111,154 @@
 
 .example {
   color: var(--content-color);
+  background-color: var(--color-white);
 }
 
-.example .code-preview__preview {
-  height: 100vh;
-}
-
-.example .code-preview__resizer {
+.example:not(.controls) .code-preview__resizer {
   display: none;
+}
+
+.example:not(.controls) .code-preview__preview {
+  border: none;
+}
+
+.controls {
+  background-color: var(--color-neutral-lightest);
+  width: 100%;
+  max-height: 100vh;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  grid-template-rows: 1fr 1.2fr;
+  grid-template-areas:
+    'preview preview'
+    'code controls';
+}
+
+.controls .code-preview__preview {
+  grid-area: preview;
+  max-width: 100vw;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  border-top: none;
+  border-bottom: none;
+}
+
+.controls .code-preview__resizer {
+  height: calc(100% + 1px);
+  border-bottom: 0;
+}
+
+.controls__code {
+  grid-area: code;
+  background-color: var(--color-neutral-lighter);
+  border-top: 1px solid var(--color-neutral-light);
+  font-size: 0.875rem;
+  position: relative;
+  overflow: scroll;
+}
+
+.controls__code pre {
+  overflow: scroll;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 3rem 1.5rem;
+  padding: 3rem 1.5rem;
+}
+
+.controls__code pre code {
+  font-family: var(--font-code);
+}
+
+.controls__code .copy-code-button {
+  top: 0.5rem;
+  right: 0.5rem;
+  opacity: 1;
+}
+
+.controls__inputs {
+  overflow: auto;
+  background-color: var(--color-white);
+  border-top: 1px solid var(--color-neutral-light);
+  border-left: 1px solid var(--color-neutral-light);
+}
+
+.controls__inputs table {
+  overflow: auto;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.controls__inputs table thead th {
+  padding: 0.7rem;
+  background-color: var(--color-neutral-lighter);
+  border-bottom: 1px solid var(--color-neutral-light);
+  color: var(--color-neutral-deep);
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-align: left;
+}
+
+.controls__inputs table thead th:first-of-type,
+.controls__inputs table tbody th {
+  width: 8rem;
+  white-space: nowrap;
+}
+
+.controls__inputs table tbody th,
+.controls__inputs table tbody td {
+  padding: 0.7rem 0.5rem;
+  border-bottom: 1px solid var(--color-neutral-light);
+  font-weight: 400;
+  text-align: left;
+}
+
+.controls__group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.controls__group label {
+  display: flex;
+  gap: 0.2rem;
+}
+
+.controls__group input {
+  accent-color: var(--color-blue-lightest);
+}
+
+.controls__group input[type='text'],
+.controls__group select {
+  background-color: var(--color-white);
+  padding: 0.3rem 0.4rem;
+  border: 1px solid var(--color-neutral-dark);
+  border-radius: 3px;
+  font-family: var(--font-default);
+  font-size: 0.8rem;
+  width: 100%;
+  min-width: 15rem;
+}
+
+.controls__group select {
+  appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>');
+  background-repeat: no-repeat;
+  background-position: right 3px;
+  background-size: 1.2rem;
+}
+
+.controls__group input::placeholder {
+  color: var(--color-neutral-deep);
+  opacity: 1;
+}
+
+.controls__group label span {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
 }
