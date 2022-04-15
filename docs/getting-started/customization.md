@@ -9,7 +9,7 @@ Components may offer a variety of
 (variables) to allow for modifying the appearance of a component. Unlike standard
 CSS styles, custom properties can cascade through the shadow DOM.
 
-```html preview expanded
+```html preview expanded custom-properties
 <ds-button class="square">Square Button</ds-button>
 
 <style type="text/css">
@@ -26,7 +26,7 @@ properties. In these cases, components may offer shadow parts. These shadow
 parts enable the use of the `::part` CSS pseudo selector to apply traditional CSS
 properties to designated areas of the shadow DOM.
 
-```html preview expanded
+```html preview expanded parts
 <ds-button class="gradient">Gradient Button</ds-button>
 
 <style type="text/css">

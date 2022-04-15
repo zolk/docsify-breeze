@@ -12,6 +12,7 @@
  * (3 - expanded) Optional. Expands the code source by default.
  * (4 - controls) Optional. Enable the controls feature for this snippet.
  * (5 - slug) Slug for loading the preview in an isolated window.
+ *            Required for preview or controls options.
  *
  * Copyright (c) 2021 Kevin Zolkiewicz.
  * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
@@ -206,12 +207,15 @@ window.$docsify.plugins.push((hook, vm) => {
       const showControls = block.classList.contains('controls');
       const sourceId = 'code-source-' + id;
       const lastClass = [...block.classList].pop();
+      const hasSlug = !['preview', 'expanded', 'controls'].includes(lastClass);
+
+      console.log(hasSlug);
 
       const slug = () => {
-        if (['preview', 'expanded'].includes(lastClass)) {
-          return id;
-        } else {
+        if (hasSlug) {
           return lastClass;
+        } else {
+          return id;
         }
       };
 
@@ -246,7 +250,7 @@ window.$docsify.plugins.push((hook, vm) => {
             </button>
             <div class="code-preview__actions-spacer"></div>
             ${
-              showControls
+              hasSlug && showControls
                 ? `
                   <span>
                     <a href="?controls=${slug()}" target="_blank">
@@ -259,12 +263,18 @@ window.$docsify.plugins.push((hook, vm) => {
                   `
                 : ''
             }
-            <span>
-              <a href="?preview=${slug()}" target="_blank">
-                <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 448 512"><path d="M256 64c0-17.67 14.3-32 32-32h127.1c5.2 0 9.4.86 13.1 2.43 2.9 1.55 7.3 3.84 10.4 6.87 0 .05 0 .1.1.14 6.2 6.22 8.4 14.34 9.3 22.46V192c0 17.7-14.3 32-32 32s-32-14.3-32-32v-50.7L214.6 310.6c-12.5 12.5-32.7 12.5-45.2 0s-12.5-32.7 0-45.2L338.7 96H288c-17.7 0-32-14.33-32-32zM0 128c0-35.35 28.65-64 64-64h96c17.7 0 32 14.33 32 32 0 17.7-14.3 32-32 32H64v288h288v-96c0-17.7 14.3-32 32-32s32 14.3 32 32v96c0 35.3-28.7 64-64 64H64c-35.35 0-64-28.7-64-64V128z" fill="currentColor"/></svg>
-                Open in New Window
-              </a>
-            </span>
+            ${
+              hasSlug
+                ? `
+                <span>
+                  <a href="?preview=${slug()}" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 448 512"><path d="M256 64c0-17.67 14.3-32 32-32h127.1c5.2 0 9.4.86 13.1 2.43 2.9 1.55 7.3 3.84 10.4 6.87 0 .05 0 .1.1.14 6.2 6.22 8.4 14.34 9.3 22.46V192c0 17.7-14.3 32-32 32s-32-14.3-32-32v-50.7L214.6 310.6c-12.5 12.5-32.7 12.5-45.2 0s-12.5-32.7 0-45.2L338.7 96H288c-17.7 0-32-14.33-32-32zM0 128c0-35.35 28.65-64 64-64h96c17.7 0 32 14.33 32 32 0 17.7-14.3 32-32 32H64v288h288v-96c0-17.7 14.3-32 32-32s32 14.3 32 32v96c0 35.3-28.7 64-64 64H64c-35.35 0-64-28.7-64-64V128z" fill="currentColor"/></svg>
+                    Open in New Window
+                  </a>
+                </span>
+                  `
+                : ''
+            }
           </div>
         </div>
       `;

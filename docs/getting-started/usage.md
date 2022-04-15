@@ -14,7 +14,7 @@ are an excellent choice for any design system because they:
 Web components behave like any standard HTML element. To render a component,
 simply include its tag:
 
-```html preview expanded
+```html preview expanded rendering
 <ds-button>My Button</ds-button>
 ```
 
@@ -33,7 +33,7 @@ Web components offer attributes in HTML and properties in JavaScript. Property
 names are always camelCase, while attribute names are kebab-case. You can set
 most attributes as you would any standard HTML attribute.
 
-```html preview expanded
+```html preview expanded properties
 <ds-button variant="primary" disabled>Disabled Button</ds-button>
 ```
 
@@ -65,7 +65,7 @@ Most components offer slots for passing child elements in a composable manner.
 The most common slot is the default slot, which includes any element that does not
 contain a `slot` attribute.
 
-```html preview expanded
+```html preview expanded default-slot
 <ds-card>
   <p>This is the default slot for a card.</p>
 </ds-card>
@@ -74,7 +74,7 @@ contain a `slot` attribute.
 Some components offer named slots. Elements can be passed to these slots using
 the `slot` attribute.
 
-```html preview expanded
+```html preview expanded named-slot
 <ds-card>
   <div slot="header">This is the header slot for a card.</div>
   <p>This is the default slot for a card.</p>
@@ -88,7 +88,7 @@ component will render the slot in the correct location automatically.
 
 Many components offer methods for programmatically triggering specific behavior.
 
-```html preview expanded
+```html preview expanded methods
 <ds-button id="trigger">Focus the primary button</ds-button>
 <ds-button id="action" variant="primary">Primary button</ds-button>
 
@@ -105,7 +105,7 @@ Many components offer methods for programmatically triggering specific behavior.
 Components may emit custom DOM events. You can listen to these events to perform
 actions.
 
-```html preview expanded
+```html preview expanded events
 <ds-button id="focus-button">Focus me</ds-button>
 
 <p>Number of times focused: <b id="count">0</b></p>
