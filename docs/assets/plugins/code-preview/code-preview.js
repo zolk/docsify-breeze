@@ -209,8 +209,6 @@ window.$docsify.plugins.push((hook, vm) => {
       const lastClass = [...block.classList].pop();
       const hasSlug = !['preview', 'expanded', 'controls'].includes(lastClass);
 
-      console.log(hasSlug);
-
       const slug = () => {
         if (hasSlug) {
           return lastClass;
