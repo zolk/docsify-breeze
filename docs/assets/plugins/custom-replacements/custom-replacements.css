@@ -6,10 +6,15 @@
 
 p.page-headline {
   margin-top: 0;
-  margin-bottom: 3rem;
-  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.4rem;
   color: var(--color-neutral-deep);
   line-height: 1.4;
+  letter-spacing: -0.5px;
+}
+
+p.page-headline + div {
+  margin-top: 3rem;
 }
 
 /*
