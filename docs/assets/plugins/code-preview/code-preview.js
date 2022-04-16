@@ -12,7 +12,7 @@
  * (3 - expanded) Optional. Expands the code source by default.
  * (4 - controls) Optional. Enable the controls feature for this snippet.
  * (5 - slug) Slug for loading the preview in an isolated window.
- *            Required for preview or controls options.
+ *            Required for controls or loading in an isolated window.
  *
  * Copyright (c) 2021 Kevin Zolkiewicz.
  * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
