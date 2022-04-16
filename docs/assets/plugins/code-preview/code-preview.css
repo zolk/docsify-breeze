@@ -119,6 +119,7 @@
 }
 
 .example:not(.controls) .code-preview__preview {
+  height: 100vh;
   border: none;
 }
 
