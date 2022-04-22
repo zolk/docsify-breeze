@@ -12,8 +12,8 @@ import baseStyles from '../../lib/base-styles';
  *
  * @slot - Text of the button.
  *
- * @event ds-blur - Emitted when the button loses focus.
- * @event ds-focus - Emitted when the button gains focus.
+ * @event blur - Emitted when the button loses focus.
+ * @event focus - Emitted when the button gains focus.
  *
  * @csspart base - The component's base wrapper.
  * @csspart label - The button's label.
@@ -76,13 +76,17 @@ export default class DsButton extends LitElement {
     this.button.blur();
   }
 
-  private _handleBlur() {
-    const event = new CustomEvent('ds-blur', { bubbles: true, composed: true });
+  private _handleBlur(e: KeyboardEvent) {
+    e.stopPropagation();
+
+    const event = new CustomEvent('blur', { bubbles: true, composed: true });
     this.dispatchEvent(event);
   }
 
-  private _handleFocus() {
-    const event = new CustomEvent('ds-focus', {
+  private _handleFocus(e: KeyboardEvent) {
+    e.stopPropagation();
+
+    const event = new CustomEvent('focus', {
       bubbles: true,
       composed: true,
     });

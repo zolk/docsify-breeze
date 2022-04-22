@@ -115,7 +115,7 @@ actions.
   const countDisplay = document.querySelector('#count');
   let count = 0;
 
-  button.addEventListener('ds-focus', () => {
+  button.addEventListener('focus', () => {
     count++;
     countDisplay.innerText = count;
   });
