@@ -200,6 +200,10 @@
   text-align: left;
 }
 
+.controls__inputs table thead th:last-of-type {
+  width: 20rem;
+}
+
 .controls__inputs table thead th:first-of-type,
 .controls__inputs table tbody th {
   width: 8rem;
@@ -230,6 +234,7 @@
 }
 
 .controls__group input[type='text'],
+.controls__inputs textarea,
 .controls__group select {
   width: 100%;
   min-width: 15rem;
@@ -239,6 +244,10 @@
   border-radius: 3px;
   font-family: var(--font-default);
   font-size: 0.8rem;
+}
+
+.controls__inputs textarea {
+  font-family: var(--font-code);
 }
 
 .controls__group select {

@@ -1,6 +1,6 @@
 # Card
 
-```html preview expanded default
+```html preview expanded controls default
 <ds-card>
   <div slot="header">My Card</div>
   Card content goes here.
@@ -13,8 +13,8 @@
 
 The `header` slot can be omitted, if desired.
 
-```html preview without-header
-<ds-card> An even simpler card without a header. </ds-card>
+```html preview controls without-header
+<ds-card>An even simpler card without a header.</ds-card>
 ```
 
 ### Border Radius

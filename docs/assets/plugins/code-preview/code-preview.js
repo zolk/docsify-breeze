@@ -38,6 +38,26 @@ window.$docsify.plugins.push((hook, vm) => {
     return window.Prism.highlight(snippet, window.Prism.languages.html, 'html');
   }
 
+  function renderSlotControl(slot, element) {
+    const isDefault = slot.name === '';
+    const slotName = isDefault ? 'default' : slot.name;
+    const slotNodes = element.shadowRoot
+      .querySelector(isDefault ? 'slot:not([name])' : `slot[name=${slotName}]`)
+      .assignedNodes({ flatten: true });
+
+    let slotContents = '';
+
+    slotNodes.map((node) => {
+      if (node.nodeName === '#text') {
+        slotContents += node.textContent.trim();
+      } else {
+        slotContents += isDefault ? node.outerHTML.trim() : node.innerHTML.trim();
+      }
+    });
+
+    return `<textarea name="${slotName}" rows="4">${slotContents}</textarea>`;
+  }
+
   function renderControl(prop, element) {
     const defaultFromCodeSnippet = element.attributes[prop.attribute];
 
@@ -131,6 +151,46 @@ window.$docsify.plugins.push((hook, vm) => {
           } else {
             element.removeAttribute(e.target.name);
           }
+        } else if (e.target.type === 'textarea') {
+          if (e.target.name === 'default') {
+            const defaultSlot = element.querySelectorAll('*:not([slot])');
+
+            console.log(defaultSlot);
+            if (defaultSlot.length) {
+              // If there are more than one nodes, update just the first one
+              // with the new HTML and remove the rest.
+              [...defaultSlot].map((node, i) => {
+                if (i === 0) {
+                  node.outerHTML = e.target.value;
+                } else {
+                  node.remove();
+                }
+              });
+            } else {
+              // Handle updates of single nodes.
+              // Note: This method is problematic if there are named slots.
+              element.innerHTML = e.target.value;
+            }
+          } else {
+            // Updating a named slot
+            const namedSlot = element.querySelector(`[slot=${e.target.name}]`);
+
+            if (namedSlot) {
+              // Update existing named slot if it exists
+              namedSlot.innerHTML = e.target.value;
+            } else {
+              // Create a new named slot
+              const newSlot = document.createElement('div');
+              newSlot.setAttribute('slot', e.target.name);
+              newSlot.innerHTML = e.target.value;
+              element.appendChild(newSlot);
+            }
+
+            if (e.target.value === '') {
+              // Remove the named slot if the new value is empty
+              namedSlot.remove();
+            }
+          }
         } else {
           element.setAttribute(e.target.name, e.target.value);
         }
@@ -149,6 +209,8 @@ window.$docsify.plugins.push((hook, vm) => {
 
     const element = document.querySelector(tagName);
 
+    const slots = componentMeta.slots;
+
     const members = componentMeta.members?.filter(
       (member) => member.description && member.privacy !== 'private'
     );
@@ -158,6 +220,35 @@ window.$docsify.plugins.push((hook, vm) => {
     });
 
     return `
+      ${
+        slots.length
+          ? `
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Slot</th>
+                <th scope="col">Description</th>
+                <th scope="col">Control</th>
+              </tr>
+            </thead>
+            <tbody>
+            ${slots
+              .map((slot) => {
+                return `
+                <tr>
+                  <th scope="row">
+                    ${slot.name === '' ? 'Default slot' : `<code>${slot.name}</code>`}
+                  </th>
+                  <td>${slot.description}</td>
+                  <td>${renderSlotControl(slot, element)}</td>
+                </tr>
+              `;
+              })
+              .join('')}
+            <tbody>
+          `
+          : ''
+      }
       <table>
         <thead>
           <tr>
@@ -434,7 +525,7 @@ window.$docsify.plugins.push((hook, vm) => {
 
       document.body.appendChild(codeContainer);
 
-      const inputs = document.querySelectorAll('input, select');
+      const inputs = document.querySelectorAll('input, select, textarea');
       handleInputs(inputs, element, codeContainer);
     }
   });
