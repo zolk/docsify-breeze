@@ -103,7 +103,7 @@ Many components offer methods for programmatically triggering specific behavior.
 ## Events
 
 Components may emit custom DOM events. You can listen to these events to perform
-actions.
+actions once they're fired.
 
 ```html preview expanded events
 <ds-button id="focus-button">Focus me</ds-button>
