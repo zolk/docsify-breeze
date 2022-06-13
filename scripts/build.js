@@ -56,7 +56,6 @@ mkdirp.sync(outdir);
       bundle: true,
       splitting: true,
       minify: serve,
-      external: serve ? [] : ['lit'],
       plugins: [],
       watch: {
         onRebuild(err) {
