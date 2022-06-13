@@ -1,0 +1,21 @@
+@import url('../../theme/tokens.css');
+
+.markdown-section .edit-on-github {
+  display: inline-block;
+  margin-top: 2rem;
+  padding-left: 1.2rem;
+  background-image: var(--icon-pencil);
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 14px;
+  color: var(--color-neutral-deep);
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: color 0.15s ease-in-out;
+}
+
+.markdown-section .edit-on-github:hover {
+  background-color: transparent;
+  color: var(--color-blue-medium);
+  background-image: var(--icon-pencil-hover);
+}
