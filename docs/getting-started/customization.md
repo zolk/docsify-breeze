@@ -1,6 +1,6 @@
 # Customization
 
-#> Web components offer native encapsulation of styles but still provide opportunities for customization when needed.
+#> Web components offer native encapsulation of styles but still provide opportunities for customization when needed...
 
 ## Custom Properties
 
