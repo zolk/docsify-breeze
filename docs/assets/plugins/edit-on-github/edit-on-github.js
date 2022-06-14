@@ -26,7 +26,7 @@ window.$docsify.plugins.push((hook, vm) => {
     }
   });
 
-  hook.beforeEach(function (content) {
+  hook.afterEach(function (html, next) {
     const github = options.url;
     const docsDir = options.docsDir;
     const page = vm.route.file;
@@ -38,8 +38,8 @@ window.$docsify.plugins.push((hook, vm) => {
     const url = `${github}/edit/main${docsDir}${page}`;
     const editLink = `<a href="${url}" class="edit-on-github" rel="noopener" target="_blank">Edit on GitHub</a>`;
 
-    content = content + editLink;
+    html = html + editLink;
 
-    return content;
+    next(html);
   });
 });
