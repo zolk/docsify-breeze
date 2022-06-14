@@ -5,10 +5,14 @@ import esbuild from 'esbuild';
 import { globby } from 'globby';
 import mkdirp from 'mkdirp';
 import { execSync } from 'child_process';
+import copy from 'recursive-copy';
 
 const bs = browserSync.create();
 
-const { serve } = commandLineArgs([{ name: 'serve', type: Boolean }]);
+const { serve, copydir } = commandLineArgs([
+  { name: 'serve', type: Boolean },
+  { name: 'copydir', type: String },
+]);
 
 const outdir = './dist';
 
@@ -52,7 +56,6 @@ mkdirp.sync(outdir);
       bundle: true,
       splitting: true,
       minify: serve,
-      external: serve ? [] : ['lit'],
       plugins: [],
       watch: {
         onRebuild(err) {
@@ -70,6 +73,12 @@ mkdirp.sync(outdir);
       console.log('🎉 Project has been successfully built!');
       if (!serve) result.stop();
     });
+
+  // Copy the build output to an additional directory
+  if (copydir) {
+    del.sync(copydir);
+    copy(outdir, copydir);
+  }
 
   if (serve) {
     bs.init({
