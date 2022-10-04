@@ -12,31 +12,31 @@
  */
 function renderPropertiesTable(props) {
   return `
-      <table>
-        <thead>
-          <tr>
-            <th scope="col">Property</th>
-            <th scope="col">Attribute</th>
-            <th scope="col">Description</th>
-            <th scope="col">Type</th>
-            <th scope="col">Default</th>
-          </tr>
-        </thead>
-        <tbody>
-          ${props
-            .map((prop) => {
-              return `<tr>
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Property</th>
+          <th scope="col">Attribute</th>
+          <th scope="col">Description</th>
+          <th scope="col">Type</th>
+          <th scope="col">Default</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${props
+          .map((prop) => {
+            return `<tr>
                 <th scope="row"><code>${prop.name}</code></th>
                 <td><code>${prop.attribute}</code></td>
                 <td>${prop.description.replace(/`(.*?)`/g, '<code>$1</code>')}</td>
                 <td><code>${prop.type.text.replace(/^\| /m, '')}</code></td>
                 <td>${prop.default ? `<code>${prop.default}</code>` : '&ndash;'}</td>
               </tr>`;
-            })
-            .join('')}
-        </tbody>
-      </table>
-    `;
+          })
+          .join('')}
+      </tbody>
+    </table>
+  `;
 }
 
 function renderMethodsList(methods) {
@@ -45,30 +45,36 @@ function renderMethodsList(methods) {
   methods.map((method) => {
     const hasParams = method.parameters?.length;
 
-    result += `
-        <h4 class="component-method-signature"><code>${method.name}(${
-      hasParams
-        ? method.parameters
-            .map((param) => `${param.name}${param.optional ? '?' : ''}: ${param.type.text}`)
-            .join(', ')
-        : ''
-    }) => ${method.return ? method.return.type.text : 'void'}</code></h4>
-        <p>${method.description}</p>
+    const renderParamsSignature = () =>
+      method.parameters
+        .map((param) => `${param.name}${param.optional ? '?' : ''}: ${param.type.text}`)
+        .join(', ');
 
-        ${
-          hasParams
-            ? `
-              <dl class="component-method-options">
-              ${method.parameters.map((param) =>
-                param.description
-                  ? `<dt><code>${param.name}</code></dt><dd>${param.description}</dd>`
-                  : ``
-              )}
-              </dl>
-              `
-            : ``
-        }
-      `;
+    const renderParamDescription = (param) => `
+      <dt><code>${param.name}</code></dt>
+      <dd>${param.description}</dd>
+    `;
+
+    const renderParamsList = `
+      <dl class="component-method-options">
+        ${method.parameters?.map((param) =>
+          param.description ? renderParamDescription(param) : ''
+        )}
+      </dl>
+    `;
+
+    result += `
+      <h4 class="component-method-signature">
+        <code>
+          ${method.name}(${hasParams ? renderParamsSignature() : ''})
+          =>
+          ${method.return ? method.return.type.text : 'void'}
+        </code>
+      </h4>
+
+      <p>${method.description}</p>
+      ${hasParams ? renderParamsList : ''}
+    `;
   });
 
   return result;
@@ -76,108 +82,108 @@ function renderMethodsList(methods) {
 
 function renderEventsTable(events) {
   return `
-      <table>
-        <thead>
-          <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Description</th>
-            <th scope="col">Event Detail</th>
-          </tr>
-        </thead>
-        <tbody>
-          ${events
-            .map((event) => {
-              return `
-                <tr>
-                  <th scope="row">
-                    <code>${event.name}</code>
-                  </th>
-                  <td>${event.description}</td>
-                  <td>${event.type?.text ? `<code>${event.type?.text}</code>` : '-'}</td>
-                </tr>
-              `;
-            })
-            .join('')}
-        </tbody>
-      </table>
-    `;
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Description</th>
+          <th scope="col">Event Detail</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${events
+          .map((event) => {
+            return `
+              <tr>
+                <th scope="row">
+                  <code>${event.name}</code>
+                </th>
+                <td>${event.description}</td>
+                <td>${event.type?.text ? `<code>${event.type?.text}</code>` : '-'}</td>
+              </tr>
+            `;
+          })
+          .join('')}
+      </tbody>
+    </table>
+  `;
 }
 
 function renderSlotsTable(slots) {
   return `
-      <table>
-        <thead>
-          <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          ${slots
-            .map((slot) => {
-              return `
-                <tr>
-                  <th scope="row">
-                    ${slot.name === '' ? 'Default slot' : `<code>${slot.name}</code>`}
-                  </th>
-                  <td>${slot.description}</td>
-                </tr>
-              `;
-            })
-            .join('')}
-        </tbody>
-      </table>
-    `;
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${slots
+          .map((slot) => {
+            return `
+              <tr>
+                <th scope="row">
+                  ${slot.name === '' ? 'Default slot' : `<code>${slot.name}</code>`}
+                </th>
+                <td>${slot.description}</td>
+              </tr>
+            `;
+          })
+          .join('')}
+      </tbody>
+    </table>
+  `;
 }
 
 function renderCssPartsTable(parts) {
   return `
-      <table>
-        <thead>
-          <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          ${parts
-            .map((part) => {
-              return `
-                <tr>
-                  <th scope="row"><code>${part.name}</code></th>
-                  <td>${part.description}</td>
-                </tr>
-              `;
-            })
-            .join('')}
-        </tbody>
-      </table>
-    `;
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${parts
+          .map((part) => {
+            return `
+              <tr>
+                <th scope="row"><code>${part.name}</code></th>
+                <td>${part.description}</td>
+              </tr>
+            `;
+          })
+          .join('')}
+      </tbody>
+    </table>
+  `;
 }
 
 function renderCssPropertiesTable(properties) {
   return `
-      <table>
-        <thead>
-          <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          ${properties
-            .map((property) => {
-              return `
-                <tr>
-                  <th scope="row"><code>${property.name}</code></th>
-                  <td>${property.description}</td>
-                </tr>
-              `;
-            })
-            .join('')}
-        </tbody>
-      </table>
-    `;
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${properties
+          .map((property) => {
+            return `
+              <tr>
+                <th scope="row"><code>${property.name}</code></th>
+                <td>${property.description}</td>
+              </tr>
+            `;
+          })
+          .join('')}
+      </tbody>
+    </table>
+  `;
 }
 
 export function renderMetadata(metadata) {
@@ -195,44 +201,44 @@ export function renderMetadata(metadata) {
 
   if (props?.length) {
     result += `
-          ### Properties
-          ${renderPropertiesTable(props)}
-        `;
+      ### Properties
+      ${renderPropertiesTable(props)}
+    `;
   }
 
   if (methods?.length) {
     result += `
-          ### Methods
-          ${renderMethodsList(methods)}
-        `;
+      ### Methods
+      ${renderMethodsList(methods)}
+    `;
   }
 
   if (metadata.events?.length) {
     result += `
-          ### Events
-          ${renderEventsTable(metadata.events)}
-        `;
+      ### Events
+      ${renderEventsTable(metadata.events)}
+    `;
   }
 
   if (metadata.slots?.length) {
     result += `
-          ### Slots
-          ${renderSlotsTable(metadata.slots)}
-        `;
+      ### Slots
+      ${renderSlotsTable(metadata.slots)}
+    `;
   }
 
   if (metadata.cssParts?.length) {
     result += `
-          ### CSS Parts
-          ${renderCssPartsTable(metadata.cssParts)}
-        `;
+      ### CSS Parts
+      ${renderCssPartsTable(metadata.cssParts)}
+    `;
   }
 
   if (metadata.cssProperties?.length) {
     result += `
-          ### CSS Custom Properties
-          ${renderCssPropertiesTable(metadata.cssProperties)}
-        `;
+      ### CSS Custom Properties
+      ${renderCssPropertiesTable(metadata.cssProperties)}
+    `;
   }
 
   return result;

@@ -44,8 +44,8 @@ window.$docsify.plugins.push((hook) => {
     );
 
     topLevelAnchors.forEach((link) => {
-      link.addEventListener('click', (e) => {
-        e.target?.closest('.has-submenu')?.classList.add('active-child');
+      link.addEventListener('click', (event) => {
+        event.target?.closest('.has-submenu')?.classList.add('active-child');
       });
     });
   });
