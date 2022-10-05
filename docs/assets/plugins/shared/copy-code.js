@@ -5,35 +5,35 @@ export const copyButtonTemplate = [
   '</button>',
 ].join('');
 
-export function handleCopyClick(e) {
-  const isCopyCodeButton = e.target.closest('.copy-code-button');
+export function handleCopyClick(event) {
+  const isCopyCodeButton = event.target.closest('.copy-code-button');
 
   if (isCopyCodeButton) {
-    const buttonElm =
-      e.target.tagName === 'BUTTON' ? e.target : e.target.closest('.copy-code-button');
-    const range = document.createRange();
-    const preElm = buttonElm.closest('pre');
+    const button =
+      event.target.tagName === 'BUTTON' ? event.target : event.target.closest('.copy-code-button');
+    const preElm = button.closest('pre');
     const codeElm = preElm.querySelector('code');
 
-    let selection = window.getSelection();
-
+    const range = document.createRange();
     range.selectNode(codeElm);
+
+    let selection = window.getSelection();
     selection.removeAllRanges();
     selection.addRange(range);
 
     navigator.clipboard.writeText(selection).then(
-      function () {
-        buttonElm.classList.add('success');
-        setTimeout(function () {
-          buttonElm.classList.remove('success');
+      () => {
+        button.classList.add('success');
+        setTimeout(() => {
+          button.classList.remove('success');
         }, 1000);
       },
-      function (err) {
+      (err) => {
         console.error(`docsify-copy-code: ${err}`);
 
-        buttonElm.classList.add('error');
-        setTimeout(function () {
-          buttonElm.classList.remove('error');
+        button.classList.add('error');
+        setTimeout(() => {
+          button.classList.remove('error');
         }, 1000);
       }
     );

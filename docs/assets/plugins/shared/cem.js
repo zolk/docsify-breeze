@@ -1,6 +1,6 @@
-export const TAG_PREFIX = 'ds-';
+export const TAG_PREFIX = `${window.$docsify.component.prefix}-`;
 
-export const customElements = fetch('/dist/custom-elements.json')
+export const customElements = fetch(window.$docsify.component.manifestPath)
   .then((res) => res.json())
   .catch((err) => console.error(err));
 
