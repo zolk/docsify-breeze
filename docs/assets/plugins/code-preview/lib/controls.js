@@ -28,7 +28,7 @@ export function renderSlotControl(slot, element) {
   return `<textarea name="${slotName}" rows="4">${slotContents}</textarea>`;
 }
 
-export function renderControl(prop, element) {
+export function renderPropControl(prop, element) {
   const defaultFromCodeSnippet = element.attributes[prop.attribute];
 
   const getDefaultProp = () => {
@@ -39,10 +39,11 @@ export function renderControl(prop, element) {
     }
   };
 
-  const generateOptions = (options) => {
+  const renderMultipleChoice = (options) => {
     const optionsArray = options.split('|');
 
     if (optionsArray.length > 5) {
+      // Use a `select` if there are more than 5 options
       return `<select name="${prop.attribute}">${optionsArray
         .map((option) => {
           const value = option.replace(/([' ])/g, '');
@@ -56,6 +57,7 @@ export function renderControl(prop, element) {
         })
         .join('')}</select>`;
     } else {
+      // Use an `input[type=radio]` if there are fewer than 5 options
       return optionsArray
         .map((option) => {
           const value = option.replace(/([' ])/g, '');
@@ -108,66 +110,8 @@ export function renderControl(prop, element) {
             ${prop.attribute}
           </label>`;
     default:
-      return generateOptions(prop.type.text);
+      return renderMultipleChoice(prop.type.text);
   }
-}
-
-export function handleControlInputs(inputs, element, code) {
-  [...inputs].map((input) => {
-    input.addEventListener('input', (event) => {
-      if (event.target.type === 'checkbox') {
-        if (event.target.checked) {
-          element.setAttribute(event.target.name, '');
-        } else {
-          element.removeAttribute(event.target.name);
-        }
-      } else if (event.target.type === 'textarea') {
-        if (event.target.name === 'default') {
-          const defaultSlot = element.querySelectorAll('*:not([slot])');
-
-          if (defaultSlot.length) {
-            // If there are more than one nodes, update just the first one
-            // with the new HTML and remove the rest.
-            [...defaultSlot].map((node, i) => {
-              if (i === 0) {
-                node.outerHTML = event.target.value;
-              } else {
-                node.remove();
-              }
-            });
-          } else {
-            // Handle updates of single nodes.
-            // Note: This method is problematic if there are named slots.
-            element.innerHTML = event.target.value;
-          }
-        } else {
-          // Updating a named slot
-          const namedSlot = element.querySelector(`[slot=${event.target.name}]`);
-
-          if (namedSlot) {
-            // Update existing named slot if it exists
-            namedSlot.innerHTML = event.target.value;
-          } else {
-            // Create a new named slot
-            const newSlot = document.createElement('div');
-            newSlot.setAttribute('slot', event.target.name);
-            newSlot.innerHTML = event.target.value;
-            element.appendChild(newSlot);
-          }
-
-          if (event.target.value === '') {
-            // Remove the named slot if the new value is empty
-            namedSlot.remove();
-          }
-        }
-      } else {
-        element.setAttribute(event.target.name, event.target.value);
-      }
-
-      code.firstChild.innerHTML = `<code>${highlightCode(element)}</code>`;
-      code.firstChild.insertAdjacentHTML('beforeend', copyButtonTemplate);
-    });
-  });
 }
 
 export async function renderControlsPanel(tagName) {
@@ -182,22 +126,19 @@ export async function renderControlsPanel(tagName) {
     return prop.kind === 'field';
   });
 
-  return `
-      ${
-        slots.length
-          ? `
-          <table>
-            <thead>
-              <tr>
-                <th scope="col">Slot</th>
-                <th scope="col">Description</th>
-                <th scope="col">Control</th>
-              </tr>
-            </thead>
-            <tbody>
-            ${slots
-              .map((slot) => {
-                return `
+  const renderSlotTable = `
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Slot</th>
+          <th scope="col">Description</th>
+          <th scope="col">Control</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${slots
+          .map((slot) => {
+            return `
                 <tr>
                   <th scope="row">
                     ${slot.name === '' ? 'Default slot' : `<code>${slot.name}</code>`}
@@ -206,59 +147,136 @@ export async function renderControlsPanel(tagName) {
                   <td>${renderSlotControl(slot, element)}</td>
                 </tr>
               `;
-              })
-              .join('')}
-            <tbody>
-          `
-          : ''
-      }
-      <table>
-        <thead>
-          <tr>
-            <th scope="col">Attribute</th>
-            <th scope="col">Description</th>
-            <th scope="col">Default</th>
-            <th scope="col">Control</th>
-          </tr>
-        </thead>
-        <tbody>
-          ${props
-            .map((prop) => {
-              return `<tr>
+          })
+          .join('')}
+      </tbody>
+    </table>
+  `;
+
+  return `
+    ${slots.length ? renderSlotTable : ''}
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Attribute</th>
+          <th scope="col">Description</th>
+          <th scope="col">Default</th>
+          <th scope="col">Control</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${props
+          .map((prop) => {
+            return `<tr>
                 <th scope="row"><code>${prop.attribute}</code></th>
                 <td>${prop.description.replace(/`(.*?)`/g, '<code>$1</code>')}</td>
                 <td>${prop.default ? `<code>${prop.default}</code>` : '&ndash;'}</td>
-                <td><div class="controls__group">${renderControl(prop, element)}</div></td>
+                <td><div class="controls__group">${renderPropControl(prop, element)}</div></td>
               </tr>`;
-            })
-            .join('')}
-        </tbody>
-      </table>
-    `;
+          })
+          .join('')}
+      </tbody>
+    </table>
+  `;
+}
+
+export function handleControlInputs(inputs, element, code) {
+  [...inputs].map((input) => {
+    const handleCheckbox = (input) => {
+      if (input.checked) {
+        element.setAttribute(input.name, '');
+      } else {
+        element.removeAttribute(input.name);
+      }
+    };
+
+    const updateDefaultSlot = (newValue) => {
+      const defaultSlot = element.querySelectorAll('*:not([slot])');
+
+      if (defaultSlot.length) {
+        // If there are more than one nodes, update just the first one
+        // with the new HTML and remove the rest.
+        [...defaultSlot].map((node, i) => {
+          if (i === 0) {
+            node.outerHTML = newValue;
+          } else {
+            node.remove();
+          }
+        });
+      } else {
+        // Handle updates of single nodes.
+        // Note: This method is problematic if there are named slots.
+        element.innerHTML = newValue;
+      }
+    };
+
+    const updateNamedSlot = (slot, textareaName, newValue) => {
+      if (slot) {
+        // Update existing named slot if it exists
+        slot.innerHTML = newValue;
+      } else {
+        // Create a new named slot
+        const newSlot = document.createElement('div');
+        newSlot.setAttribute('slot', textareaName);
+        newSlot.innerHTML = newValue;
+        element.appendChild(newSlot);
+      }
+
+      if (newValue.value === '') {
+        // Remove the named slot if the new value is empty
+        slot.remove();
+      }
+    };
+
+    const handleTextarea = (textarea) => {
+      if (textarea.name === 'default') {
+        updateDefaultSlot(textarea.value);
+      } else {
+        const namedSlot = element.querySelector(`[slot=${textarea.name}]`);
+        updateNamedSlot(namedSlot, textarea.name, textarea.value);
+      }
+    };
+
+    input.addEventListener('input', (event) => {
+      switch (event.target.type) {
+        case 'checkbox':
+          handleCheckbox(event.target);
+          break;
+        case 'textarea':
+          handleTextarea(event.target);
+          break;
+        default:
+          element.setAttribute(event.target.name, event.target.value);
+          break;
+      }
+
+      code.firstChild.innerHTML = `<code>${highlightCode(element)}</code>`;
+      code.firstChild.insertAdjacentHTML('beforeend', copyButtonTemplate);
+    });
+  });
 }
 
 export async function renderControlsInterface(tagName) {
-  // controls pane
+  // Render controls pane.
   const controlsInterface = document.createElement('div');
   controlsInterface.classList.add('controls__inputs');
   controlsInterface.innerHTML = await renderControlsPanel(tagName);
   document.body.appendChild(controlsInterface);
 
-  const element = document.querySelector(tagName);
-
-  // code
+  // Render code pane.
   const codeContainer = document.createElement('div');
   codeContainer.classList.add('controls__code');
   codeContainer.innerHTML = `<pre><code></code></pre>`;
   codeContainer.addEventListener('click', handleCopyClick);
 
+  const element = document.querySelector(tagName);
   const code = codeContainer.firstChild.firstChild;
   code.innerHTML = highlightCode(element);
   code.insertAdjacentHTML('beforeend', copyButtonTemplate);
 
   document.body.appendChild(codeContainer);
 
-  // input handlers
+  // Attach input handlers.
   const inputs = document.querySelectorAll('input, select, textarea');
   handleControlInputs(inputs, element, codeContainer);
 }
