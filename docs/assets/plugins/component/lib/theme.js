@@ -4,33 +4,36 @@
  * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-function setTheme(themes, newTheme) {
+
+const themes = window.$docsify.themes;
+
+function setTheme(newTheme) {
   localStorage.setItem('theme', newTheme);
-  setPreviewTheme(themes, newTheme);
+  setPreviewTheme(newTheme);
   themes.forEach((theme) => document.body.classList.toggle(theme.class, theme.class === newTheme));
 }
 
-export function getTheme(themes) {
+export function getActiveTheme() {
   return localStorage.getItem('theme') || (themes && themes[0].class);
 }
 
-export function setPreviewTheme(themes, activeTheme) {
+export function setPreviewTheme(activeTheme) {
   const bgColor = themes.find((t) => t.class === activeTheme).previewBg;
 
   const codePreviews = document.querySelectorAll('.code-preview__preview');
   codePreviews.forEach((preview) => (preview.style.backgroundColor = bgColor));
 }
 
-export function renderThemeSelect(themes) {
+export function renderThemeSelect() {
   const themeSelect = document.createElement('select');
   themeSelect.classList.add('theme-switcher');
   themeSelect.id = 'theme-switcher__select';
   themes?.forEach(
     (theme) => (themeSelect.innerHTML += `<option value=${theme.class}>${theme.name}</option`)
   );
-  themeSelect.value = getTheme();
+  themeSelect.value = getActiveTheme();
   themeSelect.onchange = () => {
-    setTheme(themes, themeSelect.value, document);
+    setTheme(themeSelect.value);
   };
 
   return themeSelect;

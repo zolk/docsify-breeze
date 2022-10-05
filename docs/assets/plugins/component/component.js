@@ -8,7 +8,7 @@
 import { customElements, getComponent, TAG_PREFIX } from '../shared/cem.js';
 import { renderComponentCard } from './lib/component-card.js';
 import { renderMetadata } from './lib/metadata.js';
-import { getTheme, setPreviewTheme, renderThemeSelect } from './lib/theme.js';
+import { getActiveTheme, setPreviewTheme, renderThemeSelect } from './lib/theme.js';
 
 window.$docsify.plugins.push((hook, vm) => {
   // Handles all enhancements using data from the Custom Elements Manifest,
@@ -18,7 +18,7 @@ window.$docsify.plugins.push((hook, vm) => {
 
   hook.mounted(() => {
     if (themes) {
-      document.body.classList.add(getTheme(themes));
+      document.body.classList.add(getActiveTheme());
     }
   });
 
@@ -49,9 +49,7 @@ window.$docsify.plugins.push((hook, vm) => {
       const baseTagName = file.split('.')[0];
       const componentMeta = getComponent(metadata, TAG_PREFIX + baseTagName);
 
-      //
-      // Insert component header
-      //
+      // Insert component header.
       content = content.replace(/^#{1} ([a-zA-Z]+)/, (_, title) => {
         const header = document.createElement('header');
         header.classList.add('markdown-header', 'component-header');
@@ -65,16 +63,16 @@ window.$docsify.plugins.push((hook, vm) => {
             ${
               themes
                 ? `<div class="theme-switcher">
-                  <label for="theme-switcher__select">Select Theme</label>
-                  <span class="theme-switcher__icon"></span>
-                </div>`
+                    <label for="theme-switcher__select">Select Theme</label>
+                    <span class="theme-switcher__icon"></span>
+                  </div>`
                 : ''
             }
           </div>
         `;
 
         if (themes) {
-          header.querySelector('.theme-switcher').append(renderThemeSelect(themes));
+          header.querySelector('.theme-switcher').append(renderThemeSelect());
         }
 
         const content = document.querySelector('.content');
@@ -88,9 +86,7 @@ window.$docsify.plugins.push((hook, vm) => {
         return headline.replace(/^ +| +$/gm, '');
       });
 
-      //
-      // Render component metadata tables
-      //
+      // Render component metadata tables.
       content = content.replace(/\[component-metadata\]/, () => {
         const result = renderMetadata(componentMeta);
         return result.replace(/^ +| +$/gm, '');
@@ -102,7 +98,8 @@ window.$docsify.plugins.push((hook, vm) => {
 
   hook.doneEach(function () {
     // Set code previews to use the configured background color
-    setPreviewTheme(themes, getTheme());
+    const activeTheme = getActiveTheme();
+    setPreviewTheme(activeTheme);
 
     // Wrap tables for responsive horizontal scrolling
     const content = document.querySelector('.content');
