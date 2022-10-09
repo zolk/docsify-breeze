@@ -60,11 +60,19 @@ window.$docsify.plugins.push((hook, vm) => {
       runScript(script)
     );
 
-    // Allow resize of preview window.
+    // Set preview height and allow resize.
     [...document.querySelectorAll('.code-preview')].map((block) => {
       const resizer = block.querySelector('.code-preview__resizer');
       const preview = block.querySelector('.code-preview__preview');
       handlePreviewResize(preview, resizer);
+
+      const iframe = block.querySelector('iframe');
+      iframe.addEventListener('load', function () {
+        const iframeDoc = block.querySelector('iframe').contentDocument;
+        const iframeContent = iframeDoc.body?.querySelector('.iframe-content');
+        const iframeHeight = iframeContent.scrollHeight;
+        iframe.style.height = `${iframeHeight}px`;
+      });
     });
   });
 

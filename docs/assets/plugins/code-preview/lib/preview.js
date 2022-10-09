@@ -43,10 +43,26 @@ export function renderPreview(codeBlock, id) {
     </span>
   `;
 
+  const iframe = document.createElement('iframe');
+  iframe.srcdoc = `<!DOCTYPE html>
+    <html>
+      <head>
+        <script type="module" src="/dist/index.js"></script>
+        <link rel="stylesheet" href="/dist/styles/tokens.css" />
+        <link rel="stylesheet" href="/assets/theme/styles.css" />
+        <link rel="stylesheet" href="/assets/theme/pages.css" />
+      </head>
+      <body style="background-color: transparent">
+        <div class="iframe-content">
+          ${codeBlock.textContent}
+        </div>
+      </body>
+    </html>`;
+
   const previewInterface = `
     <div class="code-preview ${isExpanded ? 'code-preview--expanded' : ''}">
       <div class="code-preview__preview" id=${exampleId}>
-        ${codeBlock.textContent}
+        ${iframe.outerHTML}
         <div
           class="code-preview__resizer"
           aria-controls="${exampleId}"
