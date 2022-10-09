@@ -8,6 +8,8 @@ import { highlightCode } from './highlight.js';
 import { copyButtonTemplate, handleCopyClick } from '../../shared/copy-code.js';
 import { customElements, getComponent } from '../../shared/cem.js';
 
+let element = null;
+
 export function renderSlotControl(slot, element) {
   const isDefault = slot.name === '';
   const slotName = isDefault ? 'default' : slot.name;
@@ -114,10 +116,13 @@ export function renderPropControl(prop, element) {
   }
 }
 
+async function loadIframe(iframe) {
+  return new Promise((resolve) => (iframe.onload = () => resolve()));
+}
+
 export async function renderControlsPanel(tagName) {
   const metadata = await customElements;
   const componentMeta = getComponent(metadata, tagName);
-  const element = document.querySelector(tagName);
   const slots = componentMeta.slots;
   const members = componentMeta.members?.filter(
     (member) => member.description && member.privacy !== 'private'
@@ -125,6 +130,11 @@ export async function renderControlsPanel(tagName) {
   const props = members?.filter((prop) => {
     return prop.kind === 'field';
   });
+
+  const iframe = document.querySelector('iframe');
+  await loadIframe(iframe);
+  const iframeContent = iframe.contentDocument.body.querySelector('.iframe-content');
+  element = iframeContent.querySelector(tagName);
 
   const renderSlotTable = `
     <table>
@@ -269,7 +279,6 @@ export async function renderControlsInterface(tagName) {
   codeContainer.innerHTML = `<pre><code></code></pre>`;
   codeContainer.addEventListener('click', handleCopyClick);
 
-  const element = document.querySelector(tagName);
   const code = codeContainer.firstChild.firstChild;
   code.innerHTML = highlightCode(element);
   code.insertAdjacentHTML('beforeend', copyButtonTemplate);

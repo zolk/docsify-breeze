@@ -416,6 +416,10 @@ body.close .content {
   max-width: var(--content-max-width);
 }
 
+.markdown-section > .code-preview {
+  max-width: unset;
+}
+
 .markdown-section h1 a,
 .markdown-section h2 a,
 .markdown-section h3 a,

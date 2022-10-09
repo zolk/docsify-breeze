@@ -68,9 +68,9 @@ window.$docsify.plugins.push((hook, vm) => {
 
       const iframe = block.querySelector('iframe');
       iframe.addEventListener('load', function () {
-        const iframeDoc = block.querySelector('iframe').contentDocument;
-        const iframeContent = iframeDoc.body?.querySelector('.iframe-content');
-        const iframeHeight = iframeContent.scrollHeight;
+        const iframeDoc = block.querySelector('iframe')?.contentDocument;
+        const iframeContent = iframeDoc?.body?.querySelector('.iframe-content');
+        const iframeHeight = iframeContent?.scrollHeight;
         iframe.style.height = `${iframeHeight}px`;
       });
     });
