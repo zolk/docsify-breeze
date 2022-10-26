@@ -21,7 +21,7 @@
 }
 
 .sidebar > .search input {
-  padding: 0 2.5rem;
+  padding: 0.5rem 2.5rem;
   background-color: var(--search-input-background-color);
   background-image: var(--icon-search);
   background-repeat: no-repeat;
