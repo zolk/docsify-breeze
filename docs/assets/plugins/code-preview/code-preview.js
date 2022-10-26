@@ -40,7 +40,7 @@ window.$docsify.plugins.push((hook, vm) => {
     const doc = parser.parseFromString(html, 'text/html');
 
     [...doc.querySelectorAll('code.preview')].map((codeBlock) => {
-      const previewView = renderPreview(codeBlock, id);
+      const previewView = renderPreview(codeBlock, id, vm);
       const pre = codeBlock.closest('pre');
       pre.replaceWith(parser.parseFromString(previewView, 'text/html').body);
       id++;

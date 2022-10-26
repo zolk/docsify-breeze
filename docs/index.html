@@ -49,6 +49,12 @@
           prefix: 'ds',
           manifestPath: '/dist/custom-elements.json',
         },
+        codePreview: {
+          header: {
+            scripts: ['/dist/index.js'],
+            styles: ['/dist/styles/tokens.css', '/assets/theme/styles.css'],
+          },
+        },
         themes: [
           { name: 'Light Theme', class: 'ds-light', previewBg: '#ffffff' },
           { name: 'Dark Theme', class: 'ds-dark', previewBg: '#323232' },

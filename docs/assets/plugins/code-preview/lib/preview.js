@@ -4,7 +4,7 @@
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-export function renderPreview(codeBlock, id) {
+export function renderPreview(codeBlock, id, vm) {
   const pre = codeBlock.closest('pre');
   const isExpanded = codeBlock.classList.contains('expanded');
   const showControls = codeBlock.classList.contains('controls');
@@ -47,10 +47,12 @@ export function renderPreview(codeBlock, id) {
   iframe.srcdoc = `<!DOCTYPE html>
     <html>
       <head>
-        <script type="module" src="/dist/index.js"></script>
-        <link rel="stylesheet" href="/dist/styles/tokens.css" />
-        <link rel="stylesheet" href="/assets/theme/styles.css" />
-        <link rel="stylesheet" href="/assets/theme/pages.css" />
+        ${vm.config.codePreview?.header?.scripts
+          ?.map((src) => `<script type="module" src="${src}"></script>`)
+          .join('')}
+        ${vm.config.codePreview?.header?.styles
+          ?.map((href) => `<link rel="stylesheet" href="${href}" />`)
+          .join('')}
       </head>
       <body style="background-color: transparent;">
         <div class="iframe-content content-color" style="padding: 2rem calc(2rem + 20px) 2rem 2rem;">
