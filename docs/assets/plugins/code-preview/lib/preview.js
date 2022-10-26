@@ -53,7 +53,7 @@ export function renderPreview(codeBlock, id) {
         <link rel="stylesheet" href="/assets/theme/pages.css" />
       </head>
       <body style="background-color: transparent;">
-        <div class="iframe-content" style="padding: 2rem calc(2rem + 20px) 2rem 2rem;">
+        <div class="iframe-content content-color" style="padding: 2rem calc(2rem + 20px) 2rem 2rem;">
           ${codeBlock.textContent}
         </div>
       </body>

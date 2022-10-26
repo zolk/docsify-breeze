@@ -297,6 +297,10 @@ main {
   transition: left 0.25s ease;
 }
 
+.content-color {
+  color: var(--content-color);
+}
+
 /*
   -------------
   Sidebar Toggle Support
