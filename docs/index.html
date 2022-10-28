@@ -9,10 +9,10 @@
     <link rel="stylesheet" href="/assets/theme/styles.css" />
     <link rel="stylesheet" href="/assets/theme/pages.css" />
     <link rel="stylesheet" href="/assets/plugins/copy-code/copy-code.css" />
-    <link rel="stylesheet" href="/assets/plugins/code-preview/code-preview.css" />
+    <link rel="stylesheet" href="/assets/plugins/web-component-viewer/web-component-viewer.css" />
     <link rel="stylesheet" href="/assets/plugins/custom-replacements/custom-replacements.css" />
-    <link rel="stylesheet" href="/assets/plugins/component/component.css" />
-    <link rel="stylesheet" href="/assets/plugins/edit-on-github/edit-on-github.css" />
+    <link rel="stylesheet" href="/assets/plugins/web-component-docs/web-component-docs.css" />
+    <link rel="stylesheet" href="/assets/plugins/github-edit-link/github-edit-link.css" />
     <link rel="stylesheet" href="/assets/plugins/pagination/pagination.css" />
     <link rel="stylesheet" href="/assets/plugins/search/search.css" />
     <link rel="stylesheet" href="/assets/plugins/site-title/site-title.css" />
@@ -21,8 +21,7 @@
     <div id="app"></div>
     <script>
       window.$docsify = {
-        name: 'Design System Starter',
-        repo: '',
+        name: 'Docsify Design System Starter Kit',
         routerMode: 'history',
         loadSidebar: true,
         subMaxLevel: 2,
@@ -45,7 +44,7 @@
           logo: '<svg width="29" height="29" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M15.554 15.283 29 .498l-.496-.494-14.823 13.374a5.957 5.957 0 0 1 1.873 1.905Z" fill="currentColor"/><path fill-rule="evenodd" clip-rule="evenodd" d="M10.528 21.026a2.627 2.627 0 0 1-2.63-2.623 2.626 2.626 0 0 1 2.63-2.62 2.626 2.626 0 0 1 2.63 2.62 2.626 2.626 0 0 1-2.63 2.623Zm1.364-6.957L10.85.033h-.702L9.102 14.09c-.23.075-.452.168-.664.277L1.103 8.52l-.497.495 5.869 7.306a4.524 4.524 0 0 0-.292.701L0 18.049v.7l6.18 1.025c.08.254.183.497.304.73L2.886 25.52l.496.494 5.038-3.584c.223.117.457.215.701.294l1.026 6.134h.702l1.022-6.113c.26-.08.509-.183.747-.305l7.336 5.846.495-.494-5.867-7.307c.114-.224.213-.457.29-.7L28.94 18.75v-.7l-14.071-1.037a4.56 4.56 0 0 0-2.977-2.943Z" fill="currentColor"/></svg>',
           logoFill: '#0A1A29',
         },
-        component: {
+        componentDocs: {
           prefix: 'ds',
           manifestPath: '/dist/custom-elements.json',
         },
@@ -60,10 +59,13 @@
     <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js"></script>
     <script src="/assets/plugins/copy-code/copy-code.js" type="module"></script>
-    <script src="/assets/plugins/code-preview/code-preview.js" type="module"></script>
-    <script src="/assets/plugins/component/component.js" type="module"></script>
+    <script
+      src="/assets/plugins/web-component-viewer/web-component-viewer.js"
+      type="module"
+    ></script>
+    <script src="/assets/plugins/web-component-docs/web-component-docs.js" type="module"></script>
     <script src="/assets/plugins/custom-replacements/custom-replacements.js" type="module"></script>
-    <script src="/assets/plugins/edit-on-github/edit-on-github.js" type="module"></script>
+    <script src="/assets/plugins/github-edit-link/github-edit-link.js" type="module"></script>
     <script src="/assets/plugins/navbar-collapse/navbar-collapse.js"></script>
     <script src="/assets/plugins/pagination/pagination.js"></script>
     <script src="/assets/plugins/search/search.js"></script>
