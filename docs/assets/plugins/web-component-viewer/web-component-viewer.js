@@ -1,4 +1,5 @@
-/* code-preview plugin for Docsify
+/* docsify-web-component-viewer
+ * A Docsify plugin for rendering and customizing web components.
  *
  * Usage instructions:
  *

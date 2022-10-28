@@ -1,4 +1,5 @@
-/* component plugin for Docsify
+/* docsify-web-component-docs
+ * A plugin for documenting web components in Docsify
  *
  * Copyright (c) 2021 Kevin Zolkiewicz.
  * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
@@ -11,9 +12,6 @@ import { renderMetadata } from './lib/metadata.js';
 import { getActiveTheme, setPreviewTheme, renderThemeSelect } from './lib/theme.js';
 
 window.$docsify.plugins.push((hook, vm) => {
-  // Handles all enhancements using data from the Custom Elements Manifest,
-  // including the component headers and documentation tables.
-
   const themes = vm.config.themes;
 
   hook.mounted(() => {
