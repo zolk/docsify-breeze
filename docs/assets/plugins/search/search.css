@@ -22,22 +22,22 @@
 
 .sidebar > .search input {
   padding: 0.5rem 2.5rem;
-  background-color: var(--search-input-background-color);
+  background-color: var(--search-color-background);
   background-image: var(--icon-search);
   background-repeat: no-repeat;
   background-size: 1.3125rem;
   background-position: 0.7rem center;
   border-radius: 20px;
-  color: var(--body-color);
+  color: var(--color-text);
 }
 
 .sidebar > .search input::placeholder {
-  color: var(--search-input-placeholder-color);
+  color: var(--search-color-text-placeholder);
 }
 
 .sidebar > .search input:focus {
-  border: 1px solid var(--content-color-active);
-  box-shadow: 0 0 5px var(--content-color-active);
+  border: 1px solid var(--content-color-text-active);
+  box-shadow: 0 0 5px var(--content-color-text-active);
 }
 
 .search .results-panel {

@@ -7,10 +7,10 @@
 p.page-headline {
   margin-top: 0;
   margin-bottom: 1.5rem;
-  font-size: 1.4rem;
-  color: var(--color-neutral-deep);
-  line-height: 1.4;
-  letter-spacing: -0.5px;
+  font-size: var(--content-headline-font-size);
+  color: var(--content-headline-color-text);
+  line-height: var(--content-headline-line-height);
+  letter-spacing: var(--content-headline-letter-spacing);
 }
 
 p.page-headline + div {

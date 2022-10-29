@@ -99,14 +99,14 @@
   background-color: #fff;
   border: 1px solid var(--color-neutral-light);
   border-radius: 7px;
-  box-shadow: 0px 1px 0px var(--sidebar-toggle-button-box-shadow-color);
+  box-shadow: 0px 1px 0px var(--sidebar-shadow-toggle);
   background-image: var(--icon-theme-select);
   background-origin: content-box;
   background-position: calc(100% + 1.3rem) center;
   background-repeat: no-repeat;
   color: var(--color-blue-medium);
   cursor: pointer;
-  font-family: var(--font-default);
+  font-family: var(--font-family-body);
   font-size: 0.9rem;
   -webkit-appearance: none;
 }
@@ -124,8 +124,8 @@
 }
 
 .theme-switcher select:focus {
-  border: 1px solid var(--content-color-active);
-  box-shadow: 0 0 5px var(--content-color-active);
+  border: 1px solid var(--content-color-text-active);
+  box-shadow: 0 0 5px var(--content-color-text-active);
   outline: none;
 }
 

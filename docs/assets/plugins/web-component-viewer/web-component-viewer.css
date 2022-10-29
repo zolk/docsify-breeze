@@ -68,7 +68,7 @@
   display: flex;
   gap: 1rem;
   padding: 0.3rem 0.1rem;
-  background-color: var(--content-background-color);
+  background-color: var(--content-color-background);
 }
 
 .code-preview__actions .code-preview__actions-spacer {
@@ -105,13 +105,13 @@
 .code-preview__actions button:hover,
 .code-preview__actions a:hover {
   background-color: transparent;
-  color: var(--content-color);
+  color: var(--content-color-text);
   text-decoration: none;
 }
 
 .example {
   background-color: var(--color-white);
-  color: var(--content-color);
+  color: var(--content-color-text);
 }
 
 .example:not(.controls) .code-preview__resizer {
@@ -168,7 +168,7 @@
 }
 
 .controls__code pre code {
-  font-family: var(--font-code);
+  font-family: var(--font-family-code);
 }
 
 .controls__code .copy-code-button {
@@ -242,12 +242,12 @@
   background-color: var(--color-white);
   border: 1px solid var(--color-neutral-dark);
   border-radius: 3px;
-  font-family: var(--font-default);
+  font-family: var(--font-family-body);
   font-size: 0.8rem;
 }
 
 .controls__inputs textarea {
-  font-family: var(--font-code);
+  font-family: var(--font-family-code);
 }
 
 .controls__group select {
