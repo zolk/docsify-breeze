@@ -8,14 +8,15 @@
   background-repeat: no-repeat;
   background-position: left center;
   background-size: 14px;
-  color: var(--color-neutral-deep);
-  font-size: 0.9rem;
-  text-decoration: none;
+  color: var(--gh-link-color-text);
+  font-size: var(--gh-link-font-size);
+  text-decoration: var(--gh-link-text-decoration);
   transition: color 0.15s ease-in-out;
 }
 
 .markdown-section .edit-on-github:hover {
   background-color: transparent;
-  color: var(--color-blue-medium);
+  color: var(--gh-link-color-text-hover);
+  text-decoration: var(--gh-link-text-decoration-hover);
   background-image: var(--icon-pencil-hover);
 }

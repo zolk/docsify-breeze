@@ -15,7 +15,7 @@
   height: 0.625rem;
   background-color: var(--content-color-background);
   border-bottom-left-radius: 0.625rem;
-  box-shadow: 0 -1px 0 white;
+  box-shadow: 0 -1px 0 var(--content-color-background);
 }
 
 .pagination-item--previous,

@@ -36,17 +36,17 @@
 }
 
 .sidebar > .search input:focus {
-  border: 1px solid var(--content-color-text-active);
-  box-shadow: 0 0 5px var(--content-color-text-active);
+  border: 1px solid var(--search-color-border-focus);
+  box-shadow: 0 0 5px var(--search-color-border-focus);
 }
 
 .search .results-panel {
   margin-top: 2rem;
-  color: var(--color-white);
+  color: var(--color-text);
 }
 
 .search .matching-post {
-  border-bottom: 1px solid var(--color-neutral-deep) !important;
+  border-bottom: 1px solid var(--search-results-color-border) !important;
 }
 
 .search .matching-post:last-child {

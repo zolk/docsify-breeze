@@ -27,6 +27,7 @@ html {
   --content-color-background: var(--color-white);
   --content-color-text: var(--color-blue-deep);
   --content-color-text-active: var(--color-blue-lightest);
+  --content-color-border-active: var(--color-blue-lightest);
 
   /* Font Generics */
   --font-family-heading: var(--font-family-inter);
@@ -60,6 +61,8 @@ html {
   /* Search Box */
   --search-color-background: var(--color-blue-light);
   --search-color-text-placeholder: var(--color-white-70);
+  --search-color-border-focus: var(--content-color-text-active);
+  --search-results-color-border: var(--color-neutral-deep);
 
   /* Sidebar */
   --sidebar-color-border-subnav: var(--color-white-25);
@@ -129,4 +132,34 @@ html {
   --content-tip-color-background: var(--color-neutral-lighter);
   --content-tip-color-border: var(--color-blue-medium);
   --content-tip-color-text: var(--color-text);
+
+  /* page-card */
+  --page-card-color-border: var(--color-neutral-light);
+  --page-card-color-shadow: var(--color-black-05);
+  --page-card-color-border-hover: var(--content-color-border-active);
+  --page-card-color-shadow-hover: var(--content-color-border-active);
+  --page-card-title-color-text: var(--color-blue-medium);
+  --page-card-title-font-size: 1.25rem;
+  --page-card-title-font-weight: 700;
+  --page-card-body-color-text: var(--color-neutral-deep);
+  --page-card-body-font-size: 0.875rem;
+  --page-card-body-font-weight: 400;
+
+  /* github edit link */
+  --gh-link-color-text: var(--color-neutral-deep);
+  --gh-link-color-text-hover: var(--color-blue-medium);
+  --gh-link-font-size: 0.9rem;
+  --gh-link-text-decoration: none;
+  --gh-link-text-decoration-hover: none;
+
+  /* copy code button */
+  --copy-code-color-background: var(--color-neutral-lighter);
+  --copy-code-color-border: var(--color-neutral-light);
+  --copy-code-color-fill: var(--color-neutral-dark);
+  --copy-code-color-background-hover: var(--color-white);
+  --copy-code-color-border-hover: var(--color-blue-light);
+  --copy-code-color-fill-hover: var(--color-blue-light);
+  --copy-code-color-background-success: var(--color-white);
+  --copy-code-color-border-success: #155117;
+  --copy-code-color-fill-success: #155117;
 }
