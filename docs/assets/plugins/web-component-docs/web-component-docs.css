@@ -17,18 +17,11 @@
   }
 }
 
-.component-header .section {
-  color: var(--color-text-light);
-  font-weight: 400px;
-  font-size: 0.75rem;
-  text-transform: uppercase;
-}
-
 .component-header h1 {
   margin: 0;
-  letter-spacing: -0.02rem;
-  font-size: 2.5rem;
-  font-weight: 700;
+  letter-spacing: var(--component-docs-title-letter-spacing);
+  font-size: var(--component-docs-title-font-size);
+  font-weight: var(--component-docs-title-font-weight);
 }
 
 .component-header .component-title {
@@ -48,25 +41,25 @@
 .component-status {
   display: inline-block;
   border-radius: 100px;
-  padding: 0.25rem 0.8rem;
-  text-transform: uppercase;
-  font-weight: 600;
-  font-size: 0.75rem;
+  padding: var(--component-docs-status-padding);
+  font-weight: var(--component-docs-status-font-weight);
+  font-size: var(--component-docs-status-font-size);
+  text-transform: var(--component-docs-status-text-transform);
 }
 
 .component-status--draft {
-  background-color: #faefd1;
-  color: #683603;
+  background-color: var(--component-docs-status-color-background-draft);
+  color: var(--component-docs-status-color-text-draft);
 }
 
 .component-status--ready {
-  background-color: #d7f4d8;
-  color: #155117;
+  background-color: var(--component-docs-status-color-background-ready);
+  color: var(--component-docs-status-color-text-ready);
 }
 
 .component-status--deprecated {
-  background-color: #f4e1d7;
-  color: #5a2d16;
+  background-color: var(--component-docs-status-color-background-deprecated);
+  color: var(--component-docs-status-color-text-deprecated);
 }
 
 /*
@@ -96,18 +89,18 @@
 .theme-switcher select {
   flex-grow: 0;
   padding: 0.5rem 1.7rem 0.5rem 0.7rem;
-  background-color: #fff;
-  border: 1px solid var(--color-neutral-light);
-  border-radius: 7px;
-  box-shadow: 0px 1px 0px var(--sidebar-shadow-toggle);
+  background-color: var(--component-docs-theme-switcher-color-background);
+  border: 1px solid var(--component-docs-theme-switcher-color-border);
+  border-radius: var(--component-docs-theme-switcher-border-radius);
+  box-shadow: var(--component-docs-theme-switcher-shadow);
   background-image: var(--icon-theme-select);
   background-origin: content-box;
   background-position: calc(100% + 1.3rem) center;
   background-repeat: no-repeat;
-  color: var(--color-blue-medium);
+  color: var(--component-docs-theme-switcher-color-text);
   cursor: pointer;
-  font-family: var(--font-family-body);
-  font-size: 0.9rem;
+  font-family: var(--component-docs-theme-switcher-font-family);
+  font-size: var(--component-docs-theme-switcher-font-weight);
   -webkit-appearance: none;
 }
 
@@ -120,12 +113,12 @@
 }
 
 .theme-switcher select:hover {
-  border-color: var(--color-neutral-medium);
+  border-color: var(--component-docs-theme-switcher-color-border-hover);
 }
 
 .theme-switcher select:focus {
-  border: 1px solid var(--content-color-text-active);
-  box-shadow: 0 0 5px var(--content-color-text-active);
+  border-color: var(--component-docs-theme-switcher-color-border-focus);
+  box-shadow: var(--component-docs-theme-switcher-shadow-focus);
   outline: none;
 }
 
@@ -160,32 +153,32 @@
 }
 
 .component-meta-table table thead th {
-  padding: 0.7rem;
-  background-color: var(--color-neutral-lighter);
-  border-bottom: 1px solid var(--color-neutral-light);
-  color: var(--color-neutral-deep);
-  font-weight: 600;
-  font-size: 0.75rem;
+  padding: var(--component-docs-table-header-padding);
+  background-color: var(--component-docs-table-header-color-background);
+  border-bottom: 1px solid var(--component-docs-table-color-border);
+  color: var(--component-docs-table-header-color-text);
+  font-weight: var(--component-docs-table-header-font-weight);
+  font-size: var(--component-docs-table-header-font-size);
   text-align: left;
 }
 
 .component-meta-table table thead th:first-of-type,
 .component-meta-table table tbody th {
-  width: 8rem;
+  width: var(--component-docs-table-header-width-first-col);
   white-space: nowrap;
 }
 
 .component-meta-table table tbody th,
 .component-meta-table table tbody td {
-  padding: 0.9rem 0.7rem;
-  border-bottom: 1px solid var(--color-neutral-light);
-  font-weight: 400;
+  padding: var(--component-docs-table-cell-padding);
+  border-bottom: 1px solid var(--component-docs-table-cell-color-border);
+  font-weight: var(--component-docs-table-cell-font-weight);
   text-align: left;
 }
 
 .component-method-signature {
   margin-bottom: 0;
-  font-size: 0.9rem;
+  font-size: var(--component-docs-method-signature-font-size);
 }
 
 .component-method-signature + p {
@@ -225,16 +218,16 @@
 .component-card a {
   display: block;
   height: 100%;
-  border: 1px solid var(--color-neutral-light);
-  border-radius: 6px;
-  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--component-docs-card-color-border);
+  border-radius: var(--component-docs-card-border-radius);
+  box-shadow: var(--component-docs-card-shadow);
   text-decoration: none;
 }
 
 .markdown-section .component-card a:hover {
   background-color: white;
-  border-color: var(--color-blue-lightest);
-  box-shadow: 0 0 0 1px var(--color-blue-lightest);
+  border-color: var(--component-docs-card-color-border-hover);
+  box-shadow: var(--component-docs-card-shadow-hover);
 }
 
 .component-card__image {
@@ -242,16 +235,16 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 140px;
-  background-color: var(--color-neutral-lighter);
-  border-top-left-radius: 6px;
-  border-top-right-radius: 6px;
+  height: var(--component-docs-card-height);
+  background-color: var(--component-docs-card-color-background);
+  border-top-left-radius: var(--component-docs-card-border-radius);
+  border-top-right-radius: var(--component-docs-card-border-radius);
 }
 
 .component-card__image,
 .component-card__image img {
-  border-top-left-radius: 6px;
-  border-top-right-radius: 6px;
+  border-top-left-radius: var(--component-docs-card-border-radius);
+  border-top-right-radius: var(--component-docs-card-border-radius);
 }
 
 .component-card__header {
@@ -263,12 +256,12 @@
 
 .component-card__header h2 {
   margin: 0;
-  font-size: 1.5rem;
+  font-size: var(--component-docs-card-header-font-size);
 }
 
 .component-card p {
   margin-top: 0;
   padding: 0 1rem;
-  color: var(--color-neutral-deep);
-  font-weight: 400;
+  color: var(--component-docs-card-description-color-text);
+  font-weight: var(--component-docs-card-description-font-weight);
 }
