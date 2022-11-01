@@ -18,7 +18,7 @@ export function getActiveTheme() {
 }
 
 export function setPreviewTheme(activeTheme) {
-  const bgColor = themes.find((t) => t.class === activeTheme).previewBg;
+  const bgColor = themes?.find((t) => t.class === activeTheme).previewBg;
 
   const codePreviews = document.querySelectorAll('.code-preview__preview');
   codePreviews.forEach((preview) => (preview.style.backgroundColor = bgColor));
