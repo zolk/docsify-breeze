@@ -43,7 +43,7 @@ html {
   --icon-search: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="white"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" /></svg>');
   --icon-hashtag: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="%23d4dee7"><path fill-rule="evenodd" d="M9.243 3.03a1 1 0 01.727 1.213L9.53 6h2.94l.56-2.243a1 1 0 111.94.486L14.53 6H17a1 1 0 110 2h-2.97l-1 4H15a1 1 0 110 2h-2.47l-.56 2.242a1 1 0 11-1.94-.485L10.47 14H7.53l-.56 2.242a1 1 0 11-1.94-.485L5.47 14H3a1 1 0 110-2h2.97l1-4H5a1 1 0 110-2h2.47l.56-2.243a1 1 0 011.213-.727zM9.03 8l-1 4h2.938l1-4H9.031z" clip-rule="evenodd" /></svg>');
   --icon-hashtag-hover: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="%2357caee"><path fill-rule="evenodd" d="M9.243 3.03a1 1 0 01.727 1.213L9.53 6h2.94l.56-2.243a1 1 0 111.94.486L14.53 6H17a1 1 0 110 2h-2.97l-1 4H15a1 1 0 110 2h-2.47l-.56 2.242a1 1 0 11-1.94-.485L10.47 14H7.53l-.56 2.242a1 1 0 11-1.94-.485L5.47 14H3a1 1 0 110-2h2.97l1-4H5a1 1 0 110-2h2.47l.56-2.243a1 1 0 011.213-.727zM9.03 8l-1 4h2.938l1-4H9.031z" clip-rule="evenodd" /></svg>');
-  --icon-theme-select: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%23bccad7'><path fill-rule='evenodd' d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z' clip-rule='evenodd' /></svg>");
+  --icon-select: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%23bccad7'><path fill-rule='evenodd' d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z' clip-rule='evenodd' /></svg>");
   --icon-color-swatch: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="%23f2f6f8" viewBox="0 0 24 24" stroke="%236e8091"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" /></svg>');
   --icon-pencil: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="%236e8091" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg>');
   --icon-pencil-hover: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="%231b354d" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg>');
@@ -210,4 +210,35 @@ html {
   --component-docs-card-header-font-size: 1.5rem;
   --component-docs-card-description-color-text: var(--color-neutral-deep);
   --component-docs-card-description-font-weight: 400;
+
+  /* web-component-viewer */
+  --component-viewer-color-border: var(--color-neutral-light);
+  --component-viewer-resizer-color-background: var(--color-neutral-lightest);
+  --component-viewer-resizer-color-background-hover: var(--color-neutral-lighter);
+  --component-viewer-resizer-color-border: var(--color-neutral-light);
+  --component-viewer-resizer-color-border-hover: var(--color-neutral-medium);
+  --component-viewer-resizer-color-fill: var(--color-blue-light);
+  --component-viewer-action-color-text: var(--color-blue-light);
+  --component-viewer-action-color-text-hover: var(--content-color-text);
+  --component-viewer-action-font-weight: 500;
+  --component-viewer-action-font-size: 0.75rem;
+  --component-viewer-action-line-height: 1.4;
+  --component-viewer-action-letter-spacing: -0.02rem;
+  --component-viewer-action-text-decoration: none;
+  --component-viewer-action-text-decoration-hover: none;
+  --component-viewer-controls-color-background: var(--color-neutral-lightest);
+  --component-viewer-controls-color-border: var(--color-neutral-light);
+  --component-viewer-controls-code-color-background: var(--color-neutral-lighter);
+  --component-viewer-controls-input-color-accent: var(--content-color-border-active);
+  --component-viewer-controls-input-color-background: var(--color-white);
+  --component-viewer-controls-input-color-border: var(--color-neutral-light);
+  --component-viewer-controls-input-color-border-hover: var(--color-neutral-medium);
+  --component-viewer-controls-input-color-border-focus: var(--content-color-border-active);
+  --component-viewer-controls-input-color-text: var(--color-blue-medium);
+  --component-viewer-controls-input-color-text-placeholder: var(--color-neutral-deep);
+  --component-viewer-controls-input-border-radius: 5px;
+  --component-viewer-controls-input-font-family: var(--font-family-body);
+  --component-viewer-controls-input-font-size: 0.9rem;
+  --component-viewer-controls-input-shadow: 0px 1px 0px var(--color-black-05);
+  --component-viewer-controls-input-shadow-focus: 0 0 5px var(--content-color-border-active);
 }

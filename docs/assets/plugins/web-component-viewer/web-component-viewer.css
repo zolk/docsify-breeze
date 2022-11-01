@@ -4,18 +4,9 @@
   position: relative;
   min-width: 20rem;
   max-width: 100%;
-  border: 1px solid var(--color-neutral-light);
+  border: 1px solid var(--component-viewer-color-border);
   padding: 2rem calc(2rem + 20px) 2rem 2rem;
   border-radius: 2px;
-}
-
-.code-preview__resizer::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  background-color: var(--color-neutral-lighter);
 }
 
 .code-preview__resizer {
@@ -27,18 +18,18 @@
   align-items: center;
   justify-content: center;
   width: 1.5rem;
-  background-color: var(--color-neutral-lightest);
-  border: 1px solid var(--color-neutral-light);
+  background-color: var(--component-viewer-resizer-color-background);
+  border: 1px solid var(--component-viewer-resizer-color-border);
   border-top-right-radius: 2px;
   border-bottom-right-radius: 2px;
-  color: var(--color-blue-light);
+  color: var(--component-viewer-resizer-color-fill);
   cursor: grab;
   user-select: none;
 }
 
 .code-preview__resizer:hover {
-  background-color: var(--color-neutral-lighter);
-  border-color: var(--color-neutral-medium);
+  background-color: var(--component-viewer-resizer-color-background-hover);
+  border-color: var(--component-viewer-resizer-color-border-hover);
 }
 
 .code-preview__resizer--resizing {
@@ -84,13 +75,13 @@
   padding: 0;
   background: none;
   border: none;
-  color: var(--color-blue-light);
+  color: var(--component-viewer-action-color-text);
   cursor: pointer;
-  font-weight: 500;
-  font-size: 0.75rem;
-  letter-spacing: -0.02em;
-  line-height: 1.4;
-  text-decoration: none;
+  font-weight: var(--component-viewer-action-font-weight);
+  font-size: var(--component-viewer-action-font-size);
+  letter-spacing: var(--component-viewer-action-letter-spacing);
+  line-height: var(--component-viewer-action-line-height);
+  text-decoration: var(--component-viewer-action-text-decoration);
 }
 
 .code-preview--expanded .code-preview__toggle svg {
@@ -105,12 +96,12 @@
 .code-preview__actions button:hover,
 .code-preview__actions a:hover {
   background-color: transparent;
-  color: var(--content-color-text);
-  text-decoration: none;
+  color: var(--component-viewer-action-color-text-hover);
+  text-decoration: var(--component-viewer-action-text-decoration);
 }
 
 .example {
-  background-color: var(--color-white);
+  background-color: var(--content-color-background);
   color: var(--content-color-text);
 }
 
@@ -133,7 +124,7 @@
   grid-template-areas:
     'preview preview'
     'code controls';
-  background-color: var(--color-neutral-lightest);
+  background-color: var(--component-viewer-controls-color-background);
 }
 
 .controls .code-preview__preview {
@@ -154,8 +145,8 @@
   overflow: scroll;
   position: relative;
   grid-area: code;
-  background-color: var(--color-neutral-lighter);
-  border-top: 1px solid var(--color-neutral-light);
+  background-color: var(--component-viewer-controls-code-color-background);
+  border-top: 1px solid var(--component-viewer-controls-color-border);
   font-size: 0.875rem;
 }
 
@@ -179,9 +170,9 @@
 
 .controls__inputs {
   overflow: auto;
-  background-color: var(--color-white);
-  border-top: 1px solid var(--color-neutral-light);
-  border-left: 1px solid var(--color-neutral-light);
+  background-color: var(--content-color-background);
+  border-top: 1px solid var(--component-viewer-controls-color-border);
+  border-left: 1px solid var(--component-viewer-controls-color-border);
 }
 
 .controls__inputs table {
@@ -192,11 +183,11 @@
 
 .controls__inputs table thead th {
   padding: 0.7rem;
-  background-color: var(--color-neutral-lighter);
-  border-bottom: 1px solid var(--color-neutral-light);
-  color: var(--color-neutral-deep);
-  font-weight: 600;
-  font-size: 0.75rem;
+  background-color: var(--component-docs-table-header-color-background);
+  border-bottom: 1px solid var(--component-docs-table-color-border);
+  color: var(--component-docs-table-header-color-text);
+  font-weight: var(--component-docs-table-header-font-weight);
+  font-size: var(--component-docs-table-header-font-size);
   text-align: left;
 }
 
@@ -213,8 +204,8 @@
 .controls__inputs table tbody th,
 .controls__inputs table tbody td {
   padding: 0.7rem 0.5rem;
-  border-bottom: 1px solid var(--color-neutral-light);
-  font-weight: 400;
+  border-bottom: 1px solid var(--component-docs-table-color-border);
+  font-weight: var(--component-docs-table-cell-font-weight);
   text-align: left;
 }
 
@@ -230,7 +221,7 @@
 }
 
 .controls__group input {
-  accent-color: var(--color-blue-lightest);
+  accent-color: var(--component-viewer-controls-input-color-accent);
 }
 
 .controls__group input[type='text'],
@@ -238,28 +229,50 @@
 .controls__group select {
   width: 100%;
   min-width: 15rem;
-  padding: 0.3rem 0.4rem;
-  background-color: var(--color-white);
-  border: 1px solid var(--color-neutral-dark);
-  border-radius: 3px;
-  font-family: var(--font-family-body);
-  font-size: 0.8rem;
+  padding: 0.4rem 0.5rem;
+  background-color: var(--component-viewer-controls-input-color-background);
+  border: 1px solid var(--component-viewer-controls-input-color-border);
+  border-radius: var(--component-viewer-controls-input-border-radius);
+  color: var(--component-viewer-controls-input-color-text);
+  font-family: var(--component-viewer-controls-input-font-family);
+  font-size: var(--component-viewer-controls-input-font-size);
+  box-shadow: var(--component-viewer-controls-input-shadow);
+}
+
+.controls__group input[type='text']:hover,
+.controls__inputs textarea:hover,
+.controls__group select:hover {
+  border-color: var(--component-viewer-controls-input-color-border-hover);
+}
+
+.controls__group input[type='text']:focus,
+.controls__inputs textarea:focus,
+.controls__group select:focus {
+  border-color: var(--component-viewer-controls-input-color-border-hover);
+  box-shadow: var(--component-viewer-controls-input-shadow-focus);
+  outline: none;
 }
 
 .controls__inputs textarea {
-  font-family: var(--font-family-code);
+  font-family: var(--component-viewer-controls-input-font-family);
 }
 
 .controls__group select {
   appearance: none;
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>');
+  cursor: pointer;
+  background-image: var(
+    --icon-select,
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>')
+  );
+  background-origin: content-box;
+  background-position: 100% center;
   background-repeat: no-repeat;
-  background-position: right 3px;
   background-size: 1.2rem;
+  -webkit-appearance: none;
 }
 
 .controls__group input::placeholder {
-  color: var(--color-neutral-deep);
+  color: var(--component-viewer-controls-input-color-text-placeholder);
   opacity: 1;
 }
 
