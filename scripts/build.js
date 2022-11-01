@@ -82,6 +82,7 @@ mkdirp.sync(outdir);
 
   if (serve) {
     bs.init({
+      open: false,
       single: true,
       notify: false,
       ghostMode: false,

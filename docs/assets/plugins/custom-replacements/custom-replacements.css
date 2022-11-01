@@ -7,10 +7,10 @@
 p.page-headline {
   margin-top: 0;
   margin-bottom: 1.5rem;
-  font-size: 1.4rem;
-  color: var(--color-neutral-deep);
-  line-height: 1.4;
-  letter-spacing: -0.5px;
+  font-size: var(--content-headline-font-size);
+  color: var(--content-headline-color-text);
+  line-height: var(--content-headline-line-height);
+  letter-spacing: var(--content-headline-letter-spacing);
 }
 
 p.page-headline + div {
@@ -32,27 +32,28 @@ p.page-headline + div {
   background-position: center right 1rem;
   background-repeat: no-repeat;
   background-size: 1.5rem;
-  border: 1px solid var(--color-neutral-light);
+  border: 1px solid var(--page-card-color-border);
   border-radius: 4px;
-  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 1px 0px var(--page-card-color-shadow);
   text-decoration: none;
 }
 
 .markdown-section a.page-card:hover {
   background-color: transparent;
-  border-color: var(--color-blue-lightest);
-  box-shadow: 0 0 0 1px var(--color-blue-lightest);
+  border-color: var(--page-card-color-border-hover);
+  box-shadow: 0 0 0 1px var(--page-card-color-shadow-hover);
 }
 
 .page-card h2 {
   margin: 0;
-  color: var(--color-blue-medium);
-  font-size: 1.25rem;
+  color: var(--page-card-title-color-text);
+  font-size: var(--page-card-title-font-size);
+  font-weight: var(--page-card-title-font-weight);
 }
 
 .page-card p {
   margin: 0;
-  color: var(--color-neutral-deep);
-  font-size: 0.875rem;
-  font-weight: 400;
+  color: var(--page-card-body-color-text);
+  font-size: var(--page-card-body-font-size);
+  font-weight: var(--page-card-body-font-weight);
 }
