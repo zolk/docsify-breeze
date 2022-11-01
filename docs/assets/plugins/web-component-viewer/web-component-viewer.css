@@ -1,6 +1,7 @@
 @import url('../../theme/tokens.css');
 
 .code-preview__preview {
+  overflow: hidden;
   position: relative;
   min-width: 20rem;
   max-width: 100%;

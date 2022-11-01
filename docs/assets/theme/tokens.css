@@ -167,6 +167,7 @@ html {
   --component-docs-title-letter-spacing: 0.02rem;
   --component-docs-title-font-size: 2.5rem;
   --component-docs-title-font-weight: 700;
+  --component-docs-header-color-border: var(--color-neutral-light);
   --component-docs-status-border-radius: 6.25rem;
   --component-docs-status-padding: 0.25rem 0.8rem;
   --component-docs-status-font-weight: 600;

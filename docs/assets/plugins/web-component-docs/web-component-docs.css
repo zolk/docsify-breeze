@@ -8,7 +8,7 @@
 
 .component-header {
   padding: var(--content-padding-vertical) var(--content-padding-horizontal-small);
-  border-bottom: 1px solid var(--color-neutral-light);
+  border-bottom: 1px solid var(--component-docs-header-color-border);
 }
 
 @media screen and (min-width: 48rem) {
