@@ -48,6 +48,7 @@ a.page-card {
 .page-card h2 {
   margin: 0;
   color: var(--page-card-title-color-text);
+  font-family: var(--page-card-title-font-family);
   font-size: var(--page-card-title-font-size);
   font-weight: var(--page-card-title-font-weight);
 }

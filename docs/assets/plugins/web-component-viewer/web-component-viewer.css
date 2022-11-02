@@ -1,6 +1,7 @@
 @import url('../../theme/tokens.css');
 
 .code-preview__preview {
+  z-index: 1;
   overflow: hidden;
   position: relative;
   min-width: 20rem;
@@ -42,6 +43,8 @@
 }
 
 .code-preview--expanded .code-preview__source {
+  position: relative;
+  top: -1px;
   display: block;
 }
 
@@ -58,6 +61,7 @@
 
 .code-preview__actions {
   display: flex;
+  flex-direction: row-reverse;
   gap: 1rem;
   padding: 0.3rem 0.1rem;
   background-color: var(--content-color-background);

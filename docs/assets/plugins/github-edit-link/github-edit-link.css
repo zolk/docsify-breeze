@@ -10,6 +10,7 @@
   background-size: 14px;
   color: var(--gh-link-color-text);
   font-size: var(--gh-link-font-size);
+  font-weight: var(--gh-link-font-weight);
   text-decoration: var(--gh-link-text-decoration);
   transition: color 0.15s ease-in-out;
 }
