@@ -23,7 +23,7 @@ p.page-headline + div {
   -------------
 */
 
-.page-card {
+a.page-card {
   display: block;
   margin-bottom: 1.5rem;
   padding: 1.5rem;
@@ -42,6 +42,7 @@ p.page-headline + div {
   background-color: transparent;
   border-color: var(--page-card-color-border-hover);
   box-shadow: 0 0 0 1px var(--page-card-color-shadow-hover);
+  text-decoration: none;
 }
 
 .page-card h2 {

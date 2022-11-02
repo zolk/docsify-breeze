@@ -231,6 +231,7 @@
   background-color: white;
   border-color: var(--component-docs-card-color-border-hover);
   box-shadow: var(--component-docs-card-shadow-hover);
+  text-decoration: none;
 }
 
 .component-card__image {

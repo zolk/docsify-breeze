@@ -120,9 +120,12 @@ html {
   --content-list-line-height: 1.9;
   --content-list-bullet-color-fill: var(--color-blue-medium);
   --content-link-color-text: var(--color-blue-medium);
+  --content-link-color-text-hover: var(--color-blue-medium);
   --content-link-color-text-decoration: var(--content-color-text-active);
   --content-link-color-text-decoration-hover: var(--color-blue-medium);
   --content-link-color-background-hover: var(--color-neutral-lighter);
+  --content-link-text-decoration: underline;
+  --content-link-text-decoration-hover: underline;
   --content-link-text-decoration-thickness: 2px;
   --content-link-font-weight: 600;
   --content-code-color-background: var(--color-neutral-lightest);

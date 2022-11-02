@@ -503,12 +503,15 @@ body.close .content {
 .markdown-section a {
   color: var(--content-link-color-text);
   font-weight: var(--content-link-font-weight);
+  text-decoration: var(--content-link-text-decoration);
   text-decoration-color: var(--content-link-color-text-decoration);
   text-decoration-thickness: var(--content-link-text-decoration-thickness);
   transition: all 0.15s ease-in-out;
 }
 
 .markdown-section a:hover {
+  color: var(--content-link-color-text-hover);
+  text-decoration: var(--content-link-text-decoration-hover);
   background-color: var(--content-link-color-background-hover);
   text-decoration-color: var(--content-link-color-text-decoration-hover);
 }
