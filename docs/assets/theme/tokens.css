@@ -70,6 +70,7 @@ html {
   --sidebar-width: 18.75rem;
 
   /* Sidebar Toggle Button */
+  --sidebar-toggle-top: 1.7rem;
   --sidebar-toggle-color-background: var(--color-white);
   --sidebar-toggle-color-border: var(--color-neutral-light);
   --sidebar-toggle-color-fill-close: var(--color-blue-medium);
@@ -91,10 +92,16 @@ html {
   --sidebar-nav-link-section-font-size: 0.8125rem;
 
   /* Content Area */
+  --content-top: 0;
+  --content-right: 0;
+  --content-border-radius-left: 6px;
+  --content-border-radius-right: 0;
   --content-max-width: 50rem;
   --content-padding-vertical: 3.125rem;
   --content-padding-horizontal-small: 2.0625rem;
   --content-padding-horizontal-large: 4.0625rem;
+  --content-header-color-background: transparent;
+  --content-header-padding-vertical: 2rem;
   --content-color-background-gradient: linear-gradient(
     180deg,
     var(--color-neutral-lightest) 0%,
@@ -115,14 +122,20 @@ html {
   --content-heading-text-decoration-hover: none;
   --content-heading-color-text: var(--content-color-text);
   --content-heading-color-text-hover: var(--content-color-text);
+  --content-h3-font-size: 1.2rem;
+  --content-h4-font-size: 1.1rem;
+  --content-h4-margin: 1rem 0;
   --content-font-size: 0.9375rem;
   --content-line-height: 1.7;
-  --content-list-line-height: 1.9;
+  --content-list-margin-bottom: 0.5rem;
   --content-list-bullet-color-fill: var(--color-blue-medium);
   --content-link-color-text: var(--color-blue-medium);
+  --content-link-color-text-hover: var(--color-blue-medium);
   --content-link-color-text-decoration: var(--content-color-text-active);
   --content-link-color-text-decoration-hover: var(--color-blue-medium);
   --content-link-color-background-hover: var(--color-neutral-lighter);
+  --content-link-text-decoration: underline;
+  --content-link-text-decoration-hover: underline;
   --content-link-text-decoration-thickness: 2px;
   --content-link-font-weight: 600;
   --content-code-color-background: var(--color-neutral-lightest);
@@ -149,6 +162,7 @@ html {
   --gh-link-color-text: var(--color-neutral-deep);
   --gh-link-color-text-hover: var(--color-blue-medium);
   --gh-link-font-size: 0.9rem;
+  --gh-link-font-weight: 500;
   --gh-link-text-decoration: none;
   --gh-link-text-decoration-hover: none;
 
@@ -167,6 +181,7 @@ html {
   --component-docs-title-letter-spacing: 0.02rem;
   --component-docs-title-font-size: 2.5rem;
   --component-docs-title-font-weight: 700;
+  --component-docs-header-color-border: var(--color-neutral-light);
   --component-docs-status-border-radius: 6.25rem;
   --component-docs-status-padding: 0.25rem 0.8rem;
   --component-docs-status-font-weight: 600;

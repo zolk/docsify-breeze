@@ -11,7 +11,7 @@
   color: var(--copy-code-color-fill);
   cursor: pointer;
   transition: all 0.3s;
-  opacity: 0;
+  opacity: 1;
 }
 
 .markdown-section pre:hover .copy-code-button {
@@ -35,7 +35,7 @@
 }
 
 .copy-code-button.success,
-.copy-code-button:hover.success {
+.markdown-section pre:hover .copy-code-button.success:hover {
   opacity: 1;
   border-color: var(--copy-code-color-border-success);
   background-color: var(--copy-code-color-background-success);

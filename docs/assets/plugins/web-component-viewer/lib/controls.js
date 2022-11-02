@@ -46,7 +46,7 @@ export function renderPropControl(prop, element) {
       // Use a `select` if there are more than 5 options
       return `<select name="${prop.attribute}">${optionsArray
         .map((option) => {
-          const value = option.replace(/([' ])/g, '');
+          const value = option.replace(/([('|") ])/g, '');
           return `
               <option
                 value="${value}"
@@ -60,7 +60,7 @@ export function renderPropControl(prop, element) {
       // Use an `input[type=radio]` if there are fewer than 5 options
       return optionsArray
         .map((option) => {
-          const value = option.replace(/([' ])/g, '');
+          const value = option.replace(/([('|") ])/g, '');
           return `
               <label>
                 <input

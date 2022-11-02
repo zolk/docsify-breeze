@@ -7,19 +7,23 @@
 */
 
 .component-header {
-  padding: var(--content-padding-vertical) var(--content-padding-horizontal-small);
-  border-bottom: 1px solid var(--color-neutral-light);
+  padding: var(--content-header-padding-vertical) var(--content-padding-horizontal-small);
+  border-bottom: 1px solid var(--component-docs-header-color-border);
+  background-color: var(--content-header-color-background);
 }
 
 @media screen and (min-width: 48rem) {
   .component-header {
-    padding: var(--content-padding-vertical) var(--content-padding-horizontal-large);
+    padding: var(--content-header-padding-vertical) var(--content-padding-horizontal-large);
+    border-top-left-radius: var(--content-border-radius-left);
+    border-top-right-radius: var(--content-border-radius-right);
   }
 }
 
 .component-header h1 {
   margin: 0;
   letter-spacing: var(--component-docs-title-letter-spacing);
+  font-family: var(--font-family-heading);
   font-size: var(--component-docs-title-font-size);
   font-weight: var(--component-docs-title-font-weight);
 }
@@ -179,7 +183,7 @@
   text-align: left;
 }
 
-.component-method-signature {
+.markdown-section h4.component-method-signature {
   margin-bottom: 0;
   font-size: var(--component-docs-method-signature-font-size);
 }
@@ -231,6 +235,7 @@
   background-color: white;
   border-color: var(--component-docs-card-color-border-hover);
   box-shadow: var(--component-docs-card-shadow-hover);
+  text-decoration: none;
 }
 
 .component-card__image {
@@ -259,6 +264,8 @@
 
 .component-card__header h2 {
   margin: 0;
+  color: var(--content-color-text);
+  font-family: var(--component-docs-card-header-font-family);
   font-size: var(--component-docs-card-header-font-size);
 }
 
