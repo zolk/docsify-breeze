@@ -157,11 +157,6 @@ p.meta-desc {
   overflow-x: auto;
 }
 
-.component-meta-table .attr {
-  margin-top: 0.3rem;
-  font-size: 0.9em;
-}
-
 .component-meta-table table {
   overflow: auto;
   width: 100%;
@@ -192,6 +187,20 @@ p.meta-desc {
   border-bottom: 1px solid var(--component-docs-table-cell-color-border);
   font-weight: var(--component-docs-table-cell-font-weight);
   text-align: left;
+}
+
+.component-meta-table .attr {
+  margin-top: 0.3rem;
+  font-size: 0.9em;
+}
+
+.component-meta-table td p {
+  font-size: var(--font-size-body);
+  line-height: 1.4;
+}
+
+.component-meta-table td p:last-of-type {
+  margin-bottom: 0;
 }
 
 .markdown-section h4.component-method-signature {

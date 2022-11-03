@@ -230,6 +230,7 @@
 }
 
 .controls__group input[type='text'],
+.controls__group input[type='number'],
 .controls__inputs textarea,
 .controls__group select {
   width: 100%;
@@ -245,12 +246,14 @@
 }
 
 .controls__group input[type='text']:hover,
+.controls__group input[type='number']:hover,
 .controls__inputs textarea:hover,
 .controls__group select:hover {
   border-color: var(--component-viewer-controls-input-color-border-hover);
 }
 
 .controls__group input[type='text']:focus,
+.controls__group input[type='number']:focus,
 .controls__inputs textarea:focus,
 .controls__group select:focus {
   border-color: var(--component-viewer-controls-input-color-border-hover);
