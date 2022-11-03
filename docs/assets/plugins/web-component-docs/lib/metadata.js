@@ -16,7 +16,6 @@ function renderPropertiesTable(props) {
       <thead>
         <tr>
           <th scope="col">Property</th>
-          <th scope="col">Attribute</th>
           <th scope="col">Description</th>
           <th scope="col">Type</th>
           <th scope="col">Default</th>
@@ -26,7 +25,16 @@ function renderPropertiesTable(props) {
         ${props
           .map((prop) => {
             return `<tr>
-                <th scope="row"><code>${prop.name}</code></th>
+                <th scope="row">
+                  <code>${prop.name}</code>
+                  ${
+                    prop.attribute && prop.name !== prop.attribute
+                      ? `<div class="attr">
+                          <code>${prop.attribute}</code>
+                        </div>`
+                      : ``
+                  }
+                </th>
                 <td><code>${prop.attribute}</code></td>
                 <td>${prop.description.replace(/`(.*?)`/g, '<code>$1</code>')}</td>
                 <td><code>${prop.type.text.replace(/^\| /m, '')}</code></td>
