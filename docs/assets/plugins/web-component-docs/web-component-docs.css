@@ -194,9 +194,13 @@ p.meta-desc {
   font-size: 0.9em;
 }
 
-.component-meta-table .attr {
-  margin-top: 0.3rem;
-  font-size: 0.9em;
+.component-meta-table td p {
+  font-size: var(--font-size-body);
+  line-height: 1.4;
+}
+
+.component-meta-table td p:last-of-type {
+  margin-bottom: 0;
 }
 
 .markdown-section h4.component-method-signature {
