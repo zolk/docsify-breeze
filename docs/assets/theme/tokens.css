@@ -204,6 +204,8 @@ html {
   --component-docs-theme-switcher-font-size: 0.9rem;
   --component-docs-theme-switcher-shadow: 0px 1px 0px var(--color-black-05);
   --component-docs-theme-switcher-shadow-focus: 0 0 5px var(--content-color-border-active);
+  --component-docs-table-description-color-text: var(--ep-_color-neutral-700);
+  --component-docs-table-description-font-size: 0.8125rem;
   --component-docs-table-color-border: var(--color-neutral-light);
   --component-docs-table-header-color-background: var(--color-neutral-lighter);
   --component-docs-table-header-color-text: var(--color-neutral-deep);
@@ -244,6 +246,7 @@ html {
   --component-viewer-controls-color-background: var(--color-neutral-lightest);
   --component-viewer-controls-color-border: var(--color-neutral-light);
   --component-viewer-controls-code-color-background: var(--color-neutral-lighter);
+  --component-viewer-controls-textarea-height: 60px;
   --component-viewer-controls-input-color-accent: var(--content-color-border-active);
   --component-viewer-controls-input-color-background: var(--color-white);
   --component-viewer-controls-input-color-border: var(--color-neutral-light);
