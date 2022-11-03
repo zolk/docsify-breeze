@@ -31,9 +31,13 @@ export function renderSlotControl(slot, element) {
 export function renderPropControl(prop, element) {
   const defaultFromCodeSnippet = element.attributes[prop.attribute];
 
-  const getDefaultProp = () => {
+  const getDefaultProp = (isStringInput) => {
     if (defaultFromCodeSnippet) {
-      return defaultFromCodeSnippet.value === '' ? true : defaultFromCodeSnippet.value;
+      return defaultFromCodeSnippet.value === ''
+        ? isStringInput
+          ? ''
+          : true
+        : defaultFromCodeSnippet.value;
     } else {
       return prop.default?.replace(/(['])/g, '') || '';
     }
@@ -84,7 +88,7 @@ export function renderPropControl(prop, element) {
             <input
               type="text"
               name="${prop.attribute}"
-              value="${getDefaultProp()}"
+              value="${getDefaultProp(true)}"
               placeholder="${prop.attribute}"
             ></input>
           </label>`;
@@ -122,8 +126,11 @@ export async function renderControlsPanel(tagName) {
   const members = componentMeta.members?.filter(
     (member) => member.description && member.privacy !== 'private'
   );
+  const controllableTypes = ['boolean', 'number', 'string', '|'];
+  const isControllable = (type) => controllableTypes.some((i) => type.includes(i));
+
   const props = members?.filter((prop) => {
-    return prop.kind === 'field';
+    return prop.kind === 'field' && isControllable(prop.type.text);
   });
 
   const renderSlotTable = `
@@ -222,7 +229,7 @@ export function handleControlInputs(inputs, element, code) {
         element.appendChild(newSlot);
       }
 
-      if (newValue.value === '') {
+      if (!newValue) {
         // Remove the named slot if the new value is empty
         slot.remove();
       }
@@ -237,6 +244,14 @@ export function handleControlInputs(inputs, element, code) {
       }
     };
 
+    const handleInput = (input) => {
+      if (input.value === '') {
+        element.removeAttribute(input.name);
+      } else {
+        element.setAttribute(input.name, input.value);
+      }
+    };
+
     input.addEventListener('input', (event) => {
       switch (event.target.type) {
         case 'checkbox':
@@ -246,7 +261,7 @@ export function handleControlInputs(inputs, element, code) {
           handleTextarea(event.target);
           break;
         default:
-          element.setAttribute(event.target.name, event.target.value);
+          handleInput(event.target);
           break;
       }
 
