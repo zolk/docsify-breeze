@@ -147,6 +147,12 @@
   -------------
 */
 
+p.meta-desc {
+  margin: 0.5rem 0;
+  font-size: var(--component-docs-table-description-font-size);
+  color: var(--component-docs-table-description-color-text);
+}
+
 .component-meta-table {
   overflow-x: auto;
 }

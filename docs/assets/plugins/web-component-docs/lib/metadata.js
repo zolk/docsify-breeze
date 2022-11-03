@@ -199,9 +199,21 @@ export function renderMetadata(metadata) {
     (member) => member.kind === 'method' && member.privacy !== 'private'
   );
 
+  const descriptions = window.$docsify.componentDocs?.docDescriptions;
+
+  const maybeRenderDescription = (category) => {
+    if (descriptions && descriptions[category]) {
+      return `<p class="meta-desc">${descriptions[category]}</p>`;
+    }
+
+    return '';
+  };
+
   if (props?.length) {
     result += `
       ### Properties
+
+      ${maybeRenderDescription('properties')}
       ${renderPropertiesTable(props)}
     `;
   }
@@ -209,6 +221,8 @@ export function renderMetadata(metadata) {
   if (methods?.length) {
     result += `
       ### Methods
+
+      ${maybeRenderDescription('methods')}
       ${renderMethodsList(methods)}
     `;
   }
@@ -216,6 +230,8 @@ export function renderMetadata(metadata) {
   if (metadata.events?.length) {
     result += `
       ### Events
+
+      ${maybeRenderDescription('events')}
       ${renderEventsTable(metadata.events)}
     `;
   }
@@ -223,21 +239,27 @@ export function renderMetadata(metadata) {
   if (metadata.slots?.length) {
     result += `
       ### Slots
-      ${renderSlotsTable(metadata.slots)}
-    `;
-  }
 
-  if (metadata.cssParts?.length) {
-    result += `
-      ### CSS Parts
-      ${renderCssPartsTable(metadata.cssParts)}
+      ${maybeRenderDescription('slots')}
+      ${renderSlotsTable(metadata.slots)}
     `;
   }
 
   if (metadata.cssProperties?.length) {
     result += `
       ### CSS Custom Properties
+
+      ${maybeRenderDescription('cssprops')}
       ${renderCssPropertiesTable(metadata.cssProperties)}
+    `;
+  }
+
+  if (metadata.cssParts?.length) {
+    result += `
+      ### CSS Parts
+
+      ${maybeRenderDescription('cssparts')}
+      ${renderCssPartsTable(metadata.cssParts)}
     `;
   }
 

@@ -260,6 +260,7 @@
 
 .controls__inputs textarea {
   font-family: var(--component-viewer-controls-input-font-family);
+  height: var(--component-viewer-controls-textarea-height);
 }
 
 .controls__group select {
