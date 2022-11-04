@@ -490,6 +490,11 @@ body.close .content {
   font-size: var(--content-h4-font-size);
 }
 
+.markdown-section h5 {
+  margin: var(--content-h5-margin);
+  font-size: var(--content-h5-font-size);
+}
+
 .markdown-section h3 a:hover,
 .markdown-section h4 a:hover,
 .markdown-section h5 a:hover {
