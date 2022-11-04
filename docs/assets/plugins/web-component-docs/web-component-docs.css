@@ -230,14 +230,15 @@ p.meta-desc {
 
 .markdown-section .component-list {
   display: grid;
-  grid-template-columns: repeat(3, 252px);
+  grid-template-columns: repeat(auto-fit, minmax(225px, auto));
   gap: 1rem;
   margin: 0;
   padding: 0;
   line-height: 1.4;
 }
 
-.component-card {
+.markdown-section li.component-card {
+  margin-bottom: 0;
   padding: 0;
   list-style-type: none;
 }
