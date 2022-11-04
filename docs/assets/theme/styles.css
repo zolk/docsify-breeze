@@ -520,6 +520,10 @@ body.close .content {
   margin-bottom: 0;
 }
 
+.markdown-section li ul {
+  margin: var(--content-list-margin-bottom) 0;
+}
+
 .markdown-section p {
   font-size: var(--content-font-size);
   line-height: var(--content-line-height);
