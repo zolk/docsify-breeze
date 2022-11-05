@@ -155,6 +155,7 @@ p.meta-desc {
 
 .component-meta-table {
   overflow-x: auto;
+  text-size-adjust: none;
 }
 
 .component-meta-table table {
