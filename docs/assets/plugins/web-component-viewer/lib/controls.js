@@ -12,12 +12,12 @@ export function renderSlotControl(slot, element) {
   const isDefault = slot.name === '';
   const slotName = isDefault ? 'default' : slot.name;
   const slotNodes = element.shadowRoot
-    .querySelector(isDefault ? 'slot:not([name])' : `slot[name=${slotName}]`)
-    .assignedNodes({ flatten: true });
+    ?.querySelector(isDefault ? 'slot:not([name])' : `slot[name=${slotName}]`)
+    ?.assignedNodes({ flatten: true });
 
   let slotContents = '';
 
-  slotNodes.map((node) => {
+  slotNodes?.map((node) => {
     if (node.nodeName === '#text') {
       slotContents += node.textContent.trim();
     } else {
