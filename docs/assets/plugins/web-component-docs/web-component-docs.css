@@ -155,7 +155,6 @@ p.meta-desc {
 
 .component-meta-table {
   overflow-x: auto;
-  text-size-adjust: none;
 }
 
 .component-meta-table table {
@@ -188,6 +187,7 @@ p.meta-desc {
   border-bottom: 1px solid var(--component-docs-table-cell-color-border);
   font-weight: var(--component-docs-table-cell-font-weight);
   text-align: left;
+  text-size-adjust: none;
 }
 
 .component-meta-table .attr {
@@ -221,6 +221,7 @@ p.meta-desc {
 .component-method-options dd {
   margin-top: 0.3rem;
   margin-left: 0.4rem;
+  text-size-adjust: none;
 }
 
 /*
