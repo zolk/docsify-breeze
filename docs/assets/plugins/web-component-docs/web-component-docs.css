@@ -187,7 +187,7 @@ p.meta-desc {
   border-bottom: 1px solid var(--component-docs-table-cell-color-border);
   font-weight: var(--component-docs-table-cell-font-weight);
   text-align: left;
-  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
 }
 
 .component-meta-table .attr {

@@ -13,6 +13,9 @@ Core Styles
 html,
 body {
   height: 100%;
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
 }
 
 body {
