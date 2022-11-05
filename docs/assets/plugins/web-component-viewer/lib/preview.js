@@ -17,7 +17,7 @@ export function renderPreview(codeBlock, id) {
   const exampleId = 'example-' + getSlug();
 
   const controlsBtn = `
-    <span>
+    <div class="code-preview__controls">
       <a href="?controls=${getSlug()}" target="_blank">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
           <path
@@ -26,11 +26,11 @@ export function renderPreview(codeBlock, id) {
         </svg>
         Customize
       </a>
-    </span>
+    </div>
   `;
 
   const previewBtn = `
-    <span>
+    <div class="code-preview__new-window">
       <a href="?preview=${getSlug()}" target="_blank">
         <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 448 512">
           <path
@@ -40,7 +40,7 @@ export function renderPreview(codeBlock, id) {
         </svg>
         Open in New Window
       </a>
-    </span>
+    </div>
   `;
 
   const previewInterface = `
@@ -59,7 +59,7 @@ export function renderPreview(codeBlock, id) {
       <div class="code-preview__source" id=${sourceId}>${pre.outerHTML}</div>
       <div class="code-preview__actions">
         <button
-          class="code-preview__toggle
+          class="code-preview__toggle"
           aria-expanded="${isExpanded ? 'true' : 'false'}"
           aria-controls="${sourceId}"
         >
@@ -70,9 +70,10 @@ export function renderPreview(codeBlock, id) {
             ${isExpanded ? 'Hide ' : 'Show'} Code
           </span>
         </button>
-        <div class="code-preview__actions-spacer"></div>
-        ${hasSlug && showControls ? controlsBtn : ''}
-        ${hasSlug ? previewBtn : ''}
+        <div class="code-preview__actions-buttons">
+          ${hasSlug ? previewBtn : ''}
+          ${hasSlug && showControls ? controlsBtn : ''}
+        </div>
       </div>
     </div>
   `;

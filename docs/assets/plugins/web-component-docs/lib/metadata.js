@@ -35,7 +35,6 @@ function renderPropertiesTable(props) {
                       : ``
                   }
                 </th>
-                <td><code>${prop.attribute}</code></td>
                 <td>${prop.description.replace(/`(.*?)`/g, '<code>$1</code>')}</td>
                 <td><code>${prop.type.text.replace(/^\| /m, '')}</code></td>
                 <td>${prop.default ? `<code>${prop.default}</code>` : '&ndash;'}</td>

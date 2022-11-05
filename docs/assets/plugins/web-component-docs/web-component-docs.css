@@ -52,16 +52,19 @@
 }
 
 .component-status--draft {
+  border: var(--component-docs-status-border-draft);
   background-color: var(--component-docs-status-color-background-draft);
   color: var(--component-docs-status-color-text-draft);
 }
 
 .component-status--ready {
+  border: var(--component-docs-status-border-ready);
   background-color: var(--component-docs-status-color-background-ready);
   color: var(--component-docs-status-color-text-ready);
 }
 
 .component-status--deprecated {
+  border: var(--component-docs-status-border-deprecated);
   background-color: var(--component-docs-status-color-background-deprecated);
   color: var(--component-docs-status-color-text-deprecated);
 }
