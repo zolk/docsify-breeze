@@ -156,6 +156,10 @@ p.meta-desc {
   color: var(--component-docs-table-description-color-text);
 }
 
+.markdown-section h3 + p.meta-desc {
+  margin-top: -0.3rem;
+}
+
 .component-meta-table {
   overflow-x: auto;
 }
