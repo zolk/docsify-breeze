@@ -423,11 +423,11 @@ body.close .content {
   max-width: var(--content-max-width);
 }
 
-.markdown-section h1 a,
-.markdown-section h2 a,
-.markdown-section h3 a,
-.markdown-section h4 a,
-.markdown-section h5 a {
+.markdown-section > h1 a,
+.markdown-section > h2 a,
+.markdown-section > h3 a,
+.markdown-section > h4 a,
+.markdown-section > h5 a {
   color: var(--content-heading-color-text);
   font-family: var(--font-family-heading);
   font-weight: var(--content-heading-font-weight);
@@ -435,37 +435,37 @@ body.close .content {
   text-decoration: var(--content-heading-text-decoration);
 }
 
-.markdown-section h4 a,
-.markdown-section h5 a {
+.markdown-section > h4 a,
+.markdown-section > h5 a {
   font-family: var(--font-family-body);
 }
 
-.markdown-section h1 a:hover,
-.markdown-section h2 a:hover,
-.markdown-section h3 a:hover,
-.markdown-section h4 a:hover,
-.markdown-section h5 a:hover {
+.markdown-section > h1 a:hover,
+.markdown-section > h2 a:hover,
+.markdown-section > h3 a:hover,
+.markdown-section > h4 a:hover,
+.markdown-section > h5 a:hover {
   color: var(--content-heading-color-text-hover);
   text-decoration: var(--content-heading-text-decoration-hover);
 }
 
-.markdown-section h1,
-.markdown-section h1 a {
+.markdown-section > h1,
+.markdown-section > h1 a {
   margin: 1.5rem 0 2.5rem;
   font-size: var(--content-title-font-size);
   font-weight: var(--content-title-font-weight);
 }
 
-.markdown-section h1 a:hover {
+.markdown-section > h1 a:hover {
   background-color: transparent;
 }
 
-.markdown-section h2 {
+.markdown-section > h2 {
   margin-top: 3rem;
   font-size: var(--content-section-heading-font-size);
 }
 
-.markdown-section h2 a {
+.markdown-section > h2 a {
   position: relative;
   left: -1.5rem;
   width: calc(100% + 1.5rem);
@@ -477,39 +477,39 @@ body.close .content {
   font-weight: var(--content-section-heading-font-weight);
 }
 
-.markdown-section h2 a:hover {
+.markdown-section > h2 a:hover {
   background-color: transparent;
   background-image: var(--icon-hashtag-hover);
 }
 
-.markdown-section h3 {
+.markdown-section > h3 {
   margin-top: 1.5rem;
   margin-bottom: 0.5rem;
   font-size: var(--content-h3-font-size);
 }
 
-.markdown-section h4 {
+.markdown-section > h4 {
   margin: var(--content-h4-margin);
   font-size: var(--content-h4-font-size);
 }
 
-.markdown-section h5 {
+.markdown-section > h5 {
   margin: var(--content-h5-margin);
   font-size: var(--content-h5-font-size);
 }
 
-.markdown-section h3 a:hover,
-.markdown-section h4 a:hover,
-.markdown-section h5 a:hover {
+.markdown-section > h3 a:hover,
+.markdown-section > h4 a:hover,
+.markdown-section > h5 a:hover {
   background-color: transparent;
 }
 
-.markdown-section h3 + p {
+.markdown-section > h3 + p {
   margin-top: 0;
 }
 
-.markdown-section ul,
-.markdown-section ol {
+.markdown-section > ul,
+.markdown-section > ol {
   font-size: var(--content-font-size);
   padding-left: 1rem;
   line-height: var(--content-line-height);
@@ -523,16 +523,17 @@ body.close .content {
   margin-bottom: 0;
 }
 
-.markdown-section li ul {
+.markdown-section li ul,
+.markdown-section li ol {
   margin: var(--content-list-margin-bottom) 0;
 }
 
-.markdown-section p {
+.markdown-section > p {
   font-size: var(--content-font-size);
   line-height: var(--content-line-height);
 }
 
-.markdown-section ul li::marker {
+.markdown-section > ul > li::marker {
   color: var(--content-list-bullet-color-fill);
 }
 
