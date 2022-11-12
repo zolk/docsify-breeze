@@ -28,5 +28,15 @@
 }
 
 .site-title__primary {
-  font-weight: 700;
+  font-family: var(--sidebar-title-font-family-primary);
+  font-size: var(--sidebar-title-font-size-primary);
+  font-weight: var(--sidebar-title-font-weight-primary, 700);
+  line-height: var(--sidebar-title-line-height-primary);
+}
+
+.site-title__secondary {
+  font-family: var(--sidebar-title-font-family-secondary);
+  font-size: var(--sidebar-title-font-size-secondary);
+  line-height: var(--sidebar-title-line-height-secondary);
+  font-weight: var(--sidebar-title-font-weight-secondary);
 }

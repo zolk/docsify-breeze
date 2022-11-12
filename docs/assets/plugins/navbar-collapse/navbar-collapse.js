@@ -14,8 +14,8 @@ window.$docsify.plugins.push((hook) => {
     );
 
     navbarItems.forEach((item) => {
-      // Determine if nav item has sub menu
-      const submenu = item.querySelector('ul');
+      // Determine if nav item has sub menu of additional pages
+      const submenu = item.querySelector('ul:not(.app-sub-sidebar)');
       if (submenu) {
         item.classList.add('has-submenu');
 
@@ -24,6 +24,12 @@ window.$docsify.plugins.push((hook) => {
         itemLink.addEventListener('click', () => {
           item.classList.toggle('collapse');
         });
+      }
+
+      // The parent of a submenu of non-page sections should always remain active.
+      const submenuSectionsOnly = item.querySelector('ul.app-sub-sidebar');
+      if (submenuSectionsOnly) {
+        item.classList.add('active-section');
       }
 
       // Determine if nav item has an active child
