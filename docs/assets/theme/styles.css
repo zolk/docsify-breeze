@@ -213,7 +213,8 @@ body.sticky .sidebar-toggle {
   color: var(--sidebar-nav-link-color-text-hover);
 }
 
-.sidebar-nav ul li.active > a {
+.sidebar-nav ul li.active > a,
+.sidebar-nav ul li.active-section > a {
   color: var(--sidebar-nav-link-color-text-active);
   font-weight: var(--sidebar-nav-link-font-weight);
 }
@@ -249,7 +250,7 @@ body.sticky .sidebar-toggle {
   background-image: var(--icon-chevron-right-active);
 }
 
-.sidebar-nav ul li:not(.active-child):not(.active) ul,
+.sidebar-nav ul li:not(.active-child):not(.active):not(.active-section) ul,
 .sidebar-nav ul li.collapse ul {
   display: none;
 }
