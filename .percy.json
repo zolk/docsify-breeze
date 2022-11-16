@@ -1,7 +1,7 @@
 {
   "version": 2,
   "snapshot": {
-    "widths": [375, 1024],
+    "widths": [800],
     "min-height": 500,
     "enable-javascript": true
   }
