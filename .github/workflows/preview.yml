@@ -1,5 +1,5 @@
 # .github/workflows/preview.yml
-name: Deploy PR previews
+name: PR Preview
 
 on:
   pull_request:
