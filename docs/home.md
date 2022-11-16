@@ -13,7 +13,7 @@
 DS Starter Kit is designed to bootstrap the development of a design system or
 component library that's built upon [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components).
 
-<h3>Documentation Powered by Docsify</h3>
+<h3>Documentation Powered by Docsify.</h3>
 
 This documentation site is powered by [Docsify](https://docsify.js.org/), a
 lightweight documentation site generator with no statically generated HTML files.
