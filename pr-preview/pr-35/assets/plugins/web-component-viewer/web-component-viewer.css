@@ -1,0 +1,318 @@
+@import url('../../theme/tokens.css');
+
+.code-preview__preview {
+  z-index: 1;
+  overflow: hidden;
+  position: relative;
+  min-width: 19rem;
+  max-width: 100%;
+  border: 1px solid var(--component-viewer-color-border);
+  padding: 2rem calc(2rem + 20px) 2rem 2rem;
+  border-radius: 2px;
+}
+
+.code-preview__resizer {
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  bottom: -1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  background-color: var(--component-viewer-resizer-color-background);
+  border: 1px solid var(--component-viewer-resizer-color-border);
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+  color: var(--component-viewer-resizer-color-fill);
+  cursor: grab;
+  user-select: none;
+}
+
+.code-preview__resizer:hover {
+  background-color: var(--component-viewer-resizer-color-background-hover);
+  border-color: var(--component-viewer-resizer-color-border-hover);
+}
+
+.code-preview__resizer--resizing {
+  cursor: grabbing;
+}
+
+.code-preview__source {
+  display: none;
+}
+
+.code-preview--expanded .code-preview__source {
+  position: relative;
+  top: -1px;
+  display: block;
+}
+
+.code-preview__source pre {
+  position: relative;
+  margin: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.code-preview__source pre::after {
+  display: none;
+}
+
+.code-preview__actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: 'actions toggle';
+  align-items: start;
+  padding: 0.3rem 0.1rem;
+  background-color: var(--content-color-background);
+}
+
+.code-preview__toggle {
+  grid-area: toggle;
+  justify-self: end;
+}
+
+.code-preview__actions-buttons {
+  grid-area: actions;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+@media screen and (min-width: 48rem) {
+  .code-preview__actions {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .code-preview__actions-buttons {
+    flex-direction: row;
+    gap: 1rem;
+  }
+}
+
+.code-preview__actions button,
+.code-preview__actions a {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  color: var(--component-viewer-action-color-text);
+  cursor: pointer;
+  font-weight: var(--component-viewer-action-font-weight);
+  font-size: var(--component-viewer-action-font-size);
+  letter-spacing: var(--component-viewer-action-letter-spacing);
+  line-height: var(--component-viewer-action-line-height);
+  text-decoration: var(--component-viewer-action-text-decoration);
+}
+
+.code-preview--expanded .code-preview__toggle svg {
+  transform: rotate(180deg);
+}
+
+.code-preview__actions button svg,
+.code-preview__actions a svg {
+  width: 0.9rem;
+}
+
+.code-preview__actions button:hover,
+.code-preview__actions a:hover {
+  background-color: transparent;
+  color: var(--component-viewer-action-color-text-hover);
+  text-decoration: var(--component-viewer-action-text-decoration);
+}
+
+.example {
+  background-color: var(--content-color-background);
+  color: var(--content-color-text);
+}
+
+.example:not(.controls) .code-preview__resizer {
+  display: none;
+}
+
+.example:not(.controls) .code-preview__preview {
+  height: 100vh;
+  border: none;
+}
+
+.controls {
+  overflow: hidden;
+  width: 100%;
+  max-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  grid-template-rows: 1fr 1.2fr;
+  grid-template-areas:
+    'preview preview'
+    'code controls';
+  background-color: var(--component-viewer-controls-color-background);
+}
+
+.controls .code-preview__preview {
+  grid-area: preview;
+  max-width: 100vw;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  border-top: none;
+  border-bottom: none;
+}
+
+.controls .code-preview__resizer {
+  height: calc(100% + 1px);
+  border-bottom: 0;
+}
+
+.controls__code {
+  overflow: scroll;
+  position: relative;
+  grid-area: code;
+  background-color: var(--component-viewer-controls-code-color-background);
+  border-top: 1px solid var(--component-viewer-controls-color-border);
+  font-size: 0.875rem;
+}
+
+.controls__code pre {
+  overflow: scroll;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 3rem 1.5rem;
+}
+
+.controls__code pre code {
+  font-family: var(--font-family-code);
+}
+
+.controls__code .copy-code-button {
+  top: 0.5rem;
+  right: 0.5rem;
+  opacity: 1;
+}
+
+.controls__inputs {
+  overflow: auto;
+  background-color: var(--content-color-background);
+  border-top: 1px solid var(--component-viewer-controls-color-border);
+  border-left: 1px solid var(--component-viewer-controls-color-border);
+}
+
+.controls__inputs table {
+  overflow: auto;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.controls__inputs table thead th {
+  padding: 0.7rem;
+  background-color: var(--component-docs-table-header-color-background);
+  border-bottom: 1px solid var(--component-docs-table-color-border);
+  color: var(--component-docs-table-header-color-text);
+  font-weight: var(--component-docs-table-header-font-weight);
+  font-size: var(--component-docs-table-header-font-size);
+  text-align: left;
+}
+
+.controls__inputs table thead th:last-of-type {
+  width: 20rem;
+}
+
+.controls__inputs table thead th:first-of-type,
+.controls__inputs table tbody th {
+  width: 8rem;
+  white-space: nowrap;
+}
+
+.controls__inputs table tbody th,
+.controls__inputs table tbody td {
+  padding: 0.7rem 0.5rem;
+  border-bottom: 1px solid var(--component-docs-table-color-border);
+  font-weight: var(--component-docs-table-cell-font-weight);
+  text-align: left;
+}
+
+.controls__group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.controls__group label {
+  display: flex;
+  gap: 0.2rem;
+}
+
+.controls__group input {
+  accent-color: var(--component-viewer-controls-input-color-accent);
+}
+
+.controls__group input[type='text'],
+.controls__group input[type='number'],
+.controls__inputs textarea,
+.controls__group select {
+  width: 100%;
+  min-width: 15rem;
+  padding: 0.4rem 0.5rem;
+  background-color: var(--component-viewer-controls-input-color-background);
+  border: 1px solid var(--component-viewer-controls-input-color-border);
+  border-radius: var(--component-viewer-controls-input-border-radius);
+  color: var(--component-viewer-controls-input-color-text);
+  font-family: var(--component-viewer-controls-input-font-family);
+  font-size: var(--component-viewer-controls-input-font-size);
+  box-shadow: var(--component-viewer-controls-input-shadow);
+}
+
+.controls__group input[type='text']:hover,
+.controls__group input[type='number']:hover,
+.controls__inputs textarea:hover,
+.controls__group select:hover {
+  border-color: var(--component-viewer-controls-input-color-border-hover);
+}
+
+.controls__group input[type='text']:focus,
+.controls__group input[type='number']:focus,
+.controls__inputs textarea:focus,
+.controls__group select:focus {
+  border-color: var(--component-viewer-controls-input-color-border-hover);
+  box-shadow: var(--component-viewer-controls-input-shadow-focus);
+  outline: none;
+}
+
+.controls__inputs textarea {
+  font-family: var(--component-viewer-controls-input-font-family);
+  height: var(--component-viewer-controls-textarea-height);
+}
+
+.controls__group select {
+  appearance: none;
+  cursor: pointer;
+  background-image: var(
+    --icon-select,
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>')
+  );
+  background-origin: content-box;
+  background-position: 100% center;
+  background-repeat: no-repeat;
+  background-size: 1.2rem;
+  -webkit-appearance: none;
+}
+
+.controls__group input::placeholder {
+  color: var(--component-viewer-controls-input-color-text-placeholder);
+  opacity: 1;
+}
+
+.controls__group label span {
+  position: absolute;
+  top: auto;
+  left: -10000px;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+}

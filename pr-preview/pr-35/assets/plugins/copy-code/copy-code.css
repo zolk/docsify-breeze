@@ -1,0 +1,46 @@
+.copy-code-button {
+  position: absolute;
+  top: 0.7rem;
+  right: 0.7rem;
+  width: 1.7rem;
+  height: 1.7rem;
+  padding: 0.2rem;
+  background-color: var(--copy-code-color-background);
+  border: 1px solid var(--copy-code-color-border);
+  border-radius: 4px;
+  color: var(--copy-code-color-fill);
+  cursor: pointer;
+  transition: all 0.3s;
+  opacity: 1;
+}
+
+.markdown-section pre:hover .copy-code-button {
+  opacity: 1;
+}
+
+.markdown-section pre:hover .copy-code-button:hover,
+.controls__code pre:hover .copy-code-button:hover {
+  background-color: var(--copy-code-color-background-hover);
+  border-color: var(--copy-code-color-border-hover);
+  color: var(--copy-code-color-fill-hover);
+}
+
+.copy-code-button .success-icon {
+  display: none;
+}
+
+.copy-code-button.success .success-icon {
+  display: block;
+  color: var(--copy-code-color-fill-success);
+}
+
+.copy-code-button.success,
+.markdown-section pre:hover .copy-code-button.success:hover {
+  opacity: 1;
+  border-color: var(--copy-code-color-border-success);
+  background-color: var(--copy-code-color-background-success);
+}
+
+.copy-code-button.success > svg:not(.success-icon) {
+  display: none;
+}
