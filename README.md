@@ -54,4 +54,4 @@ under an [MIT License](./LICENSE.md).
 
 <br><br><br>
 
-<p align="center"><a href="https://8thlight.com"><img src="./8l.png" height="50" alt="" /></a><br><i>This project is supported by <a href="https://8thlight.com">8th Light</a>.</i></p>
+<p align="center"><a href="https://8thlight.com"><img src="./8l.png" height="75" alt="" /></a><br><i>This project is supported by <a href="https://8thlight.com">8th Light</a>.</i></p>
