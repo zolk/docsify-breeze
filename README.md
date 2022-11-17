@@ -46,3 +46,12 @@ includes everything you need to get hit the ground running including a complete
 toolchain to write, test, and build Web Components plus an optimized
 documentation framework to ease development and encourage adoption across your
 organization.
+
+## License
+
+This project was created by [Kevin Zolkiewicz](http://zolk.com) and is licensed
+under an [MIT License](./LICENSE.md).
+
+<br><br><br>
+
+<p align="center"><a href="https://8thlight.com"><img src="./8l.png" height="75" alt="" /></a><br><i>This project is supported by <a href="https://8thlight.com">8th Light</a>.</i></p>
