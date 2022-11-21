@@ -5,16 +5,16 @@
  */
 
 export function renderPreview(codeBlock, id) {
-  const pre = codeBlock.closest('pre');
-  const isExpanded = codeBlock.classList.contains('expanded');
-  const showControls = codeBlock.classList.contains('controls');
-  const sourceId = 'code-source-' + id;
+  const pre = codeBlock.closest("pre");
+  const isExpanded = codeBlock.classList.contains("expanded");
+  const showControls = codeBlock.classList.contains("controls");
+  const sourceId = "code-source-" + id;
 
   // Determine slot
   const lastClass = [...codeBlock.classList].pop();
-  const hasSlug = !['preview', 'expanded', 'controls'].includes(lastClass);
+  const hasSlug = !["preview", "expanded", "controls"].includes(lastClass);
   const getSlug = () => (hasSlug ? lastClass : id);
-  const exampleId = 'example-' + getSlug();
+  const exampleId = "example-" + getSlug();
 
   const controlsBtn = `
     <div class="code-preview__controls">
@@ -44,7 +44,7 @@ export function renderPreview(codeBlock, id) {
   `;
 
   const previewInterface = `
-    <div class="code-preview ${isExpanded ? 'code-preview--expanded' : ''}">
+    <div class="code-preview ${isExpanded ? "code-preview--expanded" : ""}">
       <div class="code-preview__preview" id=${exampleId}>
         ${codeBlock.textContent}
         <div
@@ -60,19 +60,19 @@ export function renderPreview(codeBlock, id) {
       <div class="code-preview__actions">
         <button
           class="code-preview__toggle"
-          aria-expanded="${isExpanded ? 'true' : 'false'}"
+          aria-expanded="${isExpanded ? "true" : "false"}"
           aria-controls="${sourceId}"
         >
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
             <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
           </svg>
           <span>
-            ${isExpanded ? 'Hide ' : 'Show'} Code
+            ${isExpanded ? "Hide " : "Show"} Code
           </span>
         </button>
         <div class="code-preview__actions-buttons">
-          ${hasSlug ? previewBtn : ''}
-          ${hasSlug && showControls ? controlsBtn : ''}
+          ${hasSlug ? previewBtn : ""}
+          ${hasSlug && showControls ? controlsBtn : ""}
         </div>
       </div>
     </div>
@@ -86,8 +86,13 @@ export function handlePreviewResize(preview, resizer) {
   let startWidth;
 
   const getStart = (event) => {
-    startX = event.changedTouches ? event.changedTouches[0].pageX : event.clientX;
-    startWidth = parseInt(document.defaultView.getComputedStyle(preview).width, 10);
+    startX = event.changedTouches
+      ? event.changedTouches[0].pageX
+      : event.clientX;
+    startWidth = parseInt(
+      document.defaultView.getComputedStyle(preview).width,
+      10
+    );
   };
 
   const setWidth = (newWidth) => {
@@ -95,14 +100,14 @@ export function handlePreviewResize(preview, resizer) {
   };
 
   const mouseDownHandler = (event) => {
-    resizer.classList.add('code-preview__resizer--resizing');
+    resizer.classList.add("code-preview__resizer--resizing");
     event.preventDefault();
     getStart(event);
 
-    document.addEventListener('mousemove', startDrag);
-    document.addEventListener('touchmove', startDrag);
-    document.addEventListener('mouseup', stopDrag);
-    document.addEventListener('touchend', stopDrag);
+    document.addEventListener("mousemove", startDrag);
+    document.addEventListener("touchmove", startDrag);
+    document.addEventListener("mouseup", stopDrag);
+    document.addEventListener("touchend", stopDrag);
   };
 
   const keyDownHandler = (event) => {
@@ -110,37 +115,37 @@ export function handlePreviewResize(preview, resizer) {
 
     if (
       [
-        'ArrowDown',
-        'ArrowLeft',
-        'ArrowUp',
-        'ArrowRight',
-        'Home',
-        'End',
-        'PageUp',
-        'PageDown',
+        "ArrowDown",
+        "ArrowLeft",
+        "ArrowUp",
+        "ArrowRight",
+        "Home",
+        "End",
+        "PageUp",
+        "PageDown",
       ].includes(event.key)
     ) {
       event.preventDefault();
 
       switch (event.key) {
-        case 'ArrowLeft':
-        case 'ArrowDown':
+        case "ArrowLeft":
+        case "ArrowDown":
           setWidth(-10);
           break;
-        case 'ArrowRight':
-        case 'ArrowUp':
+        case "ArrowRight":
+        case "ArrowUp":
           setWidth(10);
           break;
-        case 'PageUp':
+        case "PageUp":
           setWidth(100);
           break;
-        case 'PageDown':
+        case "PageDown":
           setWidth(-100);
           break;
-        case 'Home':
+        case "Home":
           setWidth(-startWidth);
           break;
-        case 'End':
+        case "End":
           setWidth(10000);
           break;
       }
@@ -153,27 +158,29 @@ export function handlePreviewResize(preview, resizer) {
   };
 
   const stopDrag = () => {
-    resizer.classList.remove('code-preview__resizer--resizing');
-    document.removeEventListener('mousemove', startDrag);
-    document.removeEventListener('touchmove', startDrag);
-    document.removeEventListener('mouseup', stopDrag);
-    document.removeEventListener('touchend', stopDrag);
+    resizer.classList.remove("code-preview__resizer--resizing");
+    document.removeEventListener("mousemove", startDrag);
+    document.removeEventListener("touchmove", startDrag);
+    document.removeEventListener("mouseup", stopDrag);
+    document.removeEventListener("touchend", stopDrag);
   };
 
-  resizer.addEventListener('mousedown', mouseDownHandler);
-  resizer.addEventListener('touchstart', mouseDownHandler);
-  resizer.addEventListener('keydown', keyDownHandler);
+  resizer.addEventListener("mousedown", mouseDownHandler);
+  resizer.addEventListener("touchstart", mouseDownHandler);
+  resizer.addEventListener("keydown", keyDownHandler);
 }
 
 export function handleCodeToggle(event) {
-  const button = event.target.closest('.code-preview__toggle');
+  const button = event.target.closest(".code-preview__toggle");
 
   if (button) {
-    const codePreview = event.target.closest('.code-preview');
-    codePreview.classList.toggle('code-preview--expanded');
+    const codePreview = event.target.closest(".code-preview");
+    codePreview.classList.toggle("code-preview--expanded");
 
-    const isExpanded = codePreview.classList.contains('code-preview--expanded');
-    event.target.setAttribute('aria-expanded', isExpanded);
-    button.querySelector('span').innerText = `${isExpanded ? 'Hide ' : 'Show'} Code`;
+    const isExpanded = codePreview.classList.contains("code-preview--expanded");
+    event.target.setAttribute("aria-expanded", isExpanded);
+    button.querySelector("span").innerText = `${
+      isExpanded ? "Hide " : "Show"
+    } Code`;
   }
 }

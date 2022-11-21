@@ -5,6 +5,6 @@
  */
 
 export function highlightCode(element) {
-  const snippet = element.outerHTML.replace(/(="")/g, '');
-  return window.Prism.highlight(snippet, window.Prism.languages.html, 'html');
+  const snippet = element.outerHTML.replace(/(="")/g, "");
+  return window.Prism.highlight(snippet, window.Prism.languages.html, "html");
 }

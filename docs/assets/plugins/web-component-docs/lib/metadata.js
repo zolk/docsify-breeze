@@ -35,27 +35,35 @@ function renderPropertiesTable(props) {
                       : ``
                   }
                 </th>
-                <td>${prop.description.replace(/`(.*?)`/g, '<code>$1</code>')}</td>
-                <td><code>${prop.type.text.replace(/^\| /m, '')}</code></td>
-                <td>${prop.default ? `<code>${prop.default}</code>` : '&ndash;'}</td>
+                <td>${prop.description.replace(
+                  /`(.*?)`/g,
+                  "<code>$1</code>"
+                )}</td>
+                <td><code>${prop.type.text.replace(/^\| /m, "")}</code></td>
+                <td>${
+                  prop.default ? `<code>${prop.default}</code>` : "&ndash;"
+                }</td>
               </tr>`;
           })
-          .join('')}
+          .join("")}
       </tbody>
     </table>
   `;
 }
 
 function renderMethodsList(methods) {
-  let result = '';
+  let result = "";
 
   methods.map((method) => {
     const hasParams = method.parameters?.length;
 
     const renderParamsSignature = () =>
       method.parameters
-        .map((param) => `${param.name}${param.optional ? '?' : ''}: ${param.type.text}`)
-        .join(', ');
+        .map(
+          (param) =>
+            `${param.name}${param.optional ? "?" : ""}: ${param.type.text}`
+        )
+        .join(", ");
 
     const renderParamDescription = (param) => `
       <dt><code>${param.name}</code></dt>
@@ -65,7 +73,7 @@ function renderMethodsList(methods) {
     const renderParamsList = `
       <dl class="component-method-options">
         ${method.parameters?.map((param) =>
-          param.description ? renderParamDescription(param) : ''
+          param.description ? renderParamDescription(param) : ""
         )}
       </dl>
     `;
@@ -73,14 +81,14 @@ function renderMethodsList(methods) {
     result += `
       <h4 class="component-method-signature">
         <code>
-          ${method.name}(${hasParams ? renderParamsSignature() : ''})
+          ${method.name}(${hasParams ? renderParamsSignature() : ""})
           =>
-          ${method.return ? method.return.type.text : 'void'}
+          ${method.return ? method.return.type.text : "void"}
         </code>
       </h4>
 
       <p>${method.description}</p>
-      ${hasParams ? renderParamsList : ''}
+      ${hasParams ? renderParamsList : ""}
     `;
   });
 
@@ -106,11 +114,13 @@ function renderEventsTable(events) {
                   <code>${event.name}</code>
                 </th>
                 <td>${event.description}</td>
-                <td>${event.type?.text ? `<code>${event.type?.text}</code>` : '-'}</td>
+                <td>${
+                  event.type?.text ? `<code>${event.type?.text}</code>` : "-"
+                }</td>
               </tr>
             `;
           })
-          .join('')}
+          .join("")}
       </tbody>
     </table>
   `;
@@ -131,13 +141,17 @@ function renderSlotsTable(slots) {
             return `
               <tr>
                 <th scope="row">
-                  ${slot.name === '' ? 'Default slot' : `<code>${slot.name}</code>`}
+                  ${
+                    slot.name === ""
+                      ? "Default slot"
+                      : `<code>${slot.name}</code>`
+                  }
                 </th>
                 <td>${slot.description}</td>
               </tr>
             `;
           })
-          .join('')}
+          .join("")}
       </tbody>
     </table>
   `;
@@ -162,7 +176,7 @@ function renderCssPartsTable(parts) {
               </tr>
             `;
           })
-          .join('')}
+          .join("")}
       </tbody>
     </table>
   `;
@@ -187,23 +201,23 @@ function renderCssPropertiesTable(properties) {
               </tr>
             `;
           })
-          .join('')}
+          .join("")}
       </tbody>
     </table>
   `;
 }
 
 export function renderMetadata(metadata) {
-  let result = '';
+  let result = "";
 
   const members = metadata.members?.filter(
-    (member) => member.description && member.privacy !== 'private'
+    (member) => member.description && member.privacy !== "private"
   );
   const props = members?.filter((prop) => {
-    return prop.kind === 'field';
+    return prop.kind === "field";
   });
   const methods = members?.filter(
-    (member) => member.kind === 'method' && member.privacy !== 'private'
+    (member) => member.kind === "method" && member.privacy !== "private"
   );
 
   const descriptions = window.$docsify.componentDocs?.docDescriptions;
@@ -213,14 +227,14 @@ export function renderMetadata(metadata) {
       return `<p class="meta-desc">${descriptions[category]}</p>`;
     }
 
-    return '';
+    return "";
   };
 
   if (props?.length) {
     result += `
       ### Properties
 
-      ${maybeRenderDescription('properties')}
+      ${maybeRenderDescription("properties")}
       ${renderPropertiesTable(props)}
     `;
   }
@@ -229,7 +243,7 @@ export function renderMetadata(metadata) {
     result += `
       ### Methods
 
-      ${maybeRenderDescription('methods')}
+      ${maybeRenderDescription("methods")}
       ${renderMethodsList(methods)}
     `;
   }
@@ -238,7 +252,7 @@ export function renderMetadata(metadata) {
     result += `
       ### Events
 
-      ${maybeRenderDescription('events')}
+      ${maybeRenderDescription("events")}
       ${renderEventsTable(metadata.events)}
     `;
   }
@@ -247,7 +261,7 @@ export function renderMetadata(metadata) {
     result += `
       ### Slots
 
-      ${maybeRenderDescription('slots')}
+      ${maybeRenderDescription("slots")}
       ${renderSlotsTable(metadata.slots)}
     `;
   }
@@ -256,7 +270,7 @@ export function renderMetadata(metadata) {
     result += `
       ### CSS Custom Properties
 
-      ${maybeRenderDescription('cssprops')}
+      ${maybeRenderDescription("cssprops")}
       ${renderCssPropertiesTable(metadata.cssProperties)}
     `;
   }
@@ -265,7 +279,7 @@ export function renderMetadata(metadata) {
     result += `
       ### CSS Parts
 
-      ${maybeRenderDescription('cssparts')}
+      ${maybeRenderDescription("cssparts")}
       ${renderCssPartsTable(metadata.cssParts)}
     `;
   }

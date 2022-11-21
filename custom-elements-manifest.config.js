@@ -1,14 +1,14 @@
 export default {
   litelement: true,
-  globs: ['src/components/**/*.ts'],
-  exclude: ['**/*.test.ts'],
+  globs: ["src/components/**/*.ts"],
+  exclude: ["**/*.test.ts"],
   plugins: [
     {
-      name: 'custom-tags',
+      name: "custom-tags",
       analyzePhase({ ts, node, moduleDoc }) {
         switch (node.kind) {
           case ts.SyntaxKind.ClassDeclaration:
-            const customTags = ['status'];
+            const customTags = ["status"];
             const className = node.name.getText();
 
             node.jsDoc?.forEach((jsDoc) => {

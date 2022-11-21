@@ -1,4 +1,4 @@
-import { css } from 'lit';
+import { css } from "lit";
 
 export default css`
   .button {
@@ -52,7 +52,7 @@ export default css`
   * variant modifiers
   */
 
-  :host([variant='default']) .button {
+  :host([variant="default"]) .button {
     --background-color: var(--ds-color-white);
     --border-color: var(--ds-color-cool-gray-300);
     --box-shadow: var(--ds-shadow-x-small);
@@ -70,7 +70,7 @@ export default css`
     --color-active: var(--ds-color-cool-gray-900);
   }
 
-  :host([variant='primary']) .button {
+  :host([variant="primary"]) .button {
     --background-color: var(--ds-color-primary);
     --border-color: var(--ds-color-primary);
     --box-shadow: $var(--ds-shadow-x-small);
@@ -90,7 +90,7 @@ export default css`
     --color-active: var(--ds-color-white);
   }
 
-  :host([variant='success']) .button {
+  :host([variant="success"]) .button {
     --background-color: var(--ds-color-success);
     --border-color: var(--ds-color-success);
     --box-shadow: var(--ds-shadow-x-small);
@@ -110,7 +110,7 @@ export default css`
     --color-active: var(--ds-color-white);
   }
 
-  :host([variant='info']) .button {
+  :host([variant="info"]) .button {
     --background-color: var(--ds-color-secondary);
     --border-color: var(--ds-color-secondary);
     --box-shadow: var(--ds-shadow-x-small);
@@ -130,7 +130,7 @@ export default css`
     --color-active: var(--ds-color-white);
   }
 
-  :host([variant='warning']) .button {
+  :host([variant="warning"]) .button {
     --background-color: var(--ds-color-warning);
     --border-color: var(--ds-color-warning);
     --box-shadow: var(--ds-shadow-x-small);
@@ -150,7 +150,7 @@ export default css`
     --color-active: var(--ds-color-white);
   }
 
-  :host([variant='danger']) .button {
+  :host([variant="danger"]) .button {
     --background-color: var(--ds-color-danger);
     --border-color: var(--ds-color-danger);
     --box-shadow: var(--ds-shadow-x-small);
@@ -170,7 +170,7 @@ export default css`
     --color-active: var(--ds-color-white);
   }
 
-  :host([variant='text']) .button {
+  :host([variant="text"]) .button {
     --background-color: transparent;
     --border-color: transparent;
     --color: var(--ds-color-primary);
@@ -193,26 +193,32 @@ export default css`
   * size modifiers
   */
 
-  :host([size='small']) .button {
+  :host([size="small"]) .button {
     font-size: var(--ds-button-font-size-small);
     height: var(--ds-inputs-height-small);
-    line-height: calc(var(--ds-input-height-small) - var(--ds-input-border-width) * 2);
+    line-height: calc(
+      var(--ds-input-height-small) - var(--ds-input-border-width) * 2
+    );
     border-radius: var(--border-radius, var(--ds-border-radius-medium));
     padding: 0 var(--ds-spacing-medium);
   }
 
-  :host([size='medium']) .button {
+  :host([size="medium"]) .button {
     font-size: var(--ds-button-font-size-medium);
     height: var(--ds-input-height-medium);
-    line-height: calc(var(--ds-input-height-medium) - var(--ds-input-border-width) * 2);
+    line-height: calc(
+      var(--ds-input-height-medium) - var(--ds-input-border-width) * 2
+    );
     border-radius: var(--border-radius, var(--ds-border-radius-medium));
     padding: 0 var(--ds-spacing-large);
   }
 
-  :host([size='large']) .button {
+  :host([size="large"]) .button {
     font-size: var(--ds-button-font-size-large);
     height: var(--ds-input-height-large);
-    line-height: calc(var(--ds-input-height-large) - var(--ds-input-border-width) * 2);
+    line-height: calc(
+      var(--ds-input-height-large) - var(--ds-input-border-width) * 2
+    );
     border-radius: var(--border-radius, var(--ds-border-radius-large));
     padding: 0 var(--ds-spacing-x-large);
   }

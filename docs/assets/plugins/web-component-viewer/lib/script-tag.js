@@ -5,13 +5,15 @@
  */
 
 export function runScript(script) {
-  const newScript = document.createElement('script');
+  const newScript = document.createElement("script");
 
-  if (script.type === 'module') {
-    newScript.type = 'module';
+  if (script.type === "module") {
+    newScript.type = "module";
     newScript.textContent = script.innerHTML;
   } else {
-    newScript.appendChild(document.createTextNode(`(() => { ${script.innerHTML} })();`));
+    newScript.appendChild(
+      document.createTextNode(`(() => { ${script.innerHTML} })();`)
+    );
   }
 
   script.parentNode.replaceChild(newScript, script);
