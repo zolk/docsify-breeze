@@ -1,6 +1,6 @@
 import browserSync from 'browser-sync';
 import commandLineArgs from 'command-line-args';
-import del from 'del';
+import { deleteSync } from 'del';
 import esbuild from 'esbuild';
 import { globby } from 'globby';
 import mkdirp from 'mkdirp';
@@ -21,7 +21,7 @@ const generateCem = () => {
   execSync(`cem analyze --outdir "${outdir}"`, { stdio: 'inherit' });
 };
 
-del.sync(outdir);
+deleteSync([outdir, '*/dist']);
 mkdirp.sync(outdir);
 
 (async () => {
@@ -76,7 +76,7 @@ mkdirp.sync(outdir);
 
   // Copy the build output to an additional directory
   if (copydir) {
-    del.sync(copydir);
+    deleteSync(copydir);
     copy(outdir, copydir);
   }
 
