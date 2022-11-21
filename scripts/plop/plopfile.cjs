@@ -62,14 +62,14 @@ module.exports = function (plop) {
       },
       {
         type: "add",
-        path: "../../docs/components/{{noPrefix tag}}/{{noPrefix tag}}.md",
+        path: "../../docs/components/{{noPrefix tag}}.md",
         templateFile: "templates/component.docs.hbs",
       },
       {
         type: "modify",
         path: "../../src/index.ts",
         pattern: /\/\* plop:component \*\//,
-        template: `export { default as {{ tagToDsTitle tag }} } from './components/{{ noPrefix tag }}/{{ tag }}';\n/* plop:component */`,
+        template: `export { default as {{ tagToDsTitle tag }} } from "./components/{{ noPrefix tag }}/{{ noPrefix tag }}";\n/* plop:component */`,
       },
       {
         type: "modify",
