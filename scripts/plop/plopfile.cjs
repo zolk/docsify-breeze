@@ -48,22 +48,22 @@ module.exports = function (plop) {
       {
         type: "add",
         path: "../../src/components/{{noPrefix tag}}/{{noPrefix tag}}.ts",
-        templateFile: "scripts/plop/templates/component.hbs",
+        templateFile: "templates/component.hbs",
       },
       {
         type: "add",
         path: "../../src/components/{{noPrefix tag}}/{{noPrefix tag}}.styles.ts",
-        templateFile: "scripts/plop/templates/component.styles.hbs",
+        templateFile: "templates/component.styles.hbs",
       },
       {
         type: "add",
         path: "../../src/components/{{noPrefix tag}}/{{noPrefix tag}}.test.ts",
-        templateFile: "scripts/plop/templates/component.test.hbs",
+        templateFile: "templates/component.test.hbs",
       },
       {
         type: "add",
         path: "../../docs/components/{{noPrefix tag}}/{{noPrefix tag}}.md",
-        templateFile: "scripts/plop/templates/component.docs.hbs",
+        templateFile: "templates/component.docs.hbs",
       },
       {
         type: "modify",

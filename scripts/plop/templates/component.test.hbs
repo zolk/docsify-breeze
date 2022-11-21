@@ -4,7 +4,7 @@ import "./{{ tag }}";
 
 describe("{{ tag }}", () => {
   it("renders", async () => {
-    const el = await fixture<Ds{{ tagToEpTitle tag }}>(html`<{{ tag }}></{{ tag }}>`);
+    const el = await fixture<{{ tagToDsTitle tag }}>(html`<{{ tag }}></{{ tag }}>`);
 
     expect(el).to.exist;
   });
