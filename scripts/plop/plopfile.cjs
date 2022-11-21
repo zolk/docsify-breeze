@@ -7,6 +7,16 @@ module.exports = function (plop) {
     return titleCase(withoutPrefix(tag));
   });
 
+  plop.setHelper("tagToTypeTitle", (tag) => {
+    const tagToTitle = plop.getHelper("tagToTitle");
+    return tagToTitle(tag).replace("-", "");
+  });
+
+  plop.setHelper("tagToDisplayTitle", (tag) => {
+    const tagToTitle = plop.getHelper("tagToTitle");
+    return tagToTitle(tag).replace("-", " ");
+  });
+
   plop.setHelper("tagToDsTitle", (tag) => {
     const tagToTitle = plop.getHelper("tagToTitle");
     return "Ds" + tagToTitle(tag);
@@ -28,39 +38,50 @@ module.exports = function (plop) {
           return true;
         },
       },
+      {
+        type: "input",
+        name: "description",
+        message: "short component description",
+      },
     ],
     actions: [
       {
         type: "add",
-        path: "src/components/{{name}}/{{name}}.ts",
+        path: "../../src/components/{{noPrefix tag}}/{{noPrefix tag}}.ts",
         templateFile: "scripts/plop/templates/component.hbs",
       },
       {
         type: "add",
-        path: "src/components/{{name}}/{{name}}.styles.ts",
+        path: "../../src/components/{{noPrefix tag}}/{{noPrefix tag}}.styles.ts",
         templateFile: "scripts/plop/templates/component.styles.hbs",
       },
       {
         type: "add",
-        path: "src/components/{{name}}/{{name}}.test.ts",
+        path: "../../src/components/{{noPrefix tag}}/{{noPrefix tag}}.test.ts",
         templateFile: "scripts/plop/templates/component.test.hbs",
       },
       {
         type: "add",
-        path: "docs/components/{{name}}/{{name}}.md",
+        path: "../../docs/components/{{noPrefix tag}}/{{noPrefix tag}}.md",
         templateFile: "scripts/plop/templates/component.docs.hbs",
       },
       {
         type: "modify",
-        path: "src/index.ts",
+        path: "../../src/index.ts",
         pattern: /\/\* plop:component \*\//,
-        template: `export { default as Ds{{ properCase name }} } from './components/{{ name }}/{{ name }}';\n/* plop:component */`,
+        template: `export { default as {{ tagToDsTitle tag }} } from './components/{{ noPrefix tag }}/{{ tag }}';\n/* plop:component */`,
       },
       {
         type: "modify",
-        path: "docs/_sidebar.md",
+        path: "../../docs/_sidebar.md",
         pattern: /<!--plop:component-->/,
-        template: `- [{{ properCase name }}](/components/code)\n  <!--plop:component-->`,
+        template: `- [{{ tagToTitle tag }}](/components/{{noPrefix tag}})\n  <!--plop:component-->`,
+      },
+      {
+        type: "modify",
+        path: "../../docs/components.md",
+        pattern: /<!--plop:component-->/,
+        template: `[component-card:{{ tagToTitle tag }}:{{noPrefix tag}}]\n<!--plop:component-->`,
       },
     ],
   });

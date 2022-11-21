@@ -1,29 +1,31 @@
-import { LitElement, html } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
-import styles from './{{ tag }}.styles';
-import baseStyles from '../../lib/base-styles';
+import { LitElement, html } from "lit";
+import { customElement, property } from "lit/decorators.js";
+import styles from "./{{ tag }}.styles";
+import baseStyles from "../../lib/base-styles";
 
 /**
+ * {{ description }}
+ *
  * @status draft
  *
  * @slot - The default slot.
  *
  * @event ds-event-name - An example event.
  *
- * @csspart base - The component's base wrapper.
+ * @csspart base - The component"s base wrapper.
  *
  * @cssproperty --example - An example CSS custom property.
  */
-@customElement('{{ tag}}')
+@customElement("{{ tag}}")
 export default class Ds{{ tagToDsTitle tag }} extends LitElement {
   static styles = [baseStyles, styles];
 
   /** An example property. */
-  @property() prop = 'example';
+  @property() prop = "example";
 
   render() {
     return html`
-      <div part="base" class="{{ noPrefix tag }}">
+      <div part="base">
         <slot></slot>
       </div>
     `;
@@ -32,6 +34,6 @@ export default class Ds{{ tagToDsTitle tag }} extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    '{{ tag }}': Ds{{ tagToDsTitle tag }};
+    "{{ tag }}": {{ tagToDsTitle tag }};
   }
 }
