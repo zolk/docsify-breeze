@@ -9,8 +9,8 @@
 
 window.$docsify.plugins.push((hook, vm) => {
   const options = {
-    docsDir: '/docs',
-    url: '',
+    docsDir: "/docs",
+    url: "",
   };
 
   hook.init(function () {
@@ -18,7 +18,7 @@ window.$docsify.plugins.push((hook, vm) => {
       Object.keys(options).forEach((key) => {
         const override = vm.config.editOnGithub[key];
 
-        if (typeof override === 'string') {
+        if (typeof override === "string") {
           options[key] = override;
         }
       });

@@ -1,34 +1,34 @@
-import browserSync from 'browser-sync';
-import commandLineArgs from 'command-line-args';
-import { deleteSync } from 'del';
-import esbuild from 'esbuild';
-import { globby } from 'globby';
-import mkdirp from 'mkdirp';
-import { execSync } from 'child_process';
-import copy from 'recursive-copy';
+import browserSync from "browser-sync";
+import commandLineArgs from "command-line-args";
+import { deleteSync } from "del";
+import esbuild from "esbuild";
+import { globby } from "globby";
+import mkdirp from "mkdirp";
+import { execSync } from "child_process";
+import copy from "recursive-copy";
 
 const bs = browserSync.create();
 
 const { serve, copydir } = commandLineArgs([
-  { name: 'serve', type: Boolean },
-  { name: 'copydir', type: String },
+  { name: "serve", type: Boolean },
+  { name: "copydir", type: String },
 ]);
 
-const outdir = './dist';
+const outdir = "./dist";
 
 const generateCem = () => {
-  console.log('Generating component metadata manifest...');
-  execSync(`cem analyze --outdir "${outdir}"`, { stdio: 'inherit' });
+  console.log("Generating component metadata manifest...");
+  execSync(`cem analyze --outdir "${outdir}"`, { stdio: "inherit" });
 };
 
-deleteSync([outdir, '*/dist']);
+deleteSync([outdir, "*/dist"]);
 mkdirp.sync(outdir);
 
 (async () => {
   try {
     if (!serve) {
-      console.log('Generating type definitions...');
-      execSync('tsc --emitDeclarationOnly', { stdio: 'inherit' });
+      console.log("Generating type definitions...");
+      execSync("tsc --emitDeclarationOnly", { stdio: "inherit" });
     }
     generateCem();
   } catch (err) {
@@ -36,22 +36,22 @@ mkdirp.sync(outdir);
     process.exit(1);
   }
 
-  console.log('Compiling code...');
+  console.log("Compiling code...");
 
   await esbuild
     .build({
-      format: 'esm',
-      target: 'es2017',
+      format: "esm",
+      target: "es2017",
       entryPoints: [
         // Main Entry Point
-        './src/index.ts',
+        "./src/index.ts",
         // Individual Components
-        ...(await globby('./src/components/**/!(*.(styles|test)).ts')),
+        ...(await globby("./src/components/**/!(*.(styles|test)).ts")),
         // Global Styles
-        ...(await globby('./src/styles/*.css')),
+        ...(await globby("./src/styles/*.css")),
       ],
       outdir,
-      chunkNames: 'chunks/[name].[hash]',
+      chunkNames: "chunks/[name].[hash]",
       incremental: serve,
       bundle: true,
       splitting: true,
@@ -59,18 +59,18 @@ mkdirp.sync(outdir);
       plugins: [],
       watch: {
         onRebuild(err) {
-          if (err) console.error('🚨 Build failure:', err);
+          if (err) console.error("🚨 Build failure:", err);
           else generateCem();
-          console.log('✅ Rebuild complete.');
+          console.log("✅ Rebuild complete.");
         },
       },
     })
     .catch((err) => {
-      console.error('🚨 Build failure:', err);
+      console.error("🚨 Build failure:", err);
       process.exit(1);
     })
     .then((result) => {
-      console.log('🎉 Project has been successfully built!');
+      console.log("🎉 Project has been successfully built!");
       if (!serve) result.stop();
     });
 
@@ -86,16 +86,16 @@ mkdirp.sync(outdir);
       single: true,
       notify: false,
       ghostMode: false,
-      logPrefix: 'Dev Server',
+      logPrefix: "Dev Server",
       server: {
-        baseDir: 'docs',
+        baseDir: "docs",
         routes: {
-          '/dist': './dist',
+          "/dist": "./dist",
         },
       },
     });
 
-    bs.watch(['docs/**/*.md', 'dist/**/*.js']).on('change', () => {
+    bs.watch(["docs/**/*.md", "dist/**/*.js"]).on("change", () => {
       bs.reload();
     });
   }

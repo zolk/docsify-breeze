@@ -26,11 +26,15 @@
  * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-import { renderPreview, handlePreviewResize, handleCodeToggle } from './lib/preview.js';
-import { renderControlsInterface } from './lib/controls.js';
-import { runScript } from './lib/script-tag.js';
-import { kebabToTitleCase } from '../shared/utilities.js';
-import { TAG_PREFIX } from '../shared/cem.js';
+import {
+  renderPreview,
+  handlePreviewResize,
+  handleCodeToggle,
+} from "./lib/preview.js";
+import { renderControlsInterface } from "./lib/controls.js";
+import { runScript } from "./lib/script-tag.js";
+import { kebabToTitleCase } from "../shared/utilities.js";
+import { TAG_PREFIX } from "../shared/cem.js";
 
 const handleDocumentClick = (e) => handleCodeToggle(e);
 
@@ -40,18 +44,18 @@ window.$docsify.plugins.push((hook, vm) => {
   hook.beforeEach(() => {
     // Cleanup previous event listener to allow toggling display of source code.
     // This prevents multiple event listeners from getting added to the page.
-    document.removeEventListener('click', handleDocumentClick);
+    document.removeEventListener("click", handleDocumentClick);
   });
 
   // Replace code preview blocks with rendered previews.
   hook.afterEach((html, next) => {
     const parser = new DOMParser();
-    const doc = parser.parseFromString(html, 'text/html');
+    const doc = parser.parseFromString(html, "text/html");
 
-    [...doc.querySelectorAll('code.preview')].map((codeBlock) => {
+    [...doc.querySelectorAll("code.preview")].map((codeBlock) => {
       const previewView = renderPreview(codeBlock, id);
-      const pre = codeBlock.closest('pre');
-      pre.replaceWith(parser.parseFromString(previewView, 'text/html').body);
+      const pre = codeBlock.closest("pre");
+      pre.replaceWith(parser.parseFromString(previewView, "text/html").body);
       id++;
     });
 
@@ -60,17 +64,17 @@ window.$docsify.plugins.push((hook, vm) => {
 
   hook.doneEach(() => {
     // Allow toggling display of source code.
-    document.addEventListener('click', handleDocumentClick);
+    document.addEventListener("click", handleDocumentClick);
 
     // Run inline scripts.
-    [...document.querySelectorAll('.code-preview__preview script')].map((script) =>
-      runScript(script)
+    [...document.querySelectorAll(".code-preview__preview script")].map(
+      (script) => runScript(script)
     );
 
     // Allow resize of preview window.
-    [...document.querySelectorAll('.code-preview')].map((block) => {
-      const resizer = block.querySelector('.code-preview__resizer');
-      const preview = block.querySelector('.code-preview__preview');
+    [...document.querySelectorAll(".code-preview")].map((block) => {
+      const resizer = block.querySelector(".code-preview__resizer");
+      const preview = block.querySelector(".code-preview__preview");
       handlePreviewResize(preview, resizer);
     });
   });
@@ -78,13 +82,13 @@ window.$docsify.plugins.push((hook, vm) => {
   // Prepare to load a preview in an isolated window.
   hook.mounted(() => {
     if (vm.route.query.preview || vm.route.query.controls) {
-      const overlay = document.createElement('div');
-      overlay.style.position = 'absolute';
+      const overlay = document.createElement("div");
+      overlay.style.position = "absolute";
       overlay.style.top = 0;
       overlay.style.left = 0;
-      overlay.style.width = '100vw';
-      overlay.style.height = '100vh';
-      overlay.style.backgroundColor = 'white';
+      overlay.style.width = "100vw";
+      overlay.style.height = "100vh";
+      overlay.style.backgroundColor = "white";
 
       document.body.appendChild(overlay);
     }
@@ -97,24 +101,28 @@ window.$docsify.plugins.push((hook, vm) => {
     // Load the preview.
     if (exampleId) {
       const preview = document.querySelector(`#example-${exampleId}`);
-      preview.classList.add('controls__preview');
-      document.body.classList.add('example');
-      document.body.innerHTML = '';
+      preview.classList.add("controls__preview");
+      document.body.classList.add("example");
+      document.body.innerHTML = "";
       document.body.appendChild(preview);
     }
 
     // Set the preview page title.
     if (vm.route.query.preview) {
-      document.title = `${document.title} - ${kebabToTitleCase(exampleId)} - Preview`;
+      document.title = `${document.title} - ${kebabToTitleCase(
+        exampleId
+      )} - Preview`;
     }
 
     // Set the controls page title and load the controls interface.
     if (vm.route.query.controls) {
-      document.title = `${document.title} - ${kebabToTitleCase(exampleId)} - Customize`;
-      document.body.classList.add('controls');
+      document.title = `${document.title} - ${kebabToTitleCase(
+        exampleId
+      )} - Customize`;
+      document.body.classList.add("controls");
 
-      const pathSegments = document.body.dataset.page.split('/');
-      const tagName = TAG_PREFIX + pathSegments[2].split('.')[0];
+      const pathSegments = document.body.dataset.page.split("/");
+      const tagName = TAG_PREFIX + pathSegments[2].split(".")[0];
       renderControlsInterface(tagName);
     }
   });

@@ -1,8 +1,8 @@
-import { LitElement, html } from 'lit';
-import { customElement } from 'lit/decorators.js';
-import styles from './card.styles';
-import baseStyles from '../../lib/base-styles';
-import { hasNamedSlot } from '../../lib/utils/slot';
+import { LitElement, html } from "lit";
+import { customElement } from "lit/decorators.js";
+import styles from "./card.styles";
+import baseStyles from "../../lib/base-styles";
+import { hasNamedSlot } from "../../lib/utils/slot";
 
 /**
  * Cards can be used to group related subjects in a container.
@@ -18,20 +18,20 @@ import { hasNamedSlot } from '../../lib/utils/slot';
  *
  * @cssproperty --border-radius - Customize the card's border radius.
  */
-@customElement('ds-card')
+@customElement("ds-card")
 export default class DsCard extends LitElement {
   static styles = [baseStyles, styles];
 
   render() {
     return html`
       <div part="base">
-        ${hasNamedSlot(this, 'header')
+        ${hasNamedSlot(this, "header")
           ? html`
               <div part="header">
                 <slot name="header"></slot>
               </div>
             `
-          : ''}
+          : ""}
         <div part="body">
           <slot></slot>
         </div>
@@ -42,6 +42,6 @@ export default class DsCard extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'ds-card': DsCard;
+    "ds-card": DsCard;
   }
 }

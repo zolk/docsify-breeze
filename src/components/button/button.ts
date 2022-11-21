@@ -1,9 +1,9 @@
-import { LitElement } from 'lit';
-import { html, literal } from 'lit/static-html.js';
-import { ifDefined } from 'lit/directives/if-defined.js';
-import { customElement, property, query } from 'lit/decorators.js';
-import styles from './button.styles';
-import baseStyles from '../../lib/base-styles';
+import { LitElement } from "lit";
+import { html, literal } from "lit/static-html.js";
+import { ifDefined } from "lit/directives/if-defined.js";
+import { customElement, property, query } from "lit/decorators.js";
+import styles from "./button.styles";
+import baseStyles from "../../lib/base-styles";
 
 /**
  * Buttons represent actions available to the user.
@@ -20,19 +20,26 @@ import baseStyles from '../../lib/base-styles';
  *
  * @cssproperty --border-radius - The button's border radius.
  */
-@customElement('ds-button')
+@customElement("ds-button")
 export default class DsButton extends LitElement {
   static styles = [baseStyles, styles];
 
-  @query('.button') button: HTMLButtonElement | HTMLLinkElement;
+  @query(".button") button: HTMLButtonElement | HTMLLinkElement;
 
   /** The button's visual style. */
   @property({ reflect: true })
-  variant: 'default' | 'primary' | 'success' | 'info' | 'warning' | 'danger' | 'text' = 'default';
+  variant:
+    | "default"
+    | "primary"
+    | "success"
+    | "info"
+    | "warning"
+    | "danger"
+    | "text" = "default";
 
   /** The button's size. */
   @property({ reflect: true })
-  size: 'small' | 'medium' | 'large' = 'medium';
+  size: "small" | "medium" | "large" = "medium";
 
   /** Set to true to render the button in a disabled state. */
   @property({ type: Boolean, reflect: true })
@@ -56,7 +63,7 @@ export default class DsButton extends LitElement {
 
   /** Specifies where a link should open. Only used when `href` is set. */
   @property()
-  target?: '_blank' | '_parent' | '_self' | '_top';
+  target?: "_blank" | "_parent" | "_self" | "_top";
 
   /** Programmatically simulates a click on the button. */
   click() {
@@ -79,14 +86,14 @@ export default class DsButton extends LitElement {
   private _handleBlur(e: KeyboardEvent) {
     e.stopPropagation();
 
-    const event = new CustomEvent('blur', { bubbles: true, composed: true });
+    const event = new CustomEvent("blur", { bubbles: true, composed: true });
     this.dispatchEvent(event);
   }
 
   private _handleFocus(e: KeyboardEvent) {
     e.stopPropagation();
 
-    const event = new CustomEvent('focus', {
+    const event = new CustomEvent("focus", {
       bubbles: true,
       composed: true,
     });
@@ -100,15 +107,17 @@ export default class DsButton extends LitElement {
     return html`
       <${tag}
         part="base"
-        class="button ${this.disabled ? 'button--disabled' : ''}"
+        class="button ${this.disabled ? "button--disabled" : ""}"
         ?disabled=${isLink ? undefined : this.disabled}
-        type=${ifDefined(isLink ? undefined : this.submit ? 'submit' : 'button')}
+        type=${ifDefined(
+          isLink ? undefined : this.submit ? "submit" : "button"
+        )}
         name=${ifDefined(isLink ? undefined : this.name)}
         value=${ifDefined(isLink ? undefined : this.value)}
         href=${ifDefined(this.href)}
         target=${ifDefined(this.target)}
-        aria-disabled=${this.disabled ? 'true' : 'false'}
-        tabindex=${this.disabled ? '-1' : '0'}
+        aria-disabled=${this.disabled ? "true" : "false"}
+        tabindex=${this.disabled ? "-1" : "0"}
         @focus=${this._handleFocus}
         @blur=${this._handleBlur}
       >
@@ -122,6 +131,6 @@ export default class DsButton extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'ds-button': DsButton;
+    "ds-button": DsButton;
   }
 }

@@ -19,5 +19,7 @@ export const getAllComponents = (metadata) => {
 };
 
 export const getComponent = (metadata, tagName) => {
-  return getAllComponents(metadata).find((component) => component.tagName === tagName);
+  return getAllComponents(metadata).find(
+    (component) => component.tagName === tagName
+  );
 };
