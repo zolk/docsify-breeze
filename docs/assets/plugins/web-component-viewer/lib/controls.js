@@ -44,7 +44,7 @@ export function renderPropControl(prop, element) {
   };
 
   const renderMultipleChoice = (options) => {
-    const optionsArray = options.split('|');
+    const optionsArray = options.split('|').filter((o) => o.length > 0);
 
     if (optionsArray.length > 5) {
       // Use a `select` if there are more than 5 options
@@ -53,10 +53,10 @@ export function renderPropControl(prop, element) {
           const value = option.replace(/([('|") ])/g, '');
           return `
               <option
-                value="${value}"
+                value="${value.trim()}"
                 ${getDefaultProp() === value ? 'selected' : ''}
               >
-                ${value}
+                ${value.trim()}
               </option>`;
         })
         .join('')}</select>`;
@@ -70,10 +70,10 @@ export function renderPropControl(prop, element) {
                 <input
                   type="radio"
                   name="${prop.attribute}"
-                  value="${value}"
+                  value="${value.trim()}"
                   ${getDefaultProp() === value ? 'checked' : ''}
                 ></input>
-                ${value}
+                ${value.trim()}
               </label>`;
         })
         .join('');
@@ -144,7 +144,7 @@ export async function renderControlsPanel(tagName) {
       </thead>
       <tbody>
         ${slots
-          .map((slot) => {
+          ?.map((slot) => {
             return `
                 <tr>
                   <th scope="row">
@@ -161,7 +161,7 @@ export async function renderControlsPanel(tagName) {
   `;
 
   return `
-    ${slots.length ? renderSlotTable : ''}
+    ${slots?.length ? renderSlotTable : ''}
     <table>
       <thead>
         <tr>
