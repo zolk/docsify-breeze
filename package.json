@@ -35,7 +35,7 @@
     "@web/test-runner-puppeteer": "^0.10.4",
     "browser-sync": "^2.27.7",
     "command-line-args": "^5.2.0",
-    "del": "^6.0.0",
+    "del": "^7.0.0",
     "esbuild": "^0.14.8",
     "eslint": "^8.5.0",
     "eslint-config-prettier": "^8.3.0",

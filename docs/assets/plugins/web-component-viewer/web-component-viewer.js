@@ -32,8 +32,16 @@ import { runScript } from './lib/script-tag.js';
 import { kebabToTitleCase } from '../shared/utilities.js';
 import { TAG_PREFIX } from '../shared/cem.js';
 
+const handleDocumentClick = (e) => handleCodeToggle(e);
+
 window.$docsify.plugins.push((hook, vm) => {
   let id = 0;
+
+  hook.beforeEach(() => {
+    // Cleanup previous event listener to allow toggling display of source code.
+    // This prevents multiple event listeners from getting added to the page.
+    document.removeEventListener('click', handleDocumentClick);
+  });
 
   // Replace code preview blocks with rendered previews.
   hook.afterEach((html, next) => {
@@ -52,9 +60,7 @@ window.$docsify.plugins.push((hook, vm) => {
 
   hook.doneEach(() => {
     // Allow toggling display of source code.
-    document.addEventListener('click', (event) => {
-      handleCodeToggle(event);
-    });
+    document.addEventListener('click', handleDocumentClick);
 
     // Run inline scripts.
     [...document.querySelectorAll('.code-preview__preview script')].map((script) =>
