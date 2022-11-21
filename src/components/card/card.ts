@@ -1,7 +1,8 @@
 import { LitElement, html } from 'lit';
-import { customElement, state } from 'lit/decorators.js';
+import { customElement } from 'lit/decorators.js';
 import styles from './card.styles';
 import baseStyles from '../../lib/base-styles';
+import { hasNamedSlot } from '../../lib/utils/slot';
 
 /**
  * Cards can be used to group related subjects in a container.
@@ -21,19 +22,17 @@ import baseStyles from '../../lib/base-styles';
 export default class DsCard extends LitElement {
   static styles = [baseStyles, styles];
 
-  @state() private hasHeader = false;
-
-  handleSlotChange() {
-    this.hasHeader = this.querySelector(':scope > [slot="header"]') !== null;
-  }
-
   render() {
     return html`
-      <div part="base" class="card ${this.hasHeader ? 'card--has-header' : ''}">
-        <div part="header" class="card__header">
-          <slot name="header" @slotchange=${this.handleSlotChange}></slot>
-        </div>
-        <div part="body" class="card__body">
+      <div part="base">
+        ${hasNamedSlot(this, 'header')
+          ? html`
+              <div part="header">
+                <slot name="header"></slot>
+              </div>
+            `
+          : ''}
+        <div part="body">
           <slot></slot>
         </div>
       </div>

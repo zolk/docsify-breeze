@@ -9,7 +9,7 @@ describe('ds-card', () => {
     expect(el).to.exist;
   });
 
-  it('sets the class name when a header is present', async () => {
+  it('shows a header if the slot is provided', async () => {
     const el = await fixture<DsCard>(
       html`
         <ds-card>
@@ -19,7 +19,7 @@ describe('ds-card', () => {
       `
     );
 
-    const headerClass = el.shadowRoot?.querySelector('.card--has-header');
+    const headerClass = el.shadowRoot?.querySelector('[part="header"]');
     expect(headerClass).to.exist;
   });
 });
