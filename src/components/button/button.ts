@@ -107,7 +107,6 @@ export default class DsButton extends LitElement {
     return html`
       <${tag}
         part="base"
-        class="button ${this.disabled ? "button--disabled" : ""}"
         ?disabled=${isLink ? undefined : this.disabled}
         type=${ifDefined(
           isLink ? undefined : this.submit ? "submit" : "button"
@@ -121,7 +120,7 @@ export default class DsButton extends LitElement {
         @focus=${this._handleFocus}
         @blur=${this._handleBlur}
       >
-        <span part="label" class="button__label">
+        <span part="label">
           <slot></slot>
         </span>
       </${tag}>

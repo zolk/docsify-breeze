@@ -1,7 +1,7 @@
 import { css } from "lit";
 
 export default css`
-  .button {
+  [part="base"] {
     display: inline-flex;
     align-items: stretch;
     justify-content: center;
@@ -21,30 +21,30 @@ export default css`
     cursor: pointer;
   }
 
-  .button:hover:not(.button--disabled) {
+  [part="base"]:hover:not(:disabled) {
     background-color: var(--background-color-hover);
     border-color: var(--border-color-hover);
   }
 
-  .button:focus:not(.button-disabled) {
+  [part="base"]:focus:not(:disabled) {
     background-color: var(--background-color-focus);
     border-color: var(--border-color-focus);
     box-shadow: var(--box-shadow-focus);
     outline: none;
   }
 
-  .button:active:not(.button--disabled) {
+  [part="base"]:active:not(:disabled) {
     background-color: var(--background-color-active);
     border-color: var(--border-color-active);
     color: var(--color-active);
   }
 
-  .button--disabled {
+  [part="base"]:disabled {
     opacity: 0.5;
     cursor: not-allowed;
   }
 
-  .button--disabled * {
+  [part="base"]:disabled * {
     pointer-events: none;
   }
 
@@ -52,7 +52,7 @@ export default css`
   * variant modifiers
   */
 
-  :host([variant="default"]) .button {
+  :host([variant="default"]) [part="base"] {
     --background-color: var(--ds-color-white);
     --border-color: var(--ds-color-cool-gray-300);
     --box-shadow: var(--ds-shadow-x-small);
@@ -70,7 +70,7 @@ export default css`
     --color-active: var(--ds-color-cool-gray-900);
   }
 
-  :host([variant="primary"]) .button {
+  :host([variant="primary"]) [part="base"] {
     --background-color: var(--ds-color-primary);
     --border-color: var(--ds-color-primary);
     --box-shadow: $var(--ds-shadow-x-small);
@@ -90,7 +90,7 @@ export default css`
     --color-active: var(--ds-color-white);
   }
 
-  :host([variant="success"]) .button {
+  :host([variant="success"]) [part="base"] {
     --background-color: var(--ds-color-success);
     --border-color: var(--ds-color-success);
     --box-shadow: var(--ds-shadow-x-small);
@@ -110,7 +110,7 @@ export default css`
     --color-active: var(--ds-color-white);
   }
 
-  :host([variant="info"]) .button {
+  :host([variant="info"]) [part="base"] {
     --background-color: var(--ds-color-secondary);
     --border-color: var(--ds-color-secondary);
     --box-shadow: var(--ds-shadow-x-small);
@@ -130,7 +130,7 @@ export default css`
     --color-active: var(--ds-color-white);
   }
 
-  :host([variant="warning"]) .button {
+  :host([variant="warning"]) [part="base"] {
     --background-color: var(--ds-color-warning);
     --border-color: var(--ds-color-warning);
     --box-shadow: var(--ds-shadow-x-small);
@@ -150,7 +150,7 @@ export default css`
     --color-active: var(--ds-color-white);
   }
 
-  :host([variant="danger"]) .button {
+  :host([variant="danger"]) [part="base"] {
     --background-color: var(--ds-color-danger);
     --border-color: var(--ds-color-danger);
     --box-shadow: var(--ds-shadow-x-small);
@@ -170,7 +170,7 @@ export default css`
     --color-active: var(--ds-color-white);
   }
 
-  :host([variant="text"]) .button {
+  :host([variant="text"]) [part="base"] {
     --background-color: transparent;
     --border-color: transparent;
     --color: var(--ds-color-primary);
@@ -193,7 +193,7 @@ export default css`
   * size modifiers
   */
 
-  :host([size="small"]) .button {
+  :host([size="small"]) [part="base"] {
     font-size: var(--ds-button-font-size-small);
     height: var(--ds-inputs-height-small);
     line-height: calc(
@@ -203,7 +203,7 @@ export default css`
     padding: 0 var(--ds-spacing-medium);
   }
 
-  :host([size="medium"]) .button {
+  :host([size="medium"]) [part="base"] {
     font-size: var(--ds-button-font-size-medium);
     height: var(--ds-input-height-medium);
     line-height: calc(
@@ -213,7 +213,7 @@ export default css`
     padding: 0 var(--ds-spacing-large);
   }
 
-  :host([size="large"]) .button {
+  :host([size="large"]) [part="base"] {
     font-size: var(--ds-button-font-size-large);
     height: var(--ds-input-height-large);
     line-height: calc(
