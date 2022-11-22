@@ -9,21 +9,8 @@
 import { customElements, getComponent, TAG_PREFIX } from "../shared/cem.js";
 import { renderComponentCard } from "./lib/component-card.js";
 import { renderMetadata } from "./lib/metadata.js";
-import {
-  getActiveTheme,
-  setPreviewTheme,
-  renderThemeSelect,
-} from "./lib/theme.js";
 
-window.$docsify.plugins.push((hook, vm) => {
-  const themes = vm.config.themes;
-
-  hook.mounted(() => {
-    if (themes) {
-      document.body.classList.add(getActiveTheme());
-    }
-  });
-
+window.$docsify.plugins.push((hook) => {
   hook.beforeEach(async function (content, next) {
     const metadata = await customElements;
     const pathSegments = document.body.dataset.page.split("/");
@@ -67,20 +54,8 @@ window.$docsify.plugins.push((hook, vm) => {
               componentMeta?.status &&
               `<div class="component-status component-status--${componentMeta?.status}">${componentMeta?.status}</div>`
             }
-            ${
-              themes
-                ? `<div class="theme-switcher">
-                    <label for="theme-switcher__select">Select Theme</label>
-                    <span class="theme-switcher__icon"></span>
-                  </div>`
-                : ""
-            }
           </div>
         `;
-
-        if (themes) {
-          header.querySelector(".theme-switcher").append(renderThemeSelect());
-        }
 
         const content = document.querySelector(".content");
         content.prepend(header);
@@ -104,10 +79,6 @@ window.$docsify.plugins.push((hook, vm) => {
   });
 
   hook.doneEach(function () {
-    // Set code previews to use the configured background color
-    const activeTheme = getActiveTheme();
-    setPreviewTheme(activeTheme);
-
     // Wrap tables for responsive horizontal scrolling
     const content = document.querySelector(".content");
     const tables = [...content.querySelectorAll("table")];

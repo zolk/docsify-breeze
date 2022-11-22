@@ -5,30 +5,17 @@
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-const themes = window.$docsify.themes;
+const { themes, pathRegex } = window.$docsify.themeSelector;
 
 function setTheme(newTheme) {
   localStorage.setItem("theme", newTheme);
-  setPreviewTheme(newTheme);
   themes.forEach((theme) =>
     document.body.classList.toggle(theme.class, theme.class === newTheme)
   );
 }
 
-export function getActiveTheme() {
-  return localStorage.getItem("theme") || (themes && themes[0].class);
-}
-
-export function setPreviewTheme(activeTheme) {
-  const bgColor = themes?.find((t) => t.class === activeTheme).previewBg;
-
-  const codePreviews = document.querySelectorAll(".code-preview__preview");
-  codePreviews.forEach((preview) => (preview.style.backgroundColor = bgColor));
-}
-
-export function renderThemeSelect() {
+function renderThemeSelect() {
   const themeSelect = document.createElement("select");
-  themeSelect.classList.add("theme-switcher");
   themeSelect.id = "theme-switcher__select";
   themes?.forEach(
     (theme) =>
@@ -40,4 +27,29 @@ export function renderThemeSelect() {
   };
 
   return themeSelect;
+}
+
+function showSelector(pathRegex) {
+  if (pathRegex) {
+    if (document.body.dataset.page.match(pathRegex)) return true;
+  } else {
+    return true;
+  }
+}
+
+export function getActiveTheme() {
+  return localStorage.getItem("theme") || (themes && themes[0].class);
+}
+
+export function renderThemeSwitcher() {
+  const wrapper = document.createElement("div");
+  wrapper.classList.add("theme-switcher");
+  wrapper.innerHTML = `<label for="theme-switcher__select">Select Theme</label>`;
+  wrapper.append(renderThemeSelect());
+
+  return wrapper;
+}
+
+export function setVisibility(el) {
+  el.style.visibility = showSelector(pathRegex) ? "visible" : "hidden";
 }
