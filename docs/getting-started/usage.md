@@ -49,12 +49,12 @@ JavaScript to set these properties.
 <sample-list></sample-list>
 
 <script>
-  const list = document.querySelector('sample-list');
+  const list = document.querySelector("sample-list");
 
   list.listItems = [
-    { name: 'Milk', completed: true },
-    { name: 'Butter', completed: false },
-    { name: 'Bread', completed: false },
+    { name: "Milk", completed: true },
+    { name: "Butter", completed: false },
+    { name: "Bread", completed: false },
   ];
 </script>
 ```
@@ -93,10 +93,10 @@ Many components offer methods for programmatically triggering specific behavior.
 <ds-button id="action" variant="primary">Primary button</ds-button>
 
 <script>
-  const triggerBtn = document.querySelector('#trigger');
-  const actionBtn = document.querySelector('#action');
+  const triggerBtn = document.querySelector("#trigger");
+  const actionBtn = document.querySelector("#action");
 
-  triggerBtn.addEventListener('click', () => actionBtn.focus());
+  triggerBtn.addEventListener("click", () => actionBtn.focus());
 </script>
 ```
 
@@ -111,11 +111,11 @@ actions.
 <p>Number of times focused: <b id="count">0</b></p>
 
 <script>
-  const button = document.querySelector('#focus-button');
-  const countDisplay = document.querySelector('#count');
+  const button = document.querySelector("#focus-button");
+  const countDisplay = document.querySelector("#count");
   let count = 0;
 
-  button.addEventListener('focus', () => {
+  button.addEventListener("focus", () => {
     count++;
     countDisplay.innerText = count;
   });

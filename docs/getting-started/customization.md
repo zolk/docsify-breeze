@@ -31,7 +31,12 @@ properties to designated areas of the shadow DOM.
 
 <style type="text/css">
   .gradient::part(base) {
-    background-image: linear-gradient(43deg, #4158d0 0%, #c850c0 46%, #ffcc70 100%);
+    background-image: linear-gradient(
+      43deg,
+      #4158d0 0%,
+      #c850c0 46%,
+      #ffcc70 100%
+    );
     border: 0;
     color: #ffffff;
     text-shadow: 1px 1px 2px #00000060;

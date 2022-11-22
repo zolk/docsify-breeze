@@ -1,4 +1,4 @@
-@import url('../../theme/tokens.css');
+@import url("../../theme/tokens.css");
 
 .code-preview__preview {
   z-index: 1;
@@ -62,7 +62,7 @@
 .code-preview__actions {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-areas: 'actions toggle';
+  grid-template-areas: "actions toggle";
   align-items: start;
   padding: 0.3rem 0.1rem;
   background-color: var(--content-color-background);
@@ -150,8 +150,8 @@
   grid-template-columns: 1fr 1.5fr;
   grid-template-rows: 1fr 1.2fr;
   grid-template-areas:
-    'preview preview'
-    'code controls';
+    "preview preview"
+    "code controls";
   background-color: var(--component-viewer-controls-color-background);
 }
 
@@ -252,8 +252,8 @@
   accent-color: var(--component-viewer-controls-input-color-accent);
 }
 
-.controls__group input[type='text'],
-.controls__group input[type='number'],
+.controls__group input[type="text"],
+.controls__group input[type="number"],
 .controls__inputs textarea,
 .controls__group select {
   width: 100%;
@@ -268,15 +268,15 @@
   box-shadow: var(--component-viewer-controls-input-shadow);
 }
 
-.controls__group input[type='text']:hover,
-.controls__group input[type='number']:hover,
+.controls__group input[type="text"]:hover,
+.controls__group input[type="number"]:hover,
 .controls__inputs textarea:hover,
 .controls__group select:hover {
   border-color: var(--component-viewer-controls-input-color-border-hover);
 }
 
-.controls__group input[type='text']:focus,
-.controls__group input[type='number']:focus,
+.controls__group input[type="text"]:focus,
+.controls__group input[type="number"]:focus,
 .controls__inputs textarea:focus,
 .controls__group select:focus {
   border-color: var(--component-viewer-controls-input-color-border-hover);
