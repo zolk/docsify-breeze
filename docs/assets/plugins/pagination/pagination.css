@@ -1,4 +1,4 @@
-@import url('../../theme/tokens.css');
+@import url("../../theme/tokens.css");
 
 .docsify-pagination-container {
   position: relative;
@@ -10,7 +10,7 @@
 }
 
 .docsify-pagination-container::before {
-  content: '';
+  content: "";
   width: 100%;
   height: 0.625rem;
   background-color: var(--content-color-background);
@@ -26,14 +26,7 @@
 
 .pagination-item--previous,
 .pagination-item--next {
-  padding: 0 var(--content-padding-horizontal-small);
-}
-
-@media screen and (min-width: 48rem) {
-  .pagination-item--previous,
-  .pagination-item--next {
-    padding: 0 var(--content-padding-horizontal-large);
-  }
+  padding: 0 var(--content-padding-horizontal);
 }
 
 .pagination-item-label {

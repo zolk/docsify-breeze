@@ -184,13 +184,14 @@ html {
   --ds-panel-border-color: var(--ds-color-cool-gray-200);
   --ds-panel-border: none;
   --ds-panel-border-radius: var(--ds-border-radius-large);
-  --ds-panel-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 1px 15px -3px rgba(0, 0, 0, 0.1),
-    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --ds-panel-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05),
+    0 1px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 
   --ds-modal-overlay-background-color: hsla(210, 10%, 70%, 0.65);
 
   --ds-input-background-color: var(--ds-color-white);
-  --ds-input-border: var(--ds-border-width-thin) solid var(--ds-color-cool-gray-300);
+  --ds-input-border: var(--ds-border-width-thin) solid
+    var(--ds-color-cool-gray-300);
   --ds-input-border-color: var(--ds-color-cool-gray-300);
   --ds-input-border-hover-color: var(--ds-color-cool-gray-400);
   --ds-input-border-radius: var(--ds-border-radius-large);

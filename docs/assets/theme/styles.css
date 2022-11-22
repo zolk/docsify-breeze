@@ -411,7 +411,7 @@ body.close .content {
 
 .theme-switcher {
   top: calc(var(--content-padding-vertical) - 0.4rem) !important;
-  right: var(--content-padding-horizontal-large) !important;
+  right: var(--content-padding-horizontal) !important;
   width: min-content;
   display: flex;
   justify-content: flex-end;
@@ -489,16 +489,8 @@ body.close .content {
 */
 
 .markdown-section {
-  padding: var(--content-padding-vertical)
-    var(--content-padding-horizontal-small);
+  padding: var(--content-padding-vertical) var(--content-padding-horizontal);
   background: var(--content-color-background-gradient);
-}
-
-@media screen and (min-width: 768px) {
-  .markdown-section {
-    padding: var(--content-padding-vertical)
-      var(--content-padding-horizontal-large);
-  }
 }
 
 .markdown-section > * {

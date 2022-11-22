@@ -16,6 +16,8 @@
     "build": "node scripts/build.js --copydir \"docs/dist\"",
     "start": "node scripts/build.js --serve",
     "generate": "plop --plopfile scripts/plop/plopfile.cjs",
+    "prettier": "prettier --check .",
+    "prettier:fix": "prettier --write .",
     "lint": "eslint . --ext ts --ext js",
     "lint:fix": "npm run lint -- --fix",
     "test": "web-test-runner",

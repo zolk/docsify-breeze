@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Code+Pro&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Code+Pro&display=swap");
 
 html {
   /* Core Primitives */
@@ -18,8 +18,8 @@ html {
   --color-neutral-light: #d4dee7;
   --color-neutral-lighter: #f2f6f8;
   --color-neutral-lightest: #fcfcfd;
-  --font-family-inter: 'Inter', sans-serif;
-  --font-family-source-code-pro: 'Source Code Pro', monospace;
+  --font-family-inter: "Inter", sans-serif;
+  --font-family-source-code-pro: "Source Code Pro", monospace;
 
   /* Color Generics */
   --color-background: var(--color-blue-medium);
@@ -87,7 +87,9 @@ html {
   --sidebar-nav-link-section-color-text: var(--color-white-80);
   --sidebar-nav-link-section-color-border: var(--color-white-25);
   --sidebar-nav-link-section-color-text-active: var(--color-white);
-  --sidebar-nav-link-section-color-border-active: var(--content-color-text-active);
+  --sidebar-nav-link-section-color-border-active: var(
+    --content-color-text-active
+  );
   --sidebar-nav-link-section-font-weight: 400;
   --sidebar-nav-link-section-font-size: 0.8125rem;
 
@@ -98,8 +100,7 @@ html {
   --content-border-radius-right: 0;
   --content-max-width: 50rem;
   --content-padding-vertical: 3.125rem;
-  --content-padding-horizontal-small: 2.0625rem;
-  --content-padding-horizontal-large: 4.0625rem;
+  --content-padding-horizontal: 2.0625rem;
   --content-header-color-background: transparent;
   --content-header-padding-vertical: 2rem;
   --content-color-background-gradient: linear-gradient(
@@ -199,13 +200,18 @@ html {
   --component-docs-theme-switcher-border-radius: 7px;
   --component-docs-theme-switcher-color-background: var(--color-white);
   --component-docs-theme-switcher-color-border: var(--color-neutral-light);
-  --component-docs-theme-switcher-color-border-hover: var(--color-neutral-medium);
-  --component-docs-theme-switcher-color-border-focus: var(--content-color-border-active);
+  --component-docs-theme-switcher-color-border-hover: var(
+    --color-neutral-medium
+  );
+  --component-docs-theme-switcher-color-border-focus: var(
+    --content-color-border-active
+  );
   --component-docs-theme-switcher-color-text: var(--color-blue-medium);
   --component-docs-theme-switcher-font-family: var(--font-family-body);
   --component-docs-theme-switcher-font-size: 0.9rem;
   --component-docs-theme-switcher-shadow: 0px 1px 0px var(--color-black-05);
-  --component-docs-theme-switcher-shadow-focus: 0 0 5px var(--content-color-border-active);
+  --component-docs-theme-switcher-shadow-focus: 0 0 5px
+    var(--content-color-border-active);
   --component-docs-table-description-color-text: var(--ep-_color-neutral-700);
   --component-docs-table-description-font-size: 0.8125rem;
   --component-docs-table-color-border: var(--color-neutral-light);
@@ -223,7 +229,8 @@ html {
   --component-docs-card-color-border: var(--color-neutral-light);
   --component-docs-card-color-border-hover: var(--content-color-border-active);
   --component-docs-card-shadow: 0px 1px 0px var(--color-black-05);
-  --component-docs-card-shadow-hover: 0px 0px 0px 1px var(--content-color-border-active);
+  --component-docs-card-shadow-hover: 0px 0px 0px 1px
+    var(--content-color-border-active);
   --component-docs-card-color-background: var(--color-neutral-lighter);
   --component-docs-card-height: 140px;
   --component-docs-card-header-font-size: 1.5rem;
@@ -233,7 +240,9 @@ html {
   /* web-component-viewer */
   --component-viewer-color-border: var(--color-neutral-light);
   --component-viewer-resizer-color-background: var(--color-neutral-lightest);
-  --component-viewer-resizer-color-background-hover: var(--color-neutral-lighter);
+  --component-viewer-resizer-color-background-hover: var(
+    --color-neutral-lighter
+  );
   --component-viewer-resizer-color-border: var(--color-neutral-light);
   --component-viewer-resizer-color-border-hover: var(--color-neutral-medium);
   --component-viewer-resizer-color-fill: var(--color-blue-light);
@@ -247,18 +256,35 @@ html {
   --component-viewer-action-text-decoration-hover: none;
   --component-viewer-controls-color-background: var(--color-neutral-lightest);
   --component-viewer-controls-color-border: var(--color-neutral-light);
-  --component-viewer-controls-code-color-background: var(--color-neutral-lighter);
+  --component-viewer-controls-code-color-background: var(
+    --color-neutral-lighter
+  );
   --component-viewer-controls-textarea-height: 60px;
-  --component-viewer-controls-input-color-accent: var(--content-color-border-active);
+  --component-viewer-controls-input-color-accent: var(
+    --content-color-border-active
+  );
   --component-viewer-controls-input-color-background: var(--color-white);
   --component-viewer-controls-input-color-border: var(--color-neutral-light);
-  --component-viewer-controls-input-color-border-hover: var(--color-neutral-medium);
-  --component-viewer-controls-input-color-border-focus: var(--content-color-border-active);
+  --component-viewer-controls-input-color-border-hover: var(
+    --color-neutral-medium
+  );
+  --component-viewer-controls-input-color-border-focus: var(
+    --content-color-border-active
+  );
   --component-viewer-controls-input-color-text: var(--color-blue-medium);
-  --component-viewer-controls-input-color-text-placeholder: var(--color-neutral-deep);
+  --component-viewer-controls-input-color-text-placeholder: var(
+    --color-neutral-deep
+  );
   --component-viewer-controls-input-border-radius: 5px;
   --component-viewer-controls-input-font-family: var(--font-family-body);
   --component-viewer-controls-input-font-size: 0.9rem;
   --component-viewer-controls-input-shadow: 0px 1px 0px var(--color-black-05);
-  --component-viewer-controls-input-shadow-focus: 0 0 5px var(--content-color-border-active);
+  --component-viewer-controls-input-shadow-focus: 0 0 5px
+    var(--content-color-border-active);
+}
+
+@media screen and (min-width: 48rem) {
+  html {
+    --content-padding-horizontal: 4.0625rem;
+  }
 }

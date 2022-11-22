@@ -8,15 +8,13 @@
 
 .component-header {
   padding: var(--content-header-padding-vertical)
-    var(--content-padding-horizontal-small);
+    var(--content-padding-horizontal);
   border-bottom: 1px solid var(--component-docs-header-color-border);
   background-color: var(--content-header-color-background);
 }
 
 @media screen and (min-width: 48rem) {
   .component-header {
-    padding: var(--content-header-padding-vertical)
-      var(--content-padding-horizontal-large);
     border-top-left-radius: var(--content-border-radius-left);
     border-top-right-radius: var(--content-border-radius-right);
   }
