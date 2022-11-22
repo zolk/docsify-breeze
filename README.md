@@ -7,6 +7,18 @@ by Web Components, complete with documentation.
 
 ## What does it include?
 
+### Development Stack
+
+This project combines the following technologies for rapidly building,
+documenting, and testing Web Components:
+
+- [Lit](https://lit.dev/) for simple and fast Web Components.
+- [esbuild](https://esbuild.github.io/) for blazing fast bundling.
+- [Web Test Runner](https://modern-web.dev/docs/test-runner/overview/) with [Playwright](https://playwright.dev) for testing.
+- [Percy](https://percy.io/) for visual regression testing.
+- [Custom Elements Manifest Analyzer](https://custom-elements-manifest.open-wc.org/analyzer/getting-started/) for automatic documentation of class members.
+- [Plop](https://plopjs.com/) for quickly spinning up new components.
+
 ### Documentation Powered by Docsify
 
 Documentation is powered by [Docsify](https://docsify.js.org/), a lightweight
@@ -23,18 +35,6 @@ Unlike heavyweight tools such as Storybook, DS Starter Kit's documentation
 implementation is specifically tuned for documenting and developing Web
 Components. It boots instantly in development, integrates seamlessly with
 existing component build processes, and allows for high levels of customization.
-
-### Development Stack
-
-This project combines the following technologies for rapidly building,
-documenting, and testing Web Components:
-
-- [Lit](https://lit.dev/) for simple and fast Web Components.
-- [esbuild](https://esbuild.github.io/) for blazing fast bundling.
-- [Web Test Runner](https://modern-web.dev/docs/test-runner/overview/) with [Playwright](https://playwright.dev) for testing.
-- [Percy](https://percy.io/) for visual regression testing.
-- [Custom Elements Manifest Analyzer](https://custom-elements-manifest.open-wc.org/analyzer/getting-started/) for automatic documentation of class members.
-- [Plop](https://plopjs.com/) for quickly spinning up new components.
 
 ## Who's it for?
 
