@@ -62,7 +62,9 @@ window.$docsify.plugins.push((hook) => {
   });
 
   hook.doneEach(function () {
+    //
     // Wrap tables for responsive horizontal scrolling
+    //
     const content = document.querySelector(".content");
     const tables = [...content.querySelectorAll("table")];
 
