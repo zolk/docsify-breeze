@@ -6,7 +6,6 @@ window.$docsify.plugins.push((hook) => {
     const metadata = await customElements;
     const pathSegments = document.body.dataset.page.split("/");
     const isComponentPage = pathSegments[1] === "components";
-    const tagFromFile = pathSegments[pathSegments.length - 1]?.split(".")[0];
 
     //
     // Page Header
@@ -22,20 +21,13 @@ window.$docsify.plugins.push((hook) => {
         </div>
       `;
 
-      if (isComponentPage) {
-        const componentMeta = getComponent(metadata, TAG_PREFIX + tagFromFile);
-        const status = componentMeta?.status;
-        const result = `<div class="component-status component-status--${status}">${status}</div>`;
-        header
-          ?.querySelector(".component-title")
-          ?.insertAdjacentHTML("beforeend", result);
-      }
-
       const content = document.querySelector(".content");
       content.prepend(header);
 
       const headline = isComponentPage
         ? `
+            [component-status]
+
             ## Overview
 
             #> [component-description]
@@ -84,5 +76,22 @@ window.$docsify.plugins.push((hook) => {
     );
 
     next(content);
+  });
+
+  hook.doneEach(() => {
+    const pathSegments = document.body.dataset.page.split("/");
+    const isComponentPage = pathSegments[1] === "components";
+
+    //
+    // Move the component status to the header
+    //
+    if (isComponentPage) {
+      const header = document.querySelector(".content");
+      const status = document.querySelector(".component-status");
+
+      header
+        ?.querySelector(".component-title")
+        ?.insertAdjacentElement("beforeend", status);
+    }
   });
 });
