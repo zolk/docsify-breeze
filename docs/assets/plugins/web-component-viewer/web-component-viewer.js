@@ -33,7 +33,7 @@ import {
 } from "./lib/preview.js";
 import { renderControlsInterface } from "./lib/controls.js";
 import { runScript } from "./lib/script-tag.js";
-import { kebabToTitleCase } from "../shared/utilities.js";
+import { kebabToTitleCase } from "./lib/utilities.js";
 import { TAG_PREFIX } from "../shared/cem.js";
 
 const handleDocumentClick = (e) => handleCodeToggle(e);
