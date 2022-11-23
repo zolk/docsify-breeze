@@ -1,9 +1,5 @@
-import { customElements, getComponent, TAG_PREFIX } from "../shared/cem.js";
-import { renderComponentCard } from "./lib/component-card.js";
-
 window.$docsify.plugins.push((hook) => {
   hook.beforeEach(async function (content, next) {
-    const metadata = await customElements;
     const pathSegments = document.body.dataset.page.split("/");
     const isComponentPage = pathSegments[1] === "components";
 
@@ -69,8 +65,18 @@ window.$docsify.plugins.push((hook) => {
     content = content.replace(
       /\[component-card:(.+):([a-z-]+)\]/g,
       (_, name, tag) => {
-        const componentMeta = getComponent(metadata, TAG_PREFIX + tag);
-        const result = renderComponentCard(componentMeta, tag, name);
+        const result = `<li class="component-card">
+          <a href="/${pathSegments[1].split(".")[0]}/${tag}">
+            <div class="component-card__image">
+              <img src="/assets/images/component-cards/${tag}.svg" />
+            </div>
+            <div class="component-card__header">
+              <h2>${name}</h2>
+              [component-status:${tag}]
+            </div>
+            <p>[component-description:${tag}]</p>
+          </a>
+        </li>`;
         return result.replace(/^ +| +$/gm, "");
       }
     );
