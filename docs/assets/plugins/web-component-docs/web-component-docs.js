@@ -7,79 +7,64 @@
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 import { customElements, getComponent, TAG_PREFIX } from "../shared/cem.js";
-import { renderComponentCard } from "./lib/component-card.js";
 import { renderMetadata } from "./lib/metadata.js";
 
 window.$docsify.plugins.push((hook) => {
   hook.beforeEach(async function (content, next) {
     const metadata = await customElements;
     const pathSegments = document.body.dataset.page.split("/");
-    const isComponentIndex = pathSegments[1] === "components.md";
-    const isComponentPage = pathSegments[1] === "components";
-    const existingHeader = document.querySelector(
-      ".content > .markdown-header"
+    const tagFromFile = pathSegments[pathSegments.length - 1]?.split(".")[0];
+
+    //
+    // Render component status
+    //
+    content = content.replace(/\[component-status:?([a-z-]+)?\]/g, (_, tag) => {
+      const componentMeta = getComponent(
+        metadata,
+        TAG_PREFIX + (tag ?? tagFromFile)
+      );
+      const status = componentMeta?.status;
+      const result = `<div class="component-status component-status--${status}">${status}</div>`;
+      return result.replace(/^ +| +$/gm, "");
+    });
+
+    //
+    // Render component description
+    //
+    content = content.replace(
+      /\[component-description:?([a-z-]+)?\]/g,
+      (_, tag) => {
+        const componentMeta = getComponent(
+          metadata,
+          TAG_PREFIX + (tag ?? tagFromFile)
+        );
+        const result = `${componentMeta?.description}`;
+        return result.replace(/^ +| +$/gm, "");
+      }
     );
 
-    if (existingHeader) {
-      existingHeader.remove();
-    }
-
-    if (isComponentIndex) {
-      //
-      // Render component cards on component index page
-      //
-      content = content.replace(
-        /\[component-card:(.+):([a-z-]+)\]/g,
-        (_, name, tag) => {
-          const componentMeta = getComponent(metadata, TAG_PREFIX + tag);
-          const result = renderComponentCard(componentMeta, tag, name);
-          return result.replace(/^ +| +$/gm, "");
-        }
-      );
-    }
-
-    if (isComponentPage) {
-      const file = pathSegments[2];
-      const baseTagName = file.split(".")[0];
-      const componentMeta = getComponent(metadata, TAG_PREFIX + baseTagName);
-
-      // Insert component header.
-      content = content.replace(/^#{1} ([a-zA-Z ]+)/, (_, title) => {
-        const header = document.createElement("header");
-        header.classList.add("markdown-header", "component-header");
-        header.innerHTML = `
-          <div class="component-title">
-            <h1>${title}</h1>
-            ${
-              componentMeta?.status &&
-              `<div class="component-status component-status--${componentMeta?.status}">${componentMeta?.status}</div>`
-            }
-          </div>
-        `;
-
-        const content = document.querySelector(".content");
-        content.prepend(header);
-
-        const headline = `
-          ## Overview
-
-          #> ${componentMeta.description}
-        `;
-        return headline.replace(/^ +| +$/gm, "");
-      });
-
-      // Render component metadata tables.
-      content = content.replace(/\[component-metadata\]/, () => {
+    //
+    // Render component metadata tables.
+    //
+    content = content.replace(
+      /\[component-metadata:?([a-z-]+)?\]/,
+      (_, tag) => {
+        const componentMeta = getComponent(
+          metadata,
+          TAG_PREFIX + (tag ?? tagFromFile)
+        );
         const result = renderMetadata(componentMeta);
         return result.replace(/^ +| +$/gm, "");
-      });
-    }
+      }
+    );
 
     next(content);
   });
 
   hook.doneEach(function () {
+    //
     // Wrap tables for responsive horizontal scrolling
+    //
     const content = document.querySelector(".content");
     const tables = [...content.querySelectorAll("table")];
 
