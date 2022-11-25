@@ -10,13 +10,14 @@
 window.$docsify.plugins.push((hook, vm) => {
   const options = {
     docsDir: "/docs",
+    branch: "main",
     url: "",
   };
 
   hook.init(function () {
-    if (vm.config.editOnGithub && vm.config.editOnGithub.url) {
+    if (vm.config.githubEditLink) {
       Object.keys(options).forEach((key) => {
-        const override = vm.config.editOnGithub[key];
+        const override = vm.config.githubEditLink[key];
 
         if (typeof override === "string") {
           options[key] = override;
@@ -29,14 +30,16 @@ window.$docsify.plugins.push((hook, vm) => {
 
   hook.afterEach(function (html, next) {
     const github = options.url;
+    const branch = options.branch;
     const docsDir = options.docsDir;
     const page = vm.route.file;
 
     if (!github) {
+      next(html);
       return;
     }
 
-    const url = `${github}/edit/main${docsDir}${page}`;
+    const url = `${github}/edit/${branch}${docsDir}${page}`;
     const editLink = `<a href="${url}" class="edit-on-github" rel="noopener" target="_blank">Edit on GitHub</a>`;
 
     html = html + editLink;
