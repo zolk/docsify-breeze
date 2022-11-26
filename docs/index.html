@@ -10,32 +10,6 @@
     <script type="module" src="/dist/index.js"></script>
     <link rel="stylesheet" href="/dist/styles/tokens.css" />
     <link rel="stylesheet" href="/assets/theme/styles.css" />
-    <link rel="stylesheet" href="/assets/theme/prism.css" />
-    <link rel="stylesheet" href="/assets/theme/pages.css" />
-    <link rel="stylesheet" href="/assets/plugins/copy-code/copy-code.css" />
-    <link
-      rel="stylesheet"
-      href="/assets/plugins/web-component-viewer/web-component-viewer.css"
-    />
-    <link
-      rel="stylesheet"
-      href="/assets/plugins/custom-replacements/custom-replacements.css"
-    />
-    <link
-      rel="stylesheet"
-      href="/assets/plugins/web-component-docs/web-component-docs.css"
-    />
-    <link
-      rel="stylesheet"
-      href="/assets/plugins/github-edit-link/github-edit-link.css"
-    />
-    <link rel="stylesheet" href="/assets/plugins/pagination/pagination.css" />
-    <link rel="stylesheet" href="/assets/plugins/search/search.css" />
-    <link rel="stylesheet" href="/assets/plugins/site-title/site-title.css" />
-    <link
-      rel="stylesheet"
-      href="/assets/plugins/theme-switcher/theme-switcher.css"
-    />
   </head>
   <body>
     <div id="app"></div>
@@ -48,7 +22,7 @@
         auto2top: true,
         homepage: "home.md",
         githubEditLink: {
-          url: "https://github.com/zolk/ds-starter-kit",
+          repo: "https://github.com/zolk/ds-starter-kit",
         },
         alias: {
           "/.*/_sidebar.md": "/_sidebar.md",
@@ -81,6 +55,14 @@
     <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
     <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js"></script>
+    <script
+      src="//cdn.jsdelivr.net/gh/zolk/docsify-github-edit-link@latest/src/github-edit-link.min.js"
+      type="module"
+    ></script>
+    <script
+      src="//cdn.jsdelivr.net/gh/zolk/docsify-theme-switcher/src/theme-switcher.min.js"
+      type="module"
+    ></script>
     <script src="/assets/plugins/copy-code/copy-code.js" type="module"></script>
     <script
       src="/assets/plugins/custom-replacements/custom-replacements.js"
@@ -94,17 +76,9 @@
       src="/assets/plugins/web-component-docs/web-component-docs.js"
       type="module"
     ></script>
-    <script
-      src="/assets/plugins/github-edit-link/github-edit-link.js"
-      type="module"
-    ></script>
     <script src="/assets/plugins/navbar-collapse/navbar-collapse.js"></script>
     <script src="/assets/plugins/pagination/pagination.js"></script>
     <script src="/assets/plugins/search/search.js"></script>
     <script src="/assets/plugins/site-title/site-title.js"></script>
-    <script
-      src="/assets/plugins/theme-switcher/theme-switcher.js"
-      type="module"
-    ></script>
   </body>
 </html>

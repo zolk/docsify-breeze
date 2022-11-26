@@ -1,5 +1,3 @@
-@import url("../../theme/tokens.css");
-
 .code-preview__preview {
   z-index: 1;
   overflow: hidden;
