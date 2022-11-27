@@ -97,10 +97,12 @@ window.$docsify.plugins.push((hook, vm) => {
   // Load the preview or controls in an isolated window.
   hook.ready(async () => {
     const exampleId = vm.route.query.preview || vm.route.query.controls;
+    let code;
 
     // Load the preview.
     if (exampleId) {
       const preview = document.querySelector(`#example-${exampleId}`);
+      code = preview.parentElement.querySelector(`.code-preview__source`);
       preview.classList.add("controls__preview");
       document.body.classList.add("example");
       document.body.innerHTML = "";
@@ -123,7 +125,7 @@ window.$docsify.plugins.push((hook, vm) => {
 
       const pathSegments = document.body.dataset.page.split("/");
       const tagName = TAG_PREFIX + pathSegments[2].split(".")[0];
-      renderControlsInterface(tagName);
+      renderControlsInterface(tagName, code);
     }
   });
 });
