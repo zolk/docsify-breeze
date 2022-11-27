@@ -5,7 +5,6 @@
  */
 
 import { highlightCode } from "./highlight.js";
-import { copyButtonTemplate, handleCopyClick } from "../../shared/copy-code.js";
 import { customElements, getComponent } from "../../shared/cem.js";
 
 export function renderSlotControl(slot, element) {
@@ -278,13 +277,13 @@ export function handleControlInputs(inputs, element, code) {
           break;
       }
 
-      code.firstChild.innerHTML = `<code>${highlightCode(element)}</code>`;
-      code.firstChild.insertAdjacentHTML("beforeend", copyButtonTemplate);
+      const codeBlock = code.querySelector("code");
+      codeBlock.innerHTML = `${highlightCode(element)}`;
     });
   });
 }
 
-export async function renderControlsInterface(tagName) {
+export async function renderControlsInterface(tagName, code) {
   // Render controls pane.
   const controlsInterface = document.createElement("div");
   controlsInterface.classList.add("controls__inputs");
@@ -292,19 +291,12 @@ export async function renderControlsInterface(tagName) {
   document.body.appendChild(controlsInterface);
 
   // Render code pane.
-  const codeContainer = document.createElement("div");
-  codeContainer.classList.add("controls__code");
-  codeContainer.innerHTML = `<pre><code></code></pre>`;
-  codeContainer.addEventListener("click", handleCopyClick);
-
-  const element = document.querySelector(tagName);
-  const code = codeContainer.firstChild.firstChild;
-  code.innerHTML = highlightCode(element);
-  code.insertAdjacentHTML("beforeend", copyButtonTemplate);
-
-  document.body.appendChild(codeContainer);
+  code.classList.add("controls__code");
+  code.classList.remove("code-preview__source");
+  document.body.appendChild(code);
 
   // Attach input handlers.
   const inputs = document.querySelectorAll("input, select, textarea");
-  handleControlInputs(inputs, element, codeContainer);
+  const element = document.querySelector(tagName);
+  handleControlInputs(inputs, element, code);
 }
