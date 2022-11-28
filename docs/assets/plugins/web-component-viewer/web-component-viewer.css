@@ -204,6 +204,7 @@
 
 .controls__inputs {
   overflow: auto;
+  padding: 0;
   background-color: var(--content-color-background);
   border-top: 1px solid var(--component-viewer-controls-color-border);
   border-left: 1px solid var(--component-viewer-controls-color-border);
