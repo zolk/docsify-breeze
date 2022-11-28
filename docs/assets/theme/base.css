@@ -704,3 +704,40 @@ body.close .content {
   line-height: 20px;
   text-align: center;
 }
+
+/*
+  -------------
+  Percy Visual Testing Styles
+  -------------
+*/
+
+@media only percy {
+  body,
+  .markdown-section {
+    background: transparent;
+  }
+
+  .markdown-section {
+    padding: 1rem;
+  }
+
+  .content {
+    left: 0;
+  }
+
+  .code-preview {
+    margin-bottom: 1rem;
+    max-width: 100%;
+  }
+
+  .sidebar,
+  .sidebar-toggle,
+  .content > *:not(.markdown-section),
+  .markdown-section > *:not(.code-preview):not(h3[id]),
+  .code-preview .code-preview__source,
+  .code-preview--expanded .code-preview__source,
+  .code-preview .code-preview__preview .code-preview__resizer,
+  .code-preview .code-preview__actions {
+    display: none !important;
+  }
+}
