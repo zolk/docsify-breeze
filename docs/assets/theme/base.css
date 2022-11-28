@@ -711,7 +711,7 @@ body.close .content {
   -------------
 */
 
-@media only percy {
+/* @media only percy {
   body,
   .markdown-section {
     background: transparent;
@@ -740,4 +740,4 @@ body.close .content {
   .code-preview .code-preview__actions {
     display: none !important;
   }
-}
+} */

@@ -213,6 +213,7 @@
 .controls__inputs table {
   overflow: auto;
   width: 100%;
+  max-width: unset;
   border-collapse: collapse;
 }
 

@@ -21,7 +21,8 @@
     "lint": "eslint . --ext ts --ext js",
     "lint:fix": "npm run lint -- --fix",
     "test": "web-test-runner",
-    "test:watch": "web-test-runner --watch"
+    "test:watch": "web-test-runner --watch",
+    "percy": "npm start & sleep 5 && npx percy snapshot scripts/percy/snapshots.js"
   },
   "dependencies": {
     "lit": "^2.4.1"
@@ -29,7 +30,7 @@
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.6.6",
     "@open-wc/testing": "^3.1.7",
-    "@percy/cli": "^1.14.0",
+    "@percy/cli": "^1.16.0",
     "@typescript-eslint/eslint-plugin": "^5.44.0",
     "@typescript-eslint/parser": "^5.44.0",
     "@web/dev-server-esbuild": "^0.3.3",
