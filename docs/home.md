@@ -8,8 +8,6 @@
   </div>
 </div>
 
-test
-
 <h2>What&#8217;s it do?</h2>
 
 DS Starter Kit is designed to bootstrap the development of a design system or
