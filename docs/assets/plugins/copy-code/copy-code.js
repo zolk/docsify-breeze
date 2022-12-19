@@ -8,7 +8,7 @@
  */
 import { copyButtonTemplate, handleCopyClick } from "./lib/functions.js";
 
-window.$docsify.plugins.push((hook) => {
+function copyCode(hook) {
   hook.doneEach(() => {
     const targetElms = Array.from(
       document.querySelectorAll(".markdown-section pre")
@@ -23,4 +23,8 @@ window.$docsify.plugins.push((hook) => {
     const listenerHost = document.body;
     listenerHost.addEventListener("click", handleCopyClick);
   });
-});
+}
+
+if (window) {
+  window.$docsify.plugins = [].concat(window.$docsify.plugins || [], copyCode);
+}
