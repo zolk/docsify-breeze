@@ -1,4 +1,4 @@
-window.$docsify.plugins.push((hook) => {
+function movePagination(hook) {
   // Modifies the pagination plugin to change its position in the DOM.
   hook.doneEach(function () {
     const oldPagination = document.querySelector(
@@ -15,4 +15,11 @@ window.$docsify.plugins.push((hook) => {
 
     content.appendChild(newPagination);
   });
-});
+}
+
+if (window) {
+  window.$docsify.plugins = [].concat(
+    window.$docsify.plugins || [],
+    movePagination
+  );
+}

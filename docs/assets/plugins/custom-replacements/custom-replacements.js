@@ -5,7 +5,7 @@
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-window.$docsify.plugins.push((hook) => {
+function customReplacements(hook) {
   hook.beforeEach(async function (content, next) {
     const pathSegments = document.body.dataset.page.split("/");
     const isComponentPage = pathSegments[1] === "components";
@@ -102,9 +102,18 @@ window.$docsify.plugins.push((hook) => {
       const header = document.querySelector(".content");
       const status = document.querySelector(".component-status");
 
-      header
-        ?.querySelector(".component-title")
-        ?.insertAdjacentElement("beforeend", status);
+      if (status) {
+        header
+          ?.querySelector(".component-title")
+          ?.insertAdjacentElement("beforeend", status);
+      }
     }
   });
-});
+}
+
+if (window) {
+  window.$docsify.plugins = [].concat(
+    window.$docsify.plugins || [],
+    customReplacements
+  );
+}
