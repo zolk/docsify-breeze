@@ -10,13 +10,16 @@ function navbarCollapse(hook) {
   // Custom navigation collapsing support
   hook.doneEach(() => {
     const navbarItems = Array.from(
-      document.querySelectorAll("main > .sidebar > .sidebar-nav > ul > li")
+      document.querySelectorAll("main > .sidebar > .sidebar-nav > ul li")
     );
 
     navbarItems.forEach((item) => {
       // Determine if nav item has sub menu of additional pages
       const submenu = item.querySelector("ul:not(.app-sub-sidebar)");
-      if (submenu) {
+      const isTopLevel =
+        item.parentElement.parentElement.classList.contains("sidebar-nav");
+
+      if (submenu && isTopLevel) {
         item.classList.add("has-submenu");
 
         // Allow clicking on an active parent to collapse the sub menu

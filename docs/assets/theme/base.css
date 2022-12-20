@@ -178,23 +178,30 @@ body.sticky .sidebar-toggle {
 
 .sidebar-nav ul,
 .sidebar-nav ul li {
+  overflow: hidden;
+  font-size: var(--sidebar-nav-font-size);
+  font-weight: normal;
   list-style: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sidebar-nav ul li a {
+  overflow: hidden;
+  display: block;
+  border-bottom: none;
+  color: var(--sidebar-nav-link-color-text);
+  font-weight: var(--sidebar-nav-link-font-weight);
+  font-size: var(--sidebar-nav-link-font-size);
+  text-decoration: none;
+  text-overflow: ellipsis;
+  text-transform: none;
+  white-space: nowrap;
 }
 
 .sidebar-nav > ul > li > a {
   padding-left: 24px;
   font-size: 1rem;
-}
-
-.sidebar-nav ul li a {
-  display: block;
-  overflow: hidden;
-  border-bottom: none;
-  color: var(--sidebar-nav-link-color-text);
-  font-weight: var(--sidebar-nav-link-font-weight);
-  text-decoration: none;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 .sidebar-nav ul li ul {
@@ -272,6 +279,14 @@ body.sticky .sidebar-toggle {
 
 .sidebar-nav li.collapse .app-sub-sidebar {
   display: none;
+}
+
+.sidebar-nav ul li ul li ul li.active-child li {
+  display: block;
+}
+
+.sidebar-nav ul li ul li ul li.active-child .app-sub-sidebar li {
+  display: block;
 }
 
 /*

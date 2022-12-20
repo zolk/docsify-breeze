@@ -21,6 +21,7 @@
 .component-header h1 {
   margin: 0;
   letter-spacing: var(--component-docs-title-letter-spacing);
+  line-height: var(--component-docs-title-line-height);
   font-family: var(--font-family-heading);
   font-size: var(--component-docs-title-font-size);
   font-weight: var(--component-docs-title-font-weight);
@@ -230,6 +231,7 @@ p.meta-desc {
   color: var(--content-color-text);
   font-family: var(--component-docs-card-header-font-family);
   font-size: var(--component-docs-card-header-font-size);
+  font-weight: var(--component-docs-card-header-font-weight);
 }
 
 .component-card p {

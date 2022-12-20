@@ -80,9 +80,11 @@ html {
 
   /* Sidebar Navigation */
   --sidebar-nav-color-text: var(--color-white);
+  --sidebar-nav-font-size: 0.75rem;
   --sidebar-nav-link-color-text: var(--color-white);
   --sidebar-nav-link-color-text-hover: var(--content-color-text-active);
   --sidebar-nav-link-color-text-active: var(--content-color-text-active);
+  --sidebar-nav-link-font-size: 0.875rem;
   --sidebar-nav-link-font-weight: 600;
   --sidebar-nav-link-section-color-text: var(--color-white-80);
   --sidebar-nav-link-section-color-border: var(--color-white-25);
