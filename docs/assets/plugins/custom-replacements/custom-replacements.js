@@ -15,7 +15,7 @@ function customReplacements(hook) {
     //
     document.querySelector(".content > .markdown-header")?.remove();
 
-    content = content.replace(/^#{1} ([a-zA-Z ]+)/, (_, title) => {
+    content = content.replace(/^#{1} ([a-zA-Z &-.]+)/, (_, title) => {
       const header = document.createElement("header");
       header.classList.add("markdown-header", "component-header");
       header.innerHTML = `
