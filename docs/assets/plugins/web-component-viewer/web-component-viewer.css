@@ -5,8 +5,13 @@
   min-width: 19rem;
   max-width: 100%;
   border: 1px solid var(--component-viewer-color-border);
-  padding: 2rem calc(2rem + 20px) 2rem 2rem;
   border-radius: 2px;
+}
+
+.code-preview__scrollable {
+  width: calc(100% - 1.5rem);
+  padding: 2rem;
+  overflow: auto;
 }
 
 .code-preview__resizer {
