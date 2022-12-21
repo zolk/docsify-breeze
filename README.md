@@ -3,7 +3,7 @@
 # DS Starter Kit
 
 A starter template to bootstrap the creation of a design system powered
-by Web Components, complete with documentation.
+by Web Components, complete with a documentation engine.
 
 ## What does it include?
 
