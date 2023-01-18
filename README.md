@@ -1,6 +1,6 @@
 [![This project is using Percy.io for visual regression testing.](https://percy.io/static/images/percy-badge.svg)](https://percy.io/9683090d/ds-starter) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-# Docsify Breeze, a Web Component Documentation Starter Kit
+# Docsify Breeze — Painless Web Component Documentation powered by Docsify
 
 Docsify Breeze is a starter toolkit, powered by Docsify, to enable joyful documentation
 of [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components).
