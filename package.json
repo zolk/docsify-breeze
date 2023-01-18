@@ -1,7 +1,7 @@
 {
-  "name": "@zolk/ds-starter-kit",
+  "name": "@zolk/docsify-breeze",
   "version": "1.0.0",
-  "description": "Starter kit for a Lit-based design system",
+  "description": "A starter kit for documenting web components.",
   "author": "Kevin Zolkiewicz",
   "license": "MIT",
   "main": "dist/index.js",
