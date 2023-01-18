@@ -1,10 +1,11 @@
 [![This project is using Percy.io for visual regression testing.](https://percy.io/static/images/percy-badge.svg)](https://percy.io/9683090d/ds-starter) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-# Docsify Breeze — Painless Web Component Documentation powered by Docsify
+# Docsify Breeze — Painless Web Component Docs
 
-Docsify Breeze is a starter toolkit, powered by Docsify, to enable joyful documentation
-of [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components).
-This toolkit incorporates a suite of custom Docsify plugins, plus a custom
+Docsify Breeze is a starter template, powered by [Docsify](https://docsify.js.org/),
+to enable joyful documentation of 
+[Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components).
+The template incorporates a suite of custom Docsify plugins, plus a custom
 theme, that make documenting Web Components a breeze. The project also includes
 the basic foundations for bootstrapping a Web Components-based component library.
 
@@ -12,9 +13,8 @@ the basic foundations for bootstrapping a Web Components-based component library
 
 ### Powered by Docsify
 
-This project is powered by [Docsify](https://docsify.js.org/), a lightweight
-documentation site generator with no statically generated HTML files.
-All documentation is written in Markdown.
+[Docsify](https://docsify.js.org/) is a lightweight documentation site generator
+with no statically generated HTML files. All documentation is written in Markdown.
 
 Breeze includes a custom theme for Docsify, plus a suite of custom
 plugins that enable robust documentation of Web Components. Features include
@@ -51,11 +51,10 @@ testing Web Components:
 
 ## Who's it for?
 
-Docsify Breeze is for organizations looking to create a bespoke component
-library or design system that uses Web Components. It includes everything you
-need to hit the ground running, including a complete toolchain to write, test,
-and build Web Components, plus an optimized documentation framework to ease
-development and encourage adoption across your organization.
+Docsify Breeze is for organizations looking to create or document a Web
+Component-based component library or design system. The starter template
+includes everything you need to hit the ground running, including a 
+complete toolchain to write, test, and build Web Components.
 
 ## Acknowledgements
 
