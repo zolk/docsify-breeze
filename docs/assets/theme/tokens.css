@@ -67,6 +67,7 @@ html {
   /* Sidebar */
   --sidebar-color-border-subnav: var(--color-white-25);
   --sidebar-color-text-subnav: var(--color-white-80);
+  --sidebar-title-font-size-secondary: 0.8rem;
   --sidebar-width: 18.75rem;
 
   /* Sidebar Toggle Button */
@@ -105,12 +106,6 @@ html {
   --content-padding-horizontal: 2.0625rem;
   --content-header-color-background: transparent;
   --content-header-padding-vertical: 2rem;
-  --content-color-background-gradient: linear-gradient(
-    180deg,
-    var(--color-neutral-lightest) 0%,
-    var(--color-white) 5%,
-    var(--color-white) 100%
-  );
   --content-title-font-size: 2.5rem;
   --content-title-font-weight: 700;
   --content-headline-color-text: var(--color-neutral-deep);
@@ -186,6 +181,7 @@ html {
   --component-docs-title-letter-spacing: 0.02rem;
   --component-docs-title-font-size: 2.5rem;
   --component-docs-title-font-weight: 700;
+  --component-docs-header-border-width: 2px;
   --component-docs-header-color-border: var(--color-neutral-light);
   --component-docs-status-border-radius: 6.25rem;
   --component-docs-status-padding: 0.25rem 0.8rem;

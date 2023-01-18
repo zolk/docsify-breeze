@@ -1,4 +1,4 @@
-# Getting Started
+# Guide to Web Components
 
 #> Learn the basics of working with web components.
 
