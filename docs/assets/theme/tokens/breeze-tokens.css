@@ -2,6 +2,10 @@ html {
   /* Color Generics */
   --db-color-background: var(--color-blue-medium);
   --db-color-text: var(--color-white);
+  --db-color-text-link: var(--color-blue-medium);
+  --db-color-text-bullet: var(--color-blue-medium);
+  --db-color-text-weak: var(--color-blue-deep);
+  --db-color-accent: var(--color-blue-lightest);
   --db-color-focus-visible: var(--color-fuchsia);
 
   /* Font Generics */
@@ -30,7 +34,7 @@ html {
   --db-loading-text-align: center;
 
   /* Progress Bar */
-  --db-progress-bar-color-background: var(--color-blue-lightest);
+  --db-progress-bar-color-background: var(--db-color-accent);
 
   /* Sidebar */
   --db-sidebar-color-border-subnav: var(--color-white-25);
@@ -46,9 +50,9 @@ html {
   --db-sidebar-toggle-color-background: var(--color-white);
   --db-sidebar-toggle-color-background-closed: transparent;
   --db-sidebar-toggle-color-border: var(--color-neutral-light);
-  --db-sidebar-toggle-color-fill-close: var(--color-blue-medium);
+  --db-sidebar-toggle-color-fill-close: var(--db-color-text-weak);
   --db-sidebar-toggle-color-fill-open: var(--color-white);
-  --db-sidebar-toggle-color-fill-hover: var(--color-blue-lightest);
+  --db-sidebar-toggle-color-fill-hover: var(--db-color-accent);
   --db-sidebar-toggle-shadow: 0px 1px 0px var(--color-black-05);
 
   /* Sidebar Site Title */
@@ -68,7 +72,7 @@ html {
   /* Search Box */
   --db-search-color-background: var(--color-blue-light);
   --db-search-color-text-placeholder: var(--color-white-70);
-  --db-search-color-border-focus: var(--color-blue-lightest);
+  --db-search-color-border-focus: var(--db-color-accent);
   --db-search-clear-button-fill: var(--color-white);
   --db-search-results-color-border: var(--color-neutral-deep);
   --db-search-icon-search: var(--db-icon-search);
@@ -84,14 +88,14 @@ html {
   --db-sidebar-nav-heading-letter-spacing: 1px;
   --db-sidebar-nav-heading-text-transform: uppercase;
   --db-sidebar-nav-link-color-text: var(--color-white);
-  --db-sidebar-nav-link-color-text-hover: var(--color-blue-lightest);
-  --db-sidebar-nav-link-color-text-active: var(--color-blue-lightest);
+  --db-sidebar-nav-link-color-text-hover: var(--db-color-accent);
+  --db-sidebar-nav-link-color-text-active: var(--db-color-accent);
   --db-sidebar-nav-link-font-size: 0.875rem;
   --db-sidebar-nav-link-font-weight: 600;
   --db-sidebar-nav-link-section-color-text: var(--color-white-80);
   --db-sidebar-nav-link-section-color-border: var(--color-white-25);
   --db-sidebar-nav-link-section-color-text-active: var(--color-white);
-  --db-sidebar-nav-link-section-color-border-active: var(--color-blue-lightest);
+  --db-sidebar-nav-link-section-color-border-active: var(--db-color-accent);
   --db-sidebar-nav-link-section-font-weight: 400;
   --db-sidebar-nav-link-section-font-size: 0.8125rem;
   --db-sidebar-nav-link-icon-open: var(--db-icon-chevron-down);
@@ -105,8 +109,8 @@ html {
   --db-content-border-radius-closed: 0;
   --db-content-color-background: var(--color-white);
   --db-content-color-text: var(--color-blue-deep);
-  --db-content-color-text-link: var(--color-blue-lightest);
-  --db-content-color-border-link: var(--color-blue-lightest);
+  --db-content-color-text-link: var(--db-color-accent);
+  --db-content-color-border-link: var(--db-color-accent);
   --db-content-max-width: 50rem;
   --db-content-margin-vertical: 1rem;
   --db-content-margin-right: 1rem;
@@ -133,8 +137,8 @@ html {
   --db-content-heading-letter-spacing: -0.02em;
   --db-content-heading-text-decoration: none;
   --db-content-heading-text-decoration-hover: none;
-  --db-content-heading-color-text: var(--color-blue-deep);
-  --db-content-heading-color-text-hover: var(--color-blue-deep);
+  --db-content-heading-color-text: var(--db-color-text-weak);
+  --db-content-heading-color-text-hover: var(--db-color-text-weak);
   --db-content-h3-font-size: 1.2rem;
   --db-content-h4-font-size: 1.1rem;
   --db-content-h4-margin: 1rem 0;
@@ -143,11 +147,11 @@ html {
   --db-content-font-size: 0.9375rem;
   --db-content-line-height: 1.7;
   --db-content-list-margin-bottom: 0.5rem;
-  --db-content-list-bullet-color-fill: var(--color-blue-medium);
-  --db-content-link-color-text: var(--color-blue-medium);
-  --db-content-link-color-text-hover: var(--color-blue-medium);
-  --db-content-link-color-text-decoration: var(--color-blue-lightest);
-  --db-content-link-color-text-decoration-hover: var(--color-blue-medium);
+  --db-content-list-bullet-color-fill: var(--db-color-text-bullet);
+  --db-content-link-color-text: var(--db-color-text-link);
+  --db-content-link-color-text-hover: var(--db-color-text-link);
+  --db-content-link-color-text-decoration: var(--db-color-accent);
+  --db-content-link-color-text-decoration-hover: var(--db-color-text-link);
   --db-content-link-color-background-hover: var(--color-neutral-lighter);
   --db-content-link-text-decoration: underline;
   --db-content-link-text-decoration-hover: underline;
@@ -171,7 +175,7 @@ html {
   --db-content-code-block-tab-size: 2;
   --db-content-tip-color-background: var(--color-neutral-lighter);
   --db-content-tip-border-radius: 4px;
-  --db-content-tip-border-left: 4px solid var(--color-blue-medium);
+  --db-content-tip-border-left: 4px solid var(--db-color-background);
   --db-content-tip-margin: 0.875rem 1.5rem 0.75rem;
   --db-content-tip-padding: 0.875rem 1.5rem 0.75rem;
   --db-content-tip-warn-color-background: rgb(252, 239, 239);
@@ -186,13 +190,13 @@ html {
   --db-theme-switcher-border: 1px solid var(--color-neutral-light);
   --db-theme-switcher-color-background: var(--color-white);
   --db-theme-switcher-color-border-hover: var(--color-neutral-medium);
-  --db-theme-switcher-color-border-focus: var(--color-blue-lightest);
-  --db-theme-switcher-color-text: var(--color-blue-medium);
+  --db-theme-switcher-color-border-focus: var(--db-color-accent);
+  --db-theme-switcher-color-text: var(--db-color-text-weak);
   --db-theme-switcher-font-family: var(--font-family-body);
   --db-theme-switcher-font-size: 0.9rem;
   --db-theme-switcher-padding: 0.5rem 1.7rem 0.5rem 0.7rem;
   --db-theme-switcher-shadow: 0px 1px 0px var(--color-black-05);
-  --db-theme-switcher-shadow-focus: 0 0 5px var(--content-color-border-active);
+  --db-theme-switcher-shadow-focus: 0 0 5px var(--db-color-accent);
   --db-theme-switcher-icon-select-arrow: var(--db-icon-select);
   --db-theme-switcher-icon-label: var(--db-icon-color-swatch);
 
@@ -205,11 +209,11 @@ html {
   --db-page-card-padding: 1.5rem 3rem 1.5rem 1.5rem;
   --db-page-card-border-radius: 4px;
   --db-page-card-box-shadow: 0px 1px 0px var(--color-black-05);
-  --db-page-card-box-shadow-hover: 0px 0px 0px 1px var(--color-blue-lightest);
+  --db-page-card-box-shadow-hover: 0px 0px 0px 1px var(--db-color-accent);
   --db-page-card-color-border: var(--color-neutral-light);
-  --db-page-card-color-border-hover: var(--color-blue-lightest);
-  --db-page-card-color-shadow-hover: var(--color-blue-lightest);
-  --db-page-card-title-color-text: var(--color-blue-medium);
+  --db-page-card-color-border-hover: var(--db-color-accent);
+  --db-page-card-color-shadow-hover: var(--db-color-accent);
+  --db-page-card-title-color-text: var(--db-color-text-weak);
   --db-page-card-title-font-size: 1.25rem;
   --db-page-card-title-font-weight: 700;
   --db-page-card-body-color-text: var(--color-neutral-deep);
@@ -219,7 +223,7 @@ html {
 
   /* github edit link */
   --db-gh-link-color-text: var(--color-neutral-deep);
-  --db-gh-link-color-text-hover: var(--color-blue-medium);
+  --db-gh-link-color-text-hover: var(--db-color-text-link);
   --db-gh-link-margin: 2rem 0 0 0;
   --db-gh-link-padding: 0 0 0 1.2rem;
   --db-gh-link-font-size: 0.9rem;
@@ -283,10 +287,9 @@ html {
   --db-component-docs-method-signature-font-size: 0.9rem;
   --db-component-docs-card-border-radius: 6px;
   --db-component-docs-card-color-border: var(--color-neutral-light);
-  --db-component-docs-card-color-border-hover: var(--color-blue-lightest);
+  --db-component-docs-card-color-border-hover: var(--db-color-accent);
   --db-component-docs-card-shadow: 0px 1px 0px var(--color-black-05);
-  --db-component-docs-card-shadow-hover: 0px 0px 0px 1px
-    var(--color-blue-lightest);
+  --db-component-docs-card-shadow-hover: 0px 0px 0px 1px var(--db-color-accent);
   --db-component-docs-card-color-background: var(--color-neutral-lighter);
   --db-component-docs-card-height: 140px;
   --db-component-docs-card-header-font-size: 1.5rem;
@@ -318,16 +321,16 @@ html {
     --color-neutral-lighter
   );
   --db-component-viewer-controls-textarea-height: 60px;
-  --db-component-viewer-controls-input-color-accent: var(--color-blue-lightest);
+  --db-component-viewer-controls-input-color-accent: var(--db-color-accent);
   --db-component-viewer-controls-input-color-background: var(--color-white);
   --db-component-viewer-controls-input-color-border: var(--color-neutral-light);
   --db-component-viewer-controls-input-color-border-hover: var(
     --color-neutral-medium
   );
   --db-component-viewer-controls-input-color-border-focus: var(
-    --color-blue-lightest
+    --db-color-accent
   );
-  --db-component-viewer-controls-input-color-text: var(--color-blue-medium);
+  --db-component-viewer-controls-input-color-text: var(--db-color-text-weak);
   --db-component-viewer-controls-input-color-text-placeholder: var(
     --color-neutral-deep
   );
@@ -336,7 +339,7 @@ html {
   --db-component-viewer-controls-input-font-size: 0.9rem;
   --db-component-viewer-controls-input-shadow: 0px 1px 0px var(--color-black-05);
   --db-component-viewer-controls-input-shadow-focus: 0 0 5px
-    var(--color-blue-lightest);
+    var(--db-color-accent);
   --db-component-viewer-controls-select-icon-arrow: var(--db-icon-select);
 }
 
