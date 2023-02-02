@@ -31,6 +31,13 @@ body {
   }
 }
 
+a:focus-visible,
+button:focus-visible,
+[role="slider"]:focus-visible {
+  outline: 2px solid var(--db-color-focus-visible);
+  outline-offset: 3px;
+}
+
 /*
   -------------
   Loading State
@@ -322,6 +329,11 @@ body.sticky .sidebar-toggle {
   text-overflow: ellipsis;
   text-transform: none;
   white-space: nowrap;
+}
+
+.sidebar-nav ul li a:focus-visible {
+  text-decoration: solid underline var(--db-color-focus-visible) 3px;
+  outline: 0;
 }
 
 .sidebar-nav > ul > li > a {

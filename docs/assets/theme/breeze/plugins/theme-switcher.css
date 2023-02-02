@@ -57,6 +57,12 @@
   -webkit-appearance: none;
 }
 
+.theme-switcher select:focus {
+  outline: 0;
+  border: 1px solid var(--db-theme-switcher-color-border-focus);
+  box-shadow: 0 0 5px var(--db-theme-switcher-color-border-focus);
+}
+
 .theme-switcher::before {
   content: "";
   display: block;
@@ -68,10 +74,4 @@
 
 .theme-switcher select:hover {
   border-color: var(--db-theme-switcher-color-border-hover);
-}
-
-.theme-switcher select:focus {
-  border-color: var(--db-theme-switcher-color-border-focus);
-  box-shadow: var(--db-theme-switcher-shadow-focus);
-  outline: none;
 }

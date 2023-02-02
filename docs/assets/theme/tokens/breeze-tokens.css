@@ -2,6 +2,7 @@ html {
   /* Color Generics */
   --db-color-background: var(--color-blue-medium);
   --db-color-text: var(--color-white);
+  --db-color-focus-visible: var(--color-fuchsia);
 
   /* Font Generics */
   --db-font-family-heading: var(--font-family-inter);
@@ -179,7 +180,7 @@ html {
   --db-theme-switcher-border: 1px solid var(--color-neutral-light);
   --db-theme-switcher-color-background: var(--color-white);
   --db-theme-switcher-color-border-hover: var(--color-neutral-medium);
-  --db-theme-switcher-color-border-focus: var(--content-color-border-active);
+  --db-theme-switcher-color-border-focus: var(--color-blue-lightest);
   --db-theme-switcher-color-text: var(--color-blue-medium);
   --db-theme-switcher-font-family: var(--font-family-body);
   --db-theme-switcher-font-size: 0.9rem;

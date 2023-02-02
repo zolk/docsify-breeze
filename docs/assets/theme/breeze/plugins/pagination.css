@@ -11,6 +11,10 @@
   font-size: var(--db-pagination-font-size);
 }
 
+.pagination-item a {
+  display: block;
+}
+
 .pagination-item--previous,
 .pagination-item--next {
   margin-top: 1rem !important;
