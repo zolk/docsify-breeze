@@ -1,0 +1,351 @@
+html {
+  /* Color Generics */
+  --db-color-background: var(--color-blue-medium);
+  --db-color-text: var(--color-white);
+  --db-color-text-link: var(--color-blue-medium);
+  --db-color-text-bullet: var(--color-blue-medium);
+  --db-color-text-weak: var(--color-blue-deep);
+  --db-color-accent: var(--color-blue-lightest);
+  --db-color-focus-visible: var(--color-fuchsia);
+
+  /* Font Generics */
+  --db-font-family-heading: var(--font-family-inter);
+  --db-font-family-body: var(--font-family-inter);
+  --db-font-family-code: var(--font-family-source-code-pro);
+
+  /* Icons */
+  --db-icon-chevron-down: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="%2357caee"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>');
+  --db-icon-chevron-right: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="white"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg>');
+  --db-icon-chevron-right-neutral: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="%236e8091"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg>');
+  --db-icon-chevron-right-active: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="%2357caee"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg>');
+  --db-icon-search: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="white"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" /></svg>');
+  --db-icon-hashtag: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="%23d4dee7"><path fill-rule="evenodd" d="M9.243 3.03a1 1 0 01.727 1.213L9.53 6h2.94l.56-2.243a1 1 0 111.94.486L14.53 6H17a1 1 0 110 2h-2.97l-1 4H15a1 1 0 110 2h-2.47l-.56 2.242a1 1 0 11-1.94-.485L10.47 14H7.53l-.56 2.242a1 1 0 11-1.94-.485L5.47 14H3a1 1 0 110-2h2.97l1-4H5a1 1 0 110-2h2.47l.56-2.243a1 1 0 011.213-.727zM9.03 8l-1 4h2.938l1-4H9.031z" clip-rule="evenodd" /></svg>');
+  --db-icon-hashtag-hover: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="%2357caee"><path fill-rule="evenodd" d="M9.243 3.03a1 1 0 01.727 1.213L9.53 6h2.94l.56-2.243a1 1 0 111.94.486L14.53 6H17a1 1 0 110 2h-2.97l-1 4H15a1 1 0 110 2h-2.47l-.56 2.242a1 1 0 11-1.94-.485L10.47 14H7.53l-.56 2.242a1 1 0 11-1.94-.485L5.47 14H3a1 1 0 110-2h2.97l1-4H5a1 1 0 110-2h2.47l.56-2.243a1 1 0 011.213-.727zM9.03 8l-1 4h2.938l1-4H9.031z" clip-rule="evenodd" /></svg>');
+  --db-icon-select: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%23bccad7'><path fill-rule='evenodd' d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z' clip-rule='evenodd' /></svg>");
+  --db-icon-color-swatch: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="%23f2f6f8" viewBox="0 0 24 24" stroke="%236e8091"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" /></svg>');
+  --db-icon-pencil: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="%236e8091" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg>');
+  --db-icon-pencil-hover: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="%231b354d" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg>');
+
+  /* Loading Page */
+  --db-loading-color-text: var(--color-white);
+  --db-loading-font-size: 1.875rem;
+  --db-loading-font-weight: 400;
+  --db-loading-margin: 40vh auto;
+  --db-loading-text-align: center;
+
+  /* Progress Bar */
+  --db-progress-bar-color-background: var(--db-color-accent);
+
+  /* Sidebar */
+  --db-sidebar-color-border-subnav: var(--color-white-25);
+  --db-sidebar-color-text-subnav: var(--color-white-80);
+  --db-sidebar-width: 18.75rem;
+  --db-sidebar-padding: 1.125rem;
+  --db-sidebar-transition: transform 0.25s ease-out;
+  --db-sidebar-scrollbar-track-color: #ffffff40;
+  --db-sidebar-scrollbar-thumb-color: #ffffff70;
+
+  /* Sidebar Toggle Button */
+  --db-sidebar-toggle-top: 1.7rem;
+  --db-sidebar-toggle-color-background: var(--color-white);
+  --db-sidebar-toggle-color-background-closed: transparent;
+  --db-sidebar-toggle-color-border: var(--color-neutral-light);
+  --db-sidebar-toggle-color-fill-close: var(--db-color-text-weak);
+  --db-sidebar-toggle-color-fill-open: var(--color-white);
+  --db-sidebar-toggle-color-fill-hover: var(--db-color-accent);
+  --db-sidebar-toggle-shadow: 0px 1px 0px var(--color-black-05);
+
+  /* Sidebar Site Title */
+  --db-sidebar-logo-box-width: 37px;
+  --db-sidebar-logo-box-height: 37px;
+  --db-sidebar-logo-box-color-background: var(--color-white);
+  --db-sidebar-logo-box-border: unset;
+  --db-sidebar-logo-box-border-radius: 5px;
+  --db-sidebar-logo-box-box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.25);
+  --db-sidebar-logo-width: 24px;
+  --db-sidebar-logo-height: 24px;
+  --db-sidebar-title-font-size-primary: 0.9375rem;
+  --db-sidebar-title-font-size-secondary: 0.8rem;
+  --db-sidebar-title-letter-spacing-primary: -0.025rem;
+  --db-sidebar-title-letter-spacing-secondary: -0.025rem;
+
+  /* Search Box */
+  --db-search-color-background: var(--color-blue-light);
+  --db-search-color-text-placeholder: var(--color-white-70);
+  --db-search-color-border-focus: var(--db-color-accent);
+  --db-search-clear-button-fill: var(--color-white);
+  --db-search-results-color-border: var(--color-neutral-deep);
+  --db-search-icon-search: var(--db-icon-search);
+
+  /* Sidebar Navigation */
+  --db-sidebar-nav-color-text: var(--color-white);
+  --db-sidebar-nav-font-size: 0.75rem;
+  --db-sidebar-nav-line-height: 2.2;
+  --db-sidebar-nav-heading-border-top: unset;
+  --db-sidebar-nav-heading-border-bottom: unset;
+  --db-sidebar-nav-heading-color: #ffffff90;
+  --db-sidebar-nav-heading-font-size: 0.9rem;
+  --db-sidebar-nav-heading-letter-spacing: 1px;
+  --db-sidebar-nav-heading-text-transform: uppercase;
+  --db-sidebar-nav-link-color-text: var(--color-white);
+  --db-sidebar-nav-link-color-text-hover: var(--db-color-accent);
+  --db-sidebar-nav-link-color-text-active: var(--db-color-accent);
+  --db-sidebar-nav-link-font-size: 0.875rem;
+  --db-sidebar-nav-link-font-weight: 600;
+  --db-sidebar-nav-link-section-color-text: var(--color-white-80);
+  --db-sidebar-nav-link-section-color-border: var(--color-white-25);
+  --db-sidebar-nav-link-section-color-text-active: var(--color-white);
+  --db-sidebar-nav-link-section-color-border-active: var(--db-color-accent);
+  --db-sidebar-nav-link-section-font-weight: 400;
+  --db-sidebar-nav-link-section-font-size: 0.8125rem;
+  --db-sidebar-nav-link-icon-open: var(--db-icon-chevron-down);
+  --db-sidebar-nav-link-icon-closed: var(--db-icon-chevron-right);
+  --db-sidebar-nav-link-icon-closed-active: var(--db-icon-chevron-right-active);
+
+  /* Content Bounding Box */
+  --db-content-top: 0;
+  --db-content-right: 0;
+  --db-content-border-radius: 6px;
+  --db-content-border-radius-closed: 0;
+  --db-content-color-background: var(--color-white);
+  --db-content-color-text: var(--color-blue-deep);
+  --db-content-color-text-link: var(--db-color-accent);
+  --db-content-color-border-link: var(--db-color-accent);
+  --db-content-max-width: 50rem;
+  --db-content-margin-vertical: 1rem;
+  --db-content-margin-right: 1rem;
+  --db-content-padding-vertical: 3.125rem;
+  --db-content-padding-horizontal: 2.0625rem; /* small screens only; see media query */
+
+  /* Content Typography */
+  --db-content-header-color-background: var(--color-neutral-lighter);
+  --db-content-header-margin-bottom: 3rem;
+  --db-content-header-border-bottom: 1px;
+  --db-content-header-color-border: var(--color-neutral-medium);
+  --db-content-header-padding-vertical: 2rem;
+  --db-content-title-font-size: 2.5rem;
+  --db-content-title-font-weight: 700;
+  --db-content-headline-color-text: var(--color-neutral-deep);
+  --db-content-headline-font-size: 1.4rem;
+  --db-content-headline-line-height: 1.4;
+  --db-content-headline-letter-spacing: -0.03em;
+  --db-content-section-heading-font-size: 1.7rem;
+  --db-content-section-heading-font-weight: 700;
+  --db-content-section-heading-icon: var(--db-icon-hashtag);
+  --db-content-section-heading-icon-hover: var(--db-icon-hashtag-hover);
+  --db-content-heading-font-weight: 600;
+  --db-content-heading-letter-spacing: -0.02em;
+  --db-content-heading-text-decoration: none;
+  --db-content-heading-text-decoration-hover: none;
+  --db-content-heading-color-text: var(--db-color-text-weak);
+  --db-content-heading-color-text-hover: var(--db-color-text-weak);
+  --db-content-h3-font-size: 1.2rem;
+  --db-content-h4-font-size: 1.1rem;
+  --db-content-h4-margin: 1rem 0;
+  --db-content-h5-font-size: 1rem;
+  --db-content-h5-margin: 1rem 0;
+  --db-content-font-size: 0.9375rem;
+  --db-content-line-height: 1.7;
+  --db-content-list-margin-bottom: 0.5rem;
+  --db-content-list-bullet-color-fill: var(--db-color-text-bullet);
+  --db-content-link-color-text: var(--db-color-text-link);
+  --db-content-link-color-text-hover: var(--db-color-text-link);
+  --db-content-link-color-text-decoration: var(--db-color-accent);
+  --db-content-link-color-text-decoration-hover: var(--db-color-text-link);
+  --db-content-link-color-background-hover: var(--color-neutral-lighter);
+  --db-content-link-text-decoration: underline;
+  --db-content-link-text-decoration-hover: underline;
+  --db-content-link-text-decoration-thickness: 2px;
+  --db-content-link-font-weight: 600;
+  --db-content-link-transition: all 0.15s ease-in-out;
+  --db-content-code-border-width: 1px;
+  --db-content-code-border-radius: 2px;
+  --db-content-code-color-background: var(--color-neutral-lightest);
+  --db-content-code-color-border: var(--color-neutral-light);
+  --db-content-code-font-family: var(--db-font-family-code);
+  --db-content-code-line-height: 1;
+  --db-content-code-margin: 0.1rem;
+  --db-content-code-padding: 0.1rem 0.3rem;
+  --db-content-code-block-color-background: var(--color-neutral-lighter);
+  --db-content-code-block-border-radius: 2px;
+  --db-content-code-block-font-size: 0.875rem;
+  --db-content-code-block-line-height: 1.4;
+  --db-content-code-block-margin: 0;
+  --db-content-code-block-padding: 1rem;
+  --db-content-code-block-tab-size: 2;
+  --db-content-tip-color-background: var(--color-neutral-lighter);
+  --db-content-tip-border-radius: 4px;
+  --db-content-tip-border-left: 4px solid var(--db-color-background);
+  --db-content-tip-margin: 0.875rem 1.5rem 0.75rem;
+  --db-content-tip-padding: 0.875rem 1.5rem 0.75rem;
+  --db-content-tip-warn-color-background: rgb(252, 239, 239);
+  --db-content-tip-warn-color-text: #fff;
+  --db-content-tip-warn-color-border: #f66;
+  --db-content-tip-warn-border-left: 4px solid
+    var(--db-content-tip-warn-color-border);
+
+  /* theme switcher */
+  --db-theme-switcher-margin: 0.3rem 0 0 0;
+  --db-theme-switcher-border-radius: 7px;
+  --db-theme-switcher-border: 1px solid var(--color-neutral-light);
+  --db-theme-switcher-color-background: var(--color-white);
+  --db-theme-switcher-color-border-hover: var(--color-neutral-medium);
+  --db-theme-switcher-color-border-focus: var(--db-color-accent);
+  --db-theme-switcher-color-text: var(--db-color-text-weak);
+  --db-theme-switcher-font-family: var(--font-family-body);
+  --db-theme-switcher-font-size: 0.9rem;
+  --db-theme-switcher-padding: 0.5rem 1.7rem 0.5rem 0.7rem;
+  --db-theme-switcher-shadow: 0px 1px 0px var(--color-black-05);
+  --db-theme-switcher-shadow-focus: 0 0 5px var(--db-color-accent);
+  --db-theme-switcher-icon-select-arrow: var(--db-icon-select);
+  --db-theme-switcher-icon-label: var(--db-icon-color-swatch);
+
+  /* pagination */
+  --db-pagination-font-size: 0.9rem;
+  --db-pagination-padding: 0 0 2rem 0;
+
+  /* page-card */
+  --db-page-card-margin: 0 0 1.5rem;
+  --db-page-card-padding: 1.5rem 3rem 1.5rem 1.5rem;
+  --db-page-card-border-radius: 4px;
+  --db-page-card-box-shadow: 0px 1px 0px var(--color-black-05);
+  --db-page-card-box-shadow-hover: 0px 0px 0px 1px var(--db-color-accent);
+  --db-page-card-color-border: var(--color-neutral-light);
+  --db-page-card-color-border-hover: var(--db-color-accent);
+  --db-page-card-color-shadow-hover: var(--db-color-accent);
+  --db-page-card-title-color-text: var(--db-color-text-weak);
+  --db-page-card-title-font-size: 1.25rem;
+  --db-page-card-title-font-weight: 700;
+  --db-page-card-body-color-text: var(--color-neutral-deep);
+  --db-page-card-body-font-size: 0.875rem;
+  --db-page-card-body-font-weight: 400;
+  --db-page-card-icon-arrow: var(--db-icon-chevron-right-neutral);
+
+  /* github edit link */
+  --db-gh-link-color-text: var(--color-neutral-deep);
+  --db-gh-link-color-text-hover: var(--db-color-text-link);
+  --db-gh-link-margin: 2rem 0 0 0;
+  --db-gh-link-padding: 0 0 0 1.2rem;
+  --db-gh-link-font-size: 0.9rem;
+  --db-gh-link-font-weight: 500;
+  --db-gh-link-text-decoration: none;
+  --db-gh-link-text-decoration-hover: none;
+  --db-gh-link-transition: color 0.15s ease-in-out;
+  --db-gh-link-icon: var(--db-icon-pencil);
+  --db-gh-link-icon-hover: var(--db-icon-pencil-hover);
+
+  /* copy code button */
+  --db-copy-code-top: 0.7rem;
+  --db-copy-code-right: 0.7rem;
+  --db-copy-code-left: unset;
+  --db-copy-code-bottom: unset;
+  --db-copy-code-width: 1.7rem;
+  --db-copy-code-height: 1.7rem;
+  --db-copy-code-padding: 0.2rem;
+  --db-copy-code-border-radius: 4px;
+  --db-copy-code-transition: all 0.3s;
+  --db-copy-code-color-background: var(--color-neutral-lighter);
+  --db-copy-code-color-border: var(--color-neutral-light);
+  --db-copy-code-color-fill: var(--color-neutral-dark);
+  --db-copy-code-color-background-hover: var(--color-white);
+  --db-copy-code-color-border-hover: var(--color-blue-light);
+  --db-copy-code-color-fill-hover: var(--color-blue-light);
+  --db-copy-code-color-background-success: var(--color-white);
+  --db-copy-code-color-border-success: #155117;
+  --db-copy-code-color-fill-success: #155117;
+
+  /* web-component-docs */
+  --db-component-docs-status-border-radius: 6.25rem;
+  --db-component-docs-status-padding: 0.25rem 0.8rem;
+  --db-component-docs-status-font-weight: 600;
+  --db-component-docs-status-font-size: 0.75rem;
+  --db-component-docs-status-text-transform: uppercase;
+  --db-component-docs-header-color-border: var(--color-neutral-light);
+  --db-component-docs-status-color-background-draft: #faefd1;
+  --db-component-docs-status-color-background-ready: #d7f4d8;
+  --db-component-docs-status-color-background-deprecated: #f4e1d7;
+  --db-component-docs-status-color-text-draft: #683603;
+  --db-component-docs-status-color-text-ready: #155117;
+  --db-component-docs-status-color-text-deprecated: #5a2d16;
+  --db-component-docs-table-description-color-text: var(
+    --ep-_color-neutral-700
+  );
+  --db-component-docs-table-description-font-size: 0.8125rem;
+  --db-component-docs-table-color-border: var(--color-neutral-light);
+  --db-component-docs-table-header-color-background: var(
+    --color-neutral-lighter
+  );
+  --db-component-docs-table-header-color-text: var(--color-neutral-deep);
+  --db-component-docs-table-header-font-weight: 600;
+  --db-component-docs-table-header-font-size: 0.75rem;
+  --db-component-docs-table-header-padding: 0.7rem;
+  --db-component-docs-table-header-width-first-col: 8rem;
+  --db-component-docs-table-cell-padding: 0.9rem 0.7rem;
+  --db-component-docs-table-cell-color-border: var(--color-neutral-light);
+  --db-component-docs-table-cell-font-weight: 400;
+  --db-component-docs-table-cell-font-size: 0.875rem;
+  --db-component-docs-method-signature-font-size: 0.9rem;
+  --db-component-docs-card-border-radius: 6px;
+  --db-component-docs-card-color-border: var(--color-neutral-light);
+  --db-component-docs-card-color-border-hover: var(--db-color-accent);
+  --db-component-docs-card-shadow: 0px 1px 0px var(--color-black-05);
+  --db-component-docs-card-shadow-hover: 0px 0px 0px 1px var(--db-color-accent);
+  --db-component-docs-card-color-background: var(--color-neutral-lighter);
+  --db-component-docs-card-height: 140px;
+  --db-component-docs-card-header-font-size: 1.5rem;
+  --db-component-docs-card-description-color-text: var(--color-neutral-deep);
+  --db-component-docs-card-description-font-weight: 400;
+
+  /* web-component-viewer */
+  --db-component-viewer-color-border: var(--color-neutral-light);
+  --db-component-viewer-resizer-color-background: var(--color-neutral-lightest);
+  --db-component-viewer-resizer-color-background-hover: var(
+    --color-neutral-lighter
+  );
+  --db-component-viewer-resizer-color-border: var(--color-neutral-light);
+  --db-component-viewer-resizer-color-border-hover: var(--color-neutral-medium);
+  --db-component-viewer-resizer-color-fill: var(--color-blue-light);
+  --db-component-viewer-action-color-text: var(--color-blue-light);
+  --db-component-viewer-action-color-text-hover: var(--content-color-text);
+  --db-component-viewer-action-font-weight: 500;
+  --db-component-viewer-action-font-size: 0.75rem;
+  --db-component-viewer-action-line-height: 1.4;
+  --db-component-viewer-action-letter-spacing: -0.02rem;
+  --db-component-viewer-action-text-decoration: none;
+  --db-component-viewer-action-text-decoration-hover: none;
+  --db-component-viewer-controls-color-background: var(
+    --color-neutral-lightest
+  );
+  --db-component-viewer-controls-color-border: var(--color-neutral-light);
+  --db-component-viewer-controls-code-color-background: var(
+    --color-neutral-lighter
+  );
+  --db-component-viewer-controls-textarea-height: 60px;
+  --db-component-viewer-controls-input-color-accent: var(--db-color-accent);
+  --db-component-viewer-controls-input-color-background: var(--color-white);
+  --db-component-viewer-controls-input-color-border: var(--color-neutral-light);
+  --db-component-viewer-controls-input-color-border-hover: var(
+    --color-neutral-medium
+  );
+  --db-component-viewer-controls-input-color-border-focus: var(
+    --db-color-accent
+  );
+  --db-component-viewer-controls-input-color-text: var(--db-color-text-weak);
+  --db-component-viewer-controls-input-color-text-placeholder: var(
+    --color-neutral-deep
+  );
+  --db-component-viewer-controls-input-border-radius: 5px;
+  --db-component-viewer-controls-input-font-family: var(--font-family-body);
+  --db-component-viewer-controls-input-font-size: 0.9rem;
+  --db-component-viewer-controls-input-shadow: 0px 1px 0px var(--color-black-05);
+  --db-component-viewer-controls-input-shadow-focus: 0 0 5px
+    var(--db-color-accent);
+  --db-component-viewer-controls-select-icon-arrow: var(--db-icon-select);
+}
+
+/* token overrides for medium (768px) and larger screens */
+@media screen and (min-width: 48rem) {
+  html {
+    --db-content-padding-horizontal: 4.0625rem;
+  }
+}

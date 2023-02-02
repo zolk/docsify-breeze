@@ -1,0 +1,11 @@
+/* Base styles */
+@import url("base.css");
+
+/* Plugins */
+@import url("plugins/copy-code.css");
+@import url("plugins/github-edit-link.css");
+@import url("plugins/page-cards.css");
+@import url("plugins/pagination.css");
+@import url("plugins/theme-switcher.css");
+@import url("plugins/web-component-docs.css");
+@import url("plugins/web-component-viewer.css");

@@ -1,0 +1,48 @@
+.copy-code-button {
+  position: absolute;
+  top: var(--db-copy-code-top);
+  right: var(--db-copy-code-right);
+  left: var(--db-copy-code-left);
+  bottom: var(--db-copy-code-bottom);
+  width: var(--db-copy-code-width);
+  height: var(--db-copy-code-height);
+  padding: var(--db-copy-code-padding);
+  background-color: var(--db-copy-code-color-background);
+  border: 1px solid var(--db-copy-code-color-border);
+  border-radius: var(--db-copy-code-border-radius);
+  color: var(--db-copy-code-color-fill);
+  cursor: pointer;
+  transition: var(--db-copy-code-transition);
+  opacity: 1;
+}
+
+.markdown-section pre:hover .copy-code-button {
+  opacity: 1;
+}
+
+.markdown-section pre:hover .copy-code-button:hover,
+.controls__code pre:hover .copy-code-button:hover {
+  background-color: var(--db-copy-code-color-background-hover);
+  border-color: var(--db-copy-code-color-border-hover);
+  color: var(--db-copy-code-color-fill-hover);
+}
+
+.copy-code-button .success-icon {
+  display: none;
+}
+
+.copy-code-button.success .success-icon {
+  display: block;
+  color: var(--db-copy-code-color-fill-success);
+}
+
+.copy-code-button.success,
+.markdown-section pre:hover .copy-code-button.success:hover {
+  opacity: 1;
+  border-color: var(--db-copy-code-color-border-success);
+  background-color: var(--db-copy-code-color-background-success);
+}
+
+.copy-code-button.success > svg:not(.success-icon) {
+  display: none;
+}

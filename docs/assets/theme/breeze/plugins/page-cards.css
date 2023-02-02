@@ -1,0 +1,117 @@
+/*
+  -------------
+  Page Cards
+  -------------
+*/
+
+a.db-page-card {
+  display: block;
+  margin: var(--db-page-card-margin);
+  padding: var(--db-page-card-padding);
+  background-image: var(--db-page-card-icon-arrow);
+  background-position: center right 1rem;
+  background-repeat: no-repeat;
+  background-size: 1.5rem;
+  border: 1px solid var(--db-page-card-color-border);
+  border-radius: var(--db-page-card-border-radius);
+  box-shadow: var(--db-page-card-box-shadow);
+  text-decoration: none;
+}
+
+.markdown-section a.db-page-card:hover {
+  background-color: transparent;
+  border-color: var(--db-page-card-color-border-hover);
+  box-shadow: var(--db-page-card-box-shadow-hover);
+  text-decoration: none;
+}
+
+.db-page-card h2 {
+  margin: 0;
+  color: var(--db-page-card-title-color-text);
+  font-family: var(--db-page-card-title-font-family);
+  font-size: var(--db-page-card-title-font-size);
+  font-weight: var(--db-page-card-title-font-weight);
+}
+
+.db-page-card p {
+  margin: 0;
+  color: var(--db-page-card-body-color-text);
+  font-size: var(--db-page-card-body-font-size);
+  font-weight: var(--db-page-card-body-font-weight);
+}
+
+/*
+  -------------
+  Component Card
+  -------------
+*/
+
+.markdown-section .db-component-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(225px, auto));
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  line-height: 1.4;
+}
+
+.markdown-section li.db-component-card {
+  margin-bottom: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.db-component-card a {
+  display: block;
+  height: 100%;
+  border: 1px solid var(--db-component-docs-card-color-border);
+  border-radius: var(--db-component-docs-card-border-radius);
+  box-shadow: var(--db-component-docs-card-shadow);
+  text-decoration: none;
+}
+
+.markdown-section .db-component-card a:hover {
+  background-color: white;
+  border-color: var(--db-component-docs-card-color-border-hover);
+  box-shadow: var(--db-component-docs-card-shadow-hover);
+  text-decoration: none;
+}
+
+.db-component-card__image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: var(--db-component-docs-card-height);
+  background-color: var(--db-component-docs-card-color-background);
+  border-top-left-radius: var(--db-component-docs-card-border-radius);
+  border-top-right-radius: var(--db-component-docs-card-border-radius);
+}
+
+.db-component-card__image,
+.db-component-card__image img {
+  border-top-left-radius: var(--db-component-docs-card-border-radius);
+  border-top-right-radius: var(--db-component-docs-card-border-radius);
+}
+
+.db-component-card__header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.db-component-card__header h2 {
+  margin: 0;
+  color: var(--content-color-text);
+  font-family: var(--db-component-docs-card-header-font-family);
+  font-size: var(--db-component-docs-card-header-font-size);
+  font-weight: var(--db-component-docs-card-header-font-weight);
+}
+
+.db-component-card p {
+  margin-top: 0;
+  padding: 0 1rem;
+  color: var(--db-component-docs-card-description-color-text);
+  font-weight: var(--db-component-docs-card-description-font-weight);
+}

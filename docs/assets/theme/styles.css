@@ -1,19 +1,16 @@
-/* Design tokens */
-@import url("tokens.css");
+/* Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Code+Pro&display=swap");
 
-/* Global styles */
-@import url("base.css");
+/* Primitive Tokens */
+@import url("tokens/primitive-tokens.css");
+
+/* Breeze Styles & Tokens */
+@import url("tokens/breeze-tokens.css");
+@import url("breeze/breeze.css");
+
+/* Prism styles */
 @import url("prism.css");
 
-/* Page-centric styles */
-@import url("pages.css");
-
-/* Plugin styles */
-@import url("../plugins/copy-code/copy-code.css");
-@import url("../plugins/custom-replacements/custom-replacements.css");
-@import url("../plugins/github-edit-link/github-edit-link.css");
-@import url("../plugins/pagination/pagination.css");
-@import url("../plugins/search/search.css");
-@import url("../plugins/site-title/site-title.css");
-@import url("../plugins/web-component-docs/web-component-docs.css");
-@import url("../plugins/web-component-viewer/web-component-viewer.css");
+/* Custom styles */
+@import url("custom/pages.css");
+@import url("custom/code-themes.css");

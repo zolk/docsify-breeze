@@ -1,0 +1,118 @@
+/*
+  -------------
+  Component Status
+  -------------
+*/
+
+.component-status {
+  display: inline-block;
+  border-radius: 100px;
+  padding: var(--db-component-docs-status-padding);
+  font-weight: var(--db-component-docs-status-font-weight);
+  font-size: var(--db-component-docs-status-font-size);
+  text-transform: var(--db-component-docs-status-text-transform);
+}
+
+.component-status--draft {
+  border: var(--db-component-docs-status-border-draft);
+  background-color: var(--db-component-docs-status-color-background-draft);
+  color: var(--db-component-docs-status-color-text-draft);
+}
+
+.component-status--ready {
+  border: var(--db-component-docs-status-border-ready);
+  background-color: var(--db-component-docs-status-color-background-ready);
+  color: var(--db-component-docs-status-color-text-ready);
+}
+
+.component-status--deprecated {
+  border: var(--db-component-docs-status-border-deprecated);
+  background-color: var(--db-component-docs-status-color-background-deprecated);
+  color: var(--db-component-docs-status-color-text-deprecated);
+}
+
+/*
+  -------------
+  Component Metadata
+  -------------
+*/
+
+p.meta-desc {
+  margin: 0.5rem 0;
+  font-size: var(--db-component-docs-table-description-font-size);
+  color: var(--db-component-docs-table-description-color-text);
+}
+
+.markdown-section h3 + p.meta-desc {
+  margin-top: -0.3rem;
+}
+
+.component-meta-table {
+  overflow-x: auto;
+}
+
+.component-meta-table table {
+  overflow: auto;
+  width: 100%;
+  margin-top: 0.5rem;
+  min-width: 700px;
+  border-collapse: collapse;
+}
+
+.component-meta-table table thead th {
+  padding: var(--db-component-docs-table-header-padding);
+  background-color: var(--db-component-docs-table-header-color-background);
+  border-bottom: 1px solid var(--db-component-docs-table-color-border);
+  color: var(--db-component-docs-table-header-color-text);
+  font-weight: var(--db-component-docs-table-header-font-weight);
+  font-size: var(--db-component-docs-table-header-font-size);
+  text-align: left;
+}
+
+.component-meta-table table thead th:first-of-type,
+.component-meta-table table tbody th {
+  width: var(--db-component-docs-table-header-width-first-col);
+  white-space: nowrap;
+}
+
+.component-meta-table table tbody th,
+.component-meta-table table tbody td {
+  padding: var(--db-component-docs-table-cell-padding);
+  border-bottom: 1px solid var(--db-component-docs-table-cell-color-border);
+  font-weight: var(--db-component-docs-table-cell-font-weight);
+  font-size: var(--db-component-docs-table-cell-font-size);
+  text-align: left;
+}
+
+.component-meta-table .attr {
+  margin-top: 0.3rem;
+  font-size: 0.9em;
+}
+
+.component-meta-table td p {
+  font-size: var(--font-size-body);
+  line-height: 1.4;
+}
+
+.component-meta-table td p:last-of-type {
+  margin-bottom: 0;
+}
+
+.markdown-section h4.component-method-signature {
+  margin-bottom: 0;
+  font-size: var(--db-component-docs-method-signature-font-size);
+}
+
+.component-method-signature + p {
+  margin-top: 0.2rem;
+  margin-left: 0.4rem;
+}
+
+.component-method-options {
+  margin-left: 1.5rem;
+}
+
+.component-method-options dd {
+  margin-top: 0.3rem;
+  margin-left: 0.4rem;
+}

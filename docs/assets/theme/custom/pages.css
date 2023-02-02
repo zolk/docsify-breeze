@@ -7,11 +7,16 @@
   justify-content: center;
   flex-direction: column;
   height: 25rem;
-  margin: calc(var(--content-padding-vertical) * -1)
-    calc(var(--content-padding-horizontal) * -1) 1rem;
-  padding: var(--content-padding-vertical) var(--content-padding-horizontal);
   background-color: var(--color-neutral-light);
   color: var(--color-blue-light);
+  border-radius: 0;
+}
+
+@media screen and (min-width: 48rem) {
+  .hero {
+    border-radius: var(--db-content-border-radius)
+      var(--db-content-border-radius) 0 0;
+  }
 }
 
 .hero h1 {
@@ -36,12 +41,4 @@
   font-size: 1.3rem;
   font-weight: 400;
   letter-spacing: -1px;
-}
-
-.callout {
-  margin: 1rem 0 -1rem 0;
-  padding: 0.1rem 0 0.5rem 0;
-  background-color: var(--color-neutral-lighter);
-  box-shadow: calc(var(--content-padding-horizontal) * -1) 0 0 0
-    var(--color-neutral-lighter);
 }

@@ -4,7 +4,7 @@
   position: relative;
   min-width: 19rem;
   max-width: 100%;
-  border: 1px solid var(--component-viewer-color-border);
+  border: 1px solid var(--db-component-viewer-color-border);
   border-radius: 2px;
 }
 
@@ -23,18 +23,18 @@
   align-items: center;
   justify-content: center;
   width: 1.5rem;
-  background-color: var(--component-viewer-resizer-color-background);
-  border: 1px solid var(--component-viewer-resizer-color-border);
+  background-color: var(--db-component-viewer-resizer-color-background);
+  border: 1px solid var(--db-component-viewer-resizer-color-border);
   border-top-right-radius: 2px;
   border-bottom-right-radius: 2px;
-  color: var(--component-viewer-resizer-color-fill);
+  color: var(--db-component-viewer-resizer-color-fill);
   cursor: grab;
   user-select: none;
 }
 
 .code-preview__resizer:hover {
-  background-color: var(--component-viewer-resizer-color-background-hover);
-  border-color: var(--component-viewer-resizer-color-border-hover);
+  background-color: var(--db-component-viewer-resizer-color-background-hover);
+  border-color: var(--db-component-viewer-resizer-color-border-hover);
 }
 
 .code-preview__resizer--resizing {
@@ -106,13 +106,13 @@
   padding: 0;
   background: none;
   border: none;
-  color: var(--component-viewer-action-color-text);
+  color: var(--db-component-viewer-action-color-text);
   cursor: pointer;
-  font-weight: var(--component-viewer-action-font-weight);
-  font-size: var(--component-viewer-action-font-size);
-  letter-spacing: var(--component-viewer-action-letter-spacing);
-  line-height: var(--component-viewer-action-line-height);
-  text-decoration: var(--component-viewer-action-text-decoration);
+  font-weight: var(--db-component-viewer-action-font-weight);
+  font-size: var(--db-component-viewer-action-font-size);
+  letter-spacing: var(--db-component-viewer-action-letter-spacing);
+  line-height: var(--db-component-viewer-action-line-height);
+  text-decoration: var(--db-component-viewer-action-text-decoration);
 }
 
 .code-preview--expanded .code-preview__toggle svg {
@@ -127,8 +127,8 @@
 .code-preview__actions button:hover,
 .code-preview__actions a:hover {
   background-color: transparent;
-  color: var(--component-viewer-action-color-text-hover);
-  text-decoration: var(--component-viewer-action-text-decoration);
+  color: var(--db-component-viewer-action-color-text-hover);
+  text-decoration: var(--db-component-viewer-action-text-decoration);
 }
 
 .example {
@@ -155,7 +155,7 @@
   grid-template-areas:
     "preview preview"
     "code controls";
-  background-color: var(--component-viewer-controls-color-background);
+  background-color: var(--db-component-viewer-controls-color-background);
 }
 
 .controls .code-preview__preview {
@@ -176,8 +176,8 @@
   overflow: scroll;
   position: relative;
   grid-area: code;
-  background-color: var(--component-viewer-controls-code-color-background);
-  border-top: 1px solid var(--component-viewer-controls-color-border);
+  background-color: var(--db-component-viewer-controls-code-color-background);
+  border-top: 1px solid var(--db-component-viewer-controls-color-border);
   font-size: 0.875rem;
 }
 
@@ -198,7 +198,7 @@
 
 .controls__code pre code {
   padding: 3rem 1.5rem;
-  font-family: var(--font-family-code);
+  font-family: var(--db-font-family-code);
 }
 
 .controls__code .copy-code-button {
@@ -207,12 +207,15 @@
   opacity: 1;
 }
 
-.controls__inputs {
+.controls__inputs.markdown-section {
   overflow: auto;
   padding: 0;
-  background-color: var(--content-color-background);
-  border-top: 1px solid var(--component-viewer-controls-color-border);
-  border-left: 1px solid var(--component-viewer-controls-color-border);
+  background-color: var(--db-content-color-background);
+  margin: 0 !important;
+  border-radius: 0 !important;
+  width: auto !important;
+  border-top: 1px solid var(--db-component-viewer-controls-color-border);
+  border-left: 1px solid var(--db-component-viewer-controls-color-border);
 }
 
 .controls__inputs table {
@@ -224,11 +227,11 @@
 
 .controls__inputs table thead th {
   padding: 0.7rem;
-  background-color: var(--component-docs-table-header-color-background);
-  border-bottom: 1px solid var(--component-docs-table-color-border);
-  color: var(--component-docs-table-header-color-text);
-  font-weight: var(--component-docs-table-header-font-weight);
-  font-size: var(--component-docs-table-header-font-size);
+  background-color: var(--db-component-docs-table-header-color-background);
+  border-bottom: 1px solid var(--db-component-docs-table-color-border);
+  color: var(--db-component-docs-table-header-color-text);
+  font-weight: var(--db-component-docs-table-header-font-weight);
+  font-size: var(--db-component-docs-table-header-font-size);
   text-align: left;
 }
 
@@ -245,8 +248,9 @@
 .controls__inputs table tbody th,
 .controls__inputs table tbody td {
   padding: 0.7rem 0.5rem;
-  border-bottom: 1px solid var(--component-docs-table-color-border);
-  font-weight: var(--component-docs-table-cell-font-weight);
+  border-bottom: 1px solid var(--db-component-docs-table-color-border);
+  font-weight: var(--db-component-docs-table-cell-font-weight);
+  font-size: var(--db-component-docs-table-cell-font-size);
   text-align: left;
 }
 
@@ -262,7 +266,7 @@
 }
 
 .controls__group input {
-  accent-color: var(--component-viewer-controls-input-color-accent);
+  accent-color: var(--db-component-viewer-controls-input-color-accent);
 }
 
 .controls__group input[type="text"],
@@ -272,41 +276,41 @@
   width: 100%;
   min-width: 15rem;
   padding: 0.4rem 0.5rem;
-  background-color: var(--component-viewer-controls-input-color-background);
-  border: 1px solid var(--component-viewer-controls-input-color-border);
-  border-radius: var(--component-viewer-controls-input-border-radius);
-  color: var(--component-viewer-controls-input-color-text);
-  font-family: var(--component-viewer-controls-input-font-family);
-  font-size: var(--component-viewer-controls-input-font-size);
-  box-shadow: var(--component-viewer-controls-input-shadow);
+  background-color: var(--db-component-viewer-controls-input-color-background);
+  border: 1px solid var(--db-component-viewer-controls-input-color-border);
+  border-radius: var(--db-component-viewer-controls-input-border-radius);
+  color: var(--db-component-viewer-controls-input-color-text);
+  font-family: var(--db-component-viewer-controls-input-font-family);
+  font-size: var(--db-component-viewer-controls-input-font-size);
+  box-shadow: var(--db-component-viewer-controls-input-shadow);
 }
 
 .controls__group input[type="text"]:hover,
 .controls__group input[type="number"]:hover,
 .controls__inputs textarea:hover,
 .controls__group select:hover {
-  border-color: var(--component-viewer-controls-input-color-border-hover);
+  border-color: var(--db-component-viewer-controls-input-color-border-hover);
 }
 
 .controls__group input[type="text"]:focus,
 .controls__group input[type="number"]:focus,
 .controls__inputs textarea:focus,
 .controls__group select:focus {
-  border-color: var(--component-viewer-controls-input-color-border-hover);
-  box-shadow: var(--component-viewer-controls-input-shadow-focus);
+  border-color: var(--db-component-viewer-controls-input-color-border-hover);
+  box-shadow: var(--db-component-viewer-controls-input-shadow-focus);
   outline: none;
 }
 
 .controls__inputs textarea {
-  font-family: var(--component-viewer-controls-input-font-family);
-  height: var(--component-viewer-controls-textarea-height);
+  font-family: var(--db-component-viewer-controls-input-font-family);
+  height: var(--db-component-viewer-controls-textarea-height);
 }
 
 .controls__group select {
   appearance: none;
   cursor: pointer;
   background-image: var(
-    --icon-select,
+    --db-component-viewer-controls-select-icon-arrow,
     url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>')
   );
   background-origin: content-box;
@@ -317,7 +321,7 @@
 }
 
 .controls__group input::placeholder {
-  color: var(--component-viewer-controls-input-color-text-placeholder);
+  color: var(--db-component-viewer-controls-input-color-text-placeholder);
   opacity: 1;
 }
 
