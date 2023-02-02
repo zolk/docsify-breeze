@@ -618,7 +618,7 @@ body.close .content {
   margin: 0;
   letter-spacing: var(--db-content-title-letter-spacing);
   line-height: var(--db-content-title-line-height);
-  font-family: var(--font-family-heading);
+  font-family: var(--db-font-family-heading);
   font-size: var(--db-content-title-font-size);
   font-weight: var(--db-content-title-font-weight);
 }
