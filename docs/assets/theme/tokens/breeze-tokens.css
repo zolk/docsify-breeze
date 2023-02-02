@@ -71,6 +71,7 @@ html {
   --db-search-color-border-focus: var(--color-blue-lightest);
   --db-search-clear-button-fill: var(--color-white);
   --db-search-results-color-border: var(--color-neutral-deep);
+  --db-search-icon-search: var(--db-icon-search);
 
   /* Sidebar Navigation */
   --db-sidebar-nav-color-text: var(--color-white);
@@ -93,6 +94,9 @@ html {
   --db-sidebar-nav-link-section-color-border-active: var(--color-blue-lightest);
   --db-sidebar-nav-link-section-font-weight: 400;
   --db-sidebar-nav-link-section-font-size: 0.8125rem;
+  --db-sidebar-nav-link-icon-open: var(--db-icon-chevron-down);
+  --db-sidebar-nav-link-icon-closed: var(--db-icon-chevron-right);
+  --db-sidebar-nav-link-icon-closed-active: var(--db-icon-chevron-right-active);
 
   /* Content Bounding Box */
   --db-content-top: 0;
@@ -123,6 +127,8 @@ html {
   --db-content-headline-letter-spacing: -0.03em;
   --db-content-section-heading-font-size: 1.7rem;
   --db-content-section-heading-font-weight: 700;
+  --db-content-section-heading-icon: var(--db-icon-hashtag);
+  --db-content-section-heading-icon-hover: var(--db-icon-hashtag-hover);
   --db-content-heading-font-weight: 600;
   --db-content-heading-letter-spacing: -0.02em;
   --db-content-heading-text-decoration: none;
@@ -187,6 +193,8 @@ html {
   --db-theme-switcher-padding: 0.5rem 1.7rem 0.5rem 0.7rem;
   --db-theme-switcher-shadow: 0px 1px 0px var(--color-black-05);
   --db-theme-switcher-shadow-focus: 0 0 5px var(--content-color-border-active);
+  --db-theme-switcher-icon-select-arrow: var(--db-icon-select);
+  --db-theme-switcher-icon-label: var(--db-icon-color-swatch);
 
   /* pagination */
   --db-pagination-font-size: 0.9rem;
@@ -207,6 +215,7 @@ html {
   --db-page-card-body-color-text: var(--color-neutral-deep);
   --db-page-card-body-font-size: 0.875rem;
   --db-page-card-body-font-weight: 400;
+  --db-page-card-icon-arrow: var(--db-icon-chevron-right-neutral);
 
   /* github edit link */
   --db-gh-link-color-text: var(--color-neutral-deep);
@@ -218,6 +227,8 @@ html {
   --db-gh-link-text-decoration: none;
   --db-gh-link-text-decoration-hover: none;
   --db-gh-link-transition: color 0.15s ease-in-out;
+  --db-gh-link-icon: var(--db-icon-pencil);
+  --db-gh-link-icon-hover: var(--db-icon-pencil-hover);
 
   /* copy code button */
   --db-copy-code-top: 0.7rem;
@@ -326,6 +337,7 @@ html {
   --db-component-viewer-controls-input-shadow: 0px 1px 0px var(--color-black-05);
   --db-component-viewer-controls-input-shadow-focus: 0 0 5px
     var(--color-blue-lightest);
+  --db-component-viewer-controls-select-icon-arrow: var(--db-icon-select);
 }
 
 /* token overrides for medium (768px) and larger screens */

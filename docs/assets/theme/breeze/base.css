@@ -245,7 +245,7 @@ body.sticky .sidebar-toggle {
 .sidebar > .search input {
   padding: 0.5rem 2.5rem;
   background-color: var(--db-search-color-background);
-  background-image: var(--db-icon-search);
+  background-image: var(--db-search-icon-search);
   background-repeat: no-repeat;
   background-size: 1.3125rem;
   background-position: 0.7rem center;
@@ -376,20 +376,17 @@ body.sticky .sidebar-toggle {
 
 .sidebar-nav li.has-submenu.active-child > a,
 .sidebar-nav li.has-submenu.active > a {
-  background-image: var(--db-icon-chevron-down);
+  background-image: var(--db-sidebar-nav-link-icon-open);
 }
 
 .sidebar-nav li.has-submenu > a {
-  background-image: var(--db-icon-chevron-right);
+  background-image: var(--db-sidebar-nav-link-icon-closed);
 }
 
-.sidebar-nav li.has-submenu:not(.active):not(.active-child) > a:hover {
-  background-image: var(--db-icon-chevron-right-active);
-}
-
+.sidebar-nav li.has-submenu:not(.active):not(.active-child) > a:hover,
 .sidebar-nav li.has-submenu.active.collapse > a:hover,
 .sidebar-nav li.has-submenu.active.collapse > a {
-  background-image: var(--db-icon-chevron-right-active);
+  background-image: var(--db-sidebar-nav-link-icon-closed-active);
 }
 
 .sidebar-nav ul li:not(.active-child):not(.active):not(.active-section) ul,
@@ -698,7 +695,7 @@ p.db-page-headline + div {
   left: -1.5rem;
   width: calc(100% + 1.5rem);
   padding-left: 1.5rem;
-  background-image: var(--db-icon-hashtag);
+  background-image: var(--db-content-section-heading-icon);
   background-repeat: no-repeat;
   background-position: left center;
   background-size: 20px;
@@ -707,7 +704,7 @@ p.db-page-headline + div {
 
 .markdown-section > h2 a:hover {
   background-color: transparent;
-  background-image: var(--db-icon-hashtag-hover);
+  background-image: var(--db-content-section-heading-icon-hover);
 }
 
 .markdown-section > h3 {

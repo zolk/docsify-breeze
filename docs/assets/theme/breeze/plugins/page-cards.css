@@ -8,7 +8,7 @@ a.db-page-card {
   display: block;
   margin: var(--db-page-card-margin);
   padding: var(--db-page-card-padding);
-  background-image: var(--db-icon-chevron-right-neutral);
+  background-image: var(--db-page-card-icon-arrow);
   background-position: center right 1rem;
   background-repeat: no-repeat;
   background-size: 1.5rem;
