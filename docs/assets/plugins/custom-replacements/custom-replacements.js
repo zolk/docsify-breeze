@@ -13,38 +13,37 @@ function customReplacements(hook) {
     //
     // Page Header
     //
-    document.querySelector(".content > .markdown-header")?.remove();
-
     content = content.replace(/^#{1} ([a-zA-Z &-.]+)/, (_, title) => {
-      const header = document.createElement("header");
-      header.classList.add("markdown-header", "component-header");
-      header.innerHTML = `
-        <div class="component-title">
-          <h1>${title}</h1>
-        </div>
-      `;
-
-      const content = document.querySelector(".content");
-      content.prepend(header);
-
       const headline = isComponentPage
         ? `
             [component-status]
 
+            <div style="visibility: hidden; margin: 0; height: 0;">
+
             ## Overview
+
+            </div>
 
             #> [component-description]
           `
         : "";
 
-      return headline.replace(/^ +| +$/gm, "");
+      const header = `
+        <div class="db-page-title db-remove-padding">
+          <h1>${title}</h1>
+        </div>
+
+        ${headline}
+      `;
+
+      return header.replace(/^ +| +$/gm, "");
     });
 
     //
     // Page Headline
     //
     content = content.replace(/^#> (.+)/gm, (_, headline) => {
-      const result = `<p class="page-headline">${headline}</p>`;
+      const result = `<p class="db-page-headline">${headline}</p>`;
 
       return result.replace(/^ +| +$/gm, "");
     });
@@ -56,7 +55,7 @@ function customReplacements(hook) {
       /-> \[(.+):(.+)\]\((.+)\)/g,
       (_, title, subtitle, href) => {
         const result = `
-          <a href="${href}" class="page-card">
+          <a href="${href}" class="db-page-card">
             <h2>${title}</h2>
             <p>${subtitle}</p>
           </a>
@@ -72,12 +71,12 @@ function customReplacements(hook) {
     content = content.replace(
       /\[component-card:(.+):([a-z-]+)\]/g,
       (_, name, tag) => {
-        const result = `<li class="component-card">
+        const result = `<li class="db-component-card">
           <a href="/${pathSegments[1].split(".")[0]}/${tag}">
-            <div class="component-card__image">
+            <div class="db-component-card__image">
               <img src="/assets/images/component-cards/${tag}.svg" />
             </div>
-            <div class="component-card__header">
+            <div class="db-component-card__header">
               <h2>${name}</h2>
               [component-status:${tag}]
             </div>
@@ -99,12 +98,12 @@ function customReplacements(hook) {
     // Move the component status to the header
     //
     if (isComponentPage) {
-      const header = document.querySelector(".content");
+      const header = document.querySelector(".markdown-section");
       const status = document.querySelector(".component-status");
 
       if (status) {
         header
-          ?.querySelector(".component-title")
+          ?.querySelector(".db-page-title")
           ?.insertAdjacentElement("beforeend", status);
       }
     }

@@ -1,0 +1,12 @@
+
+.ds-light .code-preview__preview {
+  background-color: #fff;
+}
+
+.ds-dark .code-preview__preview {
+  background-color: #323232;
+}
+
+.ds-retro .code-preview__preview {
+  background-color: #faf2de;
+}

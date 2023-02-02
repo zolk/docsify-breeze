@@ -4,16 +4,13 @@
 /* Global styles */
 @import url("base.css");
 @import url("prism.css");
+@import url("page-cards.css");
 
 /* Page-centric styles */
 @import url("pages.css");
+@import url("code-themes.css");
 
 /* Plugin styles */
-@import url("../plugins/copy-code/copy-code.css");
-@import url("../plugins/custom-replacements/custom-replacements.css");
-@import url("../plugins/github-edit-link/github-edit-link.css");
-@import url("../plugins/pagination/pagination.css");
-@import url("../plugins/search/search.css");
-@import url("../plugins/site-title/site-title.css");
-@import url("../plugins/web-component-docs/web-component-docs.css");
-@import url("../plugins/web-component-viewer/web-component-viewer.css");
+@import url("copy-code.css");
+@import url("web-component-docs.css");
+@import url("web-component-viewer.css");
