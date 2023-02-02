@@ -19,7 +19,7 @@ body {
 body {
   overflow-x: hidden;
   margin: 0;
-  background-color: var(--db-color-background-sm);
+  background-color: var(--db-content-color-background);
   color: var(--db-color-text);
   font-family: var(--db-font-family-body);
   font-size: 16px;
@@ -27,7 +27,7 @@ body {
 
 @media screen and (min-width: 48rem) {
   body {
-    background-color: var(--db-color-background-md);
+    background-color: var(--db-color-background);
   }
 }
 
@@ -93,7 +93,7 @@ body:not(.ready) [data-cloak] {
   overflow-y: auto;
   width: var(--db-sidebar-width);
   padding: var(--db-sidebar-padding);
-  background-color: var(--db-color-background-md);
+  background-color: var(--db-color-background);
   color: var(--db-sidebar-color);
   transition: var(--db-sidebar-transition);
 }
@@ -433,7 +433,7 @@ main {
   right: var(--db-content-right);
   left: var(--db-sidebar-width);
   transition: left 0.25s ease;
-  background-color: var(--db-color-background-md);
+  background-color: var(--db-color-background);
 }
 
 /*
@@ -535,23 +535,13 @@ body.close .content {
   -------------
 */
 
-body {
-  --_db-content-padding-horizontal: var(--db-content-padding-horizontal-sm);
-}
-
-@media screen and (min-width: 48rem) {
-  body {
-    --_db-content-padding-horizontal: var(--db-content-padding-horizontal-lg);
-  }
-}
-
 .markdown-section {
   background-color: var(--db-content-color-background);
   box-shadow: var(--db-content-box-shadow);
   color: var(--db-content-color-text);
   margin: 0 0 var(--db-content-margin-vertical) 0;
   padding: var(--db-content-padding-vertical)
-    var(--_db-content-padding-horizontal);
+    var(--db-content-padding-horizontal);
 }
 
 @media screen and (min-width: 48rem) {
@@ -559,7 +549,7 @@ body {
     border-radius: var(--db-content-border-radius-closed);
     margin: var(--db-content-margin-vertical) 0;
     padding: var(--db-content-padding-vertical)
-      var(--_db-content-padding-horizontal);
+      var(--db-content-padding-horizontal);
     width: calc(
       100vw - calc(var(--db-sidebar-width) + var(--db-content-margin-right))
     );
@@ -582,10 +572,10 @@ body {
 
 .db-remove-padding {
   margin-top: calc(var(--db-content-padding-vertical) * -1);
-  margin-right: calc(var(--_db-content-padding-horizontal) * -1);
-  margin-left: calc(var(--_db-content-padding-horizontal) * -1);
+  margin-right: calc(var(--db-content-padding-horizontal) * -1);
+  margin-left: calc(var(--db-content-padding-horizontal) * -1);
   padding: var(--db-content-padding-vertical)
-    var(--_db-content-padding-horizontal);
+    var(--db-content-padding-horizontal);
 }
 
 /*
@@ -598,7 +588,7 @@ body {
   display: flex;
   gap: 1rem;
   align-items: center;
-  max-width: calc(100% + calc(var(--_db-content-padding-horizontal) * 2));
+  max-width: calc(100% + calc(var(--db-content-padding-horizontal) * 2));
   margin-bottom: var(--db-content-header-margin-bottom);
   padding-top: var(--db-content-header-padding-vertical);
   padding-bottom: var(--db-content-header-padding-vertical);
@@ -635,7 +625,7 @@ body {
   top: calc(
     var(--db-content-padding-vertical) - var(--db-content-margin-vertical)
   ) !important;
-  right: var(--_db-content-padding-horizontal) !important;
+  right: var(--db-content-padding-horizontal) !important;
   margin: var(--db-theme-switcher-margin);
   width: min-content;
   display: flex;
@@ -958,7 +948,7 @@ p.db-page-headline + div {
 .pagination-item--previous,
 .pagination-item--next {
   margin-top: 1rem !important;
-  padding: 0 var(--_db-content-padding-horizontal);
+  padding: 0 var(--db-content-padding-horizontal);
 }
 
 .pagination-item-label {

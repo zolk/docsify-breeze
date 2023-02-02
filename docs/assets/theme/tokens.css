@@ -22,8 +22,7 @@ html {
   --font-family-source-code-pro: "Source Code Pro", monospace;
 
   /* Color Generics */
-  --db-color-background-sm: var(--color-white);
-  --db-color-background-md: var(--color-blue-medium);
+  --db-color-background: var(--color-blue-medium);
   --db-color-text: var(--color-white);
 
   /* Font Generics */
@@ -126,8 +125,7 @@ html {
   --db-content-margin-vertical: 1rem;
   --db-content-margin-right: 1rem;
   --db-content-padding-vertical: 3.125rem;
-  --db-content-padding-horizontal-sm: 2.0625rem;
-  --db-content-padding-horizontal-lg: 4.0625rem;
+  --db-content-padding-horizontal: 2.0625rem; /* small screens only; see media query */
 
   /* Content Typography */
   --db-content-header-color-background: var(--color-neutral-lighter);
@@ -340,4 +338,11 @@ html {
   --db-component-viewer-controls-input-shadow: 0px 1px 0px var(--color-black-05);
   --db-component-viewer-controls-input-shadow-focus: 0 0 5px
     var(--color-blue-lightest);
+}
+
+/* token overrides for medium (768px) and larger screens */
+@media screen and (min-width: 48rem) {
+  html {
+    --db-content-padding-horizontal: 4.0625rem;
+  }
 }
