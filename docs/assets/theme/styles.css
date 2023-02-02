@@ -1,16 +1,16 @@
-/* Design tokens */
-@import url("tokens.css");
+/* Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Code+Pro&display=swap");
 
-/* Global styles */
-@import url("base.css");
+/* Primitive Tokens */
+@import url("tokens/primitive-tokens.css");
+
+/* Breeze Styles & Tokens */
+@import url("tokens/breeze-tokens.css");
+@import url("breeze/breeze.css");
+
+/* Prism styles */
 @import url("prism.css");
-@import url("page-cards.css");
 
-/* Page-centric styles */
-@import url("pages.css");
-@import url("code-themes.css");
-
-/* Plugin styles */
-@import url("copy-code.css");
-@import url("web-component-docs.css");
-@import url("web-component-viewer.css");
+/* Custom styles */
+@import url("custom/pages.css");
+@import url("custom/code-themes.css");

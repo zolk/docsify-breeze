@@ -1,0 +1,27 @@
+/*
+  -------------
+  GitHub Edit Link
+  -------------
+*/
+
+.markdown-section .edit-on-github {
+  display: inline-block;
+  margin: var(--db-gh-link-margin);
+  padding: var(--db-gh-link-padding);
+  background-image: var(--db-icon-pencil);
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 14px;
+  color: var(--db-gh-link-color-text);
+  font-size: var(--db-gh-link-font-size);
+  font-weight: var(--db-gh-link-font-weight);
+  text-decoration: var(--db-gh-link-text-decoration);
+  transition: var(--db-gh-link-transition);
+}
+
+.markdown-section .edit-on-github:hover {
+  background-color: transparent;
+  color: var(--db-gh-link-color-text-hover);
+  text-decoration: var(--db-gh-link-text-decoration-hover);
+  background-image: var(--db-icon-pencil-hover);
+}

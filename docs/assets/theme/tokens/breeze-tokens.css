@@ -1,26 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Code+Pro&display=swap");
-
 html {
-  /* Core Primitives */
-  --color-white: #ffffff;
-  --color-white-80: rgba(255, 255, 255, 0.8);
-  --color-white-70: rgba(255, 255, 255, 0.7);
-  --color-white-25: rgba(255, 255, 255, 0.25);
-  --color-white-05: rgba(255, 255, 255, 0.05);
-  --color-black-05: rgba(0, 0, 0, 0.05);
-  --color-blue-deep: #0a1a29;
-  --color-blue-medium: #1b354d;
-  --color-blue-light: #2c5377;
-  --color-blue-lightest: #57caee;
-  --color-neutral-deep: #6e8091;
-  --color-neutral-dark: #899caf;
-  --color-neutral-medium: #bccad7;
-  --color-neutral-light: #d4dee7;
-  --color-neutral-lighter: #f2f6f8;
-  --color-neutral-lightest: #fcfcfd;
-  --font-family-inter: "Inter", sans-serif;
-  --font-family-source-code-pro: "Source Code Pro", monospace;
-
   /* Color Generics */
   --db-color-background: var(--color-blue-medium);
   --db-color-text: var(--color-white);
@@ -62,19 +40,6 @@ html {
   --db-sidebar-scrollbar-track-color: #ffffff40;
   --db-sidebar-scrollbar-thumb-color: #ffffff70;
 
-  /* Sidebar Site Title */
-  --db-sidebar-logo-box-border-radius: 5px;
-  --db-sidebar-logo-box-color-background: var(--color-white);
-  --db-sidebar-logo-box-box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.25);
-  --db-sidebar-logo-box-width: 37px;
-  --db-sidebar-logo-box-height: 37px;
-  --db-sidebar-logo-width: 24px;
-  --db-sidebar-logo-height: 24px;
-  --db-sidebar-title-font-size-primary: 0.9375rem;
-  --db-sidebar-title-font-size-secondary: 0.8rem;
-  --db-sidebar-title-letter-spacing-primary: -0.025rem;
-  --db-sidebar-title-letter-spacing-secondary: -0.025rem;
-
   /* Sidebar Toggle Button */
   --db-sidebar-toggle-top: 1.7rem;
   --db-sidebar-toggle-color-background: var(--color-white);
@@ -84,6 +49,20 @@ html {
   --db-sidebar-toggle-color-fill-open: var(--color-white);
   --db-sidebar-toggle-color-fill-hover: var(--color-blue-lightest);
   --db-sidebar-toggle-shadow: 0px 1px 0px var(--color-black-05);
+
+  /* Sidebar Site Title */
+  --db-sidebar-logo-box-width: 37px;
+  --db-sidebar-logo-box-height: 37px;
+  --db-sidebar-logo-box-color-background: var(--color-white);
+  --db-sidebar-logo-box-border: unset;
+  --db-sidebar-logo-box-border-radius: 5px;
+  --db-sidebar-logo-box-box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.25);
+  --db-sidebar-logo-width: 24px;
+  --db-sidebar-logo-height: 24px;
+  --db-sidebar-title-font-size-primary: 0.9375rem;
+  --db-sidebar-title-font-size-secondary: 0.8rem;
+  --db-sidebar-title-letter-spacing-primary: -0.025rem;
+  --db-sidebar-title-letter-spacing-secondary: -0.025rem;
 
   /* Search Box */
   --db-search-color-background: var(--color-blue-light);
@@ -96,6 +75,8 @@ html {
   --db-sidebar-nav-color-text: var(--color-white);
   --db-sidebar-nav-font-size: 0.75rem;
   --db-sidebar-nav-line-height: 2.2;
+  --db-sidebar-nav-heading-border-top: unset;
+  --db-sidebar-nav-heading-border-bottom: unset;
   --db-sidebar-nav-heading-color: #ffffff90;
   --db-sidebar-nav-heading-font-size: 0.9rem;
   --db-sidebar-nav-heading-letter-spacing: 1px;
@@ -182,11 +163,15 @@ html {
   --db-content-code-block-padding: 1rem;
   --db-content-code-block-tab-size: 2;
   --db-content-tip-color-background: var(--color-neutral-lighter);
-  --db-content-tip-color-text: var(--color-blue-deep);
   --db-content-tip-border-radius: 4px;
   --db-content-tip-border-left: 4px solid var(--color-blue-medium);
   --db-content-tip-margin: 0.875rem 1.5rem 0.75rem;
   --db-content-tip-padding: 0.875rem 1.5rem 0.75rem;
+  --db-content-tip-warn-color-background: rgb(252, 239, 239);
+  --db-content-tip-warn-color-text: #fff;
+  --db-content-tip-warn-color-border: #f66;
+  --db-content-tip-warn-border-left: 4px solid
+    var(--db-content-tip-warn-color-border);
 
   /* theme switcher */
   --db-theme-switcher-margin: 0.3rem 0 0 0;
@@ -227,15 +212,17 @@ html {
   --db-gh-link-color-text-hover: var(--color-blue-medium);
   --db-gh-link-margin: 2rem 0 0 0;
   --db-gh-link-padding: 0 0 0 1.2rem;
-  --db-gh-link-transition: color 0.15s ease-in-out;
   --db-gh-link-font-size: 0.9rem;
   --db-gh-link-font-weight: 500;
   --db-gh-link-text-decoration: none;
   --db-gh-link-text-decoration-hover: none;
+  --db-gh-link-transition: color 0.15s ease-in-out;
 
   /* copy code button */
   --db-copy-code-top: 0.7rem;
   --db-copy-code-right: 0.7rem;
+  --db-copy-code-left: unset;
+  --db-copy-code-bottom: unset;
   --db-copy-code-width: 1.7rem;
   --db-copy-code-height: 1.7rem;
   --db-copy-code-padding: 0.2rem;

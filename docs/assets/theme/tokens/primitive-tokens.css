@@ -1,0 +1,21 @@
+html {
+  /* Core Primitives */
+  --color-white: #ffffff;
+  --color-white-80: rgba(255, 255, 255, 0.8);
+  --color-white-70: rgba(255, 255, 255, 0.7);
+  --color-white-25: rgba(255, 255, 255, 0.25);
+  --color-white-05: rgba(255, 255, 255, 0.05);
+  --color-black-05: rgba(0, 0, 0, 0.05);
+  --color-blue-deep: #0a1a29;
+  --color-blue-medium: #1b354d;
+  --color-blue-light: #2c5377;
+  --color-blue-lightest: #57caee;
+  --color-neutral-deep: #6e8091;
+  --color-neutral-dark: #899caf;
+  --color-neutral-medium: #bccad7;
+  --color-neutral-light: #d4dee7;
+  --color-neutral-lighter: #f2f6f8;
+  --color-neutral-lightest: #fcfcfd;
+  --font-family-inter: "Inter", sans-serif;
+  --font-family-source-code-pro: "Source Code Pro", monospace;
+}

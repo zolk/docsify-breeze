@@ -1,0 +1,26 @@
+/*
+  -------------
+  Pagination
+  -------------
+*/
+
+.docsify-pagination-container {
+  margin: 0 !important;
+  padding: var(--db-pagination-padding);
+  border-top: 0 !important;
+  font-size: var(--db-pagination-font-size);
+}
+
+.pagination-item--previous,
+.pagination-item--next {
+  margin-top: 1rem !important;
+  padding: 0 var(--db-content-padding-horizontal);
+}
+
+.pagination-item-label {
+  margin-bottom: 0.3rem;
+}
+
+.pagination-item-title {
+  font-weight: 600;
+}

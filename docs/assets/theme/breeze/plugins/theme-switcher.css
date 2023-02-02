@@ -1,0 +1,77 @@
+/*
+  -------------
+  Theme Switcher
+  -------------
+*/
+
+.theme-switcher {
+  position: absolute;
+  z-index: 1;
+  top: calc(
+    var(--db-content-padding-vertical) - var(--db-content-margin-vertical)
+  ) !important;
+  right: var(--db-content-padding-horizontal) !important;
+  margin: var(--db-theme-switcher-margin);
+  width: min-content;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.5rem;
+  flex-grow: 1;
+}
+
+@media screen and (min-width: 48rem) {
+  .theme-switcher {
+    top: var(--db-content-padding-vertical) !important;
+  }
+}
+
+.theme-switcher label {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  overflow: hidden;
+  height: 1px;
+  width: 1px;
+  white-space: nowrap;
+}
+
+.theme-switcher select {
+  flex-grow: 0;
+  padding: var(--db-theme-switcher-padding);
+  background-color: var(--db-theme-switcher-color-background);
+  border: var(--db-theme-switcher-border);
+  border-radius: var(--db-theme-switcher-border-radius);
+  box-shadow: var(--db-theme-switcher-shadow);
+  background-image: var(
+    --db-icon-select,
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>')
+  );
+  background-origin: content-box;
+  background-position: calc(100% + 1.3rem) center;
+  background-repeat: no-repeat;
+  color: var(--db-theme-switcher-color-text);
+  cursor: pointer;
+  font-family: var(--db-theme-switcher-font-family);
+  font-size: var(--db-theme-switcher-font-size);
+  -webkit-appearance: none;
+}
+
+.theme-switcher::before {
+  content: "";
+  display: block;
+  width: 1.3rem;
+  height: 1.3rem;
+  background-image: var(--db-icon-color-swatch);
+  background-size: 1.3rem;
+}
+
+.theme-switcher select:hover {
+  border-color: var(--db-theme-switcher-color-border-hover);
+}
+
+.theme-switcher select:focus {
+  border-color: var(--db-theme-switcher-color-border-focus);
+  box-shadow: var(--db-theme-switcher-shadow-focus);
+  outline: none;
+}

@@ -182,6 +182,7 @@ body.sticky .sidebar-toggle {
   width: var(--db-sidebar-logo-box-width);
   height: var(--db-sidebar-logo-box-height);
   background-color: var(--db-sidebar-logo-box-color-background);
+  border: var(--db-sidebar-logo-border);
   border-radius: var(--db-sidebar-logo-box-border-radius);
   box-shadow: var(--db-sidebar-logo-box-box-shadow);
 }
@@ -615,84 +616,6 @@ body.close .content {
 
 /*
   -------------
-  Theme Switcher + Theme Styling
-  -------------
-*/
-
-.theme-switcher {
-  position: absolute;
-  z-index: 1;
-  top: calc(
-    var(--db-content-padding-vertical) - var(--db-content-margin-vertical)
-  ) !important;
-  right: var(--db-content-padding-horizontal) !important;
-  margin: var(--db-theme-switcher-margin);
-  width: min-content;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 0.5rem;
-  flex-grow: 1;
-}
-
-@media screen and (min-width: 48rem) {
-  .theme-switcher {
-    top: var(--db-content-padding-vertical) !important;
-  }
-}
-
-.theme-switcher label {
-  position: absolute;
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
-  overflow: hidden;
-  height: 1px;
-  width: 1px;
-  white-space: nowrap;
-}
-
-.theme-switcher select {
-  flex-grow: 0;
-  padding: var(--db-theme-switcher-padding);
-  background-color: var(--db-theme-switcher-color-background);
-  border: var(--db-theme-switcher-border);
-  border-radius: var(--db-theme-switcher-border-radius);
-  box-shadow: var(--db-theme-switcher-shadow);
-  background-image: var(
-    --db-icon-select,
-    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>')
-  );
-  background-origin: content-box;
-  background-position: calc(100% + 1.3rem) center;
-  background-repeat: no-repeat;
-  color: var(--db-theme-switcher-color-text);
-  cursor: pointer;
-  font-family: var(--db-theme-switcher-font-family);
-  font-size: var(--db-theme-switcher-font-size);
-  -webkit-appearance: none;
-}
-
-.theme-switcher::before {
-  content: "";
-  display: block;
-  width: 1.3rem;
-  height: 1.3rem;
-  background-image: var(--db-icon-color-swatch);
-  background-size: 1.3rem;
-}
-
-.theme-switcher select:hover {
-  border-color: var(--db-theme-switcher-color-border-hover);
-}
-
-.theme-switcher select:focus {
-  border-color: var(--db-theme-switcher-color-border-focus);
-  box-shadow: var(--db-theme-switcher-shadow-focus);
-  outline: none;
-}
-
-/*
-  -------------
   Page Headline
   -------------
 */
@@ -904,122 +827,38 @@ p.db-page-headline + div {
   -------------
 */
 
-.markdown-section p.tip {
-  background-color: var(--db-content-tip-color-background);
+.markdown-section p.tip,
+.markdown-section p.warn {
   border-radius: var(--db-content-tip-border-radius);
+  position: relative;
+  margin: var(--db-content-tip-margin) 0;
+  padding: var(--db-content-tip-padding);
 }
 
 .markdown-section p.tip {
-  position: relative;
-  margin: var(--db-content-tip-margin);
-  padding: var(--db-content-tip-padding);
+  background-color: var(--db-content-tip-color-background);
   border-left: var(--db-content-tip-border-left);
 }
 
-.markdown-section p.tip:before {
+.markdown-section p.warn {
+  background-color: var(--db-content-tip-warn-color-background);
+  border-left: var(--db-content-tip-warn-border-left);
+}
+
+.markdown-section p.warn::before {
   content: "!";
   position: absolute;
-  top: 11px;
+  top: 1rem;
   left: -12px;
   height: 20px;
   width: 20px;
-  background-color: var(--content-color-tip-color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--db-content-tip-warn-color-border);
   border-radius: 100%;
-  color: var(--content-tip-color-text);
-  font-size: 14px;
+  color: var(--db-content-tip-warn-color-text);
+  font-size: 0.875rem;
   font-weight: 700;
-  line-height: 20px;
-  text-align: center;
+  line-height: 1.25;
 }
-
-/*
-  -------------
-  Pagination
-  -------------
-*/
-
-.docsify-pagination-container {
-  margin: 0 !important;
-  padding: var(--db-pagination-padding);
-  border-top: 0 !important;
-  font-size: var(--db-pagination-font-size);
-}
-
-.pagination-item--previous,
-.pagination-item--next {
-  margin-top: 1rem !important;
-  padding: 0 var(--db-content-padding-horizontal);
-}
-
-.pagination-item-label {
-  margin-bottom: 0.3rem;
-}
-
-.pagination-item-title {
-  font-weight: 600;
-}
-
-/*
-  -------------
-  GitHub Edit Link
-  -------------
-*/
-
-.markdown-section .edit-on-github {
-  display: inline-block;
-  margin: var(--db-gh-link-margin);
-  padding: var(--db-gh-link-padding);
-  background-image: var(--db-icon-pencil);
-  background-repeat: no-repeat;
-  background-position: left center;
-  background-size: 14px;
-  color: var(--db-gh-link-color-text);
-  font-size: var(--db-gh-link-font-size);
-  font-weight: var(--db-gh-link-font-weight);
-  text-decoration: var(--db-gh-link-text-decoration);
-  transition: var(--db-gh-link-transition);
-}
-
-.markdown-section .edit-on-github:hover {
-  background-color: transparent;
-  color: var(--db-gh-link-color-text-hover);
-  text-decoration: var(--db-gh-link-text-decoration-hover);
-  background-image: var(--db-icon-pencil-hover);
-}
-
-/*
-  -------------
-  Percy Visual Testing Styles
-  -------------
-*/
-
-/* @media only percy {
-  body,
-  .markdown-section {
-    background: transparent;
-  }
-
-  .markdown-section {
-    padding: 1rem;
-  }
-
-  .content {
-    left: 0;
-  }
-
-  .code-preview {
-    margin-bottom: 1rem;
-    max-width: 100%;
-  }
-
-  .sidebar,
-  .sidebar-toggle,
-  .content > *:not(.markdown-section),
-  .markdown-section > *:not(.code-preview):not(h3[id]),
-  .code-preview .code-preview__source,
-  .code-preview--expanded .code-preview__source,
-  .code-preview .code-preview__preview .code-preview__resizer,
-  .code-preview .code-preview__actions {
-    display: none !important;
-  }
-} */
