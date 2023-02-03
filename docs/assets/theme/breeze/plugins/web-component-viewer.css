@@ -4,6 +4,7 @@
   position: relative;
   min-width: 19rem;
   max-width: 100%;
+  background-color: #fff;
   border: 1px solid var(--db-component-viewer-color-border);
   border-radius: 2px;
 }
@@ -211,6 +212,7 @@
   overflow: auto;
   padding: 0;
   background-color: var(--db-content-color-background);
+  box-shadow: none !important;
   margin: 0 !important;
   border-radius: 0 !important;
   width: auto !important;
