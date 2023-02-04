@@ -548,6 +548,7 @@ body.close .content {
 .markdown-section {
   background-color: var(--db-content-color-background);
   box-shadow: var(--db-content-box-shadow);
+  border: var(--db-content-border);
   color: var(--db-content-color-text);
   margin: 0 0 var(--db-content-margin-vertical) 0;
   padding: var(--db-content-padding-vertical)
