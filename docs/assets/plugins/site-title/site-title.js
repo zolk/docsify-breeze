@@ -40,8 +40,8 @@ function siteTitle(hook, vm) {
 
     const sidebar = document.querySelector(".sidebar");
     const oldSiteTitle = document.querySelector(".sidebar h1.app-name");
-    sidebar.prepend(newSiteTitle);
-    oldSiteTitle.remove();
+    sidebar?.prepend(newSiteTitle);
+    oldSiteTitle?.remove();
   });
 }
 
