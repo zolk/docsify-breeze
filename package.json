@@ -1,15 +1,22 @@
 {
   "name": "@zolk/docsify-breeze",
   "version": "1.0.0",
-  "description": "A starter kit for documenting web components.",
+  "description": "Painless web component documentation powered by Docsify.",
   "author": "Kevin Zolkiewicz",
   "license": "MIT",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/breeze/index.js",
   "customElements": "dist/custom-elements.json",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zolk/docsify-breeze.git"
+  },
+  "bugs": {
+    "url": "https://github.com/zolk/docsify-breeze/issues"
+  },
+  "homepage": "https://github.com/zolk/docsify-breeze#readme",
   "files": [
-    "dist"
+    "dist/breeze"
   ],
   "scripts": {
     "prepare": "husky install",

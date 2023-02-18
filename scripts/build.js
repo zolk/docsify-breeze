@@ -43,8 +43,14 @@ mkdirp.sync(outdir);
       format: "esm",
       target: "es2017",
       entryPoints: [
-        // Main Entry Point
-        "./src/index.ts",
+        // Breeze Plugins
+        "./src/breeze/index.js",
+        ...(await globby("./src/breeze/plugins/**/*.js")),
+        // Breeze Theme
+        "./src/breeze/theme/breeze.css",
+        "./src/breeze/theme/tokens/breeze-tokens.css",
+        // All Components
+        "./src/components/index.ts",
         // Individual Components
         ...(await globby("./src/components/**/!(*.(styles|test)).ts")),
         // Global Styles

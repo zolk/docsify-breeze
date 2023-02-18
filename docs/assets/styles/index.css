@@ -1,15 +1,11 @@
 /* Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Code+Pro&display=swap");
 
-/* Primitive Tokens */
-@import url("tokens/primitive-tokens.css");
+/* Prism Theme */
+@import url("https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css");
 
-/* Breeze Styles & Tokens */
-@import url("tokens/breeze-tokens.css");
-@import url("breeze/breeze.css");
-
-/* Prism styles */
-@import url("prism.css");
+/* Breeze Tokens */
+@import url("/dist/breeze/theme/tokens/breeze-tokens.css");
 
 /* Custom styles */
 @import url("custom/pages.css");
