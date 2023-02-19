@@ -49,9 +49,7 @@ mkdirp.sync(outdir);
         // Breeze Theme
         "./src/breeze/theme/breeze.css",
         "./src/breeze/theme/tokens/breeze-tokens.css",
-        // All Components
-        "./src/components/index.ts",
-        // Individual Components
+        // Components
         ...(await globby("./src/components/**/!(*.(styles|test)).ts")),
         // Global Styles
         ...(await globby("./src/styles/*.css")),
