@@ -1,5 +1,5 @@
 {
-  "name": "@zolk/docsify-breeze",
+  "name": "docsify-breeze",
   "version": "1.0.0",
   "description": "Painless web component documentation powered by Docsify.",
   "author": "Kevin Zolkiewicz",
