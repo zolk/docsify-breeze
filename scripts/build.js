@@ -54,11 +54,13 @@ mkdirp.sync(outdir);
         // Global Styles
         ...(await globby("./src/styles/*.css")),
       ],
+      outExtension: { ".js": ".min.js", ".css": ".min.css" },
       outdir,
       incremental: serve,
       bundle: true,
       splitting: false,
-      minify: serve,
+      minify: true,
+      sourcemap: true,
       plugins: [],
       watch: {
         onRebuild(err) {

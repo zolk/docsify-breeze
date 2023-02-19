@@ -4,7 +4,7 @@
   "description": "Painless web component documentation powered by Docsify.",
   "author": "Kevin Zolkiewicz",
   "license": "MIT",
-  "main": "dist/breeze/index.js",
+  "main": "dist/breeze/index.min.js",
   "customElements": "dist/custom-elements.json",
   "type": "module",
   "repository": {

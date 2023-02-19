@@ -66,11 +66,11 @@ and default theming tokens:
     <meta charset="UTF-8" />
     <link
       rel="stylesheet"
-      href="//cdn.jsdelivr.net/npm/docsify-breeze@1/theme/breeze.css"
+      href="//cdn.jsdelivr.net/npm/docsify-breeze@1/theme/breeze.min.css"
     />
     <link
       rel="stylesheet"
-      href="//cdn.jsdelivr.net/npm/docsify-breeze@1/theme/tokens/breeze-tokens.css"
+      href="//cdn.jsdelivr.net/npm/docsify-breeze@1/theme/tokens/breeze-tokens.min.css"
     />
   </head>
   <body>
@@ -83,7 +83,7 @@ and default theming tokens:
     </script>
     <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
     <script
-      src="//cdn.jsdelivr.net/npm/docsify-breeze@1/index.js"
+      src="//cdn.jsdelivr.net/npm/docsify-breeze@1"
       type="module"
     ></script>
   </body>
