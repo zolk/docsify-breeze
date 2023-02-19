@@ -2,19 +2,19 @@
 
 # Docsify Breeze — Painless Web Component Docs
 
-Docsify Breeze is a starter template, powered by [Docsify](https://docsify.js.org/),
-to enable joyful documentation of 
+Docsify Breeze is a documentation toolkit, powered by [Docsify](https://docsify.js.org/),
+to enable joyful documentation of
 [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components).
 The template incorporates a suite of custom Docsify plugins, plus a custom
-theme, that make documenting Web Components a breeze. The project also includes
-the basic foundations for bootstrapping a Web Components-based component library.
+theme, that make documenting Web Components a breeze.
 
-## What does it include?
+[**See Breeze in action**](https://docsify-breeze.vercel.app)
 
-### Powered by Docsify
+## What does it offer?
 
 [Docsify](https://docsify.js.org/) is a lightweight documentation site generator
-with no statically generated HTML files. All documentation is written in Markdown.
+with no statically generated HTML files. All documentation is written in
+Markdown.
 
 Breeze includes a custom theme for Docsify, plus a suite of custom
 plugins that enable robust documentation of Web Components. Features include
@@ -35,26 +35,69 @@ carte for any Docsify installation:
 - [docsify-theme-switcher](https://github.com/zolk/docsify-theme-switcher)
 - [docsify-github-edit-link](https://github.com/zolk/docsify-github-edit-link)
 
-### Development Stack
-
-This project also includes the following technologies for rapidly building and
-testing Web Components:
-
-- [Lit](https://lit.dev/) for simple and fast Web Components.
-- [esbuild](https://esbuild.github.io/) for blazing fast bundling.
-- [Web Test Runner](https://modern-web.dev/docs/test-runner/overview/) with
-  [Playwright](https://playwright.dev) for cross-browser testing.
-- [Percy](https://percy.io/) for visual regression testing that integrates
-  seamlessly with Docsify thanks to a custom configuration.
-- [Custom Elements Manifest Analyzer](https://custom-elements-manifest.open-wc.org/analyzer/getting-started/) for automatic documentation of class members.
-- [Plop](https://plopjs.com/) for quickly spinning up new components.
-
 ## Who's it for?
 
-Docsify Breeze is for organizations looking to create or document a Web
-Component-based component library or design system. The starter template
-includes everything you need to hit the ground running, including a 
-complete toolchain to write, test, and build Web Components.
+Docsify Breeze is for organizations looking to document a Web
+Component-based component library or design system.
+
+## Installation and Theming
+
+If you're creating a new Docsify site from scratch, first install the Docsify
+CLI:
+
+```bash
+npm i docsify-cli -g
+```
+
+Then initialize your new Docsify site:
+
+```bash
+docsify init ./docs
+```
+
+To setup Breeze, modify the `index.html` file to load its plugins, styles,
+default tokens, and basic configuration options:
+
+```html
+<html>
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta charset="UTF-8" />
+    <link
+      rel="stylesheet"
+      href="//cdn.jsdelivr.net/npm/docsify-breeze@1/theme/breeze.css"
+    />
+    <link
+      rel="stylesheet"
+      href="//cdn.jsdelivr.net/npm/docsify-breeze@1/theme/tokens/breeze-tokens.css"
+    />
+  </head>
+  <body>
+    <div id="app"></div>
+    <script>
+      window.$docsify = {
+        //...
+      };
+    </script>
+    <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+    <script
+      src="//cdn.jsdelivr.net/npm/docsify-breeze@1/index.js"
+      type="module"
+    ></script>
+  </body>
+</html>
+```
+
+For more documentation about Docsify itself, visit the
+[Docsify site](https://docsify.js.org/).
+
+### Theming Breeze
+
+Breeze is fully themeable through the use of "tokens," which are simply native
+CSS Custom Properties. You can create your own token set by downloading a copy
+of breeze-tokens.css, editing the values as desired, and including it with your
+local Docsify installation.
 
 ## Acknowledgements
 

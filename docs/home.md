@@ -8,17 +8,17 @@
 
 <h2>What&#8217;s it do?</h2>
 
-Docsify Breeze is a starter toolkit, powered by Docsify, to enable joyful documentation
-of [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components).
-This toolkit incorporates a suite of custom Docsify plugins, plus a custom
-theme, that make documenting Web Components a breeze. The project also includes
-the basic foundations for bootstrapping a Web Components-based component library.
+Docsify Breeze is a documentation toolkit, powered by [Docsify](https://docsify.js.org/),
+to enable joyful documentation of
+[Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components).
+The template incorporates a suite of custom Docsify plugins, plus a custom
+theme, that make documenting Web Components a breeze.
 
 <h3>Powered by Docsify</h3>
 
-This project is powered by [Docsify](https://docsify.js.org/), a lightweight
-documentation site generator with no statically generated HTML files.
-All documentation is written in Markdown.
+[Docsify](https://docsify.js.org/) is a lightweight documentation site generator
+with no statically generated HTML files. All documentation is written in
+Markdown.
 
 Breeze includes a custom theme for Docsify, plus a suite of custom
 plugins that enable robust documentation of Web Components. Features include
@@ -39,10 +39,7 @@ carte for any Docsify installation:
 - [docsify-theme-switcher](https://github.com/zolk/docsify-theme-switcher)
 - [docsify-github-edit-link](https://github.com/zolk/docsify-github-edit-link)
 
-<h2>Who&#8217;s it for?</h2>
+<h2>Installing Breeze</h2>
 
-Docsify Breeze is for organizations looking to create a bespoke component
-library or design system that uses Web Components. It includes everything you
-need to hit the ground running, including a complete toolchain to write, test,
-and build Web Components, plus an optimized documentation framework to ease
-development and encourage adoption across your organization.
+Refer to the [GitHub README](https://github.com/zolk/docsify-breeze#readme) for
+complete installation and theming instructions.

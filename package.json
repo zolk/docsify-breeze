@@ -1,15 +1,22 @@
 {
-  "name": "@zolk/docsify-breeze",
+  "name": "docsify-breeze",
   "version": "1.0.0",
-  "description": "A starter kit for documenting web components.",
+  "description": "Painless web component documentation powered by Docsify.",
   "author": "Kevin Zolkiewicz",
   "license": "MIT",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/breeze/index.js",
   "customElements": "dist/custom-elements.json",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zolk/docsify-breeze.git"
+  },
+  "bugs": {
+    "url": "https://github.com/zolk/docsify-breeze/issues"
+  },
+  "homepage": "https://github.com/zolk/docsify-breeze#readme",
   "files": [
-    "dist"
+    "dist/breeze"
   ],
   "scripts": {
     "prepare": "husky install",
@@ -30,7 +37,7 @@
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.6.6",
     "@open-wc/testing": "^3.1.7",
-    "@percy/cli": "^1.16.0",
+    "@percy/cli": "^1.19.2",
     "@typescript-eslint/eslint-plugin": "^5.47.0",
     "@typescript-eslint/parser": "^5.47.0",
     "@web/dev-server-esbuild": "^0.3.3",

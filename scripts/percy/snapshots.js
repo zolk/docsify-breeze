@@ -35,5 +35,7 @@ module.exports = async () => {
   return snapshots.map((snapshot) => ({
     name: snapshot.name,
     url: snapshot.url,
+    waitForTimeout: 5000,
+    waitForSelector: "*:defined",
   }));
 };

@@ -5,7 +5,7 @@
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-function customReplacements(hook) {
+function headersCards(hook) {
   hook.beforeEach(async function (content, next) {
     const pathSegments = document.body.dataset.page.split("/");
     const isComponentPage = pathSegments[1] === "components";
@@ -113,6 +113,6 @@ function customReplacements(hook) {
 if (window) {
   window.$docsify.plugins = [].concat(
     window.$docsify.plugins || [],
-    customReplacements
+    headersCards
   );
 }
