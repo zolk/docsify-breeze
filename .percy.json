@@ -3,6 +3,7 @@
   "snapshot": {
     "widths": [800],
     "min-height": 500,
-    "enable-javascript": true
+    "enable-javascript": true,
+    "disable-shadow-dom": true
   }
 }
