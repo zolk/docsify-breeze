@@ -55,10 +55,9 @@ mkdirp.sync(outdir);
         ...(await globby("./src/styles/*.css")),
       ],
       outdir,
-      chunkNames: "chunks/[name].[hash]",
       incremental: serve,
       bundle: true,
-      splitting: true,
+      splitting: false,
       minify: serve,
       plugins: [],
       watch: {
@@ -99,7 +98,7 @@ mkdirp.sync(outdir);
       },
     });
 
-    bs.watch(["docs/**/*.md", "dist/**/*.js"]).on("change", () => {
+    bs.watch(["docs/**/*.(md|html)", "dist/**/*.js"]).on("change", () => {
       bs.reload();
     });
   }
