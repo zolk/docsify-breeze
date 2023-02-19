@@ -56,7 +56,7 @@ docsify init ./docs
 ```
 
 To setup Breeze, modify the `index.html` file to load its plugins, styles,
-default tokens, and basic configuration options:
+and default theming tokens:
 
 ```html
 <html>
@@ -66,23 +66,24 @@ default tokens, and basic configuration options:
     <meta charset="UTF-8" />
     <link
       rel="stylesheet"
-      href="//cdn.jsdelivr.net/npm/docsify-breeze@1/theme/breeze.css"
+      href="//cdn.jsdelivr.net/npm/docsify-breeze@1/theme/breeze.min.css"
     />
     <link
       rel="stylesheet"
-      href="//cdn.jsdelivr.net/npm/docsify-breeze@1/theme/tokens/breeze-tokens.css"
+      href="//cdn.jsdelivr.net/npm/docsify-breeze@1/theme/tokens/breeze-tokens.min.css"
     />
   </head>
   <body>
     <div id="app"></div>
     <script>
       window.$docsify = {
-        //...
+        name: "",
+        repo: "",
       };
     </script>
     <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
     <script
-      src="//cdn.jsdelivr.net/npm/docsify-breeze@1/index.js"
+      src="//cdn.jsdelivr.net/npm/docsify-breeze@1"
       type="module"
     ></script>
   </body>
@@ -92,11 +93,72 @@ default tokens, and basic configuration options:
 For more documentation about Docsify itself, visit the
 [Docsify site](https://docsify.js.org/).
 
+### Configuration Options
+
+#### Site Title
+
+You can configure the site name, description, and logo that appears in the
+sidebar by adding the following to your Docsify configuration:
+
+```html
+<script>
+  window.$docsify = {
+    // ... (your existing Docsify config)
+    siteTitle: {
+      primary: "My Site Title",
+      secondary: "My Site Description",
+      logo: '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" /></svg>',
+      logoFill: "#ff6842",
+    },
+  };
+</script>
+```
+
+This includes the following options:
+
+- **siteTitle.primary**: The name of your site.
+- **siteTitle.secondary**: Optional. A description to appear below your site's name.
+- **siteTitle.logo**: Your site's logo as SVG markup.
+- **siteTitle.logoFill**: Optional. The fill color of your logo (requires that your SVG uses `currentColor` for stroke and fill values).
+
+#### GitHub Edit Link
+
+Refer to [docsify-github-edit-link](https://github.com/zolk/docsify-github-edit-link)
+for a full list of requirements, configuration, and usage options.
+
+GitHub Edit Link comes bundled with Breeze, so there's no need to separately
+include it's JavaScript plugin.
+
+#### Theme Switcher
+
+Refer to [docsify-theme-switcher](https://github.com/zolk/docsify-theme-switcher)
+for a full list of requirements, configuration, and usage options.
+
+Theme Switcher comes bundled with Breeze, so there's no need to separately
+include it's JavaScript plugin.
+
+#### Web Component Docs
+
+Refer to [docsify-web-component-docs](https://github.com/zolk/docsify-web-component-docs)
+for a full list of requirements, configuration, and usage options.
+
+Web Components Docs comes bundled with Breeze, so there's no need to separately
+include it's JavaScript plugin.
+
+#### Web Component Viewer
+
+Refer to [docsify-web-component-viewer](https://github.com/zolk/docsify-web-component-viewer)
+for a full list of requirements, configuration, and usage options.
+
+Web Components Viewer comes bundled with Breeze, so there's no need to separately
+include it's JavaScript plugin.
+
 ### Theming Breeze
 
 Breeze is fully themeable through the use of "tokens," which are simply native
 CSS Custom Properties. You can create your own token set by downloading a copy
-of breeze-tokens.css, editing the values as desired, and including it with your
+of [breeze-tokens.css](https://github.com/zolk/docsify-breeze/blob/main/src/breeze/theme/tokens/breeze-tokens.css),
+editing the values as desired, and including it with your
 local Docsify installation.
 
 ## Acknowledgements

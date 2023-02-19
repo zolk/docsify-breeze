@@ -54,12 +54,13 @@ mkdirp.sync(outdir);
         // Global Styles
         ...(await globby("./src/styles/*.css")),
       ],
+      outExtension: { ".js": ".min.js", ".css": ".min.css" },
       outdir,
-      chunkNames: "chunks/[name].[hash]",
       incremental: serve,
       bundle: true,
-      splitting: true,
-      minify: serve,
+      splitting: false,
+      minify: true,
+      sourcemap: true,
       plugins: [],
       watch: {
         onRebuild(err) {
@@ -99,7 +100,7 @@ mkdirp.sync(outdir);
       },
     });
 
-    bs.watch(["docs/**/*.md", "dist/**/*.js"]).on("change", () => {
+    bs.watch(["docs/**/*.(md|html)", "dist/**/*.js"]).on("change", () => {
       bs.reload();
     });
   }

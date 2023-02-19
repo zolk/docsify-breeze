@@ -5,7 +5,7 @@
 @import url("https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css");
 
 /* Breeze Tokens */
-@import url("/dist/breeze/theme/tokens/breeze-tokens.css");
+@import url("/dist/breeze/theme/tokens/breeze-tokens.min.css");
 
 /* Custom styles */
 @import url("custom/pages.css");
