@@ -66,11 +66,11 @@ and default theming tokens:
     <meta charset="UTF-8" />
     <link
       rel="stylesheet"
-      href="//cdn.jsdelivr.net/npm/docsify-breeze@1/theme/breeze.min.css"
+      href="//cdn.jsdelivr.net/npm/docsify-breeze@1/dist/breeze/theme/breeze.min.css"
     />
     <link
       rel="stylesheet"
-      href="//cdn.jsdelivr.net/npm/docsify-breeze@1/theme/tokens/breeze-tokens.min.css"
+      href="//cdn.jsdelivr.net/npm/docsify-breeze@1/dist/breeze/theme/tokens/breeze-tokens.min.css"
     />
   </head>
   <body>
