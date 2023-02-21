@@ -1,4 +1,4 @@
-## 1.1.4
+## 1.1.5
 
 - Improve styling of section headers
 
