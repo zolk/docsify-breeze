@@ -789,6 +789,18 @@ p.db-page-headline + div {
   text-decoration-color: var(--db-content-link-color-text-decoration-hover);
 }
 
+.markdown-section a[rel="noopener"]:not(.edit-on-github) {
+  background-position: right calc(100% - 1px);
+  background-repeat: no-repeat;
+  background-image: var(--db-icon-arrow-up-right);
+  background-size: 0.9rem;
+  padding-right: 1rem;
+}
+
+.markdown-section a[rel="noopener"]:not(.edit-on-github):hover {
+  background-image: var(--db-icon-arrow-up-right-hover);
+}
+
 .markdown-section code,
 .controls__inputs code {
   display: inline-block;
