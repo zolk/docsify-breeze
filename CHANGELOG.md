@@ -1,3 +1,7 @@
+## 1.1.3
+
+- Improved control over header font families and weights.
+
 ## 1.1.2
 
 - Style bug fixes.
