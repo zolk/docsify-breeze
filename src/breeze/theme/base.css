@@ -548,6 +548,7 @@ body.close .content {
 .markdown-section {
   background-color: var(--db-content-color-background);
   box-shadow: var(--db-content-box-shadow);
+  border: var(--db-content-border);
   color: var(--db-content-color-text);
   margin: 0 0 var(--db-content-margin-vertical) 0;
   padding: var(--db-content-padding-vertical)
@@ -786,6 +787,18 @@ p.db-page-headline + div {
   text-decoration: var(--db-content-link-text-decoration-hover);
   background-color: var(--db-content-link-color-background-hover);
   text-decoration-color: var(--db-content-link-color-text-decoration-hover);
+}
+
+.markdown-section a[rel="noopener"]:not(.edit-on-github) {
+  background-position: right calc(100% - 1px);
+  background-repeat: no-repeat;
+  background-image: var(--db-icon-arrow-up-right);
+  background-size: 0.9rem;
+  padding-right: 1rem;
+}
+
+.markdown-section a[rel="noopener"]:not(.edit-on-github):hover {
+  background-image: var(--db-icon-arrow-up-right-hover);
 }
 
 .markdown-section code,

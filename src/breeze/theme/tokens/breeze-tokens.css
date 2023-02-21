@@ -1,16 +1,34 @@
 @import url("primitive-tokens.css");
 
 html {
-  /* Color Generics */
+  /* Sidebar & Footer Colors */
   --db-color-background: var(--color-blue-medium);
-  --db-color-text: var(--color-white);
-  --db-color-text-link: var(--color-blue-medium);
-  --db-color-text-bullet: var(--color-blue-medium);
-  --db-color-text-weak: var(--color-blue-deep);
+  --db-color-border: var(--color-neutral-light);
+  --db-color-border-darker: var(--color-neutral-deep);
+  --db-color-text-rgb: 255, 255, 255;
+  --db-color-text: rgb(var(--db-color-text-rgb));
   --db-color-accent: var(--color-blue-lightest);
+  --db-color-shadow: rgba(0, 0, 0, 0.25);
   --db-color-focus-visible: var(--color-fuchsia);
+  --db-sidebar-color-background-accent: var(--color-blue-light);
+  --db-sidebar-color-fill: var(--color-white);
 
-  /* Font Generics */
+  /* Main Content Area Colors */
+  --db-content-color-border: var(--color-neutral-light);
+  --db-content-color-border-darker: var(--color-neutral-medium);
+  --db-content-color-background: var(--color-white);
+  --db-content-color-background-accent: var(--color-neutral-lighter);
+  --db-content-color-background-accent-lighter: var(--color-neutral-lightest);
+  --db-content-color-background-accent-darker: var(--color-neutral-light);
+  --db-content-color-shadow: rgba(0, 0, 0, 0.05);
+  --db-content-color-fill: var(--color-blue-light);
+  --db-content-color-text: var(--color-blue-deep);
+  --db-content-color-text-weak: var(--color-neutral-deep);
+  --db-content-color-text-link: var(--color-blue-medium);
+  --db-content-color-text-link-secondary: var(--color-blue-light);
+  --db-content-color-text-bullet: var(--color-blue-medium);
+
+  /* Fonts */
   --db-font-family-heading: var(--font-family-inter);
   --db-font-family-body: var(--font-family-inter);
   --db-font-family-code: var(--font-family-source-code-pro);
@@ -27,9 +45,11 @@ html {
   --db-icon-color-swatch: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="%23f2f6f8" viewBox="0 0 24 24" stroke="%236e8091"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" /></svg>');
   --db-icon-pencil: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="%236e8091" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg>');
   --db-icon-pencil-hover: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="%231b354d" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg>');
+  --db-icon-arrow-up-right: url('data:image/svg+xml;utf8,<svg viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="m22.792 10.634-13.73 13.73a1.676 1.676 0 0 1-2.37-2.37l13.73-13.73H7.877a1.676 1.676 0 0 1 0-3.352h16.591c.926 0 1.676.75 1.676 1.676V23.18a1.676 1.676 0 1 1-3.352 0V10.634Z" fill="%231b354d"></path></svg>');
+  --db-icon-arrow-up-right-hover: url('data:image/svg+xml;utf8,<svg viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="m22.792 10.634-13.73 13.73a1.676 1.676 0 0 1-2.37-2.37l13.73-13.73H7.877a1.676 1.676 0 0 1 0-3.352h16.591c.926 0 1.676.75 1.676 1.676V23.18a1.676 1.676 0 1 1-3.352 0V10.634Z" fill="%231b354d"></path></svg>');
 
   /* Loading Page */
-  --db-loading-color-text: var(--color-white);
+  --db-loading-color-text: var(--db-color-text);
   --db-loading-font-size: 1.875rem;
   --db-loading-font-weight: 400;
   --db-loading-margin: 40vh auto;
@@ -39,31 +59,29 @@ html {
   --db-progress-bar-color-background: var(--db-color-accent);
 
   /* Sidebar */
-  --db-sidebar-color-border-subnav: var(--color-white-25);
-  --db-sidebar-color-text-subnav: var(--color-white-80);
   --db-sidebar-width: 18.75rem;
   --db-sidebar-padding: 1.125rem;
   --db-sidebar-transition: transform 0.25s ease-out;
-  --db-sidebar-scrollbar-track-color: #ffffff40;
-  --db-sidebar-scrollbar-thumb-color: #ffffff70;
+  --db-sidebar-scrollbar-track-color: rgba(var(--db-color-text-rgb), 0.4);
+  --db-sidebar-scrollbar-thumb-color: rgba(var(--db-color-text-rgb), 0.7);
 
   /* Sidebar Toggle Button */
   --db-sidebar-toggle-top: 1.7rem;
-  --db-sidebar-toggle-color-background: var(--color-white);
+  --db-sidebar-toggle-color-background: var(--db-content-color-background);
   --db-sidebar-toggle-color-background-closed: transparent;
-  --db-sidebar-toggle-color-border: var(--color-neutral-light);
-  --db-sidebar-toggle-color-fill-close: var(--db-color-text-weak);
-  --db-sidebar-toggle-color-fill-open: var(--color-white);
+  --db-sidebar-toggle-color-border: var(--db-color-border);
+  --db-sidebar-toggle-color-fill-close: var(--db-content-color-text);
+  --db-sidebar-toggle-color-fill-open: var(--db-color-text);
   --db-sidebar-toggle-color-fill-hover: var(--db-color-accent);
   --db-sidebar-toggle-shadow: 0px 1px 0px var(--color-black-05);
 
   /* Sidebar Site Title */
   --db-sidebar-logo-box-width: 37px;
   --db-sidebar-logo-box-height: 37px;
-  --db-sidebar-logo-box-color-background: var(--color-white);
+  --db-sidebar-logo-box-color-background: var(--db-content-color-background);
   --db-sidebar-logo-box-border: unset;
   --db-sidebar-logo-box-border-radius: 5px;
-  --db-sidebar-logo-box-box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.25);
+  --db-sidebar-logo-box-box-shadow: 0px 0px 3px var(--db-color-shadow);
   --db-sidebar-logo-width: 24px;
   --db-sidebar-logo-height: 24px;
   --db-sidebar-title-font-size-primary: 0.9375rem;
@@ -72,31 +90,34 @@ html {
   --db-sidebar-title-letter-spacing-secondary: -0.025rem;
 
   /* Search Box */
-  --db-search-color-background: var(--color-blue-light);
-  --db-search-color-text-placeholder: var(--color-white-70);
+  --db-search-color-background: var(--db-sidebar-color-background-accent);
+  --db-search-color-text-placeholder: rgba(var(--db-color-text-rgb), 0.75);
   --db-search-color-border-focus: var(--db-color-accent);
-  --db-search-clear-button-fill: var(--color-white);
-  --db-search-results-color-border: var(--color-neutral-deep);
+  --db-search-clear-button-fill: var(--db-sidebar-color-fill);
+  --db-search-results-color-border: var(--db-color-border-darker);
   --db-search-icon-search: var(--db-icon-search);
 
   /* Sidebar Navigation */
-  --db-sidebar-nav-color-text: var(--color-white);
+  --db-sidebar-nav-color-text: var(--db-color-text);
   --db-sidebar-nav-font-size: 0.75rem;
   --db-sidebar-nav-line-height: 2.2;
   --db-sidebar-nav-heading-border-top: unset;
   --db-sidebar-nav-heading-border-bottom: unset;
-  --db-sidebar-nav-heading-color: #ffffff90;
+  --db-sidebar-nav-heading-color: rgba(var(--db-color-text-rgb), 0.9);
   --db-sidebar-nav-heading-font-size: 0.9rem;
   --db-sidebar-nav-heading-letter-spacing: 1px;
   --db-sidebar-nav-heading-text-transform: uppercase;
-  --db-sidebar-nav-link-color-text: var(--color-white);
+  --db-sidebar-nav-link-color-text: var(--db-color-text);
   --db-sidebar-nav-link-color-text-hover: var(--db-color-accent);
   --db-sidebar-nav-link-color-text-active: var(--db-color-accent);
   --db-sidebar-nav-link-font-size: 0.875rem;
   --db-sidebar-nav-link-font-weight: 600;
-  --db-sidebar-nav-link-section-color-text: var(--color-white-80);
-  --db-sidebar-nav-link-section-color-border: var(--color-white-25);
-  --db-sidebar-nav-link-section-color-text-active: var(--color-white);
+  --db-sidebar-nav-link-section-color-text: rgba(var(--db-color-text-rgb), 0.8);
+  --db-sidebar-nav-link-section-color-border: rgba(
+    var(--db-color-text-rgb),
+    0.25
+  );
+  --db-sidebar-nav-link-section-color-text-active: var(--db-color-text);
   --db-sidebar-nav-link-section-color-border-active: var(--db-color-accent);
   --db-sidebar-nav-link-section-font-weight: 400;
   --db-sidebar-nav-link-section-font-size: 0.8125rem;
@@ -107,12 +128,9 @@ html {
   /* Content Bounding Box */
   --db-content-top: 0;
   --db-content-right: 0;
+  --db-content-border: unset;
   --db-content-border-radius: 6px;
-  --db-content-border-radius-closed: 0;
-  --db-content-color-background: var(--color-white);
-  --db-content-color-text: var(--color-blue-deep);
-  --db-content-color-text-link: var(--db-color-accent);
-  --db-content-color-border-link: var(--db-color-accent);
+  --db-content-box-shadow: unset;
   --db-content-max-width: 50rem;
   --db-content-margin-vertical: 1rem;
   --db-content-margin-right: 1rem;
@@ -123,11 +141,11 @@ html {
   --db-content-header-color-background: var(--color-neutral-lighter);
   --db-content-header-margin-bottom: 3rem;
   --db-content-header-border-bottom: 1px;
-  --db-content-header-color-border: var(--color-neutral-medium);
+  --db-content-header-color-border: var(--db-content-color-border-darker);
   --db-content-header-padding-vertical: 2rem;
   --db-content-title-font-size: 2.5rem;
   --db-content-title-font-weight: 700;
-  --db-content-headline-color-text: var(--color-neutral-deep);
+  --db-content-headline-color-text: var(--db-content-color-text-weak);
   --db-content-headline-font-size: 1.4rem;
   --db-content-headline-line-height: 1.4;
   --db-content-headline-letter-spacing: -0.03em;
@@ -139,8 +157,8 @@ html {
   --db-content-heading-letter-spacing: -0.02em;
   --db-content-heading-text-decoration: none;
   --db-content-heading-text-decoration-hover: none;
-  --db-content-heading-color-text: var(--db-color-text-weak);
-  --db-content-heading-color-text-hover: var(--db-color-text-weak);
+  --db-content-heading-color-text: var(--db-content-color-text);
+  --db-content-heading-color-text-hover: var(--db-content-color-text);
   --db-content-h3-font-size: 1.2rem;
   --db-content-h4-font-size: 1.1rem;
   --db-content-h4-margin: 1rem 0;
@@ -149,12 +167,16 @@ html {
   --db-content-font-size: 0.9375rem;
   --db-content-line-height: 1.7;
   --db-content-list-margin-bottom: 0.5rem;
-  --db-content-list-bullet-color-fill: var(--db-color-text-bullet);
-  --db-content-link-color-text: var(--db-color-text-link);
-  --db-content-link-color-text-hover: var(--db-color-text-link);
+  --db-content-list-bullet-color-fill: var(--db-content-color-text-bullet);
+  --db-content-link-color-text: var(--db-content-color-text-link);
+  --db-content-link-color-text-hover: var(--db-content-color-text-link);
   --db-content-link-color-text-decoration: var(--db-color-accent);
-  --db-content-link-color-text-decoration-hover: var(--db-color-text-link);
-  --db-content-link-color-background-hover: var(--color-neutral-lighter);
+  --db-content-link-color-text-decoration-hover: var(
+    --db-content-color-text-link
+  );
+  --db-content-link-color-background-hover: var(
+    --db-content-color-background-accent
+  );
   --db-content-link-text-decoration: underline;
   --db-content-link-text-decoration-hover: underline;
   --db-content-link-text-decoration-thickness: 2px;
@@ -162,20 +184,24 @@ html {
   --db-content-link-transition: all 0.15s ease-in-out;
   --db-content-code-border-width: 1px;
   --db-content-code-border-radius: 2px;
-  --db-content-code-color-background: var(--color-neutral-lightest);
-  --db-content-code-color-border: var(--color-neutral-light);
+  --db-content-code-color-background: var(
+    --db-content-color-background-accent-lighter
+  );
+  --db-content-code-color-border: var(--db-content-color-border);
   --db-content-code-font-family: var(--db-font-family-code);
   --db-content-code-line-height: 1;
   --db-content-code-margin: 0.1rem;
   --db-content-code-padding: 0.1rem 0.3rem;
-  --db-content-code-block-color-background: var(--color-neutral-lighter);
+  --db-content-code-block-color-background: var(
+    --db-content-color-background-accent
+  );
   --db-content-code-block-border-radius: 2px;
   --db-content-code-block-font-size: 0.875rem;
   --db-content-code-block-line-height: 1.4;
   --db-content-code-block-margin: 0;
   --db-content-code-block-padding: 1rem;
   --db-content-code-block-tab-size: 2;
-  --db-content-tip-color-background: var(--color-neutral-lighter);
+  --db-content-tip-color-background: var(--db-content-color-background-accent);
   --db-content-tip-border-radius: 4px;
   --db-content-tip-border-left: 4px solid var(--db-color-background);
   --db-content-tip-margin: 0.875rem 1.5rem 0.75rem;
@@ -189,15 +215,15 @@ html {
   /* theme switcher */
   --db-theme-switcher-margin: 0.3rem 0 0 0;
   --db-theme-switcher-border-radius: 7px;
-  --db-theme-switcher-border: 1px solid var(--color-neutral-light);
-  --db-theme-switcher-color-background: var(--color-white);
-  --db-theme-switcher-color-border-hover: var(--color-neutral-medium);
+  --db-theme-switcher-border: 1px solid var(--db-content-color-border);
+  --db-theme-switcher-color-background: var(--db-content-color-background);
+  --db-theme-switcher-color-border-hover: var(--db-content-color-border-darker);
   --db-theme-switcher-color-border-focus: var(--db-color-accent);
-  --db-theme-switcher-color-text: var(--db-color-text-weak);
-  --db-theme-switcher-font-family: var(--font-family-body);
+  --db-theme-switcher-color-text: var(--db-content-color-text);
+  --db-theme-switcher-font-family: var(--db-font-family-body);
   --db-theme-switcher-font-size: 0.9rem;
   --db-theme-switcher-padding: 0.5rem 1.7rem 0.5rem 0.7rem;
-  --db-theme-switcher-shadow: 0px 1px 0px var(--color-black-05);
+  --db-theme-switcher-shadow: 0px 1px 0px var(--db-content-color-shadow);
   --db-theme-switcher-shadow-focus: 0 0 5px var(--db-color-accent);
   --db-theme-switcher-icon-select-arrow: var(--db-icon-select);
   --db-theme-switcher-icon-label: var(--db-icon-color-swatch);
@@ -210,22 +236,22 @@ html {
   --db-page-card-margin: 0 0 1.5rem;
   --db-page-card-padding: 1.5rem 3rem 1.5rem 1.5rem;
   --db-page-card-border-radius: 4px;
-  --db-page-card-box-shadow: 0px 1px 0px var(--color-black-05);
+  --db-page-card-box-shadow: 0px 1px 0px var(--db-content-color-shadow);
   --db-page-card-box-shadow-hover: 0px 0px 0px 1px var(--db-color-accent);
-  --db-page-card-color-border: var(--color-neutral-light);
+  --db-page-card-color-border: var(--db-content-color-border);
   --db-page-card-color-border-hover: var(--db-color-accent);
   --db-page-card-color-shadow-hover: var(--db-color-accent);
-  --db-page-card-title-color-text: var(--db-color-text-weak);
+  --db-page-card-title-color-text: var(--db-content-color-text);
   --db-page-card-title-font-size: 1.25rem;
   --db-page-card-title-font-weight: 700;
-  --db-page-card-body-color-text: var(--color-neutral-deep);
+  --db-page-card-body-color-text: var(--db-content-color-text-weak);
   --db-page-card-body-font-size: 0.875rem;
   --db-page-card-body-font-weight: 400;
   --db-page-card-icon-arrow: var(--db-icon-chevron-right-neutral);
 
   /* github edit link */
-  --db-gh-link-color-text: var(--color-neutral-deep);
-  --db-gh-link-color-text-hover: var(--db-color-text-link);
+  --db-gh-link-color-text: var(--db-content-color-text-weak);
+  --db-gh-link-color-text-hover: var(--db-content-color-text-link);
   --db-gh-link-margin: 2rem 0 0 0;
   --db-gh-link-padding: 0 0 0 1.2rem;
   --db-gh-link-font-size: 0.9rem;
@@ -246,13 +272,13 @@ html {
   --db-copy-code-padding: 0.2rem;
   --db-copy-code-border-radius: 4px;
   --db-copy-code-transition: all 0.3s;
-  --db-copy-code-color-background: var(--color-neutral-lighter);
-  --db-copy-code-color-border: var(--color-neutral-light);
-  --db-copy-code-color-fill: var(--color-neutral-dark);
-  --db-copy-code-color-background-hover: var(--color-white);
-  --db-copy-code-color-border-hover: var(--color-blue-light);
-  --db-copy-code-color-fill-hover: var(--color-blue-light);
-  --db-copy-code-color-background-success: var(--color-white);
+  --db-copy-code-color-background: var(--db-content-color-background-accent);
+  --db-copy-code-color-border: var(--db-content-color-border);
+  --db-copy-code-color-fill: var(--db-content-color-text-weak);
+  --db-copy-code-color-background-hover: var(--db-content-color-background);
+  --db-copy-code-color-border-hover: var(--db-content-color-border-darker);
+  --db-copy-code-color-fill-hover: var(--db-content-color-text);
+  --db-copy-code-color-background-success: var(--db-content-color-background);
   --db-copy-code-color-border-success: #155117;
   --db-copy-code-color-fill-success: #155117;
 
@@ -262,7 +288,7 @@ html {
   --db-component-docs-status-font-weight: 600;
   --db-component-docs-status-font-size: 0.75rem;
   --db-component-docs-status-text-transform: uppercase;
-  --db-component-docs-header-color-border: var(--color-neutral-light);
+  --db-component-docs-header-color-border: var(--db-content-color-border);
   --db-component-docs-status-color-background-draft: #faefd1;
   --db-component-docs-status-color-background-ready: #d7f4d8;
   --db-component-docs-status-color-background-deprecated: #f4e1d7;
@@ -270,45 +296,57 @@ html {
   --db-component-docs-status-color-text-ready: #155117;
   --db-component-docs-status-color-text-deprecated: #5a2d16;
   --db-component-docs-table-description-color-text: var(
-    --ep-_color-neutral-700
+    --db-content-color-text
   );
   --db-component-docs-table-description-font-size: 0.8125rem;
-  --db-component-docs-table-color-border: var(--color-neutral-light);
+  --db-component-docs-table-color-border: var(--db-content-color-border);
   --db-component-docs-table-header-color-background: var(
-    --color-neutral-lighter
+    --db-content-color-background-accent
   );
-  --db-component-docs-table-header-color-text: var(--color-neutral-deep);
+  --db-component-docs-table-header-color-text: var(
+    --db-content-color-text-weak
+  );
   --db-component-docs-table-header-font-weight: 600;
   --db-component-docs-table-header-font-size: 0.75rem;
   --db-component-docs-table-header-padding: 0.7rem;
   --db-component-docs-table-header-width-first-col: 8rem;
   --db-component-docs-table-cell-padding: 0.9rem 0.7rem;
-  --db-component-docs-table-cell-color-border: var(--color-neutral-light);
+  --db-component-docs-table-cell-color-border: var(--db-content-color-border);
   --db-component-docs-table-cell-font-weight: 400;
   --db-component-docs-table-cell-font-size: 0.875rem;
   --db-component-docs-method-signature-font-size: 0.9rem;
   --db-component-docs-card-border-radius: 6px;
-  --db-component-docs-card-color-border: var(--color-neutral-light);
+  --db-component-docs-card-color-border: var(--db-content-color-border);
   --db-component-docs-card-color-border-hover: var(--db-color-accent);
-  --db-component-docs-card-shadow: 0px 1px 0px var(--color-black-05);
+  --db-component-docs-card-shadow: 0px 1px 0px var(--db-content-color-shadow);
   --db-component-docs-card-shadow-hover: 0px 0px 0px 1px var(--db-color-accent);
-  --db-component-docs-card-color-background: var(--color-neutral-lighter);
+  --db-component-docs-card-color-background: var(
+    --db-content-color-background-accent
+  );
   --db-component-docs-card-height: 140px;
   --db-component-docs-card-header-font-size: 1.5rem;
-  --db-component-docs-card-description-color-text: var(--color-neutral-deep);
+  --db-component-docs-card-description-color-text: var(
+    --db-content-color-text-weak
+  );
   --db-component-docs-card-description-font-weight: 400;
 
   /* web-component-viewer */
-  --db-component-viewer-color-border: var(--color-neutral-light);
-  --db-component-viewer-resizer-color-background: var(--color-neutral-lightest);
-  --db-component-viewer-resizer-color-background-hover: var(
-    --color-neutral-lighter
+  --db-component-viewer-color-border: var(--db-content-color-border);
+  --db-component-viewer-resizer-color-background: var(
+    --db-content-color-background-accent-lighter
   );
-  --db-component-viewer-resizer-color-border: var(--color-neutral-light);
-  --db-component-viewer-resizer-color-border-hover: var(--color-neutral-medium);
-  --db-component-viewer-resizer-color-fill: var(--color-blue-light);
-  --db-component-viewer-action-color-text: var(--color-blue-light);
-  --db-component-viewer-action-color-text-hover: var(--content-color-text);
+  --db-component-viewer-resizer-color-background-hover: var(
+    --db-content-color-background-accent
+  );
+  --db-component-viewer-resizer-color-border: var(--db-content-color-border);
+  --db-component-viewer-resizer-color-border-hover: var(
+    --db-content-color-border-darker
+  );
+  --db-component-viewer-resizer-color-fill: var(--db-content-color-fill);
+  --db-component-viewer-action-color-text: var(
+    --db-content-color-text-link-secondary
+  );
+  --db-component-viewer-action-color-text-hover: var(--db-content-color-text);
   --db-component-viewer-action-font-weight: 500;
   --db-component-viewer-action-font-size: 0.75rem;
   --db-component-viewer-action-line-height: 1.4;
@@ -316,30 +354,35 @@ html {
   --db-component-viewer-action-text-decoration: none;
   --db-component-viewer-action-text-decoration-hover: none;
   --db-component-viewer-controls-color-background: var(
-    --color-neutral-lightest
+    --db-content-color-background-accent-lighter
   );
-  --db-component-viewer-controls-color-border: var(--color-neutral-light);
+  --db-component-viewer-controls-color-border: var(--db-content-color-border);
   --db-component-viewer-controls-code-color-background: var(
-    --color-neutral-lighter
+    --db-content-color-background-accent
   );
   --db-component-viewer-controls-textarea-height: 60px;
   --db-component-viewer-controls-input-color-accent: var(--db-color-accent);
-  --db-component-viewer-controls-input-color-background: var(--color-white);
-  --db-component-viewer-controls-input-color-border: var(--color-neutral-light);
+  --db-component-viewer-controls-input-color-background: var(
+    --db-content-color-background
+  );
+  --db-component-viewer-controls-input-color-border: var(
+    --db-content-color-border
+  );
   --db-component-viewer-controls-input-color-border-hover: var(
-    --color-neutral-medium
+    --db-content-color-border-darker
   );
   --db-component-viewer-controls-input-color-border-focus: var(
     --db-color-accent
   );
-  --db-component-viewer-controls-input-color-text: var(--db-color-text-weak);
+  --db-component-viewer-controls-input-color-text: var(--db-content-color-text);
   --db-component-viewer-controls-input-color-text-placeholder: var(
-    --color-neutral-deep
+    --db-content-color-text-weak
   );
   --db-component-viewer-controls-input-border-radius: 5px;
-  --db-component-viewer-controls-input-font-family: var(--font-family-body);
+  --db-component-viewer-controls-input-font-family: var(--db-font-family-body);
   --db-component-viewer-controls-input-font-size: 0.9rem;
-  --db-component-viewer-controls-input-shadow: 0px 1px 0px var(--color-black-05);
+  --db-component-viewer-controls-input-shadow: 0px 1px 0px
+    var(--db-content-color-shadow);
   --db-component-viewer-controls-input-shadow-focus: 0 0 5px
     var(--db-color-accent);
   --db-component-viewer-controls-select-icon-arrow: var(--db-icon-select);
