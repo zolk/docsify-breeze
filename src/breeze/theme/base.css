@@ -687,7 +687,7 @@ p.db-page-headline + div {
 }
 
 .markdown-section > h2 {
-  margin-top: 3rem;
+  margin: var(--db-content-section-heading-margin);
   font-size: var(--db-content-section-heading-font-size);
 }
 
@@ -763,6 +763,12 @@ p.db-page-headline + div {
 .markdown-section > p {
   font-size: var(--db-content-font-size);
   line-height: var(--db-content-line-height);
+}
+
+.markdown-section > ul,
+.markdown-section > ol,
+.markdown-section > p {
+  max-width: var(--db-content-max-character-width);
 }
 
 .markdown-section > ul > li::marker {
