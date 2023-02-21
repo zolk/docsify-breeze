@@ -695,12 +695,13 @@ p.db-page-headline + div {
 
 .markdown-section > h2 a {
   position: relative;
+  display: inline-block;
   left: -1.5rem;
   width: calc(100% + 1.5rem);
   padding-left: 1.5rem;
   background-image: var(--db-content-section-heading-icon);
   background-repeat: no-repeat;
-  background-position: left center;
+  background-position: left 0.7rem;
   background-size: 20px;
   font-weight: var(--db-content-section-heading-font-weight);
 }
