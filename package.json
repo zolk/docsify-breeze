@@ -16,7 +16,8 @@
   },
   "homepage": "https://github.com/zolk/docsify-breeze#readme",
   "files": [
-    "dist/breeze"
+    "dist/breeze",
+    "dist/chunks"
   ],
   "scripts": {
     "prepare": "husky install",
