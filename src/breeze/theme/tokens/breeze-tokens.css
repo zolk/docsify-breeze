@@ -153,6 +153,7 @@ html {
   --db-content-headline-line-height: 1.4;
   --db-content-headline-letter-spacing: -0.03em;
   --db-content-section-heading-margin: 3rem 0;
+  --db-content-section-heading-font-family: var(--db-font-family-heading);
   --db-content-section-heading-font-size: 1.7rem;
   --db-content-section-heading-font-weight: 700;
   --db-content-section-heading-icon: var(--db-icon-hashtag);
@@ -163,10 +164,16 @@ html {
   --db-content-heading-text-decoration-hover: none;
   --db-content-heading-color-text: var(--db-content-color-text);
   --db-content-heading-color-text-hover: var(--db-content-color-text);
+  --db-content-h3-font-family: var(--db-font-family-heading);
   --db-content-h3-font-size: 1.2rem;
+  --db-content-h3-font-weight: var(--db-content-heading-font-weight);
+  --db-content-h4-font-family: var(--db-font-family-heading);
   --db-content-h4-font-size: 1.1rem;
+  --db-content-h4-font-weight: var(--db-content-heading-font-weight);
   --db-content-h4-margin: 1rem 0;
+  --db-content-h5-font-family: var(--db-font-family-heading);
   --db-content-h5-font-size: 1rem;
+  --db-content-h5-font-weight: var(--db-content-heading-font-weight);
   --db-content-h5-margin: 1rem 0;
   --db-content-font-size: 0.9375rem;
   --db-content-line-height: 1.7;

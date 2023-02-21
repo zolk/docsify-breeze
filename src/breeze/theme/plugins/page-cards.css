@@ -104,7 +104,7 @@ a.db-page-card {
 
 .db-component-card__header h2 {
   margin: 0;
-  color: var(--content-color-text);
+  color: var(--db-content-color-text);
   font-family: var(--db-component-docs-card-header-font-family);
   font-size: var(--db-component-docs-card-header-font-size);
   font-weight: var(--db-component-docs-card-header-font-weight);

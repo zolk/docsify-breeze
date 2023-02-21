@@ -655,8 +655,8 @@ p.db-page-headline + div {
 .markdown-section > h4 a,
 .markdown-section > h5 a {
   color: var(--db-content-heading-color-text);
-  font-family: var(--db-font-family-heading);
-  font-weight: var(--db-content-heading-font-weight);
+  font-family: inherit;
+  font-weight: inherit;
   letter-spacing: var(--db-content-heading-letter-spacing);
   text-decoration: var(--db-content-heading-text-decoration);
 }
@@ -688,7 +688,9 @@ p.db-page-headline + div {
 
 .markdown-section > h2 {
   margin: var(--db-content-section-heading-margin);
+  font-family: var(--db-content-section-heading-font-family);
   font-size: var(--db-content-section-heading-font-size);
+  font-weight: var(--db-content-section-heading-font-weight);
 }
 
 .markdown-section > h2 a {
@@ -711,22 +713,30 @@ p.db-page-headline + div {
 .markdown-section > h3 {
   margin-top: 1.5rem;
   margin-bottom: 0.5rem;
+  font-family: var(--db-content-h3-font-family);
   font-size: var(--db-content-h3-font-size);
+  font-weight: var(--db-content-h3-font-weight);
 }
 
 .markdown-section > h4 {
   margin: var(--db-content-h4-margin);
+  font-family: var(--db-content-h4-font-family);
   font-size: var(--db-content-h4-font-size);
+  font-weight: var(--db-content-h4-font-weight);
 }
 
 .markdown-section > h5 {
   margin: var(--db-content-h5-margin);
+  font-family: var(--db-content-h5-font-family);
   font-size: var(--db-content-h5-font-size);
+  font-weight: var(--db-content-h5-font-weight);
 }
 
 .markdown-section > h6 {
   margin: var(--db-content-h6-margin);
+  font-family: var(--db-content-h6-font-family);
   font-size: var(--db-content-h6-font-size);
+  font-weight: var(--db-content-h6-font-weight);
 }
 
 .markdown-section > h3 a:hover,
