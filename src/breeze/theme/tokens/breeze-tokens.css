@@ -192,7 +192,7 @@ html {
   --db-content-link-text-decoration-hover: underline;
   --db-content-link-text-decoration-thickness: 2px;
   --db-content-link-font-weight: 600;
-  --db-content-link-transition: all 0.15s ease-in-out;
+  --db-content-link-transition: color 0.15s ease-in-out;
   --db-content-code-border-width: 1px;
   --db-content-code-border-radius: 2px;
   --db-content-code-color-background: var(
