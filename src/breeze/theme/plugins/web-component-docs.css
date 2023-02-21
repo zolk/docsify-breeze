@@ -62,7 +62,7 @@ p.meta-desc {
 .component-meta-table table thead th {
   padding: var(--db-component-docs-table-header-padding);
   background-color: var(--db-component-docs-table-header-color-background);
-  border-bottom: 1px solid var(--db-component-docs-table-color-border);
+  border-bottom: 1px solid var(--db-component-docs-table-header-color-border);
   color: var(--db-component-docs-table-header-color-text);
   font-weight: var(--db-component-docs-table-header-font-weight);
   font-size: var(--db-component-docs-table-header-font-size);

@@ -132,16 +132,19 @@ html {
   --db-content-border-radius: 6px;
   --db-content-box-shadow: unset;
   --db-content-max-width: 50rem;
+  --db-content-max-character-width: 75ch;
   --db-content-margin-vertical: 1rem;
   --db-content-margin-right: 1rem;
   --db-content-padding-vertical: 3.125rem;
   --db-content-padding-horizontal: 2.0625rem; /* small screens only; see media query */
 
   /* Content Typography */
-  --db-content-header-color-background: var(--color-neutral-lighter);
+  --db-content-header-color-background: var(
+    --db-content-color-background-accent
+  );
   --db-content-header-margin-bottom: 3rem;
   --db-content-header-border-bottom: 1px;
-  --db-content-header-color-border: var(--db-content-color-border-darker);
+  --db-content-header-color-border: var(--db-content-color-border);
   --db-content-header-padding-vertical: 2rem;
   --db-content-title-font-size: 2.5rem;
   --db-content-title-font-weight: 700;
@@ -149,6 +152,7 @@ html {
   --db-content-headline-font-size: 1.4rem;
   --db-content-headline-line-height: 1.4;
   --db-content-headline-letter-spacing: -0.03em;
+  --db-content-section-heading-margin: 3rem 0;
   --db-content-section-heading-font-size: 1.7rem;
   --db-content-section-heading-font-weight: 700;
   --db-content-section-heading-icon: var(--db-icon-hashtag);
@@ -242,6 +246,7 @@ html {
   --db-page-card-color-border-hover: var(--db-color-accent);
   --db-page-card-color-shadow-hover: var(--db-color-accent);
   --db-page-card-title-color-text: var(--db-content-color-text);
+  --db-page-card-title-font-family: var(--db-font-family-heading);
   --db-page-card-title-font-size: 1.25rem;
   --db-page-card-title-font-weight: 700;
   --db-page-card-body-color-text: var(--db-content-color-text-weak);
@@ -289,6 +294,9 @@ html {
   --db-component-docs-status-font-size: 0.75rem;
   --db-component-docs-status-text-transform: uppercase;
   --db-component-docs-header-color-border: var(--db-content-color-border);
+  --db-component-docs-status-border-draft: 1px solid #68360330;
+  --db-component-docs-status-border-ready: 1px solid #15511730;
+  --db-component-docs-status-border-deprecated: 1px solid #5a2d1630;
   --db-component-docs-status-color-background-draft: #faefd1;
   --db-component-docs-status-color-background-ready: #d7f4d8;
   --db-component-docs-status-color-background-deprecated: #f4e1d7;
@@ -300,6 +308,9 @@ html {
   );
   --db-component-docs-table-description-font-size: 0.8125rem;
   --db-component-docs-table-color-border: var(--db-content-color-border);
+  --db-component-docs-table-header-color-border: var(
+    --db-content-color-border-darker
+  );
   --db-component-docs-table-header-color-background: var(
     --db-content-color-background-accent
   );
@@ -325,6 +336,7 @@ html {
   );
   --db-component-docs-card-height: 140px;
   --db-component-docs-card-header-font-size: 1.5rem;
+  --db-component-docs-card-header-font-family: var(--db-font-family-heading);
   --db-component-docs-card-description-color-text: var(
     --db-content-color-text-weak
   );

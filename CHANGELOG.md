@@ -1,3 +1,7 @@
+## 1.1.1
+
+- Style bug fixes.
+
 ## 1.1.0
 
 - Add icon to designate external links.

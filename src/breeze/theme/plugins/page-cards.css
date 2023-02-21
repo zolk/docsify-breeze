@@ -48,8 +48,9 @@ a.db-page-card {
 
 .markdown-section .db-component-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(225px, auto));
+  grid-template-columns: repeat(auto-fill, minmax(250px, auto));
   gap: 1rem;
+  max-width: unset;
   margin: 0;
   padding: 0;
   line-height: 1.4;
