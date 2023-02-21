@@ -1,6 +1,6 @@
 {
   "name": "docsify-breeze",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Painless web component documentation powered by Docsify.",
   "author": "Kevin Zolkiewicz",
   "license": "MIT",
