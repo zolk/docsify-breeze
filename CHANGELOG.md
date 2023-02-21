@@ -1,3 +1,7 @@
+## 1.1.4
+
+- Improve styling of section headers
+
 ## 1.1.3
 
 - Improved control over header font families and weights.
