@@ -83,7 +83,7 @@ and default theming tokens:
     </script>
     <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
     <script
-      src="//cdn.jsdelivr.net/npm/docsify-breeze@1"
+      src="//cdn.jsdelivr.net/npm/docsify-breeze@1/dist/breeze/index.min.js"
       type="module"
     ></script>
   </body>
