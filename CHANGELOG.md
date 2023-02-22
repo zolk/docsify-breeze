@@ -1,3 +1,7 @@
+## 1.2.0
+
+- Load additional plugins separately to improve performance.
+
 ## 1.1.5
 
 - Improve styling of section headers
