@@ -6,7 +6,3 @@ import "./plugins/search/search.js";
 import "./plugins/site-title/site-title.js";
 import "//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js";
 import "//cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js";
-import "//cdn.jsdelivr.net/npm/docsify-github-edit-link@1/dist/github-edit-link.min.js";
-import "//cdn.jsdelivr.net/npm/docsify-theme-switcher@1/dist/theme-switcher.min.js";
-import "//cdn.jsdelivr.net/npm/docsify-web-component-docs@1/dist/web-component-docs.min.js";
-import "//cdn.jsdelivr.net/npm/docsify-web-component-viewer@1/dist/web-component-viewer.min.js";
