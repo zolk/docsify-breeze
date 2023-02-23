@@ -16,6 +16,7 @@ html {
   /* Main Content Area Colors */
   --db-content-color-border: var(--color-neutral-light);
   --db-content-color-border-darker: var(--color-neutral-medium);
+  --db-content-color-border-darkest: var(--color-neutral-dark);
   --db-content-color-background: var(--color-white);
   --db-content-color-background-accent: var(--color-neutral-lighter);
   --db-content-color-background-accent-lighter: var(--color-neutral-lightest);
@@ -24,7 +25,8 @@ html {
   --db-content-color-fill: var(--color-blue-light);
   --db-content-color-text: var(--color-blue-deep);
   --db-content-color-text-weak: var(--color-neutral-deep);
-  --db-content-color-text-link: var(--color-blue-medium);
+  --db-content-color-text-link: var(--color-blue-light);
+  --db-content-color-text-link-hover: var(--color-blue-deep);
   --db-content-color-text-link-secondary: var(--color-blue-light);
   --db-content-color-text-bullet: var(--color-blue-medium);
 
@@ -45,8 +47,8 @@ html {
   --db-icon-color-swatch: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="%23f2f6f8" viewBox="0 0 24 24" stroke="%236e8091"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" /></svg>');
   --db-icon-pencil: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="%236e8091" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg>');
   --db-icon-pencil-hover: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="%231b354d" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg>');
-  --db-icon-arrow-up-right: url('data:image/svg+xml;utf8,<svg viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="m22.792 10.634-13.73 13.73a1.676 1.676 0 0 1-2.37-2.37l13.73-13.73H7.877a1.676 1.676 0 0 1 0-3.352h16.591c.926 0 1.676.75 1.676 1.676V23.18a1.676 1.676 0 1 1-3.352 0V10.634Z" fill="%231b354d"></path></svg>');
-  --db-icon-arrow-up-right-hover: url('data:image/svg+xml;utf8,<svg viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="m22.792 10.634-13.73 13.73a1.676 1.676 0 0 1-2.37-2.37l13.73-13.73H7.877a1.676 1.676 0 0 1 0-3.352h16.591c.926 0 1.676.75 1.676 1.676V23.18a1.676 1.676 0 1 1-3.352 0V10.634Z" fill="%231b354d"></path></svg>');
+  --db-icon-arrow-up-right: url('data:image/svg+xml;utf8,<svg viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="m22.792 10.634-13.73 13.73a1.676 1.676 0 0 1-2.37-2.37l13.73-13.73H7.877a1.676 1.676 0 0 1 0-3.352h16.591c.926 0 1.676.75 1.676 1.676V23.18a1.676 1.676 0 1 1-3.352 0V10.634Z" fill="%232c5377"></path></svg>');
+  --db-icon-arrow-up-right-hover: url('data:image/svg+xml;utf8,<svg viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="m22.792 10.634-13.73 13.73a1.676 1.676 0 0 1-2.37-2.37l13.73-13.73H7.877a1.676 1.676 0 0 1 0-3.352h16.591c.926 0 1.676.75 1.676 1.676V23.18a1.676 1.676 0 1 1-3.352 0V10.634Z" fill="%230a1a29"></path></svg>');
 
   /* Loading Page */
   --db-loading-color-text: var(--db-color-text);
@@ -86,8 +88,12 @@ html {
   --db-sidebar-logo-height: 24px;
   --db-sidebar-title-font-size-primary: 0.9375rem;
   --db-sidebar-title-font-size-secondary: 0.8rem;
+  --db-sidebar-title-font-weight-primary: 700;
+  --db-sidebar-title-font-weight-secondary: unset;
   --db-sidebar-title-letter-spacing-primary: -0.025rem;
   --db-sidebar-title-letter-spacing-secondary: -0.025rem;
+  --db-sidebar-title-line-height-primary: unset;
+  --db-sidebar-title-line-height-secondary: unset;
 
   /* Search Box */
   --db-search-color-background: var(--db-sidebar-color-background-accent);
@@ -158,6 +164,8 @@ html {
   --db-content-section-heading-font-weight: 700;
   --db-content-section-heading-icon: var(--db-icon-hashtag);
   --db-content-section-heading-icon-hover: var(--db-icon-hashtag-hover);
+  --db-content-section-heading-background-position-y: 7px;
+  --db-content-section-heading-background-size: 20px;
   --db-content-heading-font-weight: 600;
   --db-content-heading-letter-spacing: -0.02em;
   --db-content-heading-text-decoration: none;
@@ -167,6 +175,7 @@ html {
   --db-content-h3-font-family: var(--db-font-family-heading);
   --db-content-h3-font-size: 1.2rem;
   --db-content-h3-font-weight: var(--db-content-heading-font-weight);
+  --db-content-h3-margin: 1.5rem 0 0.5rem 0;
   --db-content-h4-font-family: var(--db-font-family-heading);
   --db-content-h4-font-size: 1.1rem;
   --db-content-h4-font-weight: var(--db-content-heading-font-weight);
@@ -180,11 +189,9 @@ html {
   --db-content-list-margin-bottom: 0.5rem;
   --db-content-list-bullet-color-fill: var(--db-content-color-text-bullet);
   --db-content-link-color-text: var(--db-content-color-text-link);
-  --db-content-link-color-text-hover: var(--db-content-color-text-link);
-  --db-content-link-color-text-decoration: var(--db-color-accent);
-  --db-content-link-color-text-decoration-hover: var(
-    --db-content-color-text-link
-  );
+  --db-content-link-color-text-hover: var(--db-content-color-text-link-hover);
+  --db-content-link-color-text-decoration: underline;
+  --db-content-link-color-text-decoration-hover: underline;
   --db-content-link-color-background-hover: var(
     --db-content-color-background-accent
   );
@@ -255,7 +262,7 @@ html {
   --db-page-card-title-color-text: var(--db-content-color-text);
   --db-page-card-title-font-family: var(--db-font-family-heading);
   --db-page-card-title-font-size: 1.25rem;
-  --db-page-card-title-font-weight: 700;
+  --db-page-card-title-font-weight: var(--db-content-heading-font-weight);
   --db-page-card-body-color-text: var(--db-content-color-text-weak);
   --db-page-card-body-font-size: 0.875rem;
   --db-page-card-body-font-weight: 400;
@@ -263,9 +270,10 @@ html {
 
   /* github edit link */
   --db-gh-link-color-text: var(--db-content-color-text-weak);
-  --db-gh-link-color-text-hover: var(--db-content-color-text-link);
+  --db-gh-link-color-text-hover: var(--db-content-color-text);
   --db-gh-link-margin: 2rem 0 0 0;
   --db-gh-link-padding: 0 0 0 1.2rem;
+  --db-gh-link-font-family: var(--db-font-family-body);
   --db-gh-link-font-size: 0.9rem;
   --db-gh-link-font-weight: 500;
   --db-gh-link-text-decoration: none;
@@ -284,15 +292,15 @@ html {
   --db-copy-code-padding: 0.2rem;
   --db-copy-code-border-radius: 4px;
   --db-copy-code-transition: all 0.3s;
-  --db-copy-code-color-background: var(--db-content-color-background-accent);
+  --db-copy-code-color-background: var(--db-content-color-background);
   --db-copy-code-color-border: var(--db-content-color-border);
   --db-copy-code-color-fill: var(--db-content-color-text-weak);
   --db-copy-code-color-background-hover: var(--db-content-color-background);
-  --db-copy-code-color-border-hover: var(--db-content-color-border-darker);
+  --db-copy-code-color-border-hover: var(--db-content-color-border-darkest);
   --db-copy-code-color-fill-hover: var(--db-content-color-text);
-  --db-copy-code-color-background-success: var(--db-content-color-background);
+  --db-copy-code-color-background-success: #155117;
   --db-copy-code-color-border-success: #155117;
-  --db-copy-code-color-fill-success: #155117;
+  --db-copy-code-color-fill-success: #fff;
 
   /* web-component-docs */
   --db-component-docs-status-border-radius: 6.25rem;
@@ -344,6 +352,9 @@ html {
   --db-component-docs-card-height: 140px;
   --db-component-docs-card-header-font-size: 1.5rem;
   --db-component-docs-card-header-font-family: var(--db-font-family-heading);
+  --db-component-docs-card-header-font-weight: var(
+    --db-content-heading-font-weight
+  );
   --db-component-docs-card-description-color-text: var(
     --db-content-color-text-weak
   );
