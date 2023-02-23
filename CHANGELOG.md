@@ -1,3 +1,7 @@
+## 1.2.1
+
+- Minor styling and token updates.
+
 ## 1.2.0
 
 - Load additional plugins separately to improve performance.
