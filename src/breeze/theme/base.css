@@ -701,8 +701,9 @@ p.db-page-headline + div {
   padding-left: 1.5rem;
   background-image: var(--db-content-section-heading-icon);
   background-repeat: no-repeat;
-  background-position: left 0.7rem;
-  background-size: 20px;
+  background-position: left
+    var(--db-content-section-heading-background-position-y, 7px);
+  background-size: var(--db-content-section-heading-background-size, 20px);
   font-weight: var(--db-content-section-heading-font-weight);
 }
 
@@ -712,8 +713,7 @@ p.db-page-headline + div {
 }
 
 .markdown-section > h3 {
-  margin-top: 1.5rem;
-  margin-bottom: 0.5rem;
+  margin: var(--db-content-h3-margin, 1.5rem 0 0.5rem 0);
   font-family: var(--db-content-h3-font-family);
   font-size: var(--db-content-h3-font-size);
   font-weight: var(--db-content-h3-font-weight);
@@ -794,8 +794,6 @@ p.db-page-headline + div {
   color: var(--db-content-link-color-text);
   font-weight: var(--db-content-link-font-weight);
   text-decoration: var(--db-content-link-text-decoration);
-  text-decoration-color: var(--db-content-link-color-text-decoration);
-  text-decoration-thickness: var(--db-content-link-text-decoration-thickness);
   transition: var(--db-content-link-transition);
 }
 
@@ -803,7 +801,6 @@ p.db-page-headline + div {
   color: var(--db-content-link-color-text-hover);
   text-decoration: var(--db-content-link-text-decoration-hover);
   background-color: var(--db-content-link-color-background-hover);
-  text-decoration-color: var(--db-content-link-color-text-decoration-hover);
 }
 
 .markdown-section a[rel="noopener"]:not(.edit-on-github) {
