@@ -13,6 +13,35 @@
   width: calc(100% - 1.5rem);
   padding: 2rem;
   overflow: auto;
+  /* firewall all heritable properties */
+  border-collapse: revert;
+  border-spacing: revert;
+  caption-side: revert;
+  color: revert;
+  cursor: revert;
+  direction: revert;
+  empty-cells: revert;
+  font-family: revert;
+  font-size: revert;
+  font-style: revert;
+  font-variant: revert;
+  font-weight: revert;
+  font: revert;
+  letter-spacing: revert;
+  line-height: revert;
+  list-style-image: revert;
+  list-style-position: revert;
+  list-style-type: revert;
+  list-style: revert;
+  orphans: revert;
+  quotes: revert;
+  text-align: revert;
+  text-indent: revert;
+  text-transform: revert;
+  visibility: revert;
+  white-space: revert;
+  widows: revert;
+  word-spacing: revert;
 }
 
 .code-preview__resizer {
