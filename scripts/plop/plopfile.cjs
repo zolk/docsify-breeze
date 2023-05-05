@@ -67,7 +67,7 @@ module.exports = function (plop) {
       },
       {
         type: "modify",
-        path: "../../src/index.ts",
+        path: "../../src/component/index.ts",
         pattern: /\/\* plop:component \*\//,
         template: `export { default as {{ tagToDsTitle tag }} } from "./components/{{ noPrefix tag }}/{{ noPrefix tag }}";\n/* plop:component */`,
       },
