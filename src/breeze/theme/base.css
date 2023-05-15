@@ -798,7 +798,7 @@ p.db-page-headline + div {
   font-family: var(--db-font-family-body);
 }
 
-.markdown-section > :not(.code-preview) a {
+.markdown-section > :where(:not(.code-preview)) a {
   color: var(--db-content-link-color-text);
   font-weight: var(--db-content-link-font-weight);
   text-decoration: var(--db-content-link-text-decoration);
@@ -806,7 +806,7 @@ p.db-page-headline + div {
 }
 
 .markdown-section > a:hover,
-.markdown-section > :not(.code-preview) a:hover {
+.markdown-section > :where(:not(.code-preview)) a:hover {
   color: var(--db-content-link-color-text-hover);
   text-decoration: var(--db-content-link-text-decoration-hover);
   background-color: var(--db-content-link-color-background-hover);
@@ -827,7 +827,7 @@ p.db-page-headline + div {
 }
 
 .markdown-section > code,
-.markdown-section > :not(.code-preview) code,
+.markdown-section > :where(:not(.code-preview)) code,
 .controls__inputs code {
   display: inline-block;
   margin: var(--db-content-code-margin);
@@ -858,6 +858,7 @@ p.db-page-headline + div {
   background-color: transparent;
   border: none;
   tab-size: var(--db-content-code-block-tab-size);
+  font-family: var(--db-content-code-font-family);
   font-size: var(--db-content-code-block-font-size);
   line-height: var(--db-content-code-block-line-height);
 }
