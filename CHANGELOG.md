@@ -1,3 +1,7 @@
+## 1.2.3
+
+- Fixes tip and warn helper styles, which were swapped
+
 ## 1.2.2
 
 - Prevent styles leaking into embedded component previews (#79)
