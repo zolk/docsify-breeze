@@ -1,3 +1,7 @@
+## 1.2.2
+
+- Prevent styles leaking into embedded component previews (#79)
+
 ## 1.2.1
 
 - Minor styling and token updates.
