@@ -1,5 +1,7 @@
 # Button
 
+!> This component relies on light DOM styling. Styles must be manually imported and applied if rendering this component inside the shadow DOM of another component.
+
 ```html preview expanded controls default
 <ds-button>Button</ds-button>
 ```
