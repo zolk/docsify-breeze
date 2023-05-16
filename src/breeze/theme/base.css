@@ -31,9 +31,15 @@ body {
   }
 }
 
-a:focus-visible,
-button:focus-visible,
-[role="slider"]:focus-visible {
+/* NB: :where() to knock down specificity */
+:not(:where(
+  .code-preview__scrollable,
+  .code-preview__scrollable *
+)):is(
+  a,
+  button,
+  [role="slider"]
+):focus-visible {
   outline: 2px solid var(--db-color-focus-visible);
   outline-offset: 3px;
 }
@@ -758,16 +764,18 @@ p.db-page-headline + div {
   line-height: var(--db-content-line-height);
 }
 
-.markdown-section li {
+.markdown-section > li,
+.markdown-section > :not(.code-preview) li {
   margin-bottom: var(--db-content-list-margin-bottom);
 }
 
-.markdown-section li:last-child {
+.markdown-section > li:last-child,
+.markdown-section > :not(.code-preview) li:last-child {
   margin-bottom: 0;
 }
 
-.markdown-section li ul,
-.markdown-section li ol {
+.markdown-section > li :is(ol, ul),
+.markdown-section > :not(.code-preview) li :is(ol, ul) {
   margin: var(--db-content-list-margin-bottom) 0;
 }
 
@@ -786,24 +794,26 @@ p.db-page-headline + div {
   color: var(--db-content-list-bullet-color-fill);
 }
 
-.markdown-section button {
+.markdown-section > :not(.code-preview) button {
   font-family: var(--db-font-family-body);
 }
 
-.markdown-section a {
+.markdown-section > :where(:not(.code-preview)) a {
   color: var(--db-content-link-color-text);
   font-weight: var(--db-content-link-font-weight);
   text-decoration: var(--db-content-link-text-decoration);
   transition: var(--db-content-link-transition);
 }
 
-.markdown-section a:hover {
+.markdown-section > a:hover,
+.markdown-section > :where(:not(.code-preview)) a:hover {
   color: var(--db-content-link-color-text-hover);
   text-decoration: var(--db-content-link-text-decoration-hover);
   background-color: var(--db-content-link-color-background-hover);
 }
 
-.markdown-section a[rel="noopener"]:not(.edit-on-github) {
+.markdown-section > a[rel="noopener"]:not(.edit-on-github),
+.markdown-section > :not(.code-preview) a[rel="noopener"] {
   background-position: right calc(100% - 1px);
   background-repeat: no-repeat;
   background-image: var(--db-icon-arrow-up-right);
@@ -811,11 +821,13 @@ p.db-page-headline + div {
   padding-right: 1rem;
 }
 
-.markdown-section a[rel="noopener"]:not(.edit-on-github):hover {
+.markdown-section > a[rel="noopener"]:not(.edit-on-github):hover,
+.markdown-section > :not(.code-preview) a[rel="noopener"]:hover {
   background-image: var(--db-icon-arrow-up-right-hover);
 }
 
-.markdown-section code,
+.markdown-section > code,
+.markdown-section > :where(:not(.code-preview)) code,
 .controls__inputs code {
   display: inline-block;
   margin: var(--db-content-code-margin);
@@ -828,13 +840,17 @@ p.db-page-headline + div {
   line-height: var(--db-content-code-line-height);
 }
 
-.markdown-section pre {
+.markdown-section > pre,
+.markdown-section > :not(.code-preview) pre,
+.code-preview__source pre {
   position: relative;
   background-color: var(--db-content-code-block-color-background);
   border-radius: var(--db-content-code-block-border-radius);
 }
 
-.markdown-section pre code {
+.markdown-section > pre code,
+.markdown-section > :not(.code-preview) pre code,
+.code-preview__source pre code {
   display: block;
   margin: var(--db-content-code-block-margin);
   padding: var(--db-content-code-block-padding);
@@ -842,11 +858,13 @@ p.db-page-headline + div {
   background-color: transparent;
   border: none;
   tab-size: var(--db-content-code-block-tab-size);
+  font-family: var(--db-content-code-font-family);
   font-size: var(--db-content-code-block-font-size);
   line-height: var(--db-content-code-block-line-height);
 }
 
-.markdown-section kbd {
+.markdown-section > kbd,
+.markdown-section > :not(.code-preview) kbd {
   display: inline-block;
   margin-bottom: 0.1875rem;
   padding: 0.1875rem 0.3125rem;
