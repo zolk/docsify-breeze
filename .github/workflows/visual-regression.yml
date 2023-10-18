@@ -1,4 +1,4 @@
-name: Percy
+name: Visual Regression
 
 on:
   push:
