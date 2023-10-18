@@ -1,10 +1,9 @@
-name: Node.js CI
+name: Visual Regression
 
 on:
   push:
     branches: [main]
-  pull_request:
-    branches: [main]
+  workflow_dispatch:
 
 jobs:
   build:
@@ -22,6 +21,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Install dependencies
         run: npm ci
-      - run: npm run build --if-present
-      - run: npx playwright install-deps
-      - run: npm test
+      - name: Run Percy Snapshot
+        env:
+          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+        run: npm run percy
